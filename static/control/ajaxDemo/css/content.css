@@ -1,0 +1,16 @@
+#container dl{min-height:5.09375rem;border-bottom: 1px solid #dddddd;background: #fff;color: #030303;font-size: 0.8125rem;font-family: "黑体";margin-bottom: 0.4375rem;}
+#container dl dt{min-height:2.375rem;border-bottom: 1px solid #dddddd;width: 95.46%;margin:  0 auto;line-height:2.375rem;text-indent: 0.9375rem;}
+#container dl dd{min-height:2.6875rem;position: relative;line-height:2.6875rem;text-indent: 0.9375rem;}
+#container dl dd img{width: 2.6875rem;height: 1.25rem;}
+#container dl dd .span1{margin-left: -0.82rem;}
+#container dl dd .span2{margin-left: -0.52rem;}
+#container dl dt .img_add{width:0.96875rem;height: 0.96875rem;margin-top: -0.2rem;margin-left: -0.18rem;}
+#container dl .dd_span{line-height: 1.6rem;min-height:3.28125rem;position: relative;width: 95.46%;margin:  0 auto;}
+#container dl .dd_p{line-height: 1rem;color: #888888;}
+.pay{position: absolute;right: 1.125rem;top: 0.975rem;color: #4a4747;}
+#container dl .dd_bored{border-bottom: 1px solid #dddddd;}
+#container dl .dd_bored:last-child{border: none;}
+
+.total{height: 2.59375rem;width: 96%;line-height: 2.59375rem;text-align: right;color: #ff681f;font-size: 0.8125rem;font-family: "黑体";}
+.total i{font-size: 1.3125rem;}
+

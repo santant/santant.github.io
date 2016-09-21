@@ -1,0 +1,32 @@
+body{background: #dbcfbb;}
+.margin-h4{margin-top: 5.125rem;}
+.title-h4 {font-size: 1.5rem;color: #65625e;line-height: 2rem;height: 2rem;font-family: arial;text-align: center;animation: 1s right1;}
+.title-h5 {color:#65625e;line-height: 1.4375rem;font-size: 0.9375rem;font-family: arial;text-align: center;animation: 1s left1;}
+.title-line{width: 6.25rem;height: 1px;display: block;background: #65625e;margin: 0 auto;text-align: center;}
+
+.teacher-ul {margin-top: 1.55rem;padding-bottom: 0.4rem;width: 100%;}
+.teacher-ul li{min-height: 7.15625rem;clear: both;width: 18.75rem;margin: 0 auto;}
+.teacher-ul li .img-left{height: 5.025rem;width: 6.21875rem;float: left;border-right: 1px solid #9a9283;box-sizing: border-box;} 
+.teacher-ul li .img-right{height: 5.025rem;width: 12.53125rem;float: left;text-align: left;} 
+.teacher-ul  li .img-right span{font-size: 0.75rem;color: #65625e;padding-left: 0.9375rem;}
+.teacher-ul  li .img-right p{font-size: 0.5625rem;color: #65625e;line-height: 1.025rem;margin-top: 0.625rem;padding-left: 0.9375rem;}
+.teacher-ul  li .img-left >img{width:5.3125rem;height: 5.3125rem;border-radius: 50%;margin-top: -0.5rem;}
+/*返回顶部*/
+.to_top{height: 5.34375rem;width: 100%;background: #dbcfbb;overflow: hidden;}
+.to_top a{display: block;width: 3.4375rem;height: 2.09375rem;margin: 0 auto;margin-top: 1.625rem;background: url(../img/icon05.png) no-repeat;background-size: 100% 100%;}
+
+/*.teacher-ul li:active{background: red;width: 20rem;}*/
+
+
+@-webkit-keyframes right1{
+	0%{transform:translateX(10rem) ;}
+	100%{transform:translateX(0rem) ;}
+}
+@-webkit-keyframes left1{
+	0%{transform:translateX(-10rem) ;}
+	100%{transform:translateX(0rem) ;}
+}
+@-webkit-keyframes top2{
+	0%{transform:translateY(10rem) ;}
+	100%{transform:translateX(0rem) ;}
+}

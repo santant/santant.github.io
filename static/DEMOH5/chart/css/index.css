@@ -1,0 +1,184 @@
+ html, body {
+        position: relative;
+        height: 100%;
+        overflow: hidden;
+    }
+    body {
+        /*background: #eee;*/
+        font-family: Helvetica Neue, Helvetica, Arial, sans-serif;
+        font-size: 14px;
+        color:#000;
+        margin: 0;
+        padding: 0;
+    }
+    .swiper-container {
+        width: 100%;
+        height: 100%;
+        margin-left: auto;
+        margin-right: auto;
+    }
+    .swiper-slide {
+        text-align: center;
+        font-size: 18px;
+        background: #fff;
+		position: relative;
+		overflow: hidden;
+        /* Center slide text vertically */
+        /*display: -webkit-box;
+        display: -ms-flexbox;
+        display: -webkit-flex;
+        display: flex;
+        -webkit-box-pack: center;
+        -ms-flex-pack: center;
+        -webkit-justify-content: center;
+        justify-content: center;
+        -webkit-box-align: center;
+        -ms-flex-align: center;
+        -webkit-align-items: center;
+        align-items: center;*/
+    }
+    
+.swiper-slide  >.footer-pu{width: 100%;height:1.1875rem;position: absolute;left: 0;bottom: 0;}    
+.swiper-slide .title{width: 15.34375rem;height: 3.6875rem;background: url(../img/page2Icon01.png) no-repeat;background-size: 100% 100%;margin-top: 3.1875rem;overflow: hidden;}
+.swiper-slide .title >h4{width: 12.8125rem;height: 1.75rem;line-height: 1.75rem;margin-top: 0.5625rem;text-align: center;float: right;color: #fff;font-size: 1.25rem;font-family: "微软雅黑";}
+
+/*page1*/
+.page1{background: url(../img/face_bg.png) no-repeat;background-size: 100% 100%;}
+.page1 >img{display: block;}
+.page1 >img:nth-of-type(1){width: 13.3125rem;height: 3.34375rem;margin: 0 auto;margin-top: 4.4375rem;}
+.page1 >img:nth-of-type(2){width: 11.5rem;height:3.125rem;margin: 0 auto;margin-top: 2.2875rem;}
+.page1 >img:nth-of-type(3){width: 10.78125rem;height: 15.4375rem;position: absolute;bottom: 0;left: 0;}
+.page1 >img:nth-of-type(4){width: 10.15625rem;height: 15.4375rem;position: absolute;bottom: 0;right: 0;}
+
+
+
+/*page2*/
+.page2,.page3,.page4,.page5,.page6,.page8{background: url(../img/page_bg.png) no-repeat;background-size: 100% 100%;}
+
+.page2 >h3{height: 2.1875rem;line-height: 2.1875rem;text-align: center;font-size: 1.25rem;font-family: "微软雅黑";color: #ff4343;margin-top: 1.2625rem;}
+.page2 >h3 >b{font-size: 1.625rem;}
+.page2 .miaoshu{width: 16.3125rem;height: 10.4375rem;margin: 0 auto;margin-top: 0.625rem;background: url(../img/description_bg.gif) no-repeat;background-size: 100% 100%;}
+.page2 .miaoshu >p{width: 13.9375rem;line-height: 1.1875rem;margin: 0 auto;font-size: 0.76875rem;padding: 0.9375rem 0;text-align: left;color: #fff;}
+.page2  >img:nth-of-type(1){width: 16.09375rem;display: block;margin: 0 auto;margin-top: 1rem;}
+
+
+/*page3*/
+
+.page3 >h3{margin: 0 auto;line-height: 1.875rem;margin-top: 3.4375rem;}
+
+
+/*折线图*/
+.PolyLine{width: 14.5625rem;height: 8.25rem;margin: 0 auto;margin-top: 3.4375rem;position: relative;}
+.PolyLine canvas,.pie canvas,.Radar canvas{position: absolute;left: 0;top: 0;width: 100%;height: 100%;}
+.PolyLine .text{
+	position: absolute;
+    text-align: center;
+    font-size: 12px;
+    transform: scale(.8);
+    bottom: -20px;
+    height: 20px;
+    line-height: 20px;
+    -webkit-transition: all 1s 1.2s;
+    -webkit-opacity: 1;
+}
+
+/*page4*/
+.page4 >p,.page6>p{font-size: 0.71875rem;margin-top: 3.6875rem;font-family: "微软雅黑";}
+.pie{width: 9.375rem;height: 9.375rem;margin: 0 auto;margin-top: 4.8125rem;position: relative;}
+.pie .text{
+	position: absolute;
+	text-align: center;
+	/*z-index: 99;*/
+	height: 24px;
+	font-size: 12px;
+	transition: all 1s;
+}
+.pie .per{
+	position: absolute;
+	text-align: center;
+	z-index: 99;
+	height: 24px;
+}
+
+/*page5*/
+.page5{}
+.Bar{width: 16.6875rem;min-height: 18rem;margin: 0 auto;margin-top: 3rem;}
+.Bar .line{height: 15px;font-size: 12px;line-height: 15px;margin-bottom: 15px;}
+.Bar .line >div{float: left;}
+.Bar .rate{
+	/*background: #99c0ff;*/
+	height: 15px;
+	margin-left: 5px;
+	position: relative;
+	margin-left: 5px;
+	border-radius: 5px;
+}
+.Bar .par{
+	color: #99c0ff;
+	width: 20px;
+	margin-left: 5px;
+	-webkit-opacity: 1;
+	
+}
+.Bar .rate .bg{
+	background: #99c0ff;
+	width: 100%;
+	height: 100%;
+	position: absolute;
+	border-radius: 5px;
+	left: 0;
+	top: 0;
+}
+.Bar .name{
+	width: 2.4rem;
+	color: #333;
+	text-align: center;
+}
+
+
+/*page6*/
+.page6{}
+/*雷达图*/
+.Radar{width: 12.5rem;height: 12.5rem;margin: 0 auto;margin-top: 3rem;position: relative;}
+.Radar .text{
+	position: absolute;
+	font-size: 12px;
+	text-align: center;
+	-webkit-opacity: 0;
+	-webkit-transition: all 1s;
+}
+
+
+
+
+
+
+
+
+
+
+/*page8散点图*/
+.Point{width: 6rem;height: 6rem;margin: 0 auto;position: relative;margin-top: 4rem;}
+.Point  .point{
+	display: block;
+	background: red;
+	border-radius: 50%;
+	position: absolute;
+	
+}
+.Point .NumText{
+	text-align: center;
+	width: 100%;
+	height: 30px;
+	font-size: 0.7rem;
+	top: 50%;
+	position: absolute;
+	margin-top: -0.5rem;
+	color: #fff;
+}
+
+.Point .NumRate{
+	text-align: center;
+	font-size: 0.5rem;
+}
+.page8 >p{font-size: 0.71875rem;margin-top: 3.6875rem;font-family: "微软雅黑";position: absolute;bottom: 20%;left: 4.25rem;}

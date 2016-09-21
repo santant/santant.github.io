@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<style>
+		<link rel="shortcut icon" href="../../imges/ico.ico" type="images/x-icon" />
+		</style>
+	</head>
+	<script type="text/javascript">
+		window.onload = function(){
+			//初始化画布
+			var oCanvas = document.getElementById("canvas");
+			oCanvas.width = 600;//设置画布宽高
+			oCanvas.height = 600;			
+			var context = oCanvas.getContext("2d");//获得画布上下文环境
+			//context绘制	
+			//r,半径
+			deaws(100,0,40);
+			setTimeout(function(){
+			  update(context);				 
+			},1500)
+			function deaws (r,num,lineWidth){
+				draw(context,r,'#fff',100,'#eee',lineWidth);				
+				context.closePath(); 				
+				context.beginPath()//开始一段路径	
+				//画第二个圆
+				var lineearGrad = context.createLinearGradient(0,0,600,600);
+				
+				lineearGrad.addColorStop(0.0,'#ddd');//这里的0是开始的位置
+				lineearGrad.addColorStop(0.4,'#000');
+				lineearGrad.addColorStop(1,'red');//1是结束的时候
+				
+				draw(context,r,'#fff',num,lineearGrad,lineWidth);
+				context.closePath();
+			}
+
+			function draw(ext,r,bg,mun,color,nums){//环境，半径,背景色,百分比数字,边框颜色
+			  context.beginPath()//开始一段路径		
+			  ext.arc(oCanvas.width/2,oCanvas.height/2,r,0,(Math.PI*0.02)*mun);
+			  ext.fillStyle = bg;//背景
+			  ext.strokeStyle =color;//边框颜色
+			  ext.lineWidth=nums;
+			  ext.stroke();
+			}
+			function update(ext){
+			  ext.clearRect(0,0,600,600);	
+			  deaws(100,80,40);	
+			}
+		}
+		
+	</script>
+	<body>
+		<canvas id="canvas" width="" height="" style="border: 1px solid red;"></canvas>
+	</body>
+	
+</html>

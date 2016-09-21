@@ -1,0 +1,167 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta name="viewport" content="width=device-width,initial-scale=1,minimum-scale=1,maximum-scale=1,user-scalable=no" />
+		<link rel="stylesheet" type="text/css" href="../../css/public.css"/>
+		<link rel="stylesheet" type="text/css" href="../../css/index.css"/>
+		<script src="../../js/jquery-1.8.2.min.js" type="text/javascript" charset="utf-8"></script>
+		<script src="../../js/index.js" type="text/javascript" charset="utf-8"></script>
+				<link rel="shortcut icon" href="../../imges/ico.ico" type="images/x-icon" />
+		<meta charset="UTF-8">
+		<title>画布笔记</title>
+	</head>
+	<body>
+	  <div class="hander"> 
+	  	<ul>
+	  		<li class="" nav-title="all"><a href="../../index.html">首页</a></li>
+			<li nav-title="css" class=""> <a href="../canvas/demo1.html">Html5画布入门篇</a></li>
+			<li nav-title="css" class="active"><a href="../canvas/demo3.html">Html5画布提升篇</a></li>
+			<li><a href="../CSS/css3.html">CSS3</a></li>			
+			<li><a href="../../static/control/control.html">自己写的demo</a></li>			
+			<li nav-title="rem工具换算"><a href="../../static/rem1/rem.html">rem</a></li>			
+	  		<li><a href="../title/demo2.html">收藏的网站</a></li>
+	  		<li ><a href="../tool/tool.html">工具箱</a></li>
+	  		<li class=""><a href="../javascript/Event.html">javascriptEvent</a></li>
+	  		<li class=""><a href="../javascript/jsDom.html">javascriptDOM</a></li>
+	  		<li class=""><a href="../javascript/object.html">javascriptObj</a></li>	  		
+	  		<li  ><a href="../zhengze/zhengze.html">js正则表达式</a></li>
+	  		<li class=""><a href="../javascript/JSFcnction.html">javascript函数</a></li>
+	  		<li class=""><a href="../HTML5/H5_1.html">HTML5</a></li>
+	  		<li><a href="../angualar/angualar.html">angualarJS</a></li>
+	  		<li class=""><a href="../jquery-css3/jq-css3.html">Jquery操作css3的拼接方式</a></li>	 
+	  	</ul>
+	  </div>	
+	  <!--画布笔记主体-->
+	  <div class="main">
+	  	 <h3>画布提升篇</h3>	  	 
+	  	 <div class="div_daima">
+	  	 	<h4>兼容画布 ie678</h4>
+	  	 	<pre style="padding-bottom: 170px;">	  	 	
+			<img  src="../../img/24.jpg"/>
+	  	 	</pre>
+	  	 	<h4>画布图形库</h4>
+	  	 	<pre style="padding-bottom: 320px;">	  	 	
+			<img  src="../../img/25.jpg"/>
+	  	 	</pre>
+	  	 	<h4>
+	  	 		画布百分比圆环
+	  	 	</h4>
+	  	 	<pre>
+	  	 		<a href="../test/time.html">demo1</a>
+	  	 		<a href="../test/h5_arc2.html">demo2</a>
+	  	 		
+	  	 	</pre>
+	  	 	<h4>画布图像处理 <code>context.drawImage:三种参数</code> </h4>
+	  	 	<pre style="padding-bottom: 50px;">
+	  	 		window.onload = function(){
+			//初始化画布
+			var oCanvas = document.getElementById("canvas");
+			var context = oCanvas.getContext("2d");//获得画布上下文环境
+			oCanvas.width = 300;//设置画布宽高
+			oCanvas.height = 300;
+			var imges = new Image();
+			imges.src = '../img/v2_ic01.jpg';
+			imges.onload = function(){
+//				context.drawImage(imges,0,0);//参数1是渲染的图片，0,0是渲染的图片从0,0坐标开始渲染
+//				context.drawImage(imges,0,0,oCanvas.width,oCanvas.height);
+				//参数1是渲染的图片，0,0是渲染的图片从0,0坐标开始渲染，后面2个参数是渲染之后图片的宽高,会自动缩放到那么大
+				context.drawImage(imges,50,50,100,90,0,0,oCanvas.width,oCanvas.height);
+				//图片对象，50,50,100,100,是原图的2个坐标，定位的1个矩形，
+				//后面的四个参数0,0,oCanvas.width,oCanvas.height,就是把原图的截取的那个矩形，渲染在画布指定的4个坐标上
+			}
+		}
+			<img src="../../img/26.jpg" style="position: relative;"/>
+	  	 	</pre>
+	  	 	<h4>拖动缩放图片</h4>
+	  	 	<pre>
+	  	 	  	<a href="../test/imgSF.html">滑杆拖动缩放图片</a>
+	  	 	</pre>
+	  	 	<h4>为图片添加水印 <code>离频canvas</code>  </h4>
+			<pre>
+			 <a href="../test/imgSY.html">为图片添加水印:点击demo查看</a>
+			</pre>
+	  	 	<h4>图片圆形放大镜 <code>放大镜</code></h4>
+			<pre>
+			 <a href="../test/arcFDJ.html">为图片添加原形放大镜:请点击拖动demo查看</a>
+			</pre>
+			<h4>复制图片data<code>contexta.getImageData：复制像素   contexta.putImageData添加复制的像素</code> </h4>
+			<pre>
+			  window.onload = function(){	
+			   var canvasa = document.getElementById("canvasa");	
+			   var  contexta =  canvasa.getContext("2d");
+			   var canvasb = document.getElementById("canvasb");
+			   var  contextb =  canvasb.getContext("2d");
+			   var image = new Image();	      
+			   image.src = '../img/222.jpg';
+			   image.onload = function(){
+			    contexta.drawImage(image,0,0,canvasa.width,canvasa.height);
+			   }
+			   document.getElementById("filter").onclick = function(){		   	
+			   	filter();
+			   }
+			   function filter(){
+			   	 //得到canvas的
+			   	 var imageDate = contexta.getImageData(0,0,canvasa.width,canvasa.height);
+				 //向画布b中put1个上面得到的画布date
+				 contextb.putImageData(imageDate,0,0);//复制图像
+	//		  	 contextb.putImageData(imageDate,0,0,0,0,canvasb.width,canvasb.height);		  	
+			   }
+			}	
+			<img src="../../img/27.jpg"/>
+			</pre>
+			<h4>滤镜的基本算法  <code>改变底层的rgb造成滤镜的效果</code> </h4>
+			<pre>
+			  window.onload = function(){	
+			   var canvasa = document.getElementById("canvasa");	
+			   var  contexta =  canvasa.getContext("2d");
+			   var canvasb = document.getElementById("canvasb");
+			   var  contextb =  canvasb.getContext("2d");
+			   var image = new Image();	      
+			   image.src = '../img/222.jpg';
+			   image.onload = function(){
+			    contexta.drawImage(image,0,0,canvasa.width,canvasa.height);
+			   }
+			   document.getElementById("filter").onclick = function(){		   	
+			   	filter();		   				
+			   }
+			   function filter(){
+			   	 //得到canvas的
+			   	 var imageDate = contexta.getImageData(0,0,canvasa.width,canvasa.height);
+	
+	   			 var imgData =  imageDate.data;
+	   			 for (var i = 0; i < imgData.length; i++) {
+	   			 	imgData[4*i+0] = 25;
+	// 			 	imgData[4*i+1] = 0;
+	   			 	imgData[4*i+2] = 255;
+	   			 }
+				 //向画布b中put1个上面得到的画布date
+				 contextb.putImageData(imageDate,0,0);//复制图像
+	//		  	 contextb.putImageData(imageDate,0,0,0,0,canvasb.width,canvasb.height);
+			       	
+			   }
+			}
+			<img src="../../img/28.jpg" />
+			</pre>
+			<h4>Canvas五种滤镜效果 <code>灰白，模糊,马赛克,底片，灰度模式</code> </h4>
+			<pre>
+				<a href="../test/canvasFilter.html">点击查看demo</a>
+			</pre>
+	  	 </div>
+	  </div>
+	  <!--返回顶部-->
+	  <div id="div-Top">
+		  	<dl>
+		  		<dd>
+		  			<img src="../../img/weixin-icon02.png"/></li>
+		  		</dd>
+		  		<dt class="weixin">
+		  			<div></div>
+		  		</dt>
+		  		<dt class="to_top">
+		  			<div></div>
+		  		</dt>
+		  		
+		  	</dl>
+	  </div>
+	</body>
+</html>

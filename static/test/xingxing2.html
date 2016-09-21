@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html>
+	<head>
+				<link rel="shortcut icon" href="../../imges/ico.ico" type="images/x-icon" />
+		<meta charset="UTF-8">
+		<title></title>
+	</head>
+	<script type="text/javascript">
+		window.onload = function(){
+			//初始化画布
+			var oCanvas = document.getElementById("canvas");
+			oCanvas.width = 1000;//设置画布宽高
+			oCanvas.height = 1000;			
+			var context = oCanvas.getContext("2d");//获得画布上下文环境
+			context.fillStyle = 'black';
+			context.fillRect(0,0,oCanvas.width,oCanvas.height);
+			//定义1个r随机数
+			
+			
+			for (var i = 0; i < 200; i++) {
+				var r = Math.random()*10+10;//Math.random()在js里面表示返回1个0-1的随机值 -->随机10-20之间
+				var x = Math.random()*oCanvas.width;//随机1个x轴的偏移量
+				var y = Math.random()*oCanvas.height;//随机1个y轴的偏移量
+				var a = Math.random()*360;//随机角度
+				drawStar(context,x,y,r,r/2.0,a);//调用下面的复用函数
+			}
+
+				
+
+
+			
+		}
+		//画五角星的函数
+		function drawStar(cxt,x,y,r,R,rot){//ext环境，r：小园半径，R：大圆半径,x:偏移的x坐标,y:偏移的y坐标 ,rot偏移的角度
+			cxt.beginPath()//开始一段路径
+			for (var i = 0; i < 5; i++) { //下面的*300哪里是渲染的半径，+400是位移的x,y的距离
+				cxt.lineTo(Math.cos((18+i*72-rot)/180*Math.PI)*R+x,
+				               -Math.sin((18+i*72-rot)/180*Math.PI)*R+y);
+				cxt.lineTo(Math.cos((54+i*72-rot)/180*Math.PI)*r+x,
+				               -Math.sin((54+i*72-rot)/180*Math.PI)*r+y);
+			}
+			cxt.closePath();
+			cxt.fillStyle = '#ddd';
+			cxt.strokeStyle ='#FD5';
+			cxt.lineWidth = 3;
+			cxt.lineJoin = 'round';
+			cxt.fill();			
+			cxt.stroke();
+		}
+	</script>
+	<body>
+		<canvas id="canvas" width="" height="" style="border: 1px solid red;"></canvas>
+	</body>
+	
+</html>

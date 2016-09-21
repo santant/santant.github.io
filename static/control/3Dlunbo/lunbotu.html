@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<style type="text/css">
+			
+			@-webkit-keyframes show{
+				0%{
+					transform: rotateX(180deg);
+					opacity: 0;
+				 }
+				 100%{
+				 	transform: rotateX(0);
+				 	opacity: 1;
+				 }
+			}
+			@-webkit-keyframes hide{
+				0%{
+					transform: rotateX(0deg);
+					opacity: 1;
+				 }
+				 100%{
+				 	transform: rotateX(180deg);
+				 	opacity: 0;
+				 }
+			}
+		
+				
+			#wrap{width: 400px;height: 300px;position: relative;margin: 40px auto;perspective: 800px;transform-style: preserve-3d;}
+			img{width: 400px;height: 300px;position: absolute;left: 0;top: 0;transform-origin: bottom;
+			transform: rotateX(-180deg);opacity: 0;
+			}
+			button{width: 70px;height: 70px;top: 100px;position: absolute;border-radius: 50%;}
+			button:nth-of-type(1){left: -100px;}
+			button:nth-of-type(2){right: -100px;}
+			.show{animation: 2s show;opacity: 1;transform: rotateX(0);}
+			.hide{animation: 2s hide;opacity: 0;transform: rotateX(180edg);}
+		</style>
+		<script type="text/javascript">
+			window.onload = function(){
+				var oWrap = $("wrap");
+				var aBtn = oWrap.getElementsByTagName("button");
+				var aImg = oWrap.getElementsByTagName("img");
+				var iNa = 0;//计数器
+				//下一页
+				aBtn[1].onclick = function(){
+					aImg[iNa].className = 'hide';
+					iNa++;
+					if (iNa>=aImg.length) {
+						iNa = 0;
+					}					
+					aImg[iNa].className = 'show';
+				}
+				//上一页
+				aBtn[0].onclick = function(){
+					aImg[iNa].className = 'hide';
+					iNa--;
+					if (iNa<0) {
+						iNa = aImg.length-1;
+					}					
+					aImg[iNa].className = 'show';
+				}
+				function $(ID){
+					return document.getElementById(ID);
+				}
+			}
+		</script>
+	</head>
+	<body>
+		<div id="wrap">
+			<button>上一页</button>
+			  <img src="img/img1.jpg" class="show"/>
+			  <img src="img/img2.jpg"/>
+			  <img src="img/img3.jpg"/>
+			  <img src="img/img4.jpg"/>
+			  <img src="img/img5.jpg"/>
+			<button>下一页</button>
+		</div>
+	</body>
+</html>

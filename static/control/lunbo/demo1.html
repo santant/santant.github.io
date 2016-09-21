@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title></title>
+						<link rel="shortcut icon" href="../../../imges/ico.ico" type="images/x-icon" />
+		<link rel="stylesheet" type="text/css" href="css/public.css"/>
+		<script src="js/jquery-1.8.2.min.js" type="text/javascript" charset="utf-8"></script>
+		<style type="text/css">
+			#banner{width: 100%;height: 500px;overflow: hidden;position: relative;border: 1px solid red;margin-top: 50px;}
+			.d1{position: absolute;width: 100%;height: 500px;left: 0;top: 0;z-index: 1;display: none;}			
+			.b1{background: url(img/banner01.png) no-repeat center;}
+			.b2{background: url(img/banner02.png) no-repeat center;}
+			.b3{background: url(img/banner03.png) no-repeat center;}
+			.b4{background: url(img/banner04.png) no-repeat center;}
+			.b5{background: url(img/banner05.png) no-repeat center;}
+			#banner .no{display: block;}
+			#banner_id{width: 120px;height: 30px;position: relative;margin:  0 auto;margin-top: 450px;z-index: 999;}
+			#banner_id ul{width: 100%;height: 100%;}	
+			#banner_id ul li{width: 12px;height: 12px;border-radius:50%;background: #3C7500;float: left;margin-left: 10px;margin-top:9px;display: inline;}
+			#banner_id ul .nuw{background: red;}
+		</style>
+		<script type="text/javascript">
+			$(function(){
+				$("#banner_id ul li").click(function(){
+					  $("#banner .d1").stop(true,true);	
+					  $("#banner_id ul li").removeClass("no");
+					  var oIndex= $(this).index();
+					  $(this).addClass("nuw").siblings("li").removeClass("nuw");
+					  $(".d1").eq(oIndex).fadeIn(600).siblings(".d1").css("display","none");
+					  num = oIndex; //让li的计算器保持为1个避免选择上的index乱跳	
+				})
+				//定时器
+				var num = 0;
+				var Timer = null;
+				Timer = setInterval(function(){
+				 $("#banner .d1").stop(true,true);	
+				  	num ++;
+				   if ( num>=0 && num < $("#banner_id ul li").size()) {
+				   	   $(".d1").eq(num).fadeIn(600).siblings(".d1").css("display","none");
+				   	   $("#banner_id ul li").eq(num).addClass("nuw").siblings("li").removeClass("nuw");
+				   }else
+				   {
+				     num =0;
+				     $(".d1").eq(num).fadeIn(600).siblings(".d1").css("display","none");
+				   	 $("#banner_id ul li").eq(num).addClass("nuw").siblings("li").removeClass("nuw");
+				   }
+				},5000)
+				//移入图片关闭定时器
+				$("#banner .d1").mouseover(function(){
+					clearInterval(Timer);
+				})
+				//移出图片开启定时器
+				$("#banner .d1").mouseout(function(){
+					Timer = setInterval(function(){
+					$("#banner .d1").stop(true,true);	
+					  	num ++;
+					   if ( num>=0 && num < $("#banner_id ul li").size()) {
+					   	   $(".d1").eq(num).fadeIn(600).siblings(".d1").css("display","none");
+					   	   $("#banner_id ul li").eq(num).addClass("nuw").siblings("li").removeClass("nuw");
+					   }else
+					   {
+					     num =0;
+					     $(".d1").eq(num).fadeIn(600).siblings(".d1").css("display","none");
+					   	 $("#banner_id ul li").eq(num).addClass("nuw").siblings("li").removeClass("nuw");
+					   }
+					},5000)
+				})
+				//btn 上一页
+				$("#btn_left").click(function(){
+					
+					if (num>0 && num < $("#banner_id ul li").size()) {
+						num--;
+						  $(".d1").eq(num).fadeIn(600).siblings(".d1").css("display","none");
+					   	  $("#banner_id ul li").eq(num).addClass("nuw").siblings("li").removeClass("nuw");					  
+					} else{
+						num = $("#banner_id ul li").size()-1;
+						$(".d1").eq(num).fadeIn(600).siblings(".d1").css("display","none");
+					   	$("#banner_id ul li").eq(num).addClass("nuw").siblings("li").removeClass("nuw");						
+					}
+				})
+				//btn 下一页
+				$("#btn_right").click(function(){					
+					if (num>=0 && num < $("#banner_id ul li").size()) {
+						num++;
+						  $(".d1").eq(num).fadeIn(600).siblings(".d1").css("display","none");
+					   	  $("#banner_id ul li").eq(num).addClass("nuw").siblings("li").removeClass("nuw");					  
+					} else{
+						num = 0;
+						$(".d1").eq(num).fadeIn(600).siblings(".d1").css("display","none");
+					   	$("#banner_id ul li").eq(num).addClass("nuw").siblings("li").removeClass("nuw");						
+					}
+				})
+				
+			})
+		</script>
+	</head>
+	<body>
+		<button id="btn_left">上一页</button>
+		<button id="btn_right">下一页</button>
+		<div class="banner" id="banner">
+	    	<div class="d1 b1 no" ></div>
+	    	<div class="d1 b2" ></div>
+	    	<div class="d1 b3" ></div>
+	    	<div class="d1 b4" ></div>
+	    	<div class="d1 b5" ></div>
+    	<div class="d2" id="banner_id">
+    		<ul>
+    			<li class="nuw"></li>
+    			<li class=""></li>
+    			<li class=""></li>
+    			<li class=""></li>
+    			<li class=""></li>
+    		</ul>
+    	</div>
+    </div>
+	</body>
+</html>

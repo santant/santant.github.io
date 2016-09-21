@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html ng-app="myApp">
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<script src="angular.min.js" type="text/javascript" charset="utf-8"></script>
+		<script type="text/javascript">
+			var m1 = angular.module('myApp',[]);
+			m1.controller('Aaa',function($scope,$interval){
+				var iNow = 5;
+				$scope.text = iNow+'miao';
+				$scope.isDisable = true;
+				
+//				setInterval(function(){
+//					$scope.$apply()
+//				})
+				var timer = $interval(function(){
+					iNow --;
+					$scope.text = iNow+'miao';
+					if(iNow == 0){
+						$interval.cancel(timer);//angular中关闭定时器
+						$scope.text = "可以点击了";
+						$scope.isDisable = false;
+					}
+				},1000)
+			})
+		</script>
+	</head>
+	<body>
+		<div ng-controller="Aaa" >
+			<input type="button" name="" id="" value="{{text}}"  ng-disabled="isDisable"/>
+			<input type="text" name="" id="" value="{{text}}"  ng-readonly="isDisable"/>
+			<input type="checkbox" name="" id="" value="{{text}}"  ng-checked="isDisable"/>
+			
+		</div>
+	</body>
+</html>

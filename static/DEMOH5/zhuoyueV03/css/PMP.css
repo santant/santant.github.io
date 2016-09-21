@@ -1,0 +1,11 @@
+body{background: #dbcfbb;}
+.ol-tab{width: 17.8125rem;margin: 0 auto;clear: both;height: 1.40625rem;}
+.ol-tab li{box-sizing: border-box;border: 1px solid #474747;float: left;width: 3.78125rem;height: 1.40625rem;line-height: 1.40625rem;text-align: center;font-size: 0.75rem;color: #6e6a64;font-family: arial;margin-left: 0.77rem;}
+.ol-tab li:first-child{margin-left: 0;}
+.ol-tab  .active{background: #474747;color: #c3b9a8;}
+.div-box{padding: 1.21875rem 0;display: none;width: 18.25rem;margin: 0 auto;font-size: 0.5625rem;color: #474747;line-height: 1.03125rem;}
+.div-box p{margin-bottom:1.46875rem;}
+body .off{display: block;}
+
+
+

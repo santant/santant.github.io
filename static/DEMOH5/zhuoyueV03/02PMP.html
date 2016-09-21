@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title></title>
+		<meta name="format-detection" content="telephone=no" />
+		<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+		<meta name="viewport" content="width=device-width,initial-scale=1,minimum-scale=1,maximum-scale=1,user-scalable=no" />
+		<link rel="stylesheet" type="text/css" href="css/public.css" />
+		<link rel="stylesheet" type="text/css" href="css/PMP.css"/>
+		<link rel="stylesheet" type="text/css" href="css/swiper.min.css"/>
+		<script src="js/rem.js" type="text/javascript" charset="utf-8"></script>
+		<script src="js/swiper.min.js" type="text/javascript" charset="utf-8"></script>
+		<script src="js/jquery-1.8.2.min.js" type="text/javascript" charset="utf-8"></script>
+		<script type="text/javascript">
+			window.onload = function(){
+				document.body.addEventListener('touchstart', function () {});						    
+			}
+			$(function(){				
+				//滑动划出动画
+				$(".list").click(function(){
+					$("#list-alert").addClass("activeTrans");
+				})
+				$(".alert-left").click(function(){
+				   $("#list-alert").removeClass("activeTrans");
+				})
+				$(".a-close").click(function(){
+					$("#list-alert").removeClass("activeTrans");
+				})
+				//tab
+				$(".ol-tab li").bind("touchstart",function(){
+					var oIndex =  $(this).index();
+					$(this).addClass("active").siblings("li").removeClass("active");
+					$(".div-box").eq(oIndex).addClass("off").siblings(".div-box").removeClass("off");
+				})
+				
+			})
+		</script>
+	<body>	
+	 
+	<div class="top-logo">
+	    <a href="tel:18688888888" class="phone">免费预约</a>   	    		
+	    <a href="#"><img src="img/logo.png"/></a>
+		<a href="javascript:void(0);" class="list" id="list"></a>
+	</div>
+	<!--tab选项卡-->
+	<i style="height: 4.625rem;width: 100%;"></i>
+	<ol class="ol-tab">
+		<li>PMP</li>
+		<li class="active">PMP&PMI</li>
+		<li>PDU</li>
+		<li>PMP</li>
+	</ol>
+	<div class="div-box">
+		1
+	</div>
+	<div class="div-box off">
+		<p>PMP认证是由美国项目管理学会(PMI)在全球范围内推出的针对项目经理的资格认证体系，通过该认证的项目经理叫"PMP"，即Project Management Professional（项目管理专业人员）。</p>
+		<p>
+			国内自1999年开始推行PMP认证，由PMI授权国家外国专家局培训中心负责在国内进行PMP认证的报名和考试组织。该认证的通过两种方式对报名申请者进行考核，以决定是否颁发给PMP申请者PMP证书。
+		</p>
+		<p>
+			1. 资历审查
+			申请者的基本资历要求为：
+			·申请者需具有学士学位或同等的大学学历，并且须至少具有4500小时的项目管理经历。PMI要求申请者需至少3年以上，具有4500小时的项目管理经历。仅在申请日之前6年之内的经历有效。需要提交的文件一份详细描述工作经历和教育背景的最新简历（请提供所有雇主和学校的名称及详细地址）；一份学士学位或同等大学学历证书或副本的拷贝件；能说明至少3年以上，4500小时的经历审查表。
+			·申请者虽不具备学士学位或同等大学学历，但持有中学文凭或同等中学学历证书，并且至少具有7500小时的项目管理经历。PMI要求申请者需至少5年以上，具有7500小时的项目管理经历。仅在申请日之前8年之内的经历有效
+			2.PMP考试
+			PMP申请需参加PMI组织和出题的PMP考试，并且合格，合格的标准是你必须答对全部题目中的140个题目。PMP考试目前在国内一年开展四次，由国家外国专家局培训中心负责组织实施。相对而言，PMP考试的审查更为严格，而且是硬性的，没有变通的余地。 美国项目管理协会的项目管理专家（PMP）认证是目前世界上对项目管理从业人员最流行的认证之一。
+		</p>
+	</div>
+	<div class="div-box">
+		3
+	</div>
+	<div class="div-box">
+		4
+	</div>
+	
+	
+	
+	   
+	   
+    <!--alert弹窗-->
+    <div id="list-alert">
+    	<div class="alert-left">
+    		
+    	</div>
+    	<div class="alert-right">
+    		<a href="javascript:void(0);" class="a-close"></a>
+    		<ul>
+    			<li><a href="javascript:void(0);">越卓于关<i>01</i></a></li>
+    			<li><a href="javascript:void(0);" class="font-color">PMP<i>02</i></a></li>
+    			<li><a href="javascript:void(0);">越卓于关<i>03</i></a></li>
+    			<li><a href="javascript:void(0);">越卓于关<i>04</i></a></li>
+    			<li><a href="javascript:void(0);">越卓于关<i>05</i></a></li>
+    			<li><a href="javascript:void(0);">越卓于关<i>06</i></a></li>
+    			<li><a href="javascript:void(0);">越卓于关<i>07</i></a></li>
+    			<li><a href="javascript:void(0);">越卓于关<i>08</i></a></li>
+    			<li><a href="javascript:void(0);">越卓于关<i>09</i></a></li>  			
+    		</ul>
+    	</div>
+   
+	</body>
+</html>

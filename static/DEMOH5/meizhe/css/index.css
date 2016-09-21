@@ -1,0 +1,26 @@
+body{width: 100%;height: 35.5rem;background: url(../img/index-bg2.jpg) no-repeat;background-size: 100%;}
+.yf-box{width: 16.875rem;height: 7.3125rem;margin: 0 auto;}
+.yf-box >li{height: 1.75rem;line-height: 1.75rem;width: 5rem;float: left;margin-right: 0.9375rem;position: relative;margin-bottom: 1.0625rem;}
+.yf-box >li:nth-of-type(3n+3){margin-right:0;}
+
+.yf-box >li >a{display: block;width: 100%;height: 100%;background: #fff;border-radius: 5px;}
+.yf-box >li >a:active{opacity: 0.7;position: relative;top: 1px;}
+.yf-box >li >a >i{width: 1.8125rem;height: 1.21875rem;margin-top: 0.2125rem;border-right: 1px dotted  #ededed;position: absolute;}
+.yf-box >li >a >span{width:3.15625rem;vertical-align: top;float: right;position: absolute;right: 0;top: 0;text-align: center;color: #333333;font-size: 0.75rem;}
+.yf-box >li >a >i >b{display: block;width: 0.4375rem;height: 0.4375rem;position: absolute;margin: auto auto;top: 0;left: 0;bottom: 0;right: 0;}
+
+.active1{border: 2px solid #558cf4;border-radius: 50%;box-shadow: 1px 1px 3px #558cf4;}
+.active2{border: 2px solid #ff5f07;border-radius: 50%;box-shadow: 1px 1px 3px #ff5f07;}
+.active3{border: 2px solid #22ac38;border-radius: 50%;box-shadow: 1px 1px 3px #22ac38;}
+.active4{border: 2px solid #e50783;border-radius: 50%;box-shadow: 1px 1px 3px #e50783;}
+.active5{border: 2px solid #e50783;border-radius: 50%;box-shadow: 1px 1px 3px #e50783;}
+.active6{border: 2px solid #00a0e9;border-radius: 50%;box-shadow: 1px 1px 3px #00a0e9;}
+.active7{border: 2px solid #fff104;border-radius: 50%;box-shadow: 1px 1px 3px #fff104;}
+.active8{border: 2px solid #ff5a00;border-radius: 50%;box-shadow: 1px 1px 3px #ff5a00;}
+.active9{border: 2px solid #c43ecc;border-radius: 50%;box-shadow: 1px 1px 3px #c43ecc;}
+
+.A-hraf{width: 2.5rem;height: 2.5rem;border-radius: 50%;background: #fff;display: block;margin: 0 auto;margin-top: 1.94375rem;}
+.A-hraf >img{width: 100%;}
+body .activeColor{box-shadow: 2px 2px 5px #444;}
+
+body .A-hraf:active{box-shadow: -4px -4px 5px #2ccbc0,-2px -4px 15px #2ccbc0,-3px -15px 25px #2ccbc0,-3px -15px 25px #2ccbc0,-4px -14px 25px #2ccbc0,2px -5px 3px #2ccbc0;}

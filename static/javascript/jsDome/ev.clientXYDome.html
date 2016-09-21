@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<style type="text/css">
+		 #div1{width: 100px;height: 100px;background: red;position: absolute;top: 0;left: 0;}
+		</style>
+		<script type="text/javascript">
+			window.onload = function(){
+				var oDiv =  document.getElementById("div1");
+				document.onmousemove = function(ev){
+					var ev = ev ||evevnt;
+					//滚动条的距离+可视区的XY的距离才是他跟随者的距离
+					var scrollTop = document.documentElement.scrollTop ||document.body.scrollTop;					
+					oDiv.style.left =  ev.clientX+'px';
+					oDiv.style.top =  ev.clientY+scrollTop+'px';
+				}
+			}
+		</script>
+		</head>
+	<body>
+		<div id="div1">
+		</div>
+	</body>
+</html>

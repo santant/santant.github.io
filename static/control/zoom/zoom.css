@@ -1,0 +1,75 @@
+*{
+	padding: 0;
+	margin: 0;
+}
+li{
+	list-style-type: none;
+}
+
+.zoom{margin: 50px;}
+/*大图div*/
+.zoomMiddle{
+	border: 1px solid #ccc;
+	width: 300px;
+	height: 300px;
+	margin-bottom: 3px;
+	position: relative;
+}
+.zoomMiddle img{
+
+	width: 300px;
+	height: 300px;
+}
+/*小图div*/
+.zoomSmall{
+	width: 300px;
+	height: 40px;
+	
+}
+.zoomSmall{
+	overflow: hidden;
+	width: 302px;
+
+	position: relative;
+}
+.zoomSmall  span{
+	font-size: 36px;
+	background: #409CFF;
+	cursor: pointer;
+}
+.zoomSmall  span:first-child{
+	position: absolute;left: 0;top: 0;
+}
+.zoomSmall  span:last-child{
+	position: absolute;right: 0;top: 0;
+}
+.wrapSmallImg{width: 266px;height: 40px;position: relative;left: 18px;top: 0;overflow: hidden;}
+.wrapSmallImg ul{position: absolute;left: 0;top: 0;}
+.wrapSmallImg ul li{width: 36px;height: 36px;float: left;margin: 0 2px 0;border: 2px solid #ccc;}
+.wrapSmallImg ul li img{width: 100%;height: 100%;}
+
+/*选中样式*/
+.wrapSmallImg ul  .current{border: 2px solid #F8A300;}
+
+/*遮罩层*/
+.mask{display: none;width: 100px;height: 100px;background: #003399;opacity: 0.4;position: absolute;left: 0;top: 0;cursor: pointer;}
+
+/*放大镜div注意宽度比里面图片小,还需要益出隐藏*/
+.zoomLarge {
+	right: 600px;
+	top: 30px;
+	position: absolute;
+	width: 350px;
+	height: 350px;
+	overflow: hidden;
+	
+}
+/*放大镜里面的图片*/
+.zoomLarge img{	
+	position: absolute;
+	left: 0;
+	top: 0;
+	width: 600px;
+	height: 600px;
+}
+

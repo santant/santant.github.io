@@ -1,0 +1,32 @@
+body,html{background: #dbcfbb;width: 100%;height: 100%;}
+.margin-h4{margin-top: 5.125rem;}
+.title-h4 {font-size: 1.5rem;color: #65625e;line-height: 2rem;height: 2rem;font-family: arial;text-align: center;animation: 1s right1;}
+.title-h5 {color:#65625e;line-height: 1.4375rem;font-size: 0.9375rem;font-family: arial;text-align: center;animation: 1s left1;}
+.title-line{width: 6.25rem;height: 1px;display: block;background: #65625e;margin: 0 auto;text-align: center;}
+
+
+
+
+.list-box{padding-bottom: 2rem;}
+.my-list{margin-top: 1.40625rem;}
+.my-list >dt{padding: 0 0.6875rem;height: 2.09375rem;}
+.my-list >dt>b{line-height: 2.09375rem;display: block;width: 2.09375rem;height: 2.09375rem;border-radius: 50%;background: #ffffff;color: #a99269;text-align: center;font-family: arial;font-size: 0.9375rem;float: left;font-style: italic}
+.my-list >dt>span{text-indent: 0.5625rem;color: #fff;font-size: 1.09375rem;height: 2.09375rem;line-height: 2.09375rem;}
+.my-list >dd{min-height: 2.53125rem;padding-left: 3.34375rem;font-size: 0.75rem;color: #a39275;line-height: 1.65625rem;padding-right: 0.6875rem;}
+.a_next{display: block;background: url(../img/icon07.png) no-repeat;width: 1.1875rem;height: 1.0625rem;margin: 0 auto;background-size: 100% 100%;}
+.title{width: 18.75rem;margin: 0 auto;border-bottom: 1px solid #8b7856;text-align: right;height: 1.34375rem;line-height: 1.34375rem;font-size: 0.75rem;font-family: arial;margin-top: 1rem;color: #8b7856;}
+
+/*.my-list :last-of-type(1){margin-bottom: 3rem !important;}*/
+
+@-webkit-keyframes right1{
+	0%{transform:translateX(10rem) ;}
+	100%{transform:translateX(0rem) ;}
+}
+@-webkit-keyframes left1{
+	0%{transform:translateX(-10rem) ;}
+	100%{transform:translateX(0rem) ;}
+}
+@-webkit-keyframes top2{
+	0%{transform:translateY(10rem) ;}
+	100%{transform:translateX(0rem) ;}
+}

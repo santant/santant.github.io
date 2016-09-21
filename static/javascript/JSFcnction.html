@@ -1,0 +1,258 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta name="viewport" content="width=device-width,initial-scale=1,minimum-scale=1,maximum-scale=1,user-scalable=no" />
+		<link rel="stylesheet" type="text/css" href="../../css/public.css"/>
+		<link rel="stylesheet" type="text/css" href="../../css/index.css"/>
+		<link rel="shortcut icon" href="../../imges/ico.ico" type="images/x-icon" />
+		<script src="../../js/jquery-1.8.2.min.js" type="text/javascript" charset="utf-8"></script>
+		<script src="../../js/index.js" type="text/javascript" charset="utf-8"></script>
+		<meta charset="UTF-8">	
+		<script type="text/javascript" src="../../js/pre/scripts/shCore.js"></script>
+		<script type="text/javascript" src="../../js/pre/scripts/shBrushBash.js"></script>
+		<script type="text/javascript" src="../../js/pre/scripts/shBrushCss.js"></script>
+		<script type="text/javascript" src="../../js/pre/scripts/shBrushCSharp.js"></script>
+		<script type="text/javascript" src="../../js/pre/scripts/shBrushJScript.js"></script>
+		<script type="text/javascript" src="../../js/pre/scripts/shBrushPhp.js"></script>
+		<script type="text/javascript" src="../../js/pre/scripts/shBrushPlain.js"></script>
+		<script type="text/javascript" src="../../js/pre/scripts/shBrushPython.js"></script>
+		<script type="text/javascript" src="../../js/pre/scripts/shBrushJava.js"></script>
+		<script type="text/javascript" src="../../js/pre/scripts/shBrushScala.js"></script>
+		<script type="text/javascript" src="../../js/pre/scripts/shBrushSql.js"></script>
+		<script type="text/javascript" src="../../js/pre/scripts/shBrushXml.js"></script>
+		<script type="text/javascript" src="../../js/pre/scripts/shBrushPerl.js"></script>
+		<link type="text/css" rel="stylesheet" href="../../js/pre/styles/shCore.css" />
+		<link type="text/css" rel="stylesheet" href="../../js/pre/styles/shThemeDefault.css" />
+		<script type="text/javascript">
+			SyntaxHighlighter.defaults['toolbar'] = false;  //去掉右上角问号图标
+			SyntaxHighlighter.config.tagName = 'pre';       //可以更改解析的默认Tag。
+			SyntaxHighlighter.config.bloggerMode = true; 
+			SyntaxHighlighter.config.stripBrs = true;  
+			SyntaxHighlighter.all();
+	   </script>
+		<title>javascript</title>
+	</head>
+	<body>
+	  <div class="hander"> 
+	  	<ul>
+	  		<li class="" nav-title="all"><a href="../../index.html">首页</a></li>
+			<li nav-title="css" class=""> <a href="../canvas/demo1.html">Html5画布入门篇</a></li>
+			<li nav-title="css" ><a href="../canvas/demo3.html">Html5画布提升篇</a></li>
+			<li><a href="../CSS/css3.html">CSS3</a></li>			
+			<li><a href="../../static/control/control.html">自己写的demo</a></li>			
+			<li nav-title="rem工具换算"><a href="../../static/rem1/rem.html">rem</a></li>			
+	  		<li><a href="../title/demo2.html">收藏的网站</a></li>
+	  		<li ><a href="../tool/tool.html">工具箱</a></li>
+	  		<li class=""><a href="../javascript/Event.html">javascriptEvent</a></li>
+	  		<li class=""><a href="../javascript/jsDom.html">javascriptDOM</a></li>
+	  		<li class=""><a href="../javascript/object.html">javascriptObj</a></li>	  		
+	  		<li  ><a href="../zhengze/zhengze.html">js正则表达式</a></li>
+	  		<li class="active"><a href="../javascript/JSFcnction.html">javascript函数</a></li>
+	  		<li><a href="../HTML5/H5_1.html">HTML5</a></li>
+	  		<li><a href="../angualar/angualar.html">angualarJS</a></li>
+	  		<li class=""><a href="../jquery-css3/jq-css3.html">Jquery操作css3的拼接方式</a></li>	  	
+	  	</ul>
+	  </div>	  
+	  <!--画布笔记主体-->
+	  <div class="main">
+	  	 <h3>原生Javascript有用的函数封装</h3>	  	 
+	  	 <div class="div_daima">
+			<h4>getPosition <code>获取元素到页面的绝对距离</code> </h4>
+	  	 	<pre class="brush: js;">
+			window.onload = function(){
+				var oDiv3 = document.getElementById("div3");
+				var p = getPosition(oDiv3);
+				alert(p.left);
+			}
+			//获取元素到页面的绝对距离
+			function getPosition(obj){
+				var pos = {left:0,top:0};				
+				while (obj){
+				   pos.left +=obj.offsetLeft;
+				   pos.top +=obj.offsetTop;
+				   obj =obj.offsetParent;
+				}
+				return pos;
+			}
+			<!--<img  src="../../img/1.png"/>-->
+	  	 	</pre>
+	  	 	<h4>选着页面上class的函数 <code>getElementsByClassName ie9+ 可以有个兼容的函数</code></h4>
+	  	 	<pre class="brush: js;">
+	  	 	window.onload = function(){
+			  var oLi =  getElementsByClassName('box1'); 
+			  alert(oLi.length)
+			  for (var i = 0; i < oLi.length; i++) {
+			  	oLi[i].style.background = 'red';
+			  }
+			}
+			<p>
+			function getElementsByClassName(className){  
+			    var elems = [];  
+			    if(!document.getElementsByClassName){  
+			        var dom = document.getElementsByTagName("*");  
+			        for(var i =0 ;i < dom.length;i++){  
+			            if(dom[i].className){  
+			                var classs = dom[i].className.split(" ");  
+			                for(var c = 0;c < classs.length;c++){  
+			                    if(classs[c]==className){  
+			                        elems.push(dom[i]);              
+			                    }  
+			                }  
+			            }  
+			        }  
+			    }else{  
+			        var dom = document.getElementsByClassName(className);  
+			        for(var i =0 ;i < dom.length;i++){  
+			            elems.push(dom[i]);      
+			        }  
+			    }  
+			    return elems;  
+			}
+			</p>	
+	  	 	</pre>
+	  	 	<h4>操作Class <code>addCalss</code> <code>removeClass</code> <code>hasClass</code> </h4>
+	  	 	<pre class="brush: js;">
+	  	 		window.onload = function(){
+				var oDiv = document.getElementById("div1");
+//				addClass(oDiv,'box1');
+//				removeClass(oDiv,'box');
+				var  br = hasClass(oDiv,'box1');
+				if (br =='box1,,'){//必须要判断返回值是不是你要找你那个class记得多2个,,
+					alert("有这个calss")
+				}else
+				{
+					alert("没有");
+				}
+
+				}
+				function hasClass(obj, cls) {
+	            return obj.className.match(new RegExp('(\\s|^)' + cls + '(\\s|$)'));
+		        }	
+		        function addClass(obj, cls) {
+		            if (!this.hasClass(obj, cls)) obj.className += " " + cls;
+		        }	
+		        function removeClass(obj, cls) {
+		            if (hasClass(obj, cls)) {
+		                var reg = new RegExp('(\\s|^)' + cls + '(\\s|$)');
+		                obj.className = obj.className.replace(reg, ' ');
+		            }
+		        }
+	  	 	</pre>
+	  	 	<h4>利用call方法,封装bind方法,让事件绑定得到兼容  <code>bind函数</code> </h4>
+	  		<pre class="brush: js;">
+	  			function bind(obj, evname, fn) {//绑定事件的对象,绑定事件的名称,绑定的函数
+					if (obj.addEventListener) {
+						obj.addEventListener(evname, fn, false);
+					} else {
+						obj.attachEvent('on' + evname, function() {
+							fn.call(obj);//这里改变了函数的对象为obj,变为一致的this
+						});
+					}
+				}				
+				bind(document, 'click', fn1);//绑定事件的对象,绑定事件的名称,绑定的函数
+				bind(document, 'click', fn2);	
+	  		</pre>
+	  		<h4>cookie <code>getCookie：获得cookie</code> <code>setCookie：设置cookie</code> <code>removeCookie：删除Cookie</code></h4>
+	  		<pre class="brush: js;">
+	  		    //得到cookie的key
+				function getCookie(key) {
+					var arr1 = document.cookie.split('; ');
+					for (var i=0; i< arr1.length; i++) {
+						var arr2 = arr1[i].split('=');
+						if ( arr2[0] == key ) {
+							return decodeURI(arr2[1]);
+						}
+					}
+				}
+				//设置cookie key值  val 存在的时间，默认为天
+				function setCookie(key, value, t) {
+					var oDate = new Date();
+					oDate.setDate( oDate.getDate() + t );
+					document.cookie = key + '=' + value + ';expires=' + oDate.toGMTString();
+				}
+				//删除cookie
+				function removeCookie(key) {
+					setCookie(key, '', -1);
+				}			
+	  		</pre>
+	  		<h4>拷贝继承的函数 <code>for in</code> <code>extend</code> </h4>
+	  		<pre class="brush: js;">
+	  		function extend(obj1,obj2){
+					for(var attr in obj2){
+						obj1[attr] = obj2[attr];
+					}
+				}
+	  		</pre>
+	  		<h4>监听css动画结束的函数,第一个参数是节点对象,第二个是触发的函数</h4>
+	  		<pre class="brush: js;">
+	  			function addEnd(obj,fn){
+					obj.addEventListener('webkitTransitionEnd',fn,false);
+					obj.addEventListener('transitionend',fn,false);
+				}
+				function removeEnd(obj,fn){
+					obj.removeEventListener('webkitTransitionEnd',fn,false);
+					obj.removeEventListener('transitionend',fn,false);
+				}
+	  		</pre>
+	  		<h4>矩阵兼容函数   <code>toMatrix(DOM,abcdef)6个值</code> <code>修改ie基点的旋转 toRotate(Dom,旋转的角度)</code> </h4>
+	  		<pre class="brush: js;">
+	  			//旋转角度的兼容函数(改变ie基点为中心点)
+				function toRotate(obj,iDeg)
+				{
+					var a=Math.round(Math.cos(iDeg/180*Math.PI)*100)/100;
+					var b=Math.round(Math.sin(iDeg/180*Math.PI)*100)/100;
+					var c=-b;
+					var d=a;
+					obj.style.WebkitTransform="matrix("+a+","+b+","+c+","+d+",0,0)";
+					obj.style.MozTransform="matrix("+a+","+b+","+c+","+d+",0,0)";
+					obj.style.transform="matrix("+a+","+b+","+c+","+d+",0,0)";
+					obj.style.filter="progid:DXImageTransform.Microsoft.Matrix( M11="+a+", M12= "+c+", M21= "+b+" , M22="+d+",SizingMethod='auto expand')";
+					//修正ie下基点的left和top(中心点)
+					obj.style.left=(obj.parentNode.offsetWidth-obj.offsetWidth)/2+"px";
+					obj.style.top=(obj.parentNode.offsetHeight-obj.offsetHeight)/2+"px";
+				}	
+
+				//修改矩阵下所以的abcdef的函数
+				function toMatrix(obj,a,b,c,d,e,f)
+				{
+					obj.style.WebkitTransform="matrix("+a+","+b+","+c+","+d+","+e+","+f+")";
+					obj.style.MozTransform="matrix("+a+","+b+","+c+","+d+","+e+","+f+")";
+					obj.style.transform="matrix("+a+","+b+","+c+","+d+",0,0)";
+					obj.style.filter="progid:DXImageTransform.Microsoft.Matrix( M11="+a+", M12= "+c+", M21= "+b+" , M22="+d+",SizingMethod='auto expand')";
+			 	}
+	  		</pre>
+	  		<h4>三角函数  <code>半径和角度，求sin和cos</code> </h4>
+	  		<pre class="brush: js;">
+	  		//已知半径和角度，求sin和cos
+				function toLT(iR,iDeg)
+				{
+					return {l:Math.round(Math.sin(iDeg/180*Math.PI)*iR),t:Math.round(Math.cos(iDeg/180*Math.PI)*iR)}
+				}
+	  		</pre>
+	  		<h4>监听css3关键帧的函数 <code>endCss</code><code>事件:webkitAnimationEnd-->animationEnd</code> </h4>
+	  		<pre class="brush: js;">
+	  		//监听css3关键帧的函数
+			function endCss (obj,fn){
+				obj.addEventListener("webkitAnimationEnd",fn,false);
+				obj.addEventListener("animationEnd",fn,false);
+			}
+	  		</pre>
+	  	 </div>		
+	  </div>	
+	      <!--返回顶部-->
+		  <div id="div-Top">
+			  	<dl>
+			  		<dd>
+			  			<img src="../../img/weixin-icon02.png"/></li>
+			  		</dd>
+			  		<dt class="weixin">
+			  			<div></div>
+			  		</dt>
+			  		<dt class="to_top">
+			  			<div></div>
+			  		</dt>
+			  		
+			  	</dl>
+		  </div>
+	</body>
+</html>

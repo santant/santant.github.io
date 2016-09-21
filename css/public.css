@@ -1,0 +1,210 @@
+﻿/*html5*/
+abbr, article, aside, audio, canvas, datalist, details, dialog, eventsource, figure, footer, header, hgroup, mark, menu, meter, nav, output, progress, section, time, video{display: block;margin: 0;padding: 0;}
+/*public begin*/
+
+body,
+div,
+dl,
+dt,
+dd,
+ul,
+ol,
+li,
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+pre,
+code,
+form,
+fieldset,
+legend,
+input,
+button,
+textarea,
+p,
+blockquote,
+th,
+td {
+	margin: 0;
+	padding: 0;
+}
+body {
+	font-size: 12px;
+	line-height: 20px;
+	color: #333333;
+	/*background: #fff;*/
+}
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+	font-size: 100%;
+	font-weight: normal;
+
+}
+table {
+	border-collapse: collapse;
+	border-spacing: 0;
+}
+li {
+	list-style: none;
+}
+img,
+fieldset,
+iframe,
+/*input {
+	border: 0;
+}*/
+button,
+textarea,
+select {
+	font-family: inherit;
+	font-size: inherit;
+	font-weight: inherit;
+	*font-size: 100%;
+}
+select,
+img {
+	vertical-align: middle;
+	border: none;
+	outline: none;
+}
+em,
+i {
+	font-style: normal;
+}
+span,
+i,
+em {
+	display: inline-block;
+	/*display:-moz-inline-stack;*/
+	
+	zoom: 1;
+	*display: inline;
+}
+a {
+	text-decoration: none
+}
+.clear {
+	-zoom: 1;
+	*zoom: 1;
+	clear: both;
+	overflow: hidden
+}
+.clear:after {
+	content: ".";
+	display: block;
+	height: 0;
+	visibility: hidden;
+	clear: both;
+}
+.clear_ {
+	clear: both;
+	height: 0;
+	overflow: hidden
+}
+.left {
+	float: left;
+}
+.right {
+	float: right
+}
+.pos_rel {
+	position: relative
+}
+.ov_h {
+	overflow: hidden;
+}
+/*public end*/
+
+/*------------------------------------------------------------------------------*/
+/*最外层*/
+
+#main {
+	width: 100%;
+	height: auto;
+	margin: 0 auto;
+	/*background: #efeff4;*/
+	position: relative;
+}
+.dis_b{display: inline-block;vertical-align: top;}
+/*头部*/
+
+#hander {
+	width: 100%;
+	height: 2.48rem;
+	background: #383838;
+	position: relative;
+}
+
+#hander h4 {
+	color: #fff;
+	font-size: 1.06rem;
+	height: 2.48rem;
+	line-height: 2.48rem;
+	text-align: center;	
+	
+}
+#hander .a_left {
+	display: inline-block;
+	position: absolute;
+	top: 0.1rem;
+	left: 0;
+	width: 1.52rem;
+	height: 2.106rem;
+	background: url(../img/icon_left.png) no-repeat;
+	background-size: 100% 100%;
+}
+
+
+/*内容*/
+
+#container {
+	width: 100%;
+	height: auto;
+	margin: 0 auto;
+	/*background: #fff;*/
+}
+.container {
+	width: 100%;
+	margin: 0 auto;
+	
+}
+
+/*页脚*/
+#footer {
+	width: 100%;
+	height: 2.96875rem;
+	background: #fdfdfe;
+	margin: 0 auto;
+	position: fixed;
+	z-index: 999;
+	bottom: 0;
+	border-top: 1px solid #dadbe1;
+	/*padding: 0 0.75rem;*/
+}
+
+/*...*/
+.span_cut {
+	overflow: hidden;
+	width: 98%;
+	white-space: nowrap;
+	text-overflow: ellipsis;
+}
+/*谷歌专用切发*/
+.span_cuts{
+	 overflow : hidden;
+  text-overflow: ellipsis;
+  display: -webkit-box;
+  -webkit-line-clamp: 2;
+  -webkit-box-orient: vertical;
+}
+/*搜索框兼容*/
+
+/*解决点击页面出现黑块儿的问题*/
+.highlight-color{-webkit-tap-highlight-color:rgba(0,0,0,0); }

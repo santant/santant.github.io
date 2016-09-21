@@ -1,0 +1,178 @@
+<!DOCTYPE html>
+<html lang="zh">
+
+<head>
+  <meta charset="UTF-8">
+  <title>Document</title>
+  <style type="text/css">
+  body {
+    font: 14px/1.2 "微软雅黑";
+  }
+
+  div {
+    width: 300px;
+    position: relative;
+    margin: 20px 0;
+    padding: 5px 10px;
+  }
+
+  .form_control {
+    border: 1px #ccc solid;
+  }
+
+  input[type="text"],
+  input[type="password"] {
+    border: none;
+    width: 100%;
+  }
+
+  .form_control.active {
+    border: 1px #32BC61 solid;
+    background-color: #fff;
+  }
+
+  .form_control.error {
+    border: 1px #f00 solid;
+    background-color: #FBF9BB;
+  }
+
+  .form_control.error input[type="text"],
+  .form_control.error input[type="password"] {
+    background-color: #FBF9BB;
+    color: #f00;
+  }
+
+  input[type="text"]:focus,
+  input[type="password"]:focus {
+    border: none;
+    outline: none;
+  }
+
+  .form_control .valid_message {
+    color: #32BC61;
+    position: absolute;
+    left: 325px;
+    top: 5px;
+    width: 200px;
+  }
+
+  .form_control.error .valid_message {
+    color: #f00;
+  }
+
+  .form_control.success .valid_message {
+    background: url(sucess.png) no-repeat;
+    left: auto;
+    right: 5px;
+    top: 4px;
+    width: 16px;
+    height: 16px;
+  }
+
+  .none {
+    display: none;
+  }
+  </style>
+</head>
+
+<body>
+	<!--
+	1. 用data-tip：""设置第一次人家出发焦点时候的提示
+	2：data-valid：验证规则，若有组合验证，以||符号分割。
+	3：data-error：验证错误提示，对应data-valid，以||符号分割。
+	
+	4.下面的 
+	data-valid="isNonEmpty||between:6-16" data-error="密码不能为空||密码长度6-16位"
+	要对应，比如前面data-valid 跟着2个校验的语句启用用||间隔开， 后面data-error的提示语句也需要提示2句用||间隔开
+	
+	5.这个data-valid里面的验证语句可以自由组合，具体看代码
+	如果还不够 请扩展jquery 插件源码 具体在jquery-validate.js的
+	   代码15行的
+	   /*************************策略对象*****************************/
+	RULES中，
+	6.测试兼容ie7,ie6不支持
+	7.如果想改变提示语句的样式，请修改css，审查元素即可
+	作者：827879040@qq.com
+	time：2016年09月19日22:25:41
+-->
+  <form>
+    <div class="form_control">
+      <input class="required" value="315359131@qq.com" type="text" name="email" data-tip="请输入您的邮箱" data-valid="isNonEmpty||isEmail" data-error="email不能为空||邮箱格式不正确">
+    </div>
+    <div class="form_control">
+      <input class="required" value="123456789" type="password" data-tip="请输入您的密码" data-valid="isNonEmpty||between:6-16" data-error="密码不能为空||密码长度6-16位" name="nickname">
+    </div>
+    <div class="form_control">
+      <input class="required" value="王大锤" type="text" name="email" data-tip="请输入您的姓名" data-valid="isNonEmpty||onlyZh||between:2-5" data-error="姓名不能为空||姓名只能为中文||姓名长度为2-5位">
+    </div>
+    <div class="form_control">
+      <span class="required" data-valid="isChecked" data-error="性别必选" data-type="radio">
+          <label><input type="radio" name="sex">男</label>
+          <label><input type="radio" name="sex">女</label>
+          <label><input type="radio" name="sex">未知</label>
+      </span>
+    </div>
+    <div class="form_control">
+      <span class="required" data-valid="isChecked" data-error="标签至少选择一项" data-type="checkbox">
+          <label><input type="checkbox" name="label">红</label>
+          <label><input type="checkbox" name="label">绿</label>
+          <label><input type="checkbox" name="label">蓝</label>
+      </span>
+    </div>
+    <div class="form_control">
+      <select class="required" data-valid="isNonEmpty" data-error="省份必填">
+        <option value="">请选择省份</option>
+        <option value="001">001</option>
+        <option value="002">002</option>
+        <option value="003">003</option>
+        <option value="004">004</option>
+        <option value="005">005</option>
+        <option value="006">006</option>
+        <option value="007">007</option>
+        <option value="008">008</option>
+        <option value="009">009</option>
+        <option value="010">010</option>
+      </select>
+    </div>
+    <div>
+      <input type="submit" value="提交">
+    </div>
+  </form>
+  <script type="text/javascript" src="jquery-1.11.1.js"></script>
+  <script type="text/javascript" src="jquery-validate.js"></script>
+  <script type="text/javascript">
+  //本插件支持1.7jquery版本以上的
+  //这里的form指的是本页面的表单，自己替换这个选择器
+	$('form').validate({ //validate是插件调用的1个方法，是以对象形式调用
+	    onFocus: function() {//当点击的对象，得到焦点的时候，给当前的对象加上atcive，对应页面上后面的提示语句
+	      this.parent().addClass('active');
+	      return false;
+	    },
+	    onBlur: function() { //失去焦点的时候
+	      var $parent = this.parent();//得到上面的div节点
+	      console.log(this.attr("data-status"));
+	      var _status = parseInt(this.attr('data-status'));//data-status是差距内部判定他是不是验证通过的标志1=成功，0=失败
+	      $parent.removeClass('active');//失去焦点的时候，删除所有的class，对应后面的提示语句
+	      if (!_status) {//如果出错了就是!=1
+	        $parent.addClass('error');//就给后面的提示语句添加上错误信息的class，让其变红
+	      }
+	      return false;
+	    }
+	});
+	
+	//这是另外一个事件
+	$('form').on('submit', function(event) {//此表单提交的时候触发，如果是ajax就是提交按钮点击事件触发的时候触发
+	    event.preventDefault();//取消默认事件
+	    $(this).validate('submitValidate'); //return boolean;
+	});
+  </script>
+</body>
+
+</html>
+<!--
+	1. 用data-tip：""设置第一次人家出发焦点时候的提示
+	2：data-valid：验证规则，若有组合验证，以||符号分割。
+	3：data-error：验证错误提示，对应data-valid，以||符号分割。
+	
+	
+-->

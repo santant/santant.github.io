@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title>第一个网站</title>
+		<script type="text/javascript">
+			window.onload = function(){
+				window.addEventListener("message",function(ev){
+					alert("接受到页面接受的内容了");
+//					message 事件的事件对象下保持了发送过来的内容
+//					ev.data:发送过来的数据
+//					ev.origin  保存消息的发送的域 ,可以用来限制发送的域名					
+					if (ev.data =='123') { //如果确认传递过来的数据是正确的
+						document.body.style.background='red';			
+					}					
+				},false)	
+				document.getElementById("btn2").onclick = function(){
+					//parent => window 如果当前页面是顶级，没有被其他页面所包含，那么parent就是当前页面的window对象，那么如果被包含了，则parent就是包含当前页面的父级页面的window对象
+					parent.document.body.style.background = 'green';
+//					window : 当前窗口 
+//					parent : 父级窗口
+//					top : 顶级窗口
+				}
+			
+			}
+			
+		</script>
+	</head>
+	<body>
+		
+		<span>加载到了的内容</span>
+		<button id="btn2">我要给你变绿色</button>
+	</body>
+</html>

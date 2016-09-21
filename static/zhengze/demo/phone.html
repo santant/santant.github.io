@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<script type="text/javascript">
+			window.onload = function(){
+				var oTEXT1 = document.getElementById("text1");
+				var btn = document.getElementById("btn");
+				
+				btn.onclick = function(){
+				   
+					
+					var re = /^[1]\d{10}$/;
+					
+					if (re.test(oTEXT1.value)){
+						alert("这是个电话")
+					}else
+					{
+						alert("你写错了")
+					}
+					
+					
+				}
+			}			
+		</script>
+	</head>
+	<body>
+		<input type="text" name="text1" id="text1" value="" />
+		<button id="btn">看是不是电话号码</button>
+	</body>
+</html>

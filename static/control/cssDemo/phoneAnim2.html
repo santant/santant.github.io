@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<style type="text/css">
+			body{text-align: center;background: #000;font: 60px/200px "微软雅黑";}
+			body h1{display: inline-block;color: rgba(255,255,255,0.5);
+			background: -webkit-linear-gradient(-30deg ,
+			rgba(255,255,255,0.3) 100px,
+			rgba(255,255,255,1) 180px,
+			rgba(255,255,255,1) 240px,
+			rgba(255,255,255,0) 300px) no-repeat -300px 0;
+			-webkit-background-clip:text;
+			/*transition: 3s;*/
+			}
+			/*body:hover h1{background-position: 1000px 0;}*/			
+		</style>
+		
+	</head>
+	<body>
+		<h1 id="h1">MiaoV文字</h1>
+		<script type="text/javascript">
+			window.onload = function(){
+				var oH1 = document.getElementById("h1");
+				var oHP = oH1.style.backgroundPosition;
+
+				var timer = null;
+				var oLeft = -300;
+				function oMove(){
+					timer = setInterval(function(){
+						oLeft += 10;
+						if (oLeft >=1000) {
+						  oLeft = -300;
+						  clearInterval(timer);
+					    }						
+						oH1.style.backgroundPosition = oLeft+'px 0'; 						
+					},20)					
+				}
+				oMove();				
+				setInterval(function(){
+					oMove();
+				},5000)
+			}
+		</script>
+	</body>
+</html>

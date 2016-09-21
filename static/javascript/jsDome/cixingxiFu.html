@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<style type="text/css">
+			#div{width: 100px;height: 100px;background: red;position: absolute;top: 10px;left: 0;}
+			
+		</style>
+		<script type="text/javascript">
+		
+			window.onload = function(){
+				var oDiv =  document.getElementById("div");
+				var oDiv2 =  document.getElementById("div2");
+				drop(oDiv);
+				drop(oDiv2);
+			}
+			function drop(obj){			   					
+				//鼠标按下的时候触发
+				obj.onmousedown = function(ev) {
+				var ev = ev || event;
+//				var oScrollTop = document.documentElement.scrollTop || document.body.scrollTop; 
+				var disX = ev.clientX - this.offsetLeft;
+				var disY = ev.clientY  - this.offsetTop;
+				//鼠标移动
+				document.onmousemove = function(ev) {
+					var ev = ev || event;	
+					var X = ev.clientX - disX;
+					var Y = ev.clientY - disY;
+					if (X<100) {
+						X=0
+					}else if(X > document.documentElement.clientWidth - obj.offsetWidth-100){
+						X = document.documentElement.clientWidth - obj.offsetWidth
+					}
+					if (Y<100) {
+						Y=0
+					}else if(Y > document.documentElement.clientHeight - obj.offsetHeight-100){
+						Y = document.documentElement.clientHeight - obj.offsetHeight
+					}					
+					obj.style.left = X + 'px';
+					obj.style.top = Y + 'px';					
+				}
+				//鼠标抬起-->注意清楚事件可以用事件.null,这里需要在document上面清除事件
+				document.onmouseup = function(){
+					document.onmousemove = document.onmouseup = null;
+				}
+				return false; //这里可以清除，拖动时候文字的bug
+			   }
+	
+			}
+		</script>
+	</head>
+	<body style="height: 2000px;">
+	aaaaaa
+	  	<div id="div">
+	  		
+	  	</div>
+	  	<div id="div2" style="width: 100px;height: 100px;position: absolute;right: 200px;top: 200px;background: #0000FF;">
+	  		
+	  	</div>
+	</body>
+</html>

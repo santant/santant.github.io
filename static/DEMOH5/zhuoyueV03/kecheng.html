@@ -1,0 +1,137 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title></title>
+		<meta name="format-detection" content="telephone=no" />
+		<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+		<meta name="viewport" content="width=device-width,initial-scale=1,minimum-scale=1,maximum-scale=1,user-scalable=no" />
+		<link rel="stylesheet" type="text/css" href="css/public.css" />
+		<link rel="stylesheet" type="text/css" href="css/curriculum.css"/>
+	
+		<script src="js/rem.js" type="text/javascript" charset="utf-8"></script>
+	
+		<script src="js/jquery-1.8.2.min.js" type="text/javascript" charset="utf-8"></script>
+		<script src="js/move.js" type="text/javascript" charset="utf-8"></script>
+		<script type="text/javascript">
+			window.onload = function(){
+				document.body.addEventListener('touchstart', function () {});						    
+			}
+			$(function(){				
+				//滑动划出动画
+				$(".list").click(function(){
+					$("#list-alert").addClass("activeTrans");
+				})
+				$(".alert-left").click(function(){
+				   $("#list-alert").removeClass("activeTrans");
+				})
+				$(".a-close").click(function(){
+					$("#list-alert").removeClass("activeTrans");
+				})
+				$('.animationSorrp').smoove({offset:'0%'});
+				$(".my-list dd").addClass("animationSorrp");
+			})
+		</script>
+	<body>	
+	<!--公共顶部--> 
+	<div class="top-logo">
+	    <a href="tel:18688888888" class="phone">免费预约</a>   	    		
+	    <a href="#"><img src="img/logo.png"/></a>
+		<a href="javascript:void(0);" class="list" id="list"></a>
+	</div>
+	<!--课程标题-->
+	<i style="height: 5rem;width: 100%;"></i>
+	<h4 class="title-h4">COURSE ARRANGEMENT</h4>
+	<b class="title-line"></b>
+	<h5 class="title-h5">课程安排</h5>
+	<!--课程列表-->
+	
+	<div class="list-box">
+		<h6 class="title">串讲阶段</h6>
+	<dl class="my-list animationSorrp">
+		    	<dt>
+		    		<b>01</b><span>老牌新锐</span>
+		    	</dt>
+		    	<dd>
+		    	    <p>专注PMP培训17年，活跃项目管理业内专注PMP培训17年，活跃项目管理业内专注PMP培训17年，活跃项目管理业内</p>
+		    	</dd>
+		    	<dt>
+		    		<b>02</b><span>老牌新锐</span>
+		    	</dt>
+		    	<dd>
+		    	    <p>专注PMP培训17年，活跃项目管理业内</p>
+		    	</dd>
+		    	<dt>
+		    		<b>03</b><span>老牌新锐</span>
+		    	</dt>
+		    	<dd>
+		    	    <p>专注PMP培训17年，活跃项目管理业内专注PMP培训17年，活跃项目管理业内专注PMP培训17年，活跃项目管理业内</p>
+		    	</dd>		    	
+	</dl>
+	<h6 class="title">串讲阶段</h6>
+	<dl class="my-list animationSorrp">
+		    	<dt>
+		    		<b>01</b><span>老牌新锐</span>
+		    	</dt>
+		    	<dd>
+		    	    <p>专注PMP培训17年，活跃项目管理业内专注PMP培训17年，活跃项目管理业内专注PMP培训17年，活跃项目管理业内</p>
+		    	</dd>
+		    	<dt>
+		    		<b>02</b><span>老牌新锐</span>
+		    	</dt>
+		    	<dd>
+		    	    <p>专注PMP培训17年，活跃项目管理业内</p>
+		    	</dd>
+		    	<dt>
+		    		<b>03</b><span>老牌新锐</span>
+		    	</dt>
+		    	<dd>
+		    	    <p>专注PMP培训17年，活跃项目管理业内专注PMP培训17年，活跃项目管理业内专注PMP培训17年，活跃项目管理业内</p>
+		    	</dd>		    	
+	</dl>
+	<h6 class="title">串讲阶段</h6>
+	<dl class="my-list  animationSorrp">
+		    	<dt>
+		    		<b>01</b><span>老牌新锐</span>
+		    	</dt>
+		    	<dd>
+		    	    <p>专注PMP培训17年，活跃项目管理业内专注PMP培训17年，活跃项目管理业内专注PMP培训17年，活跃项目管理业内</p>
+		    	</dd>
+		    	<dt>
+		    		<b>02</b><span>老牌新锐</span>
+		    	</dt>
+		    	<dd>
+		    	    <p>专注PMP培训17年，活跃项目管理业内</p>
+		    	</dd>
+		    	<dt>
+		    		<b>03</b><span>老牌新锐</span>
+		    	</dt>
+		    	<dd>
+		    	    <p>专注PMP培训17年，活跃项目管理业内专注PMP培训17年，活跃项目管理业内专注PMP培训17年，活跃项目管理业内</p>
+		    	</dd>		    	
+	</dl>
+	</div>
+	   
+	   
+    <!--alert弹窗-->
+    <div id="list-alert">
+    	<div class="alert-left">
+    		
+    	</div>
+    	<div class="alert-right">
+    		<a href="javascript:void(0);" class="a-close"></a>
+    		<ul>
+    			<li><a href="javascript:void(0);">越卓于关<i>01</i></a></li>
+    			<li><a href="javascript:void(0);" class="font-color">PMP<i>02</i></a></li>
+    			<li><a href="javascript:void(0);">越卓于关<i>03</i></a></li>
+    			<li><a href="javascript:void(0);">越卓于关<i>04</i></a></li>
+    			<li><a href="javascript:void(0);">越卓于关<i>05</i></a></li>
+    			<li><a href="javascript:void(0);">越卓于关<i>06</i></a></li>
+    			<li><a href="javascript:void(0);">越卓于关<i>07</i></a></li>
+    			<li><a href="javascript:void(0);">越卓于关<i>08</i></a></li>
+    			<li><a href="javascript:void(0);">越卓于关<i>09</i></a></li>  			
+    		</ul>
+    	</div>
+   
+	</body>
+</html>

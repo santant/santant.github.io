@@ -1,0 +1,441 @@
+
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta name="viewport" content="width=device-width,initial-scale=1,minimum-scale=1,maximum-scale=1,user-scalable=no" />
+		<link rel="stylesheet" type="text/css" href="../../css/public.css"/>
+		<link rel="stylesheet" type="text/css" href="../../css/index.css"/>
+		<script src="../../js/jquery-1.8.2.min.js" type="text/javascript" charset="utf-8"></script>
+		<script src="../../js/index.js" type="text/javascript" charset="utf-8"></script>
+		<link rel="shortcut icon" href="../../imges/ico.ico" type="images/x-icon" />
+		<meta charset="UTF-8">
+		<title>画布笔记</title>		
+	</head>
+	<body>
+	  <div class="hander"> 
+	  	<ul>
+	  		<li class="" nav-title="all"><a href="../../index.html">首页</a></li>
+			<li nav-title="css" class=""> <a href="../canvas/demo1.html">Html5画布入门篇</a></li>
+			<li nav-title="css" ><a href="../canvas/demo3.html">Html5画布提升篇</a></li>
+			<li><a href="../CSS/css3.html">CSS3</a></li>			
+			<li><a href="../../static/control/control.html">自己写的demo</a></li>			
+			<li nav-title="rem工具换算"><a href="../../static/rem1/rem.html">rem</a></li>			
+	  		<li><a href="../title/demo2.html">收藏的网站</a></li>
+	  		<li ><a href="../tool/tool.html">工具箱</a></li>
+	  		<li class=""><a href="../javascript/Event.html">javascriptEvent</a></li>
+	  		<li class=""><a href="../javascript/jsDom.html">javascriptDOM</a></li>
+	  		<li class=""><a href="../javascript/object.html">javascriptObj</a></li>	  		
+	  		<li  ><a href="../zhengze/zhengze.html">js正则表达式</a></li>
+	  		<li class=""><a href="../javascript/JSFcnction.html">javascript函数</a></li>
+	  		<li class="active"><a href="../HTML5/H5_1.html">HTML5</a></li>
+	  		<li><a href="../angualar/angualar.html">angualarJS</a></li>
+	  		<li class=""><a href="../jquery-css3/jq-css3.html">Jquery操作css3的拼接方式</a></li>	 
+	  	</ul>
+	  </div>	
+	  <!--画布笔记主体-->
+	  <div class="main">
+	  	 <h3>H5入门</h3>	  	 
+	  	 <div class="div_daima">
+	  	 	<h4>新增语义话标签 <code>&lt;header&gt;头部</code> <code>&lt;footer&gt;页脚</code> <code>nav导航</code> <code> hgroup 标题组合</code> <code>section 用来划分区域</code><code>主体和对主体的描述 article aside</code> <code>figure媒体元素</code> <code>time：时间标签</code><code>mark:文字强调</code> </h4>
+	  	 	<pre>
+	  	 		
+	  	 		&lt;header&gt;用在页面的头部或者版块的头部&lt;/header&gt; <i style="color: red;">header头部</i>
+	  	 		
+				&lt;footer&gt;用在页面的头部或者版块的底部&lt;/footer&gt; <i style="color: red;">footer页脚</i>
+				
+				&lt;nav&gt;&lt;a href=&quot;#&quot;&gt;链接&lt;/a&gt;&lt;a href=&quot;#&quot;&gt;链接&lt;/a&gt;&lt;/nav&gt;<i style="color: red;">nav导航</i>
+				&lt;nav&gt;
+					&lt;p&gt;&lt;a href=&quot;#&quot;&gt;链接&lt;/a&gt;&lt;/p&gt;
+					&lt;p&gt;&lt;a href=&quot;#&quot;&gt;链接&lt;/a&gt;&lt;/p&gt;
+				&lt;/nav&gt;
+				&lt;nav&gt;
+					&lt;h2&gt;Logo&lt;/h2&gt;
+					&lt;ul&gt;
+						&lt;li&gt;&lt;a href=&quot;#&quot;&gt;javascript&lt;/a&gt;&lt;/li&gt;
+						&lt;li&gt;&lt;a href=&quot;#&quot;&gt;html+css&lt;/a&gt;&lt;/li&gt;
+				    &lt;/ul&gt;
+				&lt;/nav&gt;
+				
+				&lt;hgroup&gt; <i style="color: red;">hgroup 标题组合</i>
+					&lt;h1&gt;标题&lt;/h1&gt;
+					&lt;h2&gt;标题2&lt;/h2&gt;
+				&lt;/hgroup&gt;
+				
+				&lt;section&gt;用来划分区域&lt;/section&gt;<i style="color: red;">section 用来划分区域</i>
+				
+				&lt;article&gt;主体&lt;/article&gt; <i style="color: red;">主体和对主体的描述</i>
+				&lt;aside&gt;和主体相关的附属信息&lt;/aside&gt;
+				
+				&lt;figure&gt; <i style="color: red;">媒体元素，多用于，盒子，图片，对图片的描述</i>
+					&lt;img /&gt;
+				    &lt;figcaption&gt; photo &copy味 &lt;/figcaption&gt;
+				&lt;/figure&gt;
+				
+				&lt;p&gt; 我们在每天早上 &lt;time&gt;9:00&lt;/time&gt; 开始营业。 &lt;/p&gt; <i style="color: red;">time：时间标签</i>
+				&lt;p&gt; 我在 &lt;time datetime="2008-02-14"&gt;情人节&lt;/time&gt; 有个约会。&lt;/p&gt;
+	  	    
+	  	 		&lt;address&gt;地址信息&lt;/address&gt; <i style="color: red;">address:地址信息</i>
+	  	 		
+	  	 		&lt;mark&gt;标记&lt;/mark&gt;  <i style="color: red;">mark:提示（加重）文字标记</i>
+	  	 	</pre>
+	  	 	<h4>功能性标签 <code>datalist消息过滤,收索过滤datalist下面 option里面的value值</code> <code>注意:input里面的list对应的value一定要和dateList里面的Id关联</code> </h4>
+	  	 	<pre>
+	  	 		&lt;input type="text" list="valList" /&gt; <i style="color: red;">input里面的list对应的value一定要和dateList里面的Id关联</i>
+				&lt;datalist id="valList"&gt; <i style="color: red;">datalist:消息过滤,收索过滤 option里面的value值</i>
+					&lt;option value="javascript"&gt;javascript&lt;/option &gt;
+					&lt;option value="html">html&lt;/option&gt;
+					&lt;option value="css">css&lt;/option&gt;
+				&lt;/datalist>
+				<img src="../../img/icon-home-h5-01.png"/>
+	  	 	</pre>
+	  	 	<h4>details <code>点击小三角的下拉列表 details里面有个open默认值，给了就会自己默认展开</code> </h4>
+	  	 	<pre >
+	  	 		&lt;details&gt;
+				    &lt;summary&gt;前端&lt;/summary&gt;
+				    &lt;p&gt;js,div+css&lt;/p&gt;
+				&lt;/details&gt;
+	  	 		<img src="../../img/icon-home-h5-02.png"/>
+	  	 	</pre>
+	  	 	<h4>progress 进度条  <code>max:最大(总份数) value(当前占总的多少份儿) </code> </h4>
+	  	 	<pre>
+	  	 		&lt;progress max="200" value="100"&gt;&lt;/progress&gt;
+	  	 	</pre>
+	  	 	<h4>dialog 对话</h4>
+	  	 	<pre>
+	  	 		&lt;dialog open&gt;
+				  &lt;dt&gt;&#x8001;&#x5E08;&lt;/dt&gt;
+				  &lt;dd&gt;2+2 &#x7B49;&#x4E8E;&#xFF1F;&lt;/dd&gt;
+				  &lt;dt&gt;&#x5B66;&#x751F;&lt;/dt&gt;
+				  &lt;dd&gt;4&lt;/dd&gt;
+				  &lt;dt&gt;&#x8001;&#x5E08;&lt;/dt&gt;
+				  &lt;dd&gt;&#x7B54;&#x5BF9;&#x4E86;&#xFF01;&lt;/dd&gt;
+				&lt;/dialog&gt;
+	  	 	</pre>
+	  	 	<h4>表单控件 <code>input里面新增的type值</code> </h4>
+	  	 	<pre>
+	  	 		
+	  	 		&lt;input type="range" step="2" min="0" max="10" value="2" /&gt; <i style="color: red;">step:拖动的频率(1次拖动多少),min:最小值,max:最大值,value:默认拖拉杆在的位置</i>
+	  	 		
+	  	 		
+	  	 		&lt;input type="color"  /&gt; <i style="color: red;">选色板控件</i>
+	  	 		
+	  	 		type ="email" <i style="color: red;">电子邮箱文本框，跟普通的没什么区别当输入不是邮箱的时候，验证通不过移动端的键盘会有变化</i>
+	  	 		
+	  	 		type ="tel"<i style="color: red;">电话号码</i>
+	  	 		
+	  	 		type ="url"<i style="color: red;">网页的URL</i>
+	  	 		
+	  	 		type ="search"<i style="color: red;">搜索引擎  chrome下输入文字后，会多出一个关闭的X 移动端键盘上会有收索按钮</i>
+	  	 		
+	  	 		type ="number"<i style="color: red;">只能包含数字的输入框</i>
+	  	 		
+	  	 		type ="datetime"<i style="color: red;">显示完整日期，不含时区</i>
+	  	 		
+	  	 		type ="time"<i style="color: red;">显示时间，不含时区</i>
+	  	 		
+	  	 		type ="date"<i style="color: red;">显示日期</i>
+	  	 		
+	  	 		type ="week"<i style="color: red;">显示周</i>
+	  	 		
+	  	 		type ="month"<i style="color: red;">显示月</i>
+
+	  	 	<img src="../../img/icon-home-h5-03.png"/>
+	  	 	</pre>
+	  	 	<h4>input新增的属性 <code>placeholder：提示</code> <code>required:非空</code> <code>autofocus：获得焦点</code><code>pattern:行间正则验证</code> <code>autocomplete:是否保持用户输入的信息</code> <code>formaction：可以单独指定一个链接提交跳转</code> </h4>
+	  	 	<pre>
+	  	 		&lt;form action=&quot;http://www.baidu.com&quot;&gt;
+					&lt;input type="text" placeholder="请输入4-16个字符" name="user" required="required" autofocus="autofocus" autocomplete="off" pattern="\d{1,5}" /&gt;
+					&lt;input type="submit" value="提交" /&gt;
+				    &lt;input type="submit" value="保存至草稿箱" formaction="http://www.qq.com" /&gt;
+				&lt;/form&gt;
+	  	 	</pre>
+	  	 	<h4>H5新增选择API <code>querySelector：选择单个节点(单个id或者class)</code> <code>querySelectorAll：支持css3选择器,选择一组节点(获取多个class需要for循环便利)</code> <code>getElementsByClassName：单纯选择class</code></h4>
+	  	 	<pre>
+		  	 	window.onload = function(){
+					//获得id的新方式(只能获得1个标签节点 ID和单个class)
+					var aDiv = document.querySelector('#ul');
+					
+					//可以根据这个获得多个class以及其他节点支持css3选择器（需要便利）
+					var aDiv = document.querySelectorAll('#ul li[att=sss]');
+					for (var i = 0; i < aDiv.length; i++) {
+						aDiv[i].style.background = 'red';
+					}
+						
+					//只能获取class
+					var oBox = document.getElementsByClassName("box");
+					alert(oBox.length);
+				}
+	  	 	</pre>
+	  	 	<h4>获取class列表。add,remove,toggle<code>对象.classList:获取class列表。</code> <code>add:添加calss</code> <code>remove：删除class</code> <code>toggle：切换Class的方法</code> </h4>
+	  	 	<pre>
+	  	 		window.onload = function(){
+			   		 var oBox = document.querySelector("#box1");
+			  		 console.log(oBox.classList);//返回的是1个类似于数组的对象 //box1 box2 box3
+		//			  alert(oBox.classList.length) //length属性
+					  //添加Class的方法
+		//			  oBox.classList.add("box4");
+					  //删除Class的方法
+		//			   oBox.classList.remove("box1");
+					  //切换class方法
+					  oBox.classList.toggle("box5");
+					}
+	  	 	</pre>
+	  	 	<h4>Json的新方法 <code>eval和parse(必须是严格模式json)的对比:作用都是字符串变json</code> <code>JSON.stringify(value):json变字符串</code> <code>利用stringify和parse深层次的复制对象引用</code> </h4>
+	  	 	<pre>
+	  	 		//eval : 可以解析任何字符串变成JS
+
+				//parse : 只能解析JSON形式的字符串变成JS  (安全性要高一些)
+				
+	  	 		window.onload = function(){
+//				var str = 'function aa(){alert("123")}';
+//				eval(str);
+//				//eval--->吧字符串变成js执行
+//				aa();//123
+				
+				//字符串变json，必须是严格模式json
+//				var Json ='{"name":"彭进"}';
+//				var str = JSON.parse(Json);
+//				alert(str.name);
+
+				//json变字符串
+				var Json ={"name":"彭进"};
+				var str = JSON.stringify(Json);
+				
+				//处理 stringify parse的低版本兼容 //下载json2.js实现兼容
+				
+			}
+	  	 	</pre>
+	  	 	<h4>对象引用<code>js和利用stringify和parse深层次的复制对象引用对比</code> </h4>
+	  	 	<pre>
+	  	 		/*var a = {
+					name : 'hello'
+				};				
+				var b = {};			
+				for(var attr in a){
+					b[attr] = a[attr];
+				}				
+				b.name = 'hi';			
+				alert( a.name );*/   //视频 : 对象的引用	
+				//利用stringify和parse
+				var a = {
+					name : { age : 100 }
+				};
+				var str = JSON.stringify(a);				
+				var b = JSON.parse(str);				
+				b.name.age = 200;				
+				alert( a.name.age );
+	  	 	</pre>
+	  	 	<h4>data-xx 自定义属性 jquerymobile里面的data-xx就是采用这种形式 <code>dataset获取自定义属性的方法</code></h4>
+	  	 	<pre>
+	  	 		window.onload = function(){
+				//数据分离的配置
+				var oDiv = document.getElementById("div");
+				//只有一截的情况 data-msg = "2"
+				alert(oDiv.dataset.msg);//2
+				//两截和多截的情况，请利用驼峰写
+				alert(oDiv.dataset.msgAll);//全部
+				<img src="../../img/icon-home-h5-04.png"/>
+			}
+	  	 	</pre>
+	  	 	<h4>JS延迟加载 <code>defer:延迟到onload之前加载</code> <code>async：异步加载，加载完就触发，有顺序问题</code> </h4>
+	  	 	<pre>
+	  	 		延迟加载JS
+				JS的加载会影响后面的内容加载
+				很多浏览器都采用了并行加载JS，但还是会影响其他内容
+				Html5的defer和async
+				defer : 延迟加载，会按顺序执行，在onload执行前被触发
+				async : 异步加载，加载完就触发，有顺序问题
+				Labjs库
+				<img src="../../img/icon-home-h5-05.png"/>
+	  	 	</pre>
+	  	 	<h4>历史管理 <code>onhashchange:改变哈希值的时候触发的事件</code> <code>history:必须在服务器下 history.pushState :  三个参数 ：数据  标题(都没实现)  地址(可选)
+</code> <code>wimdow.popstate事件 :  读取数据   event.state</code> </h4>
+	  	 	<pre>
+	  	 	//触发历史管理:1.通过跳转页面 2.修改哈希值,3.history.pushState
+			window.onload = function(){				
+				//定义1个json -》哈希json
+				var jsono = {};
+				$("btn").onclick = function(){					
+					var mun = Math.random();
+					var arr = RumDom(35,7);
+					jsono[mun] = arr;
+					$("div").innerHTML = arr;					
+					//修改浏览器上面的哈希
+					window.location.hash = mun; 
+					console.log(jsono);
+				}
+				//改变哈希值的时候触发的事件
+				window.onhashchange = function(){
+//					window.location.hash.substring(1)得到哈希值,切掉首字符#
+					$("div").innerHTML = jsono[window.location.hash.substring(1)];
+				}
+				//a:1-a这么多数字,b多少位随机数
+				function RumDom(a,b){
+				  var arra = [];
+				  var arrb = [];
+				  for (var i = 1; i < a; i++) {
+				  	 arra.push(i);
+				  }
+				  for (var i = 0; i < b; i++) {
+				  	
+				  	 arrb.push(arra.splice(Math.floor(Math.random()*arra.length) ,1));
+				  }
+				  return arrb;				 
+				}
+				function $(id){
+					return document.getElementById(id);
+				}
+			 }
+			 
+			 <i style="color: red;">//服务器下的demo</i>
+			 window.onload = function(){
+				$("btn").onclick = function(){
+					var arr = RumDom(35,7);
+					//history.pushState 第一个参数是存取的数组,第二个可为空,第三个默认为空就是地址栏不发生改变 ,如果改变可以传第三个参数
+					history.pushState(arr,'');
+					$("div").innerHTML = arr;
+				}
+				
+				window.onpopstate = function(ev){
+					$("div").innerHTML = ev.state;
+				}
+				
+				function RumDom(a,b){
+				  var arra = [];
+				  var arrb = [];
+				  for (var i = 1; i < a; i++) {
+				  	 arra.push(i);
+				  }
+				  for (var i = 0; i < b; i++) {
+				  	
+				  	 arrb.push(arra.splice(Math.floor(Math.random()*arra.length) ,1));
+				  }
+				  return arrb;
+				 
+				}
+				function $(id){
+					return document.getElementById(id);
+				}
+			}
+	  	 	</pre>
+	  	 	<h4>H5拖放事件<code>对象拖拽之前触发ondragstart</code> <code>ondragover:拖动之前和之后之间触发</code> <code>ondragend：对象结束之后触发</code> <code>目标元素：dragenter有目标进入时触发</code> <code>目标出去触发:dragleave</code> <code>drop释放鼠标</code> </h4>
+	  	 	<pre>
+	  	 		window.onload = function(){
+				var oLi = document.querySelectorAll("ul li");
+				for (var i = 0; i < oLi.length;i++) {
+					//对象拖拽之前触发ondragstart
+					oLi[i].ondragstart = function(){
+						this.style.background = '#000';
+					}
+					//在之前和结束之间触发 -->进入目标、离开目标之间，连续触发
+//					oLi[i].ondragover = function(){
+//						this.style.background = '#ccc';
+//					}
+					//对象拖拽结束和触发
+					oLi[i].ondragend = function(){
+						this.style.background = 'orange';
+					}					
+				}				
+				//目标元素事件
+				var oDiv = document.getElementById("box");
+				//目标元素进入的时候
+				oDiv.ondragenter = function(){
+					this.style.backgroundColor = '#000';
+				}
+				//进入目标、离开目标之间，连续触发
+				oDiv.ondragover = function(ev){
+					//enter和leave之间连续触发
+					//要想触发drop事件，就 必须在dragover当中阻止默认事件
+					//document.title = i++;					
+					ev.preventDefault();					
+				};				
+				//离开目标元素的时候触发
+				oDiv.ondragleave = function(){
+					this.style.backgroundColor = 'red';
+				}
+				//当拖动目标元素上释放鼠标时候触发
+				oDiv.ondrop = function(){
+					alert("1");
+				}
+			}
+	  	 	</pre>
+	  	 	<h4>ev.dataTransfer对象详解以及兼容FF的拖动 <code>声明了ev.dataTransfer.setData就可以让FF可以拖动了</code> <code>ev.dataTransfer.setDragImage(oImg,0,0);拖动对象,鼠标在x,y轴的位置</code> </h4>
+	  	 	<pre>
+	  	 		aLi[i].ondragstart = function(ev){
+					var ev = ev || window.event;
+					//这里指定setDate的index=i
+					//只要这里声明了ev.dataTransfer.setData就可以让FF可以拖动了					
+					ev.dataTransfer.setData('name',this.index);
+					//修改鼠标拖动的样式
+					ev.dataTransfer.effectAllowed = 'link';
+					//鼠标拖动的时候你需要拖动的对象(可以是图片，节点啥的，0,0，是指拖动时候鼠标在的x,y的位置)
+					ev.dataTransfer.setDragImage(oImg,0,0);
+					
+					this.style.background = 'green';
+				};
+	  	 	</pre>
+	  	 	<h4>拖动文件上传预览  <code>FileReader</code> <code>对象.readAsDataURL()里面的参数必须是 ev.dataTransfer.files里面的对象</code> <code>对象.result,得到对象上传的地址</code></h4>
+	  	 	<pre>
+	  	 		window.onload = function(){
+				var oDiv = $("fileDiv");
+				var oUl = $("ul");
+				oDiv.ondragenter = function(){
+					this.innerHTML = "可以拖释放了";
+				}
+				oDiv.ondragover = function(ev){
+					ev.preventDefault();
+				}
+				oDiv.ondragleave = function(){
+					this.innerHTML = "将文件拖拽到此区域";
+				}
+				oDiv.ondrop = function(ev){
+					ev.preventDefault();
+					var files = ev.dataTransfer.files;					
+					for (var i = 0; i < files.length; i++) {
+						    //如果类型是image的话 
+							if (files[i].type.indexOf("image") != -1) {
+							//得到文件之前要new一个fileReader对象
+							var fd = new FileReader();
+							//fd.readAsDataURL()里面的参数必须是 ev.dataTransfer.files里面的对象
+							fd.readAsDataURL( files[i] )		
+							fd.onload = function(){
+								//fd.result 得到上传图片的banse64地址
+								console.log(fd.result);
+								//创建1个li
+								var oLi = document.createElement("li");
+								var oImg = document.createElement("img");
+								oImg.src = this.result;
+								oLi.appendChild(oImg);
+								oUl.appendChild(oLi);
+							}
+							this.innerHTML = "将文件拖拽到此区域";
+							}else
+							{
+								alert("请输入正确的图片类型")
+							}
+					}
+				}
+			}		
+			function $(id){
+				return document.getElementById(id)
+			}
+	  	 	</pre>
+	  	 </div>
+	  </div>	
+	  <!--返回顶部-->
+	  <div id="div-Top">
+		  	<dl>
+		  		<dd>
+		  			<img src="../../img/weixin-icon02.png"/></li>
+		  		</dd>
+		  		<dt class="weixin">
+		  			<div></div>
+		  		</dt>
+		  		<dt class="to_top">
+		  			<div></div>
+		  		</dt>		  		
+		  	</dl>
+	  </div>
+	  	  			
+	</body>
+</html>

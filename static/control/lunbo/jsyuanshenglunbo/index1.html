@@ -1,0 +1,77 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<title>妙味课堂-www.miaov.com</title>
+<style>
+body,ul,ol{margin:0;padding:0;}
+li{ list-style:none;}
+img{ border:none; vertical-align:top; }
+#box{width:470px;height:150px; position:relative; margin:30px auto; overflow:hidden;}
+ul{ width:470px; position:absolute;left:0; top:0; z-index:1;}
+ul li{width:470px; display:none;}
+ol{z-index:2; width:120px; position:absolute;right:10px; bottom:10px;}
+ol li{ width:20px;height:20px; float:left;margin:0 2px; display:inline; background:#fff; color:#f60; line-height:20px; text-align:center;}
+ol .active{ background:#f60; color:#fff;}
+</style>
+<!--<script src="js/jquery-1.8.2.min.js" type="text/javascript" charset="utf-8"></script>-->
+<script type="text/javascript">
+	//jq
+//	$(function(){
+//		var olLi = $(".ol li");
+//		var oUlli = $("#box ul li");
+//		olLi.mouseover(function(){
+//			$(this).addClass("active").siblings("li").removeClass("active");
+//			oUlli.eq($(this).index()).show().siblings("li").hide();
+//		})
+//
+//	})
+	//js
+	window.onload = function(){
+		var oUl = document.getElementsByTagName("ul")[0];
+		var	oUlLi =  oUl.getElementsByTagName("li");
+		var oOl = document.getElementsByTagName("ol")[0];
+		var	oOlLi =  oOl.getElementsByTagName("li");
+		for (var i = 0; i < oOlLi.length; i++) {
+			//建议1个索引
+			oOlLi[i].index= i;
+			
+			oOlLi[i].onmouseover = function(){
+				//js清空所有的class 需要在便利一次
+				for (var i = 0; i < oOlLi.length; i++) {
+					//清空class -->active
+					oOlLi[i].className = '';
+					oUlLi[i].style.display = 'none';
+				}
+				this.className = 'active';
+				//利用索引
+				oUlLi[this.index].style.display = 'block';
+
+			}
+		}
+		
+	}
+	
+	
+</script>
+</head>
+<body>
+<div id="box">
+	<ul class="ul">
+    	<li style="display:block"><img src="img/1.jpg" alt=""/></li>
+        <li><img src="img/2.jpg" alt=""/></li>
+        <li><img src="img/3.jpg" alt=""/></li>
+        <li><img src="img/4.jpg" alt=""/></li>
+        <li><img src="img/5.jpg" alt=""/></li>
+    </ul>
+    <ol class="ol">
+    	<li class="active">1</li>
+        <li>2</li>
+        <li>3</li>
+        <li>4</li>
+        <li>5</li>
+    </ol>
+</div>
+
+</body>
+</html>

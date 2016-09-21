@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<style type="text/css">
+			#fileDiv{width: 500px;height: 200px;border: 1px solid red;margin: 50px auto;}
+		</style>
+		<script type="text/javascript">
+			window.onload = function(){
+				var oDiv = $("fileDiv");
+				var oUl = $("ul");
+				oDiv.ondragenter = function(){
+					this.innerHTML = "可以拖释放了";
+				}
+				oDiv.ondragover = function(ev){
+					ev.preventDefault();
+				}
+				oDiv.ondragleave = function(){
+					this.innerHTML = "将文件拖拽到此区域";
+				}
+				oDiv.ondrop = function(ev){
+					ev.preventDefault();
+					var files = ev.dataTransfer.files;					
+					for (var i = 0; i < files.length; i++) {
+						    //如果类型是image的话 
+							if (files[i].type.indexOf("image") != -1) {
+							//得到文件之前要new一个fileReader对象
+							var fd = new FileReader();
+							//fd.readAsDataURL()里面的参数必须是 ev.dataTransfer.files里面的对象
+							fd.readAsDataURL( files[i] )		
+							fd.onload = function(){
+								//fd.result 得到上传图片的banse64地址
+								console.log(fd.result);
+								//创建1个li
+								var oLi = document.createElement("li");
+								var oImg = document.createElement("img");
+								oImg.src = this.result;
+								oLi.appendChild(oImg);
+								oUl.appendChild(oLi);
+							}
+							this.innerHTML = "将文件拖拽到此区域";
+							}else
+							{
+								alert("请输入正确的图片类型")
+							}
+					}
+				}
+			}		
+			function $(id){
+				return document.getElementById(id)
+			}
+		</script>
+	</head>
+	<body>
+		
+		
+		<div id="fileDiv">
+			将文件拖放到此区域
+		</div>
+		
+		<ul id="ul">
+			
+		</ul>
+	</body>
+</html>

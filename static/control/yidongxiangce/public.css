@@ -1,0 +1,176 @@
+﻿/*html5*/
+abbr, article, aside, audio, canvas, datalist, details, dialog, eventsource, figure, footer, header, hgroup, mark, menu, meter, nav, output, progress, section, time, video{display: block;margin: 0;padding: 0;}
+/*public begin*/
+
+body,
+div,
+dl,
+dt,
+dd,
+ul,
+ol,
+li,
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+pre,
+code,
+form,
+fieldset,
+legend,
+input,
+button,
+textarea,
+p,
+blockquote,
+th,
+td {
+	margin: 0;
+	padding: 0;
+}
+body {
+	font-size: 12px;
+	line-height: 20px;
+	color: #333333;
+	/*background: #fff;*/
+}
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+	font-size: 100%;
+	font-weight: normal;
+
+}
+table {
+	border-collapse: collapse;
+	border-spacing: 0;
+}
+li {
+	list-style: none;
+}
+img,
+fieldset,
+iframe,
+/*input {
+	border: 0;
+}*/
+button,
+textarea,
+select {
+	font-family: inherit;
+	font-size: inherit;
+	font-weight: inherit;
+	*font-size: 100%;
+}
+select,
+img {
+	vertical-align: middle;
+	border: none;
+	outline: none;
+}
+em,
+i {
+	font-style: normal;
+}
+span,
+i,
+em {
+	display: inline-block;
+	/*display:-moz-inline-stack;*/
+	
+	zoom: 1;
+	*display: inline;
+}
+a {
+	text-decoration: none
+}
+.clear {
+	-zoom: 1;
+	*zoom: 1;
+	clear: both;
+	overflow: hidden
+}
+.clear:after {
+	content: ".";
+	display: block;
+	height: 0;
+	visibility: hidden;
+	clear: both;
+}
+.clear_ {
+	clear: both;
+	height: 0;
+	overflow: hidden
+}
+.left {
+	float: left;
+}
+.right {
+	float: right
+}
+.pos_rel {
+	position: relative
+}
+.ov_h {
+	overflow: hidden;
+}
+/*public end*/
+
+/*------------------------------------------------------------------------------*/
+
+.span_cut {
+	overflow: hidden;
+	width: 98%;
+	white-space: nowrap;
+	text-overflow: ellipsis;
+}
+/*谷歌专用切发*/
+.span_cuts{
+	 overflow : hidden;
+  text-overflow: ellipsis;
+  display: -webkit-box;
+  -webkit-line-clamp: 2;
+  -webkit-box-orient: vertical;
+}
+/*搜索框兼容*/
+
+/*解决点击页面出现黑块儿的问题*/
+.highlight-color{-webkit-tap-highlight-color:rgba(0,0,0,0); }
+
+/*公共的顶部*/
+#hander{height: 100px;background: #ececec;position: fixed;z-index: 999;width: 100%;box-shadow: 0 2px 10px #aea9a6;}
+#hander nav{width: 1134px;height: 68px;margin: 0 auto;position: relative;}
+#hander nav ul{width: 424px;height: 30px;float: right;margin-top: 36px;}
+#hander nav ul li{display: inline-block;vertical-align: top;line-height: 30px;text-align: center;width: 82px;}
+#hander nav ul li a{display: block;color: #4e4d4d;font-family: "微软雅黑";font-size: 15px; word-spacing:10px; letter-spacing: 1px;text-shadow: 1px 1px 5px #FFF}
+#hander nav ul li a:hover{color: #00A2D4;}
+#hander nav img{position: absolute;height: 100px;width: 139px;top: 0;}
+.li_bg{background: url(../img/nav_active01.png) no-repeat;background-size: 100% 100%;}
+
+/*标题*/
+ .title{width: 1136px;height: 100px;border-bottom: 2px solid #262526;margin: 0 auto;}
+/*#container_bg{background: url(../img/public_bg.png) center no-repeat;width: 100%;height: 838px;}*/
+
+
+
+/*开始定制标签*/
+.public_a{display: block;width: 117px;height: 27px;line-height: 27px;font-size: 14px;font-family: "微软雅黑";display: inline-block;vertical-align: top;text-align: center;background: #e7e8eb;color: #582201;word-spacing:10px; letter-spacing: 1px;font-weight: bold;}
+.a_btn{display: block;width: 118px;height: 26px;background: #eff0f2;line-height: 26px;text-align: center;font-size: 14px;font-family: "微软雅黑";color: #582201;}
+.a_btn:hover{background: #C0C0C0 !important;color: #F75551;}
+
+/*页脚*/
+.footer{height: 89px;width: 100%;background: url(../img/footer_bg.png) repeat-x;}
+.footer section{height: 100%;width: 1132px;margin:  0 auto;}
+.footer section nav{width: 100%;height: 46px;border-bottom: 1px solid #c9c7c7;position: relative;}
+.footer section nav ul{width: 332px;height: 33px;position: absolute;top: 13px;left: 394px;}
+.footer section nav ul li{width: 65px;height: 20px;line-height: 20px;text-align: center;position: relative;border-right: 1px solid #8b8a8a;top: 6px;display: inline-block;vertical-align: top;}
+.footer section nav ul li a{display: block;font-family: "微软雅黑";font-size: 13px;color: #8b8a8a;}
+.footer section nav ul li a:hover{text-decoration:underline;}
+.footer section p{height: 44px;line-height: 44px;text-align: center;font-size: 12px;color: #9a9999;font-family: "微软雅黑";}
+

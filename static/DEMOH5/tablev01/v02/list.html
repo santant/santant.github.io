@@ -1,0 +1,230 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title></title>
+		<meta name="format-detection" content="telephone=no" />
+		<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+		<meta name="viewport" content="width=device-width,initial-scale=1,minimum-scale=1,maximum-scale=1,user-scalable=no" />
+		<title>home</title>
+		<link rel="stylesheet" type="text/css" href="css/public.css" />
+		<link rel="stylesheet" type="text/css" href="css/list.css"/>
+		<script src="js/rem.js" type="text/javascript" charset="utf-8"></script>		
+		<script src="js/jquery-1.8.2.min.js" type="text/javascript" charset="utf-8"></script>		
+		<script type="text/javascript">
+			window.onload = function(){
+				document.body.addEventListener("touchstart",function(){});				
+			}	
+			$(function(){
+				$(".dl-list").find("dd").find("ol:gt(1)").hide();
+				var mun = 0;
+				$(".last-dt").bind("touchstart",function(){
+					var oHight = $(".dl-list dd ol").height();
+					var oPidding = $(".dl-list dd").css("padding-top");					
+					    mun++;
+					    if (mun%2 ==1) {
+					    	$(this).prev("dd").find("ol:gt(1)").show();
+//					    	$(".dl-list dd ol:gt(1)").show();
+							$(this).find("span").text("收起列表");
+							$(this).find("i").addClass("active");							
+							if ($(this).prev("dd").find("ol:gt(8)")) {
+								$(this).prev("dd").css("height",oHight*9+'px').addClass("scroll");
+							}
+						}else
+						{
+							$(this).prev("dd").find("ol:gt(1)").hide();
+//							$(".dl-list dd ol:gt(1)").hide();
+							$(this).find("span").text("展开列表");
+							$(this).find("i").removeClass("active");
+							$(this).prev("dd").removeClass("scroll").css("height","auto");
+						}				
+					})				
+				
+			})
+			
+		</script>
+		<body>			
+		   <dl class="dl-list">
+		   		<dt>
+		   			3月30日中奖信息
+		   		</dt>
+		   		<dd>
+		   			<ol>
+		   				<li class="span_cut">小迷糊小迷糊</li><li>北京</li><li>182****2345</li><li>一等奖</li>
+		   			</ol>
+		   			<ol>
+		   				<li class="span_cut">小迷糊</li><li>北京</li><li>182****2345</li><li>一等奖</li>
+		   			</ol>
+		   			<ol>
+		   				<li class="span_cut">小迷糊小迷糊</li><li>北京</li><li>182****2345</li><li>一等奖</li>
+		   			</ol>
+		   			<ol>
+		   				<li class="span_cut">小迷糊</li><li>北京</li><li>182****2345</li><li>一等奖</li>
+		   			</ol>
+		   			<ol>
+		   				<li class="span_cut">小迷糊小迷糊</li><li>北京</li><li>182****2345</li><li>一等奖</li>
+		   			</ol>
+		   			<ol>
+		   				<li class="span_cut">小迷糊</li><li>北京</li><li>182****2345</li><li>一等奖</li>
+		   			</ol>
+		   			<ol>
+		   				<li class="span_cut">小迷糊小迷糊</li><li>北京</li><li>182****2345</li><li>一等奖</li>
+		   			</ol>
+		   			<ol>
+		   				<li class="span_cut">小迷糊</li><li>北京</li><li>182****2345</li><li>一等奖</li>
+		   			</ol>
+		   			<ol>
+		   				<li class="span_cut">小迷糊小迷糊</li><li>北京</li><li>182****2345</li><li>一等奖</li>
+		   			</ol>
+		   			<ol>
+		   				<li class="span_cut">小迷糊</li><li>北京</li><li>182****2345</li><li>一等奖</li>
+		   			</ol>
+		   			<ol>
+		   				<li class="span_cut">小迷糊小迷糊</li><li>北京</li><li>182****2345</li><li>一等奖</li>
+		   			</ol>
+		   			<ol>
+		   				<li class="span_cut">小迷糊</li><li>北京</li><li>182****2345</li><li>一等奖</li>
+		   			</ol>
+		   			<ol>
+		   				<li class="span_cut">小迷糊小迷糊</li><li>北京</li><li>182****2345</li><li>一等奖</li>
+		   			</ol>
+		   			<ol>
+		   				<li class="span_cut">小迷糊</li><li>北京</li><li>182****2345</li><li>一等奖</li>
+		   			</ol>
+		   			<ol>
+		   				<li class="span_cut">小迷糊小迷糊</li><li>北京</li><li>182****2345</li><li>一等奖</li>
+		   			</ol>
+		   			<ol>
+		   				<li class="span_cut">小迷糊</li><li>北京</li><li>182****2345</li><li>一等奖</li>
+		   			</ol>
+		   			<ol>
+		   				<li class="span_cut">小迷糊</li><li>北京</li><li>182****2345</li><li>一等奖</li>
+		   			</ol>
+		   			<ol>
+		   				<li class="span_cut">小迷糊小迷糊</li><li>北京</li><li>182****2345</li><li>一等奖</li>
+		   			</ol>
+		   			<ol>
+		   				<li class="span_cut">小迷糊</li><li>北京</li><li>182****2345</li><li>一等奖</li>
+		   			</ol>
+		   			<ol>
+		   				<li class="span_cut">小迷糊小迷糊</li><li>北京</li><li>182****2345</li><li>一等奖</li>
+		   			</ol>
+		   			<ol>
+		   				<li class="span_cut">小迷糊</li><li>北京</li><li>182****2345</li><li>一等奖</li>
+		   			</ol>
+		   			<ol>
+		   				<li class="span_cut">小迷糊</li><li>北京</li><li>182****2345</li><li>一等奖</li>
+		   			</ol>
+		   			<ol>
+		   				<li class="span_cut">小迷糊小迷糊</li><li>北京</li><li>182****2345</li><li>一等奖</li>
+		   			</ol>
+		   			<ol>
+		   				<li class="span_cut">小迷糊</li><li>北京</li><li>182****2345</li><li>一等奖</li>
+		   			</ol>
+		   			<ol>
+		   				<li class="span_cut">小迷糊小迷糊</li><li>北京</li><li>182****2345</li><li>一等奖</li>
+		   			</ol>
+		   			<ol>
+		   				<li class="span_cut">小迷糊</li><li>北京</li><li>182****2345</li><li>一等奖</li>
+		   			</ol>
+		   			
+		   			<dt class="last-dt">
+			   			<div><span>展开列表</span><i></i></div>
+			   		</dt>
+		   		</dd>
+		   		
+		   </dl> 
+		   <dl class="dl-list">
+		   		<dt>
+		   			3月30日中奖信息
+		   		</dt>
+		   		<dd>
+		   			<ol>
+		   				<li class="span_cut">小迷糊小迷糊</li><li>北京</li><li>182****2345</li><li>一等奖</li>
+		   			</ol>
+		   			<ol>
+		   				<li class="span_cut">小迷糊</li><li>北京</li><li>182****2345</li><li>一等奖</li>
+		   			</ol>
+		   			<ol>
+		   				<li class="span_cut">小迷糊小迷糊</li><li>北京</li><li>182****2345</li><li>一等奖</li>
+		   			</ol>
+		   			<ol>
+		   				<li class="span_cut">小迷糊</li><li>北京</li><li>182****2345</li><li>一等奖</li>
+		   			</ol>
+		   			<ol>
+		   				<li class="span_cut">小迷糊小迷糊</li><li>北京</li><li>182****2345</li><li>一等奖</li>
+		   			</ol>
+		   			<ol>
+		   				<li class="span_cut">小迷糊</li><li>北京</li><li>182****2345</li><li>一等奖</li>
+		   			</ol>
+		   			<ol>
+		   				<li class="span_cut">小迷糊小迷糊</li><li>北京</li><li>182****2345</li><li>一等奖</li>
+		   			</ol>
+		   			<ol>
+		   				<li class="span_cut">小迷糊</li><li>北京</li><li>182****2345</li><li>一等奖</li>
+		   			</ol>
+		   			<ol>
+		   				<li class="span_cut">小迷糊小迷糊</li><li>北京</li><li>182****2345</li><li>一等奖</li>
+		   			</ol>
+		   			<ol>
+		   				<li class="span_cut">小迷糊</li><li>北京</li><li>182****2345</li><li>一等奖</li>
+		   			</ol>
+		   			<ol>
+		   				<li class="span_cut">小迷糊小迷糊</li><li>北京</li><li>182****2345</li><li>一等奖</li>
+		   			</ol>
+		   			<ol>
+		   				<li class="span_cut">小迷糊</li><li>北京</li><li>182****2345</li><li>一等奖</li>
+		   			</ol>
+		   			<ol>
+		   				<li class="span_cut">小迷糊小迷糊</li><li>北京</li><li>182****2345</li><li>一等奖</li>
+		   			</ol>
+		   			<ol>
+		   				<li class="span_cut">小迷糊</li><li>北京</li><li>182****2345</li><li>一等奖</li>
+		   			</ol>
+		   			<ol>
+		   				<li class="span_cut">小迷糊小迷糊</li><li>北京</li><li>182****2345</li><li>一等奖</li>
+		   			</ol>
+		   			<ol>
+		   				<li class="span_cut">小迷糊</li><li>北京</li><li>182****2345</li><li>一等奖</li>
+		   			</ol>
+		   			<ol>
+		   				<li class="span_cut">小迷糊</li><li>北京</li><li>182****2345</li><li>一等奖</li>
+		   			</ol>
+		   			<ol>
+		   				<li class="span_cut">小迷糊小迷糊</li><li>北京</li><li>182****2345</li><li>一等奖</li>
+		   			</ol>
+		   			<ol>
+		   				<li class="span_cut">小迷糊</li><li>北京</li><li>182****2345</li><li>一等奖</li>
+		   			</ol>
+		   			<ol>
+		   				<li class="span_cut">小迷糊小迷糊</li><li>北京</li><li>182****2345</li><li>一等奖</li>
+		   			</ol>
+		   			<ol>
+		   				<li class="span_cut">小迷糊</li><li>北京</li><li>182****2345</li><li>一等奖</li>
+		   			</ol>
+		   			<ol>
+		   				<li class="span_cut">小迷糊</li><li>北京</li><li>182****2345</li><li>一等奖</li>
+		   			</ol>
+		   			<ol>
+		   				<li class="span_cut">小迷糊小迷糊</li><li>北京</li><li>182****2345</li><li>一等奖</li>
+		   			</ol>
+		   			<ol>
+		   				<li class="span_cut">小迷糊</li><li>北京</li><li>182****2345</li><li>一等奖</li>
+		   			</ol>
+		   			<ol>
+		   				<li class="span_cut">小迷糊小迷糊</li><li>北京</li><li>182****2345</li><li>一等奖</li>
+		   			</ol>
+		   			<ol>
+		   				<li class="span_cut">小迷糊</li><li>北京</li><li>182****2345</li><li>一等奖</li>
+		   			</ol>
+		   			
+		   			<dt class="last-dt">
+			   			<div><span>展开列表</span><i></i></div>
+			   		</dt>
+		   		</dd>
+		   		
+		   </dl> 	
+		  	
+		  	
+		</body>
+</html>

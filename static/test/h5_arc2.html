@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html>
+
+	<head>
+				<link rel="shortcut icon" href="../../imges/ico.ico" type="images/x-icon" />
+		<meta charset="utf-8">
+		<meta name="viewport" content="width=device-width,initial-scale=1,minimum-scale=1,maximum-scale=1,user-scalable=no" />
+		<title>手搓画布百分比</title>
+		<style type="text/css">
+			#canvas {			
+				border: 2px solid red;
+				margin: 0 auto;
+			}
+			#container{width: 300px;height: 300px;position: relative;}
+			#container strong{position: absolute;left: 84px;top: 89px;font-size: 26px !important;}
+		</style>
+	</head>
+
+	<body>
+		<div id="container">
+			<canvas id="canvas" width="300" height="300" style=""></canvas>
+			<strong id="str">222</strong>
+		</div>
+
+		<button id="btn">aa</button>
+		<script type="text/javascript">
+			window.onload = function() {
+				var canvas = document.getElementById("canvas");
+
+				var cxt = canvas.getContext("2d");
+				//画一个空心圆
+				cxt.beginPath();
+				cxt.arc(100,100,50,0,2*Math.PI,false);
+				cxt.lineWidth = 10;
+				
+				cxt.strokeStyle = "#ccc";
+				cxt.stroke(); //画空心圆
+				cxt.closePath();				
+				arc(10);//百分之多少和需要的颜色 
+			}
+			function arc(mun){
+				//画第二个圆
+				var canvas = document.getElementById("canvas");
+				var cxt = canvas.getContext("2d");	
+				
+					cxt.beginPath();
+					cxt.arc(100,100,50,0,(0.02*mun)*Math.PI,false);
+					cxt.lineWidth = 10;
+					var gradient=cxt.createLinearGradient(0,0,170,0);//注意这个170
+						gradient.addColorStop("0","magenta");
+						gradient.addColorStop("0.2","blue");
+						gradient.addColorStop("1.0","red");
+				if (mun>=0 &&mun<=100){	
+					cxt.strokeStyle = gradient;				
+				} 
+				cxt.stroke(); //画空心圆
+				cxt.closePath();
+				getId("str").innerHTML=mun+'%';
+			}
+			
+			function getId(id) {
+				return document.getElementById(id);
+			}
+		</script>
+	</body>
+
+</html>
+		
+	</script>
+	<body>
+		<canvas id="canvas" width="" height="" style="border: 1px solid red;"></canvas>
+	</body>
+	
+</html>

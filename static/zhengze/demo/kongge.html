@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<script type="text/javascript">
+			window.onload = function(){
+				var str = '   ssdf  dfgg ';
+				
+				//去掉行首行尾的空格
+				//   /^\s+/ 行首的空格  |或者     \s+$ 行尾的空格
+				var re = /^\s+|\s+$/g;
+				
+				//去掉所有的空格
+				var re2  = /\s+/g;
+				
+				
+				alert(str.replace(re2,''));//吧空格替换成空
+				
+			}
+		</script>
+	</head>
+	<body>
+		<input type="text" name="text1" id="text1" value="" />
+		<button id="btn">检测QQ号</button>
+	</body>
+</html>

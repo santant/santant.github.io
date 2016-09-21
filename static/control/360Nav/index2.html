@@ -1,0 +1,96 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<title>无标题文档</title>
+<style>
+html{height:100%;overflow:hidden;}
+body{ background:#f9f9f9;}
+body{ background:#f9f9f9;}
+#menu{width:50px;height:50px; position:fixed;right:20px; bottom:20px;}
+#menu_list{height:42px;width:42px; position:relative;margin:4px;}
+#menu_list img{ border-radius:21px; position:absolute;left:0;top:0; -webkit-transition:0.5s all ease;}
+#home{width:50px;height:50px;background:url(home.png) no-repeat; border-radius:25px; position:absolute; left:0;top:0; transition:1s;}
+/*#menu_list img:hover{transform: scale(2);opacity: 0.1;}*/
+
+</style>
+<script>
+	window.onload=function()
+	{ 
+		var oHome = document.getElementById("home");
+		var oList = document.getElementById("menu_list").getElementsByTagName("img");
+		var iR = -150;
+		var bOff = true;
+		//给导航添加点击事件
+		for (var i = 0; i < oList.length; i++) {
+			oList[i].onclick = function(){
+				//复位他的执行时间
+				this.style.transition = '0.3s';
+				//这里透明有兼容
+				this.style.WebkitTransform="scale(2) rotate(-720deg)";
+				this.style.opacity = '0.1';				
+				addEnd(this,end);
+			}
+		}
+		function end(){
+			this.style.transition="0.1s";
+			this.style.WebkitTransform="scale(1) rotate(0deg)";
+			this.style.opacity = '1';	
+			removeEnd(this,end);
+		}
+		
+		oHome.onclick = function(){
+			if (bOff) {
+				this.style.WebkitTransform = "rotate(-360deg)";
+				for (var i = 0; i < oList.length; i++) {
+					var oLT = toLT(iR,90/4*i);
+					//这0.5s必须有空格才有效,加点延迟时间
+					oList[i].style.transition="0.5s "+i*100+"ms";
+					oList[i].style.top =oLT.l+'px';
+					oList[i].style.left =oLT.t+'px';					
+				}
+			}else
+			{
+				this.style.WebkitTransform = "rotate(0deg)";
+				for (var i = 0; i < oList.length; i++) {
+					oList[i].style.transition="0.5s "+i*100+"ms";
+					oList[i].style.top =0;
+					oList[i].style.left =0;
+				}
+			}
+			bOff =! bOff;
+			
+		}
+		//已知半径和角度，求sin和cos
+		function toLT(iR,iDeg)
+		{
+			return {l:Math.round(Math.sin(iDeg/180*Math.PI)*iR),t:Math.round(Math.cos(iDeg/180*Math.PI)*iR)}
+		}
+		//css3监听动画结束函数函数
+		function addEnd(obj,fn)
+		{
+			obj.addEventListener('WebkitTransitionEnd',fn,false);
+			obj.addEventListener('transitionend',fn,false);
+		}
+		function removeEnd(obj,fn)
+		{
+			obj.removeEventListener('WebkitTransitionEnd',fn,false);
+			obj.removeEventListener('transitionend',fn,false);
+		}
+		
+	}	
+</script>
+</head>
+<body>
+<div id="menu">
+	<div id="menu_list">
+    	<img src="prev.png" alt=""/>
+        <img src="open.png" alt="" />
+        <img src="clos.png" alt="" />
+        <img src="full.png" alt="" />
+        <img src="refresh.png" alt="" />
+    </div>
+	<div id="home"></div>
+</div>
+</body>
+</html>

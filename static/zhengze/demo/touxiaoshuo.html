@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<script type="text/javascript">
+			window.onload = function(){
+				var oTEXT1 = document.getElementById("text1");
+				var oTEXT2 = document.getElementById("text2");
+				var btn = document.getElementById("btn");
+				btn.onclick = function(){
+					var oext1 = oTEXT1.value;
+					//.所有字符  .+ 许多个任意字符;
+					//var re = /<.+>/g; //标签的格式是<>之间有出现多个任意字符
+					  var re = /<[^<>]+>/g; //标签的格式是<>之间有出现多个任意字符,但是不可以出息<>号
+
+					oTEXT2.value = oext1.replace(re,'');
+				}
+			}
+		</script>
+	</head>
+	<body>
+		转换前:<textarea name="" rows="10" cols="40" id="text1"></textarea><br />
+		
+		<input type="button" name="" id="btn" value="转换" />
+		
+		转换后:<textarea name="" rows="10" cols="40" id="text2"></textarea><br />
+		
+	</body>
+</html>

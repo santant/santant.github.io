@@ -1,0 +1,474 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta name="viewport" content="width=device-width,initial-scale=1,minimum-scale=1,maximum-scale=1,user-scalable=no" />
+		<link rel="stylesheet" type="text/css" href="../../css/public.css"/>
+		<link rel="stylesheet" type="text/css" href="../../css/index.css"/>
+		<link rel="shortcut icon" href="../../imges/ico.ico" type="images/x-icon" />
+		<meta charset="UTF-8">
+		<script src="../../js/index.js" type="text/javascript" charset="utf-8"></script>
+		<title>javascript</title>
+		<script type="text/javascript" src="../../js/pre/scripts/shCore.js"></script>
+		<script type="text/javascript" src="../../js/pre/scripts/shBrushBash.js"></script>
+		<script type="text/javascript" src="../../js/pre/scripts/shBrushCss.js"></script>
+		<script type="text/javascript" src="../../js/pre/scripts/shBrushCSharp.js"></script>
+		<script type="text/javascript" src="../../js/pre/scripts/shBrushJScript.js"></script>
+		<script type="text/javascript" src="../../js/pre/scripts/shBrushPhp.js"></script>
+		<script type="text/javascript" src="../../js/pre/scripts/shBrushPlain.js"></script>
+		<script type="text/javascript" src="../../js/pre/scripts/shBrushPython.js"></script>
+		<script type="text/javascript" src="../../js/pre/scripts/shBrushJava.js"></script>
+		<script type="text/javascript" src="../../js/pre/scripts/shBrushScala.js"></script>
+		<script type="text/javascript" src="../../js/pre/scripts/shBrushSql.js"></script>
+		<script type="text/javascript" src="../../js/pre/scripts/shBrushXml.js"></script>
+		<script type="text/javascript" src="../../js/pre/scripts/shBrushPerl.js"></script>
+		<link type="text/css" rel="stylesheet" href="../../js/pre/styles/shCore.css" />
+		<link type="text/css" rel="stylesheet" href="../../js/pre/styles/shThemeDefault.css" />
+		<script type="text/javascript">
+			SyntaxHighlighter.defaults['toolbar'] = false;  //去掉右上角问号图标
+			SyntaxHighlighter.config.tagName = 'pre';       //可以更改解析的默认Tag。
+			SyntaxHighlighter.config.bloggerMode = true; 
+			SyntaxHighlighter.config.stripBrs = true;  
+			SyntaxHighlighter.all();
+	   </script>
+	</head>
+	<body>
+	  <div class="hander"> 
+	  	<ul>
+	  		<li class="" nav-title="all"><a href="../../index.html">首页</a></li>
+			<li nav-title="css" class=""> <a href="../canvas/demo1.html">Html5画布入门篇</a></li>
+			<li nav-title="css" ><a href="../canvas/demo3.html">Html5画布提升篇</a></li>
+			<li><a href="../CSS/css3.html">CSS3</a></li>			
+			<li><a href="../../static/control/control.html">自己写的demo</a></li>			
+			<li nav-title="rem工具换算"><a href="../../static/rem1/rem.html">rem</a></li>			
+	  		<li><a href="../title/demo2.html">收藏的网站</a></li>
+	  		<li ><a href="../tool/tool.html">工具箱</a></li>
+	  		<li class=""><a href="../javascript/Event.html">javascriptEvent</a></li>
+	  		<li class=""><a href="../javascript/jsDom.html">javascriptDOM</a></li>
+	  		<li class="active"><a href="../javascript/object.html">javascriptObj</a></li>	  		
+	  		<li  ><a href="../zhengze/zhengze.html">js正则表达式</a></li>
+	  		<li><a href="../javascript/JSFcnction.html">javascript函数</a></li>
+	  		<li><a href="../HTML5/H5_1.html">HTML5</a></li>
+	  		<li><a href="../angualar/angualar.html">angualarJS</a></li>
+	  		<li class=""><a href="../jquery-css3/jq-css3.html">Jquery操作css3的拼接方式</a></li>
+	  	</ul>
+	  </div>	  
+	  <!--画布笔记主体-->
+	  <div class="main">
+	  	 <h3>面向对象</h3>	  	 
+	  	 <div class="div_daima">
+			<h4>面向对象</h4>
+	  	 	<pre class="brush: js;">
+	  	 	window.onload = function(){
+				var obj = new Object();
+				obj.name = '小明';//属性
+				obj.showName = function(){//方法
+					alert(this.name);//这里的this的指向
+				}
+				obj.showName();//调用方法 -->要看是属性还是方法，方法多个括号
+			}
+	  	 	</pre>
+	  	 	<h4>面向对象工厂模式  <code>记得把对象return出去,好方便外面调用</code> </h4>
+	  	 	<pre class="brush: js;">
+	  	 	window.onload = function(){
+			var p1 = createPerson("小面");//外包调用这个方法		
+				p1.showName();
+			var p2 = createPerson("小面2");//外包调用这个方法		
+				p2.showName();								
+			}
+			//工厂方式的面向方式
+			function createPerson(name){
+				//原料
+				var obj = new Object();
+				//加工
+				obj.name = name;
+				obj.showName = function(){
+					alert(this.name);
+				}
+				//出厂
+				return obj;//返回obj -->返回对象让外部调
+			}
+	  	 	</pre>
+	  	 	<h4>对象的引用 <code>对象类型 : 赋值不仅是值的复制，而且也是引用的传递</code> <code>他们相等的区别 对象类型 : 值和引用都相同才行  //基本类型 : 值相同就可以</code></h4>
+	  	 	<pre class="brush: js;">
+	  	 	 //var a = [1,2,3];
+			//var b = a;
+			//b.push(4);
+			////alert(b);  //[1,2,3,4]这里改变了b的值，其实也把a的值改变了，所以a也是[1,2,3,4] //相当于a,b共同1个家
+			//alert(a);  //[1,2,3,4]   对象类型 : 赋值不仅是值的复制，而且也是引用的传递
+			//var a = [1,2,3];
+			//var b = a;
+			//b = [1,2,3,4]; //这里不是push的就相当于直接改变了b的值，这里不会改变a的值 //相对于 b从a的家搬出去了，不会改变a的值
+			////alert(b); //[1,2,3,4]
+			//alert(a); //[1,2,3]
+			
+		   
+			var a = [1,2,3];
+			var b = [1,2,3];
+			alert(a==b) //false //对象类型 : 值和引用都相同才行
+			
+			var c = 10;
+			var d = 10;
+			alert(c==d);//true //基本类型 : 值相同就可以
+			
+			
+			var a = [1,2,3];
+			var b = a; //这里吧a的值和引用类型都赋值给b了，所以他们相等
+			alert( a==b );  //true
+	  	 	</pre>	 	
+	  	 	<h4>原型 <code>去改写对象下面公用的方法或者属性 , 让公用的方法或者属性在内存中存在一份 ( 提高性能 )</code> <code>注意this</code> </h4>
+	  	 	<pre class="brush: js;">
+		  	 	window.onload = function(){
+					var arr = [1,2,3,4];
+					var arr2 = [1,2,3,4,5];
+					//这的this是对对象arr等这里对象的引用
+					Array.prototype.sum = function(){
+						var result = 0;
+						for (var i = 0; i < this.length; i++) {//this是数组对象引用
+							result += this[i];//this是数组对象引用
+						}
+						return result;
+					}
+	
+					alert(arr.sum());//居于对象的调用只需对象.方法即可
+					alert(arr2.sum());
+				}
+	  	 	</pre>
+	  	 	<h4>原型对象的写法 <code>注意：原型是在构造函数的下面</code> <code>原型对象的优先级比属性低</code> </h4>
+	  		<pre class="brush: js;">
+	  		window.onload = function(){								
+				function CreatePerson (name){
+					this.name = name;															
+				}
+				//注意：原型是在构造函数的下面
+				CreatePerson.prototype.shoWname = function(){
+					alert(this.name);
+				}
+				var p1 = new CreatePerson("小面1").shoWname();
+				var p2 = new CreatePerson("小强").shoWname();
+				alert(p1 == p2);//使用原型对象之后，为true,变成1个引用对象	
+			}
+			<!--<img src="../../img/41.png"/>-->
+	  		</pre>
+	  		<h4>面向对象改进方法的步奏  <code>尽量不要出现函数嵌套函数 </code> <code>可以有全局变量</code><code>把onload中不是赋值的语句放到单独函数中</code> </h4>
+	  		<pre class="brush: js;">
+	  		//普通的tab	
+	  		window.onload = function(){
+				var oParent = document.getElementById('div1');
+				var aInput = oParent.getElementsByTagName('input');
+				var aDiv = oParent.getElementsByTagName('div');
+				for (var i = 0; i < aInput.length; i++) {
+					aInput[i].index = i;//角标
+					aInput[i].onclick = function(){
+						for (var i = 0; i < aInput.length; i++) {
+							aInput[i].className = '';
+							aDiv[i].style.display = 'none';
+						}						
+						this.className = 'active';
+						aDiv[this.index].style.display = 'block';
+					}
+				}				
+			}
+			//先变型:
+			//尽量不要出现函数嵌套函数 
+			//可以有全局变量 
+			//把onload中不是赋值的语句放到单独函数中 init()初始化函数
+			var oParent = null;
+			var aInput = null;
+			var aDiv = null;
+		    window.onload = function(){
+				 oParent= document.getElementById('div1');
+				 aInput = oParent.getElementsByTagName('input');
+				 aDiv = oParent.getElementsByTagName('div');
+				 init();//初始化方法				
+			}
+		   		
+		   	function init(){
+		   		   for (var i = 0; i < aInput.length; i++) {
+					aInput[i].index = i;//角标
+					aInput[i].onclick = check;
+				   }
+		   	}
+		   		
+			function check(){
+						for (var i = 0; i < aInput.length; i++) {
+							aInput[i].className = '';
+							aDiv[i].style.display = 'none';
+						}						
+						this.className = 'active';
+						aDiv[this.index].style.display = 'block';
+			}
+			
+
+			//在根据上面改成面向对象:
+			//全局变量就是属性
+			//函数就是方法
+			//Onload中创建对象			
+			//改this指向问题 : 事件或者是定时器,尽量让面向对象中的this指向对象
+			
+			
+			window.onload = function(){
+				var t1 = new Tab();
+				t1.init();//调用初始化方法
+			}
+			function Tab(){
+				 this.oParent= document.getElementById('div1');
+				 this.aInput = this.oParent.getElementsByTagName('input');
+				 this.aDiv = this.oParent.getElementsByTagName('div');
+			}
+			Tab.prototype.init =  function(){
+				//在外面声明1个变量存1下this
+				var This = this;
+				 for (var i = 0; i < this.aInput.length; i++) {
+					this.aInput[i].index = i;//角标
+//					this.aInput[i].onclick = this.check;
+					this.aInput[i].onclick = function(){
+						This.check(this);//这里吧this变成对象之后，下面check方法里面的this就是变成对象的引用了
+					};
+				 }
+			}
+			Tab.prototype.check =  function(obj){				
+				for (var i = 0; i < this.aInput.length; i++) {
+					this.aInput[i].className = '';
+					this.aDiv[i].style.display = 'none';
+				}						
+				obj.className = 'active';
+				this.aDiv[obj.index].style.display = 'block';
+			}
+	  		</pre>
+	  	 	<h4>在给Tab添加1个方法 <code>自动轮播 runPlay()</code> </h4>
+	  	 	<pre class="brush: js;">
+	  	 		window.onload = function(){
+				  	var t1 = new Tab('div1');
+				  	t1.init();
+				  	var t2 = new Tab('div2');
+				  	t2.init();
+				  	t2.runPlay();
+				  }
+				  function Tab(id){
+				  	this.oParent= document.getElementById(id);
+					this.aInput = this.oParent.getElementsByTagName('input');
+					this.aDiv = this.oParent.getElementsByTagName('div');
+					this.oNum = 0;//计数器  runPlay方法的
+				  }
+				  Tab.prototype.init = function(){
+				  	 var This = this;//存this
+				  	 for (var i = 0; i < this.aInput.length; i++) {
+							this.aInput[i].index = i;//角标
+							this.aInput[i].onclick = function(){
+								This.check(this);
+							}
+					}
+				  }
+				  Tab.prototype.check = function(obj){
+				  		for (var i = 0; i < this.aInput.length; i++) {
+									this.aInput[i].className = '';
+									this.aDiv[i].style.display = 'none';
+						}						
+						obj.className = 'active';
+						this.aDiv[obj.index].style.display = 'block';
+				  }
+				  Tab.prototype.runPlay = function(){
+				  	 var This = this;
+				  	 setInterval(function(){
+				  	 
+				  	 	if (This.oNum == This.aInput.length-1) {
+				  	 		This.oNum = 0;
+				  	 	}else
+				  	 	{
+				  	 	  This.oNum ++;
+				  	 	}
+				  	 	for (var i = 0; i < This.aInput.length; i++) {
+									This.aInput[i].className = '';
+									This.aDiv[i].style.display = 'none';
+						}						
+						This.aInput[This.oNum].className = 'active';
+						This.aDiv[This.oNum].style.display = 'block';
+						
+				  	 },2000)
+				  }
+	  	 	</pre>
+	  	 	<h4>面向对象编写拖拽 <code>再次改变1个拖拽成面向对象</code> <code>//先变型:1.尽量不要出现函数嵌套函数 2.可以有全局变量 3.把onload中不是赋值的语句放到单独函数中 init()初始化函数</code> </h4>
+	  	 	<h4>修改面向对象<code>//在根据上面改成面向对象:1.全局变量就是属性2.函数就是方法3.Onload中创建对象4.改this指向问题 : 事件或者是定时器,尽量让面向对象中的this指向对象</code></h4>
+	  	 	<pre class="brush: js;">
+		  	window.onload = function(){
+			  	var t1 = new Tab('div1');
+			  	t1.init();
+			  	var t2 = new Tab('div2');
+			  	t2.init();
+			  	t2.runPlay();
+			  }
+			  function Tab(id){
+			  	this.oParent= document.getElementById(id);
+				this.aInput = this.oParent.getElementsByTagName('input');
+				this.aDiv = this.oParent.getElementsByTagName('div');
+				this.oNum = 0;//计数器  runPlay方法的
+			  }
+			  Tab.prototype.init = function(){
+			  	 var This = this;//存this
+			  	 for (var i = 0; i < this.aInput.length; i++) {
+						this.aInput[i].index = i;//角标
+						this.aInput[i].onclick = function(){
+							This.check(this);
+						}
+				}
+			  }
+			  Tab.prototype.check = function(obj){
+			  		for (var i = 0; i < this.aInput.length; i++) {
+								this.aInput[i].className = '';
+								this.aDiv[i].style.display = 'none';
+					}						
+					obj.className = 'active';
+					this.aDiv[obj.index].style.display = 'block';
+			  }
+			  Tab.prototype.runPlay = function(){
+			  	 var This = this;
+			  	 setInterval(function(){
+			  	 
+			  	 	if (This.oNum == This.aInput.length-1) {
+			  	 		This.oNum = 0;
+			  	 	}else
+			  	 	{
+			  	 	  This.oNum ++;
+			  	 	}
+			  	 	for (var i = 0; i < This.aInput.length; i++) {
+								This.aInput[i].className = '';
+								This.aDiv[i].style.display = 'none';
+					}						
+					This.aInput[This.oNum].className = 'active';
+					This.aDiv[This.oNum].style.display = 'block';
+					
+			  	 },2000)
+			  }
+	  	 	</pre>
+	  	 	<h4>包装对象 <code>包装对象 : 基本类型都有自己对应的包装对象 : String  Number  Boolean</code> <code>//基本类型会找到对应的包装对象类型，然后包装对象把所有的属性和方法给了基本类型，然后包装对象消失</code> </h4>
+	  	 	<pre class="brush: js;">
+	  	 				
+//			var str = new String('hello');
+//			alert(typeof str);//这里这个对象就比变成object了
+			
+//			var str = 'hello';
+//			//要想给基本类型添加方法也是得到他的原形对象下面去添加方法的
+//			String.prototype.lastValue = function(){
+//				return this.charAt(this.length-1);
+//			}						
+//			alert(str.lastValue())//o 
+
+			var str = 'hello';
+			str.number = 10;//因为包装对象在这里创建之后就消失了，
+			alert(str.number);//undefined //这里只是从新创建了1个包装对象没值所以是undefined
+	  	 	</pre>
+	  	 	<h4>高级对象 hasOwnProperty <code>查看对象刷不动自身属性</code></h4>
+	  	 	<pre class="brush: js;">
+	  	 	//hasOwnProperty查看对象刷不动自身属性
+			var arr = [];
+			arr.num = 10;
+			Array.prototype.num2 = 20;
+//			alert(arr.hasOwnProperty('num'));//true;
+			alert(arr.hasOwnProperty('num2'));//false;
+	  	 	</pre>
+	  	 	<h4>constructor <code>查看对象的构造函数</code> <code>//如果json格式在原型上付值，得要手动改变他的constructor变为他对应的构造函数</code> <code>for in 循环不到系统内部的方法</code> </h4>
+	  	 	<pre class="brush: js;">
+	  	 	function arr(){}
+			//constructor查看对象的构造函数
+//			var a1 = new arr();
+//			alert(a1.constructor);//function arr(){}
+//			var arr = new Array();
+//			alert(arr.constructor);//function Arry(){}
+//			alert(arr.constructor == Array);//判断arr是不是数组
+//			
+//			function Aaa(){
+//			}
+			
+			Aaa.prototype.name = '小明';
+			Aaa.prototype.age = 20;
+			
+			Aaa.prototype = {//如果变成json格式，得要手动改变他的constructor变为他对应的构造函数
+				constructor : Aaa,
+				name : '小明',
+				age : 20
+			};			
+			var a1 = new Aaa();
+			alert( a1.constructor );
+	  	 	</pre>
+	  	 	<h4>instanceof <code>对象与构造函数在原型链上是否有关系</code> <code>object是所有函数的最顶层</code> </h4>
+	  	 	<pre class="brush: js;">
+	  	 	//instanceof 对象与构造函数在原型链上是否有关系
+			//object是所以函数的最顶层
+			function Aaa(){}
+			var a1 = new Aaa();
+			alert(a1 instanceof Aaa);//true
+			//判断是不是数组
+			var arr = [];
+			alert(arr instanceof Array);
+	  	 	</pre>
+	  	 	<h4>toString <code>字符串运用1.把对象转成字符串</code> <code>2.修改颜色值</code> <code>判断数据类型 Object.prototype.toString.call(对象)</code> </h4>
+	  	 	<pre class="brush: js;">
+	  	 		//toString() : 系统对象下面都是自带的 , 自己写的对象都是通过原型链找object下面的
+				/*var arr = [];
+				alert( arr.toString == Object.prototype.toString ); //false*/
+				
+				/*function Aaa(){
+				}
+				var a1 = new Aaa();
+				alert( a1.toString == Object.prototype.toString );  //true*/
+				
+				
+				//toString() : 把对象转成字符串
+				
+				/*var arr = [1,2,3];
+				
+				Array.prototype.toString = function(){
+					return this.join('+');
+				};
+				
+				alert( arr.toString() );  //'1,2,3'*/
+
+				//var num = 255;
+				//alert( num.toString(16) );  //'ff'
+				
+				
+				//利用toString做类型的判断 : 
+				var arr = [];
+				alert( Object.prototype.toString.call(arr)); //可以你想对比类型所对应的绝对字符串,然后通过字符串对比
+				//alert( Object.prototype.toString.call(arr) == '[object Array]' );  //'[object Array]'
+	  	 	</pre>
+	  	 	<h4>对象的继承  <code>extend函数对象的复制</code> <code>属性的继承 </code> <code>方法的继承</code> </h4>
+	  	 	<pre class="brush: js;">
+	  	 		//属性的继承 :调用父级的构造函数.call()
+				//方法的继承 :for in 实现 extend方法
+				 function CreatePerson(name,sex){//父级
+				 	this.name = name;
+				 	this.sex = sex;
+				 }
+				 CreatePerson.prototype.showName = function(){//父类的方法
+				 	alert(this.name);
+				 }
+				 var p1 = new CreatePerson("小面",17);
+				 p1.showName();
+				 
+				 function CreateStar(name,sex,job){//子类
+				   	//用call修改this的指向
+				   	CreatePerson.call(this,name,sex); //属性的继承 :调用父级的构造函数.call()
+				   	this.job = job;
+				 }
+				 //方法的继承:让子类的prototype = 父类的prototype,他就具备了父亲下面的所有方法
+				 //但是这里是对象的引用，随便修改1个方法里面的会影响到另外1个方法
+		//		 CreateStar.prototype = CreatePerson.prototype;
+				 //
+				 extend(CreateStar.prototype,CreatePerson.prototype);
+				 var p2 = new CreateStar("黄小明",'男','演员');
+		         p2.showName();
+				 
+				 
+				 
+				function extend(obj1,obj2){
+					for(var attr in obj2){
+						obj1[attr] = obj2[attr];
+					}
+				}
+		 
+	  	 	</pre>
+	  	 </div>
+	  </div>	
+	</body>
+</html>

@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title></title>
+				<link rel="shortcut icon" href="../../../imges/ico.ico" type="images/x-icon" />
+		<script type="text/javascript">			
+				var now = new Date().getTime();//现在的时间 
+				var start = new Date(Date.parse("2015-11-24 00:00:00".replace(/-/g,"/"))).getTime();//时间都是可以指定的这里是开始的时间
+				var end = new Date(Date.parse("2016-11-27 23:59:59".replace(/-/g,"/"))).getTime();//时间都是可以指定的这里是结束的时间
+//				alert(now+'....'+start+'----'+end)
+			    if (now>start &&now<end) {
+	//		    	$("#huodong").prependTo("order_tprice");
+			    	alert("在这个时间之中");
+			    } else{
+			    	alert("已经超过了时间");
+			    }			  
+		</script>
+	</head>
+	<body>
+	</body>
+</html>

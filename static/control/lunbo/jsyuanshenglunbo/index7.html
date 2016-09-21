@@ -1,0 +1,68 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<title>妙味课堂-www.miaov.com</title>
+<style>
+body,ul,ol{margin:0;padding:0;}
+li{ list-style:none;}
+img{ border:none; vertical-align:top; }
+#box{width:470px;height:150px; position:relative; margin:30px auto; overflow:hidden;}
+ul{ width:470px; position:absolute;left:0; top:0; z-index:1;}
+ul li{width:470px; position:absolute; top:0;}
+ol{z-index:2; width:120px; position:absolute;right:10px; bottom:10px;}
+ol li{ width:20px;height:20px; float:left;margin:0 2px; display:inline; background:#fff; color:#f60; line-height:20px; text-align:center;}
+ol .active{ background:#f60; color:#fff;}
+</style>
+<script type="text/javascript" src="js/move.js"></script>
+<script>
+window.onload = function(){
+	var oUl = document.getElementsByTagName('ul')[0];
+	var aLiUl = oUl.getElementsByTagName('li');
+	var oUlW = oUl.offsetWidth;//ul大盒子宽度
+	//手风琴的基础位置初始化摆放样式计算公式,这里的30就是手风琴其他隐藏的li可视宽度
+	//(盒子的宽度-30*(li个数-1))+30*(i-1); 这里的每个隐藏的li的left宽度比下一个是要多30的
+	//aLiUl[i].style.left = (oUlW-30*(aLiUl.length-1))+30*(i-1)+'px';
+	
+	
+	for (var i = 1; i < aLiUl.length; i++) {//i从1开始
+		//初始化隐藏li的摆放位置
+		aLiUl[i].style.left = (oUlW-30*(aLiUl.length-1))+30*(i-1)+'px'; 
+	}
+	
+
+	
+	for(var i=0;i<aLiUl.length;i++){
+		aLiUl[i].index = i;
+		aLiUl[i].onmouseover = function(){
+			
+			for(var i=0;i<aLiUl.length;i++){
+				//判断i小于等于this.index的时候忘左滑
+				if( i <= this.index ){
+					startMove( aLiUl[i],{left : i*30} );
+				}
+				//其他的时候，忘右滑
+				else{
+					startMove( aLiUl[i],{left : (oUlW-30*(aLiUl.length-1)) + 30*(i-1)} );
+				}
+			}
+			
+		};
+	}
+	
+};
+</script>
+</head>
+<body>
+<div id="box">
+	<ul>
+    	<li><img src="img/1.jpg" alt=""/></li>
+        <li><img src="img/2.jpg" alt=""/></li>
+        <li><img src="img/3.jpg" alt=""/></li>
+        <li><img src="img/4.jpg" alt=""/></li>
+        <li><img src="img/5.jpg" alt=""/></li>
+    </ul>
+   
+</div>
+</body>
+</html>

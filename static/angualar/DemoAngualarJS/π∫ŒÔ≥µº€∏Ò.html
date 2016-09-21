@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html ng-app="">
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<script src="angular.min.js" type="text/javascript" charset="utf-8"></script>
+		<script type="text/javascript">
+			function Aaa($scope){
+				$scope.iphone = {
+					money : 5,
+					num:1,
+					fre:10
+				}
+				$scope.sum = function(){//注意声明函数的时候 要带上作用域
+					return $scope.iphone.money *$scope.iphone.num;//这里也是在作用域下的.iphone.XX
+				}
+				
+				//$scope.$watch 监听值 （参数1：监听的对象。2：监听参数成功之后的回调函数,3,设置为true的时候，如果监听对象是多个，那么就可以同时监听多个值）
+//				$scope.$watch("iphone.num",function(){//这里只能监听iphone.num值的变化情况
+//					console.log("1")
+//				})
+
+
+//				$scope.$watch("iphone.num",function(newVal,oldVal){//回调函数的两个参数，第一个是监听修改的值，第二个参数是修改之前的值
+//					console.log(newVal);//之前
+//					console.log(oldVal);//修改之后
+//				},true)//第三个参数
+
+				//$watch方法 还可以监听1个函数
+				$scope.$watch( $scope.sum,function(newVal,oldVal){//函数计算完之后的2个返回的值,新的值，修改之前的值
+					//当金额>100的时候  免邮
+					//邮费 = 如果$scope.sum 总金额》100 邮费变成0，否则就是10元邮费
+					$scope.iphone.fre = newVal >=100 ? 0 :10;
+					
+				},true)//第三个参数	
+			}
+		</script>
+	</head>
+	<body>
+
+		<div ng-controller="Aaa">
+			<p>价格:<input type="text" name="" id="" value="" ng-model="iphone.money" /></p>
+			<p>个数:<input type="text" name="" id="" value="" ng-model="iphone.num"/></p>
+<!--			<p>费用:{{iphone.money*iphone.num |currency : 'RMB'}}</p>-->
+			<p>费用:{{sum() |currency : 'RMB'}}</p>
+			<p>运费:{{iphone.fre |currency : 'RMB'}}</p>
+			<p>总金额:{{iphone.fre+sum() |currency : 'RMB'}}</p>
+		</div>
+	</body>
+</html>

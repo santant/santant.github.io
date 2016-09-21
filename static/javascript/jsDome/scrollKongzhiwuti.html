@@ -1,0 +1,53 @@
+
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<style type="text/css">
+			#div1{width: 30px;height: 500px;position: relative;background: #000;left: 400px;}
+			#div2{width: 30px;height: 30px;position: absolute;background: red;top: 0;left: 0;}
+			#div3{width: 200px;height: 500px;background: #008000;left: 10px;position: absolute;}
+		</style>
+		<script type="text/javascript">
+			window.onload = function(){
+				var oDiv1 = document.getElementById("div1");
+				var oDiv2 = document.getElementById("div2");
+				var oDiv3 = document.getElementById("div3");
+				oDiv2.onmousedown= function(ev){
+					var ev = ev || event;
+					var disY = ev.clientY - this.offsetTop;	
+					var iMaxTop = oDiv1.offsetHeight - oDiv2.offsetHeight;//
+					document.onmousemove = function(ev){
+						var ev = ev || event;
+						var Y = ev.clientY - disY;
+						if (Y<0) {
+							Y = 0;
+						}else if(Y>oDiv1.offsetHeight - oDiv2.offsetHeight){
+							Y= iMaxTop;
+						}
+						oDiv2.style.top = Y +'px';
+						var iScale = Y/iMaxTop;
+						document.title = iScale;
+						oDiv3.style.height = 500*iScale+'px';
+					}
+					oDiv2.onmouseup= function(){
+						document.onmousemove = document.onmouseup = null;
+					}
+					return false;
+				}
+			}
+			
+		</script>
+	</head>
+	<body>
+		<div id="div3">
+			
+		</div>
+		<div id="div1">
+			<div id="div2">
+			  
+			</div>
+		</div>
+	</body>
+</html>

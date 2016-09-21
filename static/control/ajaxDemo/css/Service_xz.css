@@ -1,0 +1,32 @@
+body,html{position: relative;height: 100%;}
+#container dl{min-height:5.09375rem;border-bottom: 1px solid #dddddd;background: #fff;color: #030303;font-size: 0.8125rem;font-family: "黑体";margin-bottom: 0.4375rem;}
+#container dl dt{min-height:2.375rem;border-bottom: 1px solid #dddddd;width: 95.46%;margin:  0 auto;line-height:2.375rem;}
+#container dl dt .span1{margin-left: 0.15rem;}
+.img_1{width: 1.28125rem;height: 1.28125rem;margin-left: 0.9375rem;}
+#container .dl_con dt:last-child{border: none;}
+#container dl dt .span2{margin-left: 0.9375rem;width: 56%;}
+#container dl dt .span3{float: right;margin-right: 0.3rem;text-decoration:line-through;color: #8b8989;}
+#container dl dt .span4{float: right;margin-right: 0.8rem;color: #ff681f;}
+
+#container dl dd{min-height:2.6875rem;position: relative;line-height:2.6875rem;text-indent: 0.9375rem;border-bottom: 1px solid #dddddd;width: 95.46%;margin:  0 auto;}
+#container dl dd label{width: 16%;height: 100%;opacity: 0;position: absolute;top: 0;left: 0;}
+.img_radio{width: 1.3125rem;height: 1.3125rem;background: url(../img/service_icon03.png) no-repeat;background-size: 100% 100%;position: absolute;left: 0.8rem;top: 0.55rem;display: none;}
+dd .no{display: block;}
+.dl_con2{position: relative;}
+#container .dl_con2 dd:last-child{border: none;}
+/*选择框内容*/
+.div_radio{width: 89%;min-height: 100%;margin-left: 9%;position: relative;}
+.div_radio i{position: absolute;right: 0.11rem;top: -0.06rem;color: #4c4c4c;}
+/*#container .dl_con2 dd .div_radio .span5{line-height: 1rem !important;}*/
+#container .dl_con2 dd .div_radio .p1{width: 80%;line-height: 2.29rem;}
+#container .dl_con2 dd .div_radio .p2{margin-top: -0.8rem;width: 80%;line-height: 2.3rem;color: #4c4c4c;}
+.a_button{margin-top: 3.4375rem;}
+
+
+/*遮罩*/
+.div_table{width: 100%;position: absolute;height: 100%;/*border: 1px solid red;*/top: 0;left:0;background-color: rgba(1,1,1,0.78);z-index: 9999;display: none;}
+.div_table  ul{width: 85.78%;margin:  0 auto;border-radius: 5px;background: #fff;height: 16.0625rem;margin-top: 6rem;overflow-y: auto;}
+.div_table  ul li:first-child{text-align: center;}
+.div_table  ul li{width: 100%;height: 3.21875rem;border-bottom: 1px solid #e3e3e3;font-size: 0.875rem;font-family: "黑体";line-height:3.21875rem;}
+.div_table  ul li span{text-indent:0.9rem;}
+.div_table  ul li i{float: right;margin-right: 0.9rem;}

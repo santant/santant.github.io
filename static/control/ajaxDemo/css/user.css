@@ -1,0 +1,31 @@
+#container{height: 8.59375rem;background: url(../img/logo_2.png) no-repeat;background-size: 100% 100%;}
+#container .img_user{width: 4.5rem;height: 4.5rem;display: block;margin: 0 auto;-webkit-border-radius: 50%;-moz-border-radius: 50%;border-radius: 50%;}
+#container i{text-align: center;display: block;color: #fdfdfc;font-family: 黑体;margin-top: 0.8125rem;}
+#container i span:first-child{font-size: 0.75rem;line-height: 1rem;}
+#container i span:last-child{font-size: 0.65625rem;margin-left: 0.59375rem;line-height: 1rem;}
+#container ul{width: 100%;margin-top: 0.4rem;}
+#container ul li{width: 49.5%;display: inline-block;height: 0.78125rem;}
+#container ul li:first-child{border-right: 1px solid #fff;font-size: 0.65625rem;position: relative;}
+#container ul li:first-child span{position: absolute;right: 1rem;color: #fff;line-height: 0.78125rem;font-family: "微软雅黑";}
+#container ul li:last-child{font-size: 0.65625rem;position: relative;}
+#container ul li:last-child img{position: absolute;left: 1rem;width: 0.78125rem;height: 0.78125rem;}
+#container ul li:last-child span{color: #fff;line-height: 0.78125rem;font-family: "微软雅黑";position: absolute;left: 1.99rem;top: 0.08rem;}
+.list_ul{width: 100%;background: #fff;margin-top: 0.46875rem;border-bottom: 1px solid #e8e8e8;}
+.list_ul ul{width:95.46%;margin:0 auto;}
+.list_ul ul li{width: 100%;border-bottom: 1px solid #e8e8e8;position: relative;height: 2.15625rem;}
+.list_ul ul li h3{width: 2.375rem;height:1.71875rem;background: url(../img/a_user_icon01.png) no-repeat;background-size: 100% 100%;display: inline-block;}
+.list_ul ul li .span_font{font-size: 0.8125rem;position: absolute;top: 0.62rem;left: 2.99rem;font-family: "微软雅黑";color: #848181;}
+.list_ul ul li img{width: 2.65625rem;height: 1.25rem;margin-left: 0.5rem;}
+.list_ul ul li strong{line-height: 2.15625rem ;font-family: "微软雅黑";color: #030303;font-size: 0.8125rem;margin-left: 0.9375rem;}
+.list_ul ul li:last-child{border: none;line-height: 2.15625rem;text-align: center;font-family: "微软雅黑";color: #030303;font-size: 0.8125rem;}
+.list_ul ul li:last-child a{color: #030303;}
+
+.list_ol{width: 100%;background: #fff;margin-top: 0.46875rem;border-bottom: 1px solid #e8e8e8;}
+.list_ol ul{width:95.46%;margin:0 auto;}
+.list_ol ul li .span_font{font-size: 0.8125rem;position: absolute;top: 0.1rem;left: 2.09rem;font-family: "微软雅黑";color: #848181;}
+.list_ol ul li{width: 100%;border-bottom: 1px solid #e8e8e8;position: relative;height: 2.15625rem;line-height: 2.15625rem;text-align: left;font-family: "微软雅黑";color: #030303;font-size: 0.8125rem;}
+.list_ol ul li h3{width: 2.375rem;height:1.71875rem;background: url(../img/a_user_icon04.png) no-repeat;background-size: 100% 100%;display: inline-block;}
+.list_ol ul li span{margin-left: 1.0rem;color:#050505;font-family: "微软雅黑";font-weight: bold;}
+.list_ol ul li:last-child{border: none;}
+.list_ol ul li:last-child a{color: #030303;display: block;display: inline-block;padding-left: 2rem;}
+.list_ol ul li:last-child .add_phone{border-right: 1px solid #eeeeee;width: 40.5%;}

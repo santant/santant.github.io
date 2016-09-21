@@ -1,0 +1,47 @@
+
+#container{background: #fff;border-bottom: 1px solid #e0e0e0;}
+#container ul{width:12.375rem;height:2.1875rem;margin:  0 auto;}
+#container ul li{display: inline-block;width: 50%;line-height:2.1875rem;height:2.1875rem;text-align: center;position: relative;font-size: 0.78125rem;color: #b0b0b0;font-family: "黑体";}
+.span{width: 100%;height: 3px;position: absolute;bottom: -1px;left: 0;background: #ff681f;display: none;}
+.no{display: block;}
+.nos{display: block !important;}
+.colors{color: #767676 !important;}
+.box{display: none;width: 100%;min-height: 100px;margin-top:0.78125rem;}
+
+/*list*/
+.ul_list{width: 100%;height: 10.8125rem;background: #ffffff;border-bottom: 1px solid #ebebeb;}
+.ul_list ul {width: 92.03%;height: 100%;margin: 0 auto;}
+
+/*.ul_list ul li {width: 100%;}*/
+.ul_list ul  .first_li{width: 100%;height: 5.9375rem;border-bottom: 1px solid #e8e8e8;position: relative;}
+.ul_list ul  .first_li span{font-size: 0.875rem;color: #444141;font-family: 黑体;line-height:5.4375rem;text-indent: 0.11875rem;}
+.ul_list ul  .first_li strong{font-size: 2rem;color: #ff681f;padding:0 0.1rem 0 0.1rem;}
+.ul_list ul  .first_li .p1{position: absolute;right: 1.8125rem;color: #ff681f;top: 1.71875rem;line-height: 1rem;font-size: 0.8125rem;font-family:"黑体";}
+.ul_list ul  .first_li .p2{position: absolute;right: 1.40625rem;color: #FF681F;top: 3.21875rem;line-height: 1rem;font-size: 0.8125rem;font-family:"黑体";}
+.ul_list ul  .last_li{width: 100%;height: 4.90625rem;position: relative;}
+.ul_list ul  .last_li span{font-size:0.75rem;line-height: 1rem;margin-top: 0.625rem;text-indent: 0.21875rem;}
+.ul_list ul  .last_li .p3 {font-size:0.75rem;line-height: 1.4rem;text-indent: 0.21875rem;}
+.ul_list ul  .last_li .p4 {color: #ff681f;text-indent: 0.21875rem;font-size: 0.65625rem;}
+.ul_list ul  .last_li a{display: block;position: absolute;border-style: solid;border-width: 1px;border-color: rgb(255, 104, 31); border-radius: 4px;background-color: rgba(229, 47, 23, 0);width: 5.09375rem;height: 1.84375rem;top: 1.59375rem;right: 0.1rem;line-height: 1.84375rem;text-align: center;font-size: 0.75rem;color:#ff681f;font-weight: bold;}
+.ol_list{width: 100%;height: auto;background: #fff;margin-top: 0.6875rem;}
+
+
+.ol_list{border-bottom: 1px solid #e8e8e8;}
+.ol_list .list_li1{min-height: 6.1875rem;width: 92.03%;border-bottom: 1px solid #e8e8e8;margin: 0 auto;position: relative;overflow:hidden;}
+.ol_list .list_li1:last-child{border: none;}
+
+.ol_list .list_li2{height: 2.375rem;border-bottom: 1px solid #e8e8e8;position: relative;border-top: 1px solid #e8e8e8;}
+.ol_list .list_li2 a{display: block;margin-top: 0.255rem;display: inline-block;border-style: solid;border-width: 1px;border-color: rgb(255, 104, 31); border-radius: 4px;background-color: rgba(229, 47, 23, 0);width: 5.25rem;height: 1.78125rem;line-height: 1.84375rem;text-align: center;font-size: 0.75rem;color:#ff681f;font-weight: bold;}
+.ol_list .list_li2 .a_evaluation {margin-left: 7.84375rem;margin-right: 0.625rem;color: #7e7d7d;border: 1px solid #abaaaa;}
+
+
+.ol_list .list_li1 img{display: block;width: 5.59375rem;height: 4.84375rem;margin-top: 0.625rem;float: left;vertical-align: top;}
+.ol_list .list_li1 .section{min-height: 6.1875rem;width: 67.45%;margin-top: 0.625rem;float: left;vertical-align: top;}
+.ol_list li .section span{line-height: 1.49375rem;font-size: 0.8125rem;font-family:"黑体";margin-left:0.6875rem;}
+.ol_list li .section .span_1{color: #737171;width: 57%;}
+.ol_list li .section .span_2{color: #828181;position: absolute;top: 0.625rem;right: 0.3rem;}
+.ol_list li .section  .h3{color: #828181;font-size: 0.8125rem;line-height: 2rem;width: 53%;}
+.ol_list li .section  .h4{color: #828181;font-size: 0.8125rem;line-height: 2rem;}
+.ol_list li .section p{font-size: 0.65625rem;margin-left:0.6875rem;}
+.color_on{color: #ff854a;}
+.ol_list li .section a{display: block;position: absolute;border-style: solid;border-width: 1px;border-color: rgb(255, 104, 31); border-radius: 4px;background-color: rgba(229, 47, 23, 0);width: 5.09375rem;height: 1.84375rem;top: 2.59375rem;right: 0.1rem;line-height: 1.84375rem;text-align: center;font-size: 0.75rem;color:#ff681f;font-family: "微软雅黑";}

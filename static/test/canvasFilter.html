@@ -1,0 +1,197 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>	
+		<link rel="shortcut icon" href="../../imges/ico.ico" type="images/x-icon" />
+		<script type="text/javascript">
+		window.onload = function(){	
+		   var canvasa = document.getElementById("canvasa");	
+		   var  contexta =  canvasa.getContext("2d");
+		   var canvasb = document.getElementById("canvasb");
+		   var  contextb =  canvasb.getContext("2d");
+		   var image = new Image();	      
+		   image.src = '../../img/222.jpg';
+		   image.onload = function(){
+		    contexta.drawImage(image,0,0,canvasa.width,canvasa.height);
+		   }
+		   //灰度
+		   document.getElementById("filter1").onclick = function(){		   	
+		   	filter1();		   				
+		   }
+		   //黑白
+		   document.getElementById("filter2").onclick = function(){		   	
+		   	filter2();		   				
+		   }
+		   //反向滤镜
+		   document.getElementById("filter3").onclick = function(){		   	
+		   	filter3();		   				
+		   }
+		   //模糊滤镜
+		   document.getElementById("filter4").onclick = function(){		   	
+		   	filter4();		   				
+		   }
+		   document.getElementById("filter5").onclick = function(){		   	
+		   	filter5();		   				
+		   }
+		   
+		   function filter1(){
+		   	 //得到canvas的
+		   	 var imageDate = contexta.getImageData(0,0,canvasa.width,canvasa.height);
+   			 var imgData =  imageDate.data;
+   			 console.log(imgData);
+   			 for (var i = 0; i < imgData.length; i++) {
+   			 	//灰度滤镜
+   			 	var r =  imgData[4*i+0] ;
+   			 	var g =   imgData[4*i+1] ;
+   			 	var b =   imgData[4*i+2];
+   			 	var grey = r*0.3+g*0.59+b*0.11;
+   			 	imgData[4*i+0] = 0;
+   			 	imgData[4*i+1] = grey;
+   			 	imgData[4*i+2] = grey;   			 	
+   			 }
+			 //向画布b中put1个上面得到的画布date
+			 contextb.putImageData(imageDate,0,0);//复制图像
+//		  	 contextb.putImageData(imageDate,0,0,0,0,canvasb.width,canvasb.height);
+		       	
+		   }
+		   function filter2(){
+		   	 //得到canvas的
+		   	 var imageDate = contexta.getImageData(0,0,canvasa.width,canvasa.height);
+
+   			 var imgData =  imageDate.data;
+   			 for (var i = 0; i < imgData.length; i++) {
+   			 	//灰度滤镜
+   			 	var r =  imgData[4*i+0] ;
+   			 	var g =   imgData[4*i+1] ;
+   			 	var b =   imgData[4*i+2];
+   			 	var grey = r*0.3+g*0.59+b*0.11;
+   			 	if (grey>255/2) {
+   			 		v=255;
+   			 	}else
+   			 	{
+   			 		v=0
+   			 	}
+   			 	imgData[4*i+0] = v;
+   			 	imgData[4*i+1] = v;
+   			 	imgData[4*i+2] = v;   			 	
+   			 }
+			 //向画布b中put1个上面得到的画布date
+			 contextb.putImageData(imageDate,0,0);//复制图像
+//		  	 contextb.putImageData(imageDate,0,0,0,0,canvasb.width,canvasb.height);
+		       	
+		   }
+		   function filter3(){
+		   	 //得到canvas的
+		   	 var imageDate = contexta.getImageData(0,0,canvasa.width,canvasa.height);
+   			 var imgData =  imageDate.data;
+   			 for (var i = 0; i < imgData.length; i++) {
+   			 	//灰度滤镜
+   			 	var r =  imgData[4*i+0] ;
+   			 	var g =   imgData[4*i+1] ;
+   			 	var b =   imgData[4*i+2];
+   			 	
+   			 	imgData[4*i+0] = 255-r;
+   			 	imgData[4*i+1] = 255-g;
+   			 	imgData[4*i+2] = 255-b;   			 	
+   			 }
+			 //向画布b中put1个上面得到的画布date
+			 contextb.putImageData(imageDate,0,0);//复制图像
+//		  	 contextb.putImageData(imageDate,0,0,0,0,canvasb.width,canvasb.height);		       	
+		   }
+		   //模糊滤镜
+		   function filter4(){
+		   	var tmpImageData = contexta.getImageData( 0 , 0 , canvasa.width , canvasa.height )
+            var tmpPixelData = tmpImageData.data
+
+            var imageData = contexta.getImageData( 0 , 0 , canvasa.width , canvasa.height )
+            var pixelData = imageData.data
+
+            var blurR = 4
+            var totalnum = (2*blurR + 1)*(2*blurR + 1)
+
+            for( var i = blurR ; i < canvasb.height - blurR ; i ++ )
+                for( var j = blurR ; j < canvasb.width - blurR ; j ++ ){
+
+                    var totalr = 0 , totalg = 0 , totalb = 0
+                    for( var dx = -blurR ; dx <= blurR ; dx ++ )
+                        for( var dy = -blurR ; dy <= blurR ; dy ++ ){
+
+                            var x = i + dx
+                            var y = j + dy
+
+                            var p = x*canvasb.width + y
+                            totalr += tmpPixelData[p*4+0]
+                            totalg += tmpPixelData[p*4+1]
+                            totalb += tmpPixelData[p*4+2]
+                        }
+
+                    var p = i*canvasb.width + j
+                    pixelData[p*4+0] = totalr / totalnum
+                    pixelData[p*4+1] = totalg / totalnum
+                    pixelData[p*4+2] = totalb / totalnum
+                }
+
+            contextb.putImageData( imageData , 0 , 0 , 0 , 0 , canvasb.width , canvasb.height )	       	
+		   }
+		   function filter5(){
+		   	   var tmpImageData = contexta.getImageData( 0 , 0 , canvasa.width , canvasa.height )
+            var tmpPixelData = tmpImageData.data
+
+            var imageData = contexta.getImageData( 0 , 0 , canvasa.width , canvasa.height )
+            var pixelData = imageData.data
+
+            var size = 16
+            var totalnum = size*size
+            for( var i = 0 ; i < canvasb.height ; i += size )
+                for( var j = 0 ; j < canvasb.width ; j += size ){
+
+                    var totalr = 0 , totalg = 0 , totalb = 0
+                    for( var dx = 0 ; dx < size ; dx ++ )
+                        for( var dy = 0 ; dy < size ; dy ++ ){
+
+                            var x = i + dx
+                            var y = j + dy
+
+                            var p = x*canvasb.width + y
+                            totalr += tmpPixelData[p*4+0]
+                            totalg += tmpPixelData[p*4+1]
+                            totalb += tmpPixelData[p*4+2]
+                        }
+
+                    var p = i*canvasb.width+j
+                    var resr = totalr / totalnum
+                    var resg = totalg / totalnum
+                    var resb = totalb / totalnum
+
+                    for( var dx = 0 ; dx < size ; dx ++ )
+                        for( var dy = 0 ; dy < size ; dy ++ ){
+
+                            var x = i + dx
+                            var y = j + dy
+
+                            var p = x*canvasb.width + y
+                            pixelData[p*4+0] = resr
+                            pixelData[p*4+1] = resg
+                            pixelData[p*4+2] = resb
+                        }
+            }
+
+            contextb.putImageData( imageData , 0 , 0 , 0 , 0 , canvasb.width, canvasb.height )
+		   }
+		}
+	</script>
+	</head>
+	
+	<body>
+		<canvas id="canvasa" width="600" height="300" style="border: 1px solid #ccc;"></canvas>
+		<canvas id="canvasb" width="600" height="300" style="border: 1px solid #ccc;"></canvas></br>
+		<button id="filter1"> filter1灰度</button>
+		<button id="filter2"> filter2黑白</button>
+		<button id="filter3"> filter2反色路径-->照片底片</button>
+		<button id="filter4"> filter4模糊滤镜</button>
+		<button id="filter5"> filter5马赛克滤镜</button>
+		
+	</body>
+	
+</html>

@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<style type="text/css">
+			*{margin: 0;padding: 0;}
+			#drap{width: 500px;height: 100px;position: relative;margin: 100px auto;overflow: hidden;}
+			#drap ul{position: absolute;left: 0;top:0;animation: 5s toLi infinite linear;width: 200%;}
+			#drap ul li{list-style: none;width: 100px;height: 100px;background: #000000;float: left;
+			font-size: 50px;color: #fff;line-height: 100px;text-align: center;}
+			
+			@-webkit-keyframes toLi{
+				0%{left: 0;}
+				100%{left: -500px;}
+			}
+			/*停止css3动画*/
+			#drap ul:hover{animation-play-state: paused;}
+		</style>
+	</head>
+	<body>
+	  <div id="drap">
+	  	<ul>
+	  		<li>1</li>
+	  		<li>2</li>
+	  		<li>3</li>
+	  		<li>4</li>
+	  		<li>5</li>
+	  		<li>1</li>
+	  		<li>2</li>
+	  		<li>3</li>
+	  		<li>4</li>
+	  		<li>5</li>
+	  	</ul>
+	  </div>
+	</body>
+</html>

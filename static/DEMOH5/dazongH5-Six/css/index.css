@@ -1,0 +1,304 @@
+html, body {
+        position: relative;
+        height: 100%;
+        overflow: hidden;
+    }
+    .swiper-container {
+        width: 100%;
+        height: 100%;
+    }
+    .swiper-slide {
+        text-align: center;
+        background: #fff;
+		width: 100%;
+		height: 100%;
+		overflow: hidden;
+        /*display: -webkit-box;
+        display: -ms-flexbox;
+        display: -webkit-flex;
+        display: flex;*/
+        /*-webkit-box-pack: center;
+        -ms-flex-pack: center;
+        -webkit-justify-content: center;
+        justify-content: center;
+        -webkit-box-align: center;
+        -ms-flex-align: center;
+        -webkit-align-items: center;
+        align-items: center;*/
+    }
+/*page1*/
+.page1{background: url(../img/page1-icon06.png) no-repeat;background-size: 100% 100%;position: relative;}
+.page1 >h4{width: 14.34375rem;height: 8.09375rem;background: url(../img/page1-icon07.png) no-repeat;background-size: 100% 100%;margin-top: 3.25rem;margin-left: 2.5rem;position: relative;}
+.page1 >h4 >i{display: block;width:2.32rem;height: 2.026rem;background: url(../img/page1-icon03.png) no-repeat;background-size: 100% 100%;position: absolute;top: 3.875rem;right: 3.875rem;}  
+/*.page1 >section{width: 15.46875rem;height: 15.3125rem;margin-top: 12.34375rem;}*/ 
+.page1 >.div-6{width: 15.46875rem;height: 15.3125rem;position: absolute;top: 12.04375rem;left: 2.5rem;background: url(../img/page1-icon02.png) no-repeat;background-size: 100% 100%;}
+
+.page1 >b{width: 1.8125rem;height: 1.625rem;position: absolute;left:9.125rem;bottom: 1rem;background: url(../img/page1-icon05.png) no-repeat;background-size: 100% 100%;}
+
+
+/*page2*/
+.page2{background: url(../img/page2-icon01.png)no-repeat;background-size: 100% 100%;position: relative;position: relative;}
+.page2 >.xingxing{width: 100%;height: 100%;position: absolute;top: 0;left: 0;transition: 2s;}
+.page2 >.xingxing li{background: url(../img/page2-icon08.png) no-repeat;width: 6.6875rem;height: 6.6875rem;background-size: 100% 100%;position: absolute;left:0;top: 0;}
+.page2 >.xingxing li:nth-of-type(1){width: 4rem;height: 4rem;}
+.page2 >.xingxing li:nth-of-type(2){width: 3rem;height: 3rem;}
+.page2 >.xingxing li:nth-of-type(3){width: 1.5rem;height: 1.5rem;}
+.page2 >.xingxing li:nth-of-type(4){width: 2rem;height: 2rem;}
+.page2 >.xingxing li:nth-of-type(5){width: 1.8rem;height: 1.8rem;}
+.page2 img{width: 13.71875rem;height: 15.34375rem;margin: auto;position: absolute;top: 9.46875rem; left: 4.1875rem;  opacity: 0;}
+.page2 >ol{width: 16.90625rem;height: 4.0625rem;position: absolute;top: 3.21875rem;left: 1.4375rem;display: none;}
+.page2 >ol >li:nth-of-type(1){width: 10.0625rem;height: 2.125rem;background: url(../img/page2-icon09.png) no-repeat;background-size: 100% 100%;}
+.page2 >ol >li:nth-of-type(2){width: 100%;height:1.96875rem;background: url(../img/page2-icon10.png) no-repeat;background-size: 100% 100%;}
+/*提示按钮*/
+.page2 >b ,.page3 b ,.page4 b,.page5 b{width: 1.8125rem;height: 1.625rem;position: absolute;left:9.125rem;bottom: 1rem;background: url(../img/page2-icon11.png) no-repeat;background-size: 100% 100%;}
+
+/*提示吹一吹*/
+.an-next{width: 9.15625rem;height: 3.1875rem;margin: 0 auto;margin-top: 6.75rem;display: none;transition: 1s 0.3s;}
+.an-next >h3{width: 9.15625rem;height: 1.90625rem;background: url(../img/page2-icon06.png) no-repeat;background-size: 100% 100%;}
+.an-next >p{width: 2.5625rem;height: 1.3125rem;background: url(../img/page2-icon07.png) no-repeat;background-size: 100% 100%;margin: 0 auto;animation: 3s 2s toWidth  infinite ;-webkit-animation: 3s 2s toWidth  infinite;}
+.opacity-d{opacity: 0;}
+.toHua{opacity: 1 !important;}
+.scale-d{transform: scale(0);}
+/*最后1个出来的星星*/
+.last-xingx{width: 6.6875rem;height: 6.6875rem;margin: auto;position: absolute;  top: 0; left: 0; bottom: 0; right: 0; background: url(../img/page2-icon08.png) no-repeat;background-size: 100% 100%;opacity: 0;}
+
+/*第三页*/
+
+.page3{width: 100%;height: 100%;position: relative;background: #000000;}
+.page3 .alert-page3{position: absolute;width: 100%;height: 100%;background: url(../img/page3_bg02.jpg) no-repeat;background-size: 100%;}
+.page3 .alert-page3 >span{display: block;width: 9rem;height: 1.5625rem;background:url(../img/page3-icon02.png) no-repeat;background-size: 100% 100%;margin: 0 auto;margin-top: 6.8125rem;}
+.page3 .alert-page3 >p{width: 1.71875rem;height: 2.40625rem;background:url(../img/page3-icon01.png) no-repeat;background-size: 100% 100%;margin: 0 auto;}
+
+.page3 .alert-page3 ul{width: 16.6875rem;height: 4.03125rem;position: absolute;top: 3.1875rem;left: 1.5625rem;}
+.page3 .alert-page3 ul li:nth-of-type(1){width: 100%;height: 2.09375rem;background: url(../img/page3-icon04.png) no-repeat;background-size: 100% 100%;display: none;}
+.page3 .alert-page3 ul li:nth-of-type(2){width: 100%;height: 2.09375rem;background: url(../img/page3-icon05.png) no-repeat;background-size: 100% 100%;display: none;}
+.page3 .box-line{width: 4.75rem;height: 5.03125rem;position: absolute;top: 8.71875rem;left: 8.15625rem;background: url(../img/page3-icon03.png) no-repeat;background-size: 100% 100%;display: none;}
+
+/*第四页*/
+.page4{width: 100%;height: 100%;position: relative;background: #030203;}
+.page4 .page4-an{position: absolute;width: 100%;height: 100%;background: url(../img/page4-icon03.png) no-repeat;background-size: 100% 100%;}
+.page4 .page4-an >span{width: 10.09375rem;height: 1.5625rem;background: url(../img/page4-icon01.png) no-repeat;background-size: 100% 100%;display: block;margin: 0 auto;margin-top: 14.65625rem;}
+.page4 .page4-an >p{width: 2.375rem;height:2.0625rem;background: url(../img/page4-icon02.png) no-repeat;background-size: 100% 100%;margin: 0 auto;}
+
+ .page4 .page4_box{width: 100%;height: 100%;position: absolute;top: 0;left: 0;background: url(../img/page4_bg05.jpg) no-repeat;background-size: 100%;display: none;}
+ .page4 .page4_box ol{width: 16.71875rem;height: 4.0625rem;position: absolute;top: 3.15625rem;left: 1.5625rem;}
+ .page4 .page4_box ol li:nth-of-type(1){width: 100%;height: 2.125rem;background: url(../img/page4-icon06.png) no-repeat;background-size: 100% 100%;}
+ .page4 .page4_box ol li:nth-of-type(2){width: 100%;height: 1.96875rem;background: url(../img/page4-icon07.png) no-repeat;background-size: 100% 100%;}
+/*白色线*/
+.line-f{width: 11.875rem;height: 10.8125rem;background: url(../img/page4-icon08.png) no-repeat;background-size: 100% 100%;position: absolute;top: 9.28125rem;left: 4.8125rem;}
+
+/*第五页*/
+.page5{width: 100%;height: 100%;position: relative;}
+.page5 .page5-box{position: absolute;width: 100%;height: 100%;background: url(../img/page5-icon03.png) no-repeat;background-size: 100% 100%;}
+.page5 .page5-box >span{display: block;width: 6.65625rem;height: 1.5625rem;background: url(../img/page5-icon06.png) no-repeat;background-size: 100% 100%;margin: 0 auto;margin-top: 6.8125rem;}
+.page5 .page5-box >p{width: 2.1875rem;height: 2.125rem;background: url(../img/page5-icon07.png) no-repeat;background-size: 100% 100%;margin: 0 auto;}
+.page5 .page5-box >section{width: 10.78125rem;height: 10.6875rem;margin-left: 3.875rem;margin-top: 0.3rem;position: relative;}
+.page5 .page5-box >section .mifeng{width: 6.3125rem;height: 7.28125rem;background: url(../img/page5-icon04.png) no-repeat;background-size: 100% 100%;position: absolute;top: 3.40625rem;left: 3.03125rem;}
+.page5 .page5-box >section .right-cb{width: 3.90625rem;height: 4.34375rem;background: url(../img/page5-icon02.png) no-repeat;background-size: 100% 100%;position: absolute;top: 0.2rem;right: 0.5rem;transform-origin:left bottom ;}
+.page5 .page5-box >section .left-cb{width: 2.625rem;height: 3.40625rem;background: url(../img/page5-icon01.png) no-repeat;background-size: 100% 100%;position: absolute;top: 1.3875rem;left: 1.03125rem;transform-origin:right bottom;}
+/*隐藏的大蜜蜂*/
+.page5 .max-mifeng{width: 14.9375rem;height: 19.5rem;position: absolute;top: 9.28125rem;left: 1.9375rem;display: none;transform-origin: bottom;}
+.page5 .max-box-mf{width: 9.5625rem;height: 15.78125rem;position: absolute;top: 3.75rem;left: 2.875rem;background: url(../img/page5-icon08.png) no-repeat;background-size: 100% 100%;}
+.page5 .max-mifeng strong:nth-of-type(1){display: block;width: 6.84375rem;height: 5.34375rem;position: absolute;top: 0.3125rem;right: 0rem;background: url(../img/page5-icon02.png) no-repeat;background-size: 100% 100%;transform-origin:left bottom ;}
+.page5 .max-mifeng strong:nth-of-type(2){display: block;width: 4.09375rem;height:3.71875rem;position: absolute;top: 1.90625rem;left:0.1875rem;background: url(../img/page5-icon01.png) no-repeat;background-size: 100% 100%;transform-origin:right bottom;}
+
+/*文案*/
+.box-text{width: 16.75rem;height: 4.09375rem;position: absolute;top: 3.15625rem;left: 1.5rem;}
+.box-text li:nth-of-type(1){width: 100%;height:2.21875rem;background: url(../img/page5-icon09.png) no-repeat;background-size: 100% 100%;transform-origin:right bottom;display: none;}
+.box-text li:nth-of-type(2){width: 100%;height:1.90625rem;background: url(../img/page5-icon10.png) no-repeat;background-size: 100% 100%;transform-origin:right bottom;display: none;}
+
+/*page6*/
+.page6{width: 100%;height: 100%;position: relative;}
+.div-page6{width: 100%;height: 100%;background: url(../img/page6-icon01.png) no-repeat;background-size: 100% 100%;overflow: hidden;transition: 1s all;}
+.div-page6 span{display: block;width: 8.9375rem;height: 1.59375rem;margin: 0 auto;margin-top: 6.84375rem;background: url(../img/page6-icon02.png) no-repeat;background-size: 100% 100%;}
+.div-page6 p{width: 1.625rem;height: 2.34375rem;margin: 0 auto;background: url(../img/page6-icon03.png) no-repeat;background-size: 100% 100%;}
+.div-page6 >ol{width: 16.71875rem;height: 3.90625rem;position: absolute;top: 3.34375rem;height: 2.34375rem;left: 1.75rem;}
+.div-page6 >ol >li:nth-of-type(1){height: 2.3125rem;width: 100%;background: url(../img/page6-icon04.png) no-repeat;background-size: 100% 100%;display: none;}
+.div-page6 >ol >li:nth-of-type(2){height: 2.3125rem;width: 100%;background: url(../img/page6-icon06.png) no-repeat;background-size: 100% 100%;display: none;}
+
+/*六根琴弦*/
+.ul-qx{top:13.46875rem;height: 18.1875rem;width: 19.625rem;position: absolute;/*left: 2.04375rem;*/}
+.ul-qx li{position: absolute;top: 0;left: 0;color: #fff;}
+.ul-qx li a{position: absolute;top: 0;left: 0;color: #fff;display: block;width: 100%;height: 100%;}
+.ul-qx li:nth-of-type(1){width: 1.875rem;height: 18.1875rem;transform: skew(32deg);left:4.6rem;}
+.ul-qx li:nth-of-type(2){width: 1.875rem;height: 18.1875rem;transform: skew(34deg);left:7.8rem;}
+
+.ul-qx li:nth-of-type(3){width: 1.675rem;height: 18.1875rem;transform: skew(38deg);left:10.6rem;}
+.ul-qx li:nth-of-type(4){width: 1.875rem;height: 18.1875rem;transform: skew(40deg);left:13.7rem;}
+.ul-qx li:nth-of-type(5){width: 1.875rem;height: 12.53125rem;transform: skew(42deg);left:14.6rem;}
+.ul-qx li:nth-of-type(6){width: 1.875rem;height: 12.53125rem;transform: skew(44deg);left:17.5rem;}
+
+/*page1  class*/
+body .page1 .tabImg{animation: 1s tabImg  ease-in-out infinite alternate;-webkit-animation: 1s tabImg  ease-in-out infinite alternate;}
+ .to-top{animation: 1s to-top  ease-in-out infinite alternate;-webkit-animation: 1s to-top  ease-in-out infinite alternate;}
+ .to-button{animation: 1s to-button  ease-in-out infinite alternate;-webkit-animation: 1s to-button  ease-in-out infinite alternate;}
+
+/*page2 class*/
+.xingx1{animation: 8s xingx1  ease-in-out infinite ;-webkit-animation: 8s xingx1  ease-in-out infinite ;}
+.xingx2{animation: 6s 0.3s xingx2  ease-in-out infinite ;-webkit-animation: 6s 0.3s xingx2  ease-in-out infinite ;}
+.xingx3{animation: 5s xingx3  ease-in-out infinite ;-webkit-animation:5s xingx3  ease-in-out infinite ;}
+.xingx4{animation: 7s xingx4 ease-in-out infinite ;-webkit-animation: 7s xingx4  ease-in-out infinite ;}
+.xingx5{animation: 9s xingx5 ease-in-out infinite ;-webkit-animation: 9s xingx5  ease-in-out infinite ;}
+.toHua{animation: 2s toHua ease-in-out  ;-webkit-animation: 2s toHua  ease-in-out  ;}
+.MaxHua{animation: 3s 1.5s MaxHua;-webkit-animation: 3s 1.5s MaxHua;}
+.tetxLeft{animation: 2s tetxLeft;-webkit-animation: 2s tetxLeft;}
+.tetxRight{animation: 2s tetxRight;-webkit-animation: 2s tetxRight;}
+
+/*page3 Class*/
+.page3scale{animation: 2s page3scale;-webkit-animation: 2s page3scale;}
+.page3_bg{animation: 3s 1s page3_bg  2 alternate;-webkit-animation: 3s 1s page3_bg 2   alternate;}
+
+/*page4 Class*/
+.page4-bg{animation: 1s  page4-bg 4 alternate;-webkit-animation: 1s  page4-bg 4 alternate;}
+.line-sw{animation: 2s  line-sw;-webkit-animation: 2s  line-sw ;}
+
+/*page5 Class*/
+.page5-an{animation: 1s  page5-an infinite alternate;-webkit-animation: 1s  page5-an infinite alternate;}
+.page-leftcb{animation: 0.3s  page-leftcb infinite alternate;-webkit-animation: 0.3s  page-leftcb infinite alternate;}
+.page-rightcb{animation: 0.4s  page-rightcb infinite alternate;-webkit-animation: 0.4s  page-rightcb infinite alternate;}
+.page-c{animation: 0.2s  page-c infinite alternate;-webkit-animation: 0.2s  page-c infinite alternate;}
+
+.page-leftcb2{animation: 0.3s  page-leftcb infinite ;-webkit-animation: 0.3s  page-leftcb infinite ;}
+.page-rightcb2{animation: 0.4s 0.3s page-rightcb infinite alternate;-webkit-animation: 0.4s 0.4s page-rightcb infinite alternate;}
+
+.page-c2{animation: 0.2s  page-c infinite alternate;-webkit-animation: 0.2s  page-c infinite alternate;}
+/*昆虫点击放大*/
+
+.max-kc{animation: 2s  max-kc;-webkit-animation: 2s  max-kc ;}
+
+/*page6 Class*/
+.active-bg{background: url(../img/page6-icon07.png) no-repeat !important;background-size: 100% !important;}
+
+
+/*page1动画*/
+@-webkit-keyframes tabImg{
+	0%{background: url(../img/page1-icon01.png) no-repeat;background-size: 100% 100%;}
+	100%{background: url(../img/page1-icon02.png) no-repeat;background-size: 100% 100%;}
+}
+/*下滑提示动画*/
+@-webkit-keyframes to-top{
+	0%{transform: translateY(0px);opacity: 0.5;}
+	100%{transform: translateY(10px);opacity: 1;}
+}
+/*上滑提示动画*/
+@-webkit-keyframes to-button{
+	0%{transform: translateY(10px);opacity: 0.5;}
+	100%{transform: translateY(0px);opacity: 1;}
+}
+
+/*page2 动画*/
+/*星星背景动画*/
+@-webkit-keyframes xingx1{
+	0%{transform: rotate(30deg);transform: translateY(-101%);}
+	100%{transform: translateY(35.25rem) translateX(200%);}
+}
+@-webkit-keyframes xingx2{
+	0%{transform: translateY(-101%);}
+	100%{transform: translateY(15.25rem) translateX(22rem);}
+}
+@-webkit-keyframes xingx3{
+	0%{transform: translateY(-101%) translateX(5rem);}
+	100%{transform: translateY(17.25rem) translateX(22rem);}
+}
+
+@-webkit-keyframes xingx4{
+	0%{transform: translateY(-101%) translateX(10rem);}
+	100%{transform: translateY(30.25rem) translateX(22rem);}
+}
+@-webkit-keyframes xingx5{
+	0%{transform: translateY(-101%) translateX(-5rem);}
+	100%{transform: translateY(27.25rem) translateX(22rem);}
+}
+/*吹一吹*/
+@-webkit-keyframes toWidth{
+	from{width: 0%;}
+	to{width: 2.5625rem;}
+}
+
+/*中间显示花*/
+@-webkit-keyframes toHua{
+	0%{opacity: 0;}
+	50%{opacity: 1;}
+	100%{opacity: 0;}
+}
+@-webkit-keyframes MaxHua{
+	0%{transform: scale(0.2);opacity: 1;}
+	100%{transform: scale(1);opacity: 1;}
+}
+/*page2文案交叉显示*/
+@-webkit-keyframes tetxLeft{
+	from{transform: translateX(-150%);}
+	to{transform: translateX(0);}
+}
+@-webkit-keyframes tetxRight{
+	from{transform: translateX(150%);}
+	to{transform: translateX(0);}
+}
+/*page3动画*/
+@-webkit-keyframes page3scale{
+	from{transform: scale(0);}
+	to{transform: scale(1);}
+}
+/*切换背景*/
+@-webkit-keyframes page3_bg{
+	0%{background: url(../img/page3_bg04.jpg) no-repeat;background-size: 100% 100%;}
+	100%{background: url(../img/page3_bg02.jpg) no-repeat;background-size: 100% 100%;}
+	/*100%{background: url(../img/page3_bg03.jpg) no-repeat;background-size: 100% 100%;}*/
+}
+
+/*第四屏切换背景*/
+@-webkit-keyframes page4-bg{
+	from{background: url(../img/page4-icon03.png) no-repeat;background-size: 100% 100%;opacity:1;}
+	to{background: url(../img/page4-icon04.png) no-repeat;background-size: 100% 100%;opacity: 1;}
+}
+/*白线条划过*/
+@-webkit-keyframes line-sw{
+	from{transform: translateX(-200%);}
+	to{transform: translateX(0);}
+}
+/*page5动画*/
+@-webkit-keyframes page5-an{
+	from{transform: rotate(-15deg);}
+	to{transform: rotate(15deg);}
+}
+/*蜜蜂翅膀右边*/
+@-webkit-keyframes page-leftcb{
+	0%{transform:rotate(-20deg);}
+	100%{transform:rotate(5deg);}
+}
+/*蜜蜂翅膀左边*/
+@-webkit-keyframes page-rightcb{
+	0%{transform:rotate(-50deg);}
+	100%{transform:rotate(10deg);}
+}
+/*蜜蜂翅膀右边*/
+@-webkit-keyframes page-leftcb2{
+	0%{transform:rotate(-20deg);}
+	100%{transform:rotate(5deg);}
+}
+/*蜜蜂翅膀左边*/
+@-webkit-keyframes page-rightcb2{
+	0%{transform:rotate(-150deg);}
+	100%{transform:rotate(-10deg);}
+}
+/*昆虫主体动*/
+@-webkit-keyframes page-c{
+	from{transform: translateY(-1px);}
+	to{transform: translateY(1px);}
+}
+/*昆虫主体动*/
+@-webkit-keyframes page-c2{
+	from{transform: translateY(-2px);}
+	to{transform: translateY(2px);}
+}
+/*大昆虫放大*/
+@-webkit-keyframes max-kc{
+	from{transform: scale(0);}
+	to{transform: scale(1);}
+}
+
+
+
+
+
+.on{display: block !important;}

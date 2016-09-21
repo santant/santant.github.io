@@ -1,0 +1,315 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<link rel="shortcut icon" href="../../imges/ico.ico" type="images/x-icon" />
+		<meta name="viewport" content="width=device-width,initial-scale=1,minimum-scale=1,maximum-scale=1,user-scalable=no" />
+		<link rel="stylesheet" type="text/css" href="../../css/public.css"/>
+		<link rel="stylesheet" type="text/css" href="../../css/index.css"/>
+		<script src="../../js/jquery-1.8.2.min.js" type="text/javascript" charset="utf-8"></script>
+		<script src="../../js/index.js" type="text/javascript" charset="utf-8"></script>
+		<meta charset="UTF-8">
+		<title>git</title>
+		<script type="text/javascript" src="../../js/pre/scripts/shCore.js"></script>
+		<script type="text/javascript" src="../../js/pre/scripts/shBrushBash.js"></script>
+		<script type="text/javascript" src="../../js/pre/scripts/shBrushCss.js"></script>
+		<script type="text/javascript" src="../../js/pre/scripts/shBrushCSharp.js"></script>
+		<script type="text/javascript" src="../../js/pre/scripts/shBrushJScript.js"></script>
+		<script type="text/javascript" src="../../js/pre/scripts/shBrushPhp.js"></script>
+		<script type="text/javascript" src="../../js/pre/scripts/shBrushPlain.js"></script>
+		<script type="text/javascript" src="../../js/pre/scripts/shBrushPython.js"></script>
+		<script type="text/javascript" src="../../js/pre/scripts/shBrushJava.js"></script>
+		<script type="text/javascript" src="../../js/pre/scripts/shBrushScala.js"></script>
+		<script type="text/javascript" src="../../js/pre/scripts/shBrushSql.js"></script>
+		<script type="text/javascript" src="../../js/pre/scripts/shBrushXml.js"></script>
+		<script type="text/javascript" src="../../js/pre/scripts/shBrushPerl.js"></script>
+		<link type="text/css" rel="stylesheet" href="../../js/pre/styles/shCore.css" />
+		<link type="text/css" rel="stylesheet" href="../../js/pre/styles/shThemeDefault.css" />
+		<script type="text/javascript">
+			SyntaxHighlighter.defaults['toolbar'] = false;  //去掉右上角问号图标
+			SyntaxHighlighter.config.tagName = 'pre';       //可以更改解析的默认Tag。
+			SyntaxHighlighter.config.bloggerMode = true; 
+			SyntaxHighlighter.config.stripBrs = true;  
+			SyntaxHighlighter.all();
+	   </script>
+		<style type="text/css">
+			
+		</style>
+	</head>
+	<body>
+	  <div class="hander"> 
+	  	<ul>
+	  		<li class="" nav-title="all"><a href="../../index.html">首页</a></li>
+			<li nav-title="css" class=""> <a href="../canvas/demo1.html">Html5画布入门篇</a></li>
+			<li nav-title="css" class=""><a href="../canvas/demo3.html">Html5画布提升篇</a></li>
+			<li><a href="../CSS/css3.html">CSS3</a></li>			
+			<li><a href="../../static/control/control.html">自己写的demo</a></li>			
+			<li nav-title="rem工具换算"><a href="../../static/rem1/rem.html">rem</a></li>			
+	  		<li><a href="../title/demo2.html">收藏的网站</a></li>
+	  		<li ><a href="../tool/tool.html">工具箱</a></li>
+	  		<li class=""><a href="../javascript/Event.html">javascriptEvent</a></li>
+	  		<li class=""><a href="../javascript/jsDom.html">javascriptDOM</a></li>
+	  		<li class=""><a href="../javascript/object.html">javascriptObj</a></li>	  		
+	  		<li  ><a href="../zhengze/zhengze.html">js正则表达式</a></li>
+	  		<li class=""><a href="../javascript/JSFcnction.html">javascript函数</a></li>
+	  		<li class=""><a href="../HTML5/H5_1.html">HTML5</a></li>
+	  		<li><a href="../angualar/angualar.html">angualarJS</a></li>
+	  		<li class=""><a href="../jquery-css3/jq-css3.html">Jquery操作css3的拼接方式</a></li>	 
+	  		<li class="active"><a href="../less/less.html">less</a></li>
+	  		<li class="active"><a href="git.html">git</a></li>
+	  	</ul>
+	  </div>	
+	  <!--git-->
+	  <div class="main">
+	  	 <h3>git入门详解 </h3>	  	 
+	  	 <div class="div_daima">
+	  	 	<h4>git 常用命令</h4>
+	  	 	<pre class="brush: js;">		
+	  	 		//从git上面吧东西下载到本地  －>git clone 地址
+	  	 		git clone https://github.com/santant/draps.git
+	  	 		
+	  	 		//设置贡献者的名称和邮箱 git config --global user.name xxx
+	  	 		git config --global user.name 'pengjin0'
+	  	 		git config --global user.email "827879040@qq.com"
+	  	 		
+	  	 		//查看邮箱等（查询1个） git config --global xx
+	  	 		git config --global user.name
+	  	 		//查看git下面所有的配置 git config --global --list
+	  	 		git config --global --list	  	 			  	 		
+	  	 	</pre>
+			<h4>三个区，工作区，缓存区（暂存区），版本区</h4>
+			<pre class="brush: js;">
+				//查看当前区域的状态(有文件会出现状态文件)，修改之后的文件也会被显示
+				git status
+				
+				On branch master //解释：在master分支里面
+				Your branch is up-to-date with 'origin/master'.//解释:没任何提交，工作区很干净
+				
+				//分支有2个文件，但是还未进行版本管理
+				Untracked files:
+				(use "git add file..." to include in what will be committed)
+				
+					demo1.html
+					drap.js
+				
+				nothing added to commit but untracked files present (use "git add" to track)//但是还未进行版本管理
+				
+				//吧东西添加进缓存区 //git add xx(文件名)
+				git add demo1.html
+				// 如果是git add . 那么就是把东西全部提交到暂存区
+				
+				//如果想让缓存区的东西撤销回到工作区 //git reset HEAD xxx(回到工作区的文件名)
+				git reset HEAD demo1.html
+				
+				
+				//提交到版本区  －－－－> //这里会遇到注释保存的问题 mac中按住esc 就是可以不再编辑 ，在加上：wq就说保存并退出 ：w保存，：q退出				
+				git commit
+				//也可以 git commit -m 后面直接跟注释
+				git commit -m "这是我的注释"
+				
+				//直接从工作区到版本区，----->commit提交  －－－>-a就是简写的add添加到暂存区 －－－> -m注释 
+				git commit －a －m "注释xx"
+				
+				//查看提交的历史
+				git log
+			</pre>
+			<h4 >对比，撤销</h4>
+			<pre class="brush: js;">
+				//对比，从工作区到暂存区
+				 git diff
+				 
+				//对比，从暂存区到版本区 
+				git diff --cached   方法2:功能相同 git diff --staged
+				
+				//对比，工作区到版本区 （这里的master就是你想对比分支的名字）
+				git diff master
+				
+				//撤销，从缓存区回到工作区 -->git reset HEAD xx(文件名)
+				git reset HEAD demo1.html
+				
+				//撤销，从工作区中的修改，撤销返回回暂存，当前的状态
+				git commit －－amend
+			
+				//撤销，撤销一条命令，和其他文件一起提交
+				git commit －－amend
+			</pre>
+			<h4>git 删除和恢复</h4>
+			<pre  class="brush: js;">
+			//删除，删除暂存区里面的文件 //git rm xx（名字） 注意：这方法在工作区文件还存在的时候是无效的
+			git rm demo1.js
+			
+			//删除，删除缓存区里面的文件，也给工作区里面的文件一起删除
+			git rm －f demo1.js
+			
+			//删除，删除缓存区里面的文件，而工作区保留 －－> git rm --cached xx(名称)
+			git rm --cached test.html
+			
+			//恢复(文件恢复)， git checkout （commitId）版本id 恢复文件名字
+			git checkout c2d711d99326412ebd7756fa329a0f66dee3de26 drap.js 
+			
+			//恢复(恢复特定的版本－>根据commitId定位)  git reset --hard (commitId)版本id，恢复版本
+			git reset --hard c2d711d99326412ebd7756fa329a0f66dee3de26
+			
+			//恢复（上一个版本）  git reset --hard HEAD^ 回到上一个版本 
+			git reset --hard HEAD^
+			
+			//恢复好几个版本(^是上一个，～x跟多少是回退多少个版本) ～是上波浪号
+			git reset --haed HEAD~2
+			
+			//回到现在（恢复到现在的版本） 
+			通过 git reflog 
+			648a0f8 HEAD@{0}: reset: moving to HEAD^
+			9471f15 HEAD@{1}: reset: moving to HEAD^
+			ae905e8 HEAD@{2}: reset: moving to ae905e8ec8f44a97a76ceb33afb93e6e5739a548
+			9471f15 HEAD@{3}: reset: moving to 9471f15f9feb5b5b5e7e7e9d6cac3b8380d36ea5
+			ae905e8 HEAD@{4}: commit (amend): zaici注销
+			e311d12 HEAD@{5}: commit: disan
+			9471f15 HEAD@{6}: commit: lsat
+			
+			//git reflog 打印出你最近操作的命令的版本，可以得到最前面的操作号id
+			git reflog
+			//拿到操作号id之后  git reset --hard xx(操作号id)
+			git reset --hard 9471f15
+			</pre>
+			<h4>同步到远程仓库</h4>
+			<pre class="brush: js;">
+			//查看远程仓库的名字 
+			git remote
+			
+			//查看远程仓库提交的地址 git remote -v
+			origin	https://github.com/santant/draps.git (fetch)
+			origin	https://github.com/santant/draps.git (push)
+			
+			//提交到github －－> git push origin(远程仓库的名字) master(分支的名字)   
+			git push origin master
+			Username for 'https://github.com': santant //输入github账号
+			Password for 'https://santant@github.com': //输入github密码			
+			</pre>
+			<h4>添加协作人员开发</h4>
+			<pre class="brush:js">
+			//1.在github 头像点击＋号 有个New collaborator(一定要注意：必须在工程的项目仓库链接里面，首页没有)，添加其他开发人员的github账号(必须是认识的能开发工作的)
+			//2.添加到里面的开发者账号，打开绑定时候邮箱账户选择同意，他账号的仓库就会多1个你分享给他的代码仓库
+			//3.然后在git clone xx ，下载地址就行了，第二个，第三人等就可以同时协作了
+			</pre>
+			<h4>多人协作，防止冲突<code>更新代码</code></h4>
+			<pre class="brush:js">
+			//多人协作的时候，如果没同步更新的话就会常常报此错误	
+			! [rejected]        master -> master (fetch first) //冲突
+			error: failed to push some refs to 'https://github.com/santant/draps.git'		
+				
+			//从服务器更新代码（同步更新代码）
+			git fetch //从远端拉取过来，自己需要手动合并
+				git diff master origin/master //手动合拼之后的区别对比
+				git merge origin/master  //把区别同步到自己本地（红的字是原创仓库的，正常字是本地的）
+			git pull  //从远端拉取过来，自动合并
+			
+			</pre>
+			<h4>开源项目协作</h4>
+			<pre class="brush:js">
+			 //1.点击github上的fork按钮 把你想参与开源项目镜像（复制）到你自己的仓库
+			 //2.下载下来，修改，上传，同步到自己仓库
+			 //3.点击github上面的new Pull request  按钮
+			 //4.然后点击 create pull request 发送给开源项目有权限的用户，等待用户处理
+			 
+			 //-------------------------------
+			 //也可以直接在github上面直接修改
+			 
+			</pre>
+			<h4>git分支问题和概念 <code>//分支概念：如在master里面10版本的时候分支出new2版本，在版本2修改了demo1文件，提交之后，在切换到master分支，他下面的demo1文件还是以前的版本内容是没变化的</code></h4>
+			<pre class="brush:js">
+			//查看当前分支
+			git branch
+			
+			//创建1个分支 git branch xx(创建的分支名)
+			git branch new1
+			
+			//切换到当指定分支 git checkout xx(切换的分支名)
+			git checkout new1
+			
+			//创建分支直接切断到创建的某个分支 git checkout -b xx(创建的分支名)
+			git checkout -b new2
+			//分支概念：如在master里面10版本的时候分支出new2版本，在版本2修改了demo1文件，提交之后，在切换到master分支，他下面的demo1文件还是以前的版本是没变化的
+			
+			//合拼分支（在master分支下）,合拼之后master就具有new2修改之后的内容了  git merge new2（分支名）
+			git merge new2
+			
+			//查看当前分支下面合拼的分支（一般是在master分支下）
+			git branch --merged    //有合并的分支才可以--merged查看
+			git branch --no-merged //没合拼的分支可以用 -no-merged查看
+			
+			//删除某个分支（只能删除被合拼过的分支） git branch -d new2 //-d(删除) new2(分支的名字)
+			git branch -d new2
+			
+			//删除某个分支（没有合拼的分支也会被删除），大写的D
+			git branch -D new2			
+			</pre>
+			<h4>解决有冲突的分支</h4>
+			<pre class="brush:js">
+			  //如果2个分支都做上传操作的时候，在合拼的话就会出现冲突
+			  CONFLICT (content): Merge conflict in drap.js
+			  Automatic merge failed; fix conflicts and then commit the result.
+			  
+			  //1.在这种情况的时候可以利用git status查看冲突的文件 
+			  //2.手动解决冲突，删除不想要的
+			  //3.再次提交到版本库，就解决掉冲突了
+			</pre>	
+			<h4>创建分支，同步到github上</h4>
+			<pre class="brush:js">
+			//吧new1这个分支提交到github上，提交到了之后到branches就会+1，如果开始只有master一个分支就是1，那么现在就是2了
+			git push origin new1   //这里的分支是new1就是new1 默认是master主分支，origin是系统默认的github仓库名称，执行这句话就是在github上创建了分支，保存了你上次的东西
+			
+			//github上直接创建分支，直接点Branch：master（分支名），直接在输入框输出名称即可，如果要选择其他分支上建立分支，要先选择切换到其他分支在建立
+			//点击github上的branches 里面可以删除和恢复分支			
+			</pre>
+			<h4>github上打标签（版本号）<code>版本号可以给项目保存，不会受到其他影响</code></h4>
+			<pre class="brush:js">
+			//查看所有的历史标签，如没有为空
+			git tag
+			
+			//给github添加1个版本//git tag xx(版本号)
+			git tag v1.0
+			
+			//同步标签（版本信息）到github  //git push origin v1.0(版本号)
+			git push origin v1.0			
+			</pre>
+			<h4>创建github组织和博客<code><a href="https://pages.github.com/">创建自己的博客-github自己介绍</a></code> <code><a href="https://santant.github.io">自己建立成功的博客网站</a></code></h4>
+			<pre class="brush:js">
+			 //github +号上面 
+			 	  //new repository   //创建1个仓库
+			 	  //new organization //创建1个组织
+			 	  
+			 //创建自己的博客
+			 https://pages.github.com/ //官方教程
+			 
+			 //最简单的github博客建立方式
+			 1：点击 github +号上面 ->new repository   //创建1个仓库
+			 2: 注意Repository name 那一栏要和你的用户名相同 比如我的用户名为santant 那么Repository name那栏必须填写santant
+			 3：Description (optional) 这里面写点注释即可
+			 4：点击create repository创建博客成功
+			 5：打开你的博客网站 https://santant.github.io  //1个博客建立成功			 
+			</pre>
+			<h4>学习资料<code><a href="http://git.oschina.net/progit/">中文版git资料</a></code><code><a href="http://www.liaoxuefeng.com/wiki/0013739516305929606dd18361248578c67b8067c8c017b000">廖雪峰git</a></code></h4>
+			<pre class="brush:js">
+				//中文版git资料 http://git.oschina.net/progit/
+				//廖雪峰git http://www.liaoxuefeng.com/wiki/0013739516305929606dd18361248578c67b8067c8c017b000
+			</pre>
+			
+	  	 </div>	 	
+	  </div>
+	  
+	   <!--返回顶部-->
+	  <div id="div-Top">
+		  	<dl>
+		  		<dd>
+		  			<img src="../../img/weixin-icon02.png"/></li>
+		  		</dd>
+		  		<dt class="weixin">
+		  			<div></div>
+		  		</dt>
+		  		<dt class="to_top">
+		  			<div></div>
+		  		</dt>
+		  		
+		  	</dl>
+	  </div>
+	</body>
+</html>

@@ -1,0 +1,46 @@
+body{background: #dbcfbb;}
+.margin-h4{margin-top: 5.125rem;}
+.title-h4 {font-size: 1.5rem;color: #65625e;line-height: 2rem;height: 2rem;font-family: arial;text-align: center;animation: 1s right1;}
+.title-h5 {color:#65625e;line-height: 1.4375rem;font-size: 0.9375rem;font-family: arial;text-align: center;animation: 1s left1;}
+.title-line{width: 6.25rem;height: 1px;display: block;background: #65625e;margin: 0 auto;text-align: center;}
+
+.friend-list{width: 100%;}
+.friend-list li{width: 100%;transition: 1s;}
+.friend-list li p{width: 18.75rem;margin: 0 auto;min-height: 2.5rem;font-size: 0.75rem;border-bottom: 1px solid #7f786c;line-height: 2.5rem;}
+.friend-list li p b{display: inline-block;width: 1.625rem;vertical-align: top;font-family: arial;}
+.friend-list li p span{width: 16.875rem;vertical-align: top;display: inline-block;overflow: hidden;white-space: nowrap;
+	text-overflow: ellipsis;}
+	
+.page{clear: both;min-width: 6.03125rem;height: 0.9375rem;margin-left: 0.625rem;margin-top: 1.15625rem;margin-bottom: 1.40625rem;}
+.page li{float: left;}
+.page li:nth-of-type(1){width: 1.21875rem;height: 0.625rem;background: url(../img/icon16.png) no-repeat;background-size: 100% 100%;}
+.page li:nth-of-type(2){font-size: 0.75rem;font-family: arial;margin-left: 0.65625rem;}
+.page li:nth-of-type(3){font-size: 0.75rem;font-family: arial;padding: 0 0.5rem;}
+.page li:nth-of-type(4){font-size: 0.75rem;font-family: arial;margin-right: 0.65625rem;}
+.page li:nth-of-type(5){width: 1.21875rem;height: 0.625rem;background: url(../img/icon17.png) no-repeat;background-size: 100% 100%;}
+
+/*.friend-list li p:active{background: #ccc;}*/
+
+/*学友说详情*/
+.dl-friend{width: 18.75rem;margin: 0 auto;}
+.dl-friend dt{height: 2.4375rem;line-height: 2.4375rem;font-size: 1.125rem;color: #5f5a51;font-family: "微软雅黑";border-bottom: 1px solid #7f786c;}
+.dl-friend dt:nth-of-type(2){font-size: 1.125rem;line-height: 1.99375rem;}
+.dl-friend dd{padding:0.4375rem 0;}
+.dl-friend dd p{font-size: 0.5625rem;line-height: 0.84375rem;margin-bottom: 0.84375rem;}
+.dl-friend dd img{height: 9rem;width: 100%;}
+
+.to_top{height: 5.34375rem;width: 100%;background: #dbcfbb;overflow: hidden;}
+.to_top a{display: block;width: 3.4375rem;height: 2.09375rem;margin: 0 auto;margin-top: 1.625rem;background: url(../img/icon05.png) no-repeat;background-size: 100% 100%;}
+
+@-webkit-keyframes right1{
+	0%{transform:translateX(10rem) ;}
+	100%{transform:translateX(0rem) ;}
+}
+@-webkit-keyframes left1{
+	0%{transform:translateX(-10rem) ;}
+	100%{transform:translateX(0rem) ;}
+}
+@-webkit-keyframes top2{
+	0%{transform:translateY(10rem) ;}
+	100%{transform:translateX(0rem) ;}
+}

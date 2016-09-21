@@ -1,0 +1,171 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<style type="text/css">
+			*{margin: 0;padding: 0;}
+			#container{border: 1px solid red;margin: 50px auto 0;position: relative;}
+			#loader { width: 100%; height: 60px; background: url(img/loader.gif) no-repeat center #FFF; position: fixed; bottom: 0; left: 0; }
+			#container img { position: absolute; }
+		</style>
+		<script src="js/jquery-1.9.1.min.js" type="text/javascript" charset="utf-8"></script>
+		<script type="text/javascript">
+			$(function(){
+				//计算列
+				var oContainer = $("#container");//图片的盒子
+				var oLoading = $("#loader");//等待图片
+				var iWidth = 200;//列宽
+				var iSpace = 10; //间隔宽
+				var iOnterWidth =iWidth +iSpace;//列实际宽
+				var iCells = 0;//总列数
+				var sUrl = 'http://www.wookmark.com/api/json/popular?callback=?';				
+				var arrT = [];//存放页面图片Top值的数组
+				var arrL = [];//存放页面图片left值的数组
+				
+				var iPage = 0;//页数
+				
+				var oBtn = true;//阻止滚动事件一直加载的标记
+				
+				
+				function setCells(){
+					//动态计算出多少列
+					iCells = Math.floor($(window).innerWidth()/iOnterWidth);
+					document.title = iCells;
+					//设置容器的宽度
+					oContainer.css("width",iOnterWidth*iCells - iSpace)
+				}
+				setCells();
+
+				
+				for (var i = 0; i < iCells; i++) {
+					//把图片的left值存放在arrL
+					arrL.push(i*iOnterWidth);
+					//把图片的Top值存放在arrT
+					arrT.push(0);
+				}
+				console.log(arrL);
+				console.log(arrT);
+				
+				//图片加载之前让loading显示,加载之后隐藏
+				oLoading.show();
+				
+				
+				getData();
+				//请求数据的函数
+				function getData(){					
+					if (oBtn) {
+						//进来之后立马变为false,这个函数完成之后再变成true;
+						oBtn = false;
+						//$.getJSON  用法，sURL是参数，page也是参数,里面跟着的function是一个回调函数,里面的data就是我们需要的数据
+						//'page'+iPage,这里的页数就是这样加载的
+						$.getJSON(sUrl,'page'+iPage,function(data){
+							//用jquery、自带的each便利这个data数据
+							//便利的对象data集合,回调函数的参数第一个是角标，第二个表示data的每个对象
+							$.each(data, function(index,obj) {
+								console.log(obj.preview)
+								//创建1个img
+								var oImg = $("<img/>");
+								//设置img的src为obj.preview
+								oImg.attr("src",obj.preview);
+								//吧图片添加到容器
+								oContainer.append(oImg);
+								
+								//防止代码执行之后出现兼容，所以我们首先算出每个图片的相对高度
+								var iHeight = obj.height * (iWidth / obj.width);
+								
+								//相对宽高
+								oImg.css({
+									width	:	iWidth,
+									height	:	iHeight
+								});
+								//获取最小咧所在的位置 -->索引
+								var iMinIndex = getMin();
+		
+								//设置定位
+								oImg.css({
+									'left' :arrL[iMinIndex],
+									'top'  :arrT[iMinIndex]
+								})
+								
+								arrT[iMinIndex] +=iHeight+10;
+								//图片加载之前让loading显示,加载之后隐藏
+								oLoading.hide();
+								
+								oBtn = true;
+							});
+							
+						});
+					}
+					
+				}
+				
+				//获得最小列数所在的位置
+				function getMin(){
+					var iv = arrT[0];//初始的高度
+					var _oIndex = 0;//初始的索引
+					for (var i = 1; i < arrT.length; i++) {//从1开始
+						if (arrT[i] < iv) {//如果arrT里面数组的值<初始的高度
+							iv = arrT[iv];
+							_oIndex = i;//_oIndex返回高度最短的li对应的索引
+						} 						
+					}
+					return _oIndex;
+				}
+				
+				//满足下拉加载条件的计算 
+				$(window).on('scroll',function(){
+					//iH = 文档滚动条的距离+文档可视区的高度
+					var iH = $(window).scrollTop()+$(window).innerHeight();
+					
+					var iMinIndex = getMin();
+					//oContainer.offset().top是容器的mangran值，如果平时没这个值可以不加
+
+					if (arrT[iMinIndex] + oContainer.offset().top < iH) {//满足加载的条件
+						iPage++;//页码++
+						getData();//再次执行那个ajax的函数
+					}
+					
+				})
+				
+				//当窗口宽度发生改变的时候从新计算
+				$(window).on("resize",function(){
+					
+					setCells();//重新计算多少列
+					arrT = [];//清空数组的数据
+					arrL = [];//清空数组的数据
+					//再次吧数组添加数据
+					for (var i = 0; i < iCells; i++) {
+						//把图片的left值存放在arrL
+						arrL.push(i*iOnterWidth);
+						//把图片的Top值存放在arrT
+						arrT.push(0);
+				    }
+						var oImgs = oContainer.find("img");//获取他本身下面的所有图片
+						oImgs.each(function(){
+						var iMinIndex = getMin();//再次获得最短列
+						//设置定位
+						$(this).animate({
+							'left' :arrL[iMinIndex],
+							'top'  :arrT[iMinIndex]
+						})
+						
+						arrT[iMinIndex] +=$(this).height()+10;
+					})
+					
+					
+				})
+				
+				
+				
+			})
+		</script>
+	</head>
+	<body>
+		<!--图片容器-->
+		<div id="container"></div>
+		<!--loading图片-->
+		<div id="loader"></div>
+		
+	</body>
+</html>

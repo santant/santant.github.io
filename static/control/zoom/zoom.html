@@ -1,0 +1,58 @@
+<!doctype html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>放大镜</title>
+	<link rel="stylesheet" href="zoom.css">
+	<script src="jquery.js"></script>
+	<script src="zoom.js"></script>
+</head>
+<body>
+	<input type="text" name="" id="">
+	<!--
+    	作者：827879040@qq.com
+    	时间：2015-12-06
+    	描述：中图的div
+    -->	
+	<div class="zoom">
+		<div class="zoomMiddle">
+			<img src="1.jpg" alt="">
+			<!--
+            	作者：827879040@qq.com
+            	时间：2015-12-06
+            	描述：遮罩层
+            -->	
+			<div class="mask"></div>
+		</div>
+		<!--
+        	作者：827879040@qq.com
+        	时间：2015-12-06
+        	描述：小图的div
+        -->
+		<div class="zoomSmall">
+			<span class="left disable">&lt;</span>
+			<div class="wrapSmallImg">
+				<ul>
+					<li class="current"><img src="1.jpg" alt=""></li>
+					<li><img src="2.jpg" alt=""></li>
+					<li><img src="3.jpg" alt=""></li>
+					<li><img src="4.jpg" alt=""></li>
+					<li><img src="5.jpg" alt=""></li>
+					<li><img src="6.jpg" alt=""></li>
+					<li><img src="7.jpg" alt=""></li>
+					<li><img src="8.jpg" alt=""></li>
+				</ul>
+			</div>
+			<span class="right">&gt;</span>
+		</div>
+		<!--
+        	作者：827879040@qq.com
+        	时间：2015-12-06
+        	描述：放大镜显示的div ---大图的div>
+        -->
+		<div class="zoomLarge"><img src="1.jpg" alt=""></div>
+
+
+	</div>
+</body>
+</html>

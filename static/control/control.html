@@ -1,0 +1,644 @@
+
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta name="viewport" content="width=device-width,initial-scale=1,minimum-scale=1,maximum-scale=1,user-scalable=no" />
+		<link rel="stylesheet" type="text/css" href="../../css/public.css"/>
+		<link rel="stylesheet" type="text/css" href="../../css/index.css"/>
+		<script src="../../js/jquery-1.8.2.min.js" type="text/javascript" charset="utf-8"></script>
+		<script src="../../js/index.js" type="text/javascript" charset="utf-8"></script>
+		<link rel="shortcut icon" href="../../imges/ico.ico" type="images/x-icon" />
+		<meta charset="UTF-8">
+		<title>控件笔记</title>
+		<script type="text/javascript" src="../../js/pre/scripts/shCore.js"></script>
+		<script type="text/javascript" src="../../js/pre/scripts/shBrushBash.js"></script>
+		<script type="text/javascript" src="../../js/pre/scripts/shBrushCss.js"></script>
+		<script type="text/javascript" src="../../js/pre/scripts/shBrushCSharp.js"></script>
+		<script type="text/javascript" src="../../js/pre/scripts/shBrushJScript.js"></script>
+		<script type="text/javascript" src="../../js/pre/scripts/shBrushPhp.js"></script>
+		<script type="text/javascript" src="../../js/pre/scripts/shBrushPlain.js"></script>
+		<script type="text/javascript" src="../../js/pre/scripts/shBrushPython.js"></script>
+		<script type="text/javascript" src="../../js/pre/scripts/shBrushJava.js"></script>
+		<script type="text/javascript" src="../../js/pre/scripts/shBrushScala.js"></script>
+		<script type="text/javascript" src="../../js/pre/scripts/shBrushSql.js"></script>
+		<script type="text/javascript" src="../../js/pre/scripts/shBrushXml.js"></script>
+		<script type="text/javascript" src="../../js/pre/scripts/shBrushPerl.js"></script>
+		<link type="text/css" rel="stylesheet" href="../../js/pre/styles/shCore.css" />
+		<link type="text/css" rel="stylesheet" href="../../js/pre/styles/shThemeDefault.css" />
+		<script type="text/javascript">
+			SyntaxHighlighter.defaults['toolbar'] = false;  //去掉右上角问号图标
+			SyntaxHighlighter.config.tagName = 'pre';       //可以更改解析的默认Tag。
+			SyntaxHighlighter.config.bloggerMode = true; 
+			SyntaxHighlighter.config.stripBrs = true;  
+			SyntaxHighlighter.all();
+	   </script>
+	</head>
+	<body>
+	  <div class="hander"> 
+	  	<ul>
+	  		<li class="" nav-title="all"><a href="../../index.html">首页</a></li>
+			<li nav-title="css" class=""> <a href="../canvas/demo1.html">Html5画布入门篇</a></li>
+			<li nav-title="css" ><a href="../canvas/demo3.html">Html5画布提升篇</a></li>
+			<li><a href="../CSS/css3.html">CSS3</a></li>			
+			<li class="active"><a href="../../static/control/control.html">自己写的demo</a></li>			
+			<li nav-title="rem工具换算"><a href="../../static/rem1/rem.html">rem</a></li>			
+	  		<li><a href="../title/demo2.html">收藏的网站</a></li>
+	  		<li ><a href="../tool/tool.html">工具箱</a></li>
+	  		<li class=""><a href="../javascript/Event.html">javascriptEvent</a></li>
+	  		<li class=""><a href="../javascript/jsDom.html">javascriptDOM</a></li>
+	  		<li class=""><a href="../javascript/object.html">javascriptObj</a></li>	  		
+	  		<li  ><a href="../zhengze/zhengze.html">js正则表达式</a></li>
+	  		<li class=""><a href="../javascript/JSFcnction.html">javascript函数</a></li>
+	  		<li class=""><a href="../HTML5/H5_1.html">HTML5</a></li>
+	  		<li><a href="../angualar/angualar.html">angualarJS</a></li>
+	  		<li class=""><a href="../jquery-css3/jq-css3.html">Jquery操作css3的拼接方式</a></li>	 
+	  	</ul>
+	  </div> 
+	  <div class="main">
+	  	 <h3>有用手写demo</h3>
+	  	   <div class="div_daima">
+	  	   	<h4>Jquery手写放大镜<code><a href="../control/zoom/zoom.html">查看demo:</a></code></h4>
+	  	 	<div class="img_right">	
+	  	 		<img src="../../img/32.jpg"/>
+	  	 	<pre class="brush: js;">
+	  	 	;$(function(){
+			var  minOLi = $(".wrapSmallImg ul li");//小图li
+			var  minOWidth = $(".wrapSmallImg ul li").outerWidth(true);//小图li的宽度
+			var  minOSize = $(".wrapSmallImg ul li").size();
+			var  minOul = $(".wrapSmallImg ul"); //小图ul
+			var  maxImg = $(".zoomMiddle img");//中图img
+			var  oBtnLeft = $(".zoomSmall .left");//左边按钮
+			var  oBtnRight = $(".zoomSmall .right");//右边按钮
+			var now = 0;//计算器
+			var oZoomDiv = $(".zoomMiddle");//遮罩的移动层 	
+			//鼠标移动上去换图和换src的值
+			minOLi.mouseover(function(){
+				$(this).addClass("current").siblings("li").removeClass("current");
+				var thisSrc = $(this).find("img").attr("src");
+				maxImg.attr("src",thisSrc);
+				$(".zoomLarge img").attr("src",thisSrc);
+			})
+			//按钮点击的时候有滚动	
+			oBtnLeft.click(function(){//left 左边
+				if (now>0) {
+					now--;
+					minOul.animate({
+					"left":'+='+minOWidth
+					},500)
+				}		
+			})
+			oBtnRight.click(function(){//Right 右边		
+				if (now>=0 && now< (minOSize-6)) {
+					now++;
+					minOul.animate({
+					"left":'-='+minOWidth
+				 },500)
+				}
+				
+			})
+				//鼠标移入的时候
+				oZoomDiv.mousemove(function(e){
+					$(".mask").show();
+					$(".zoomLarge").show();
+					//获得鼠标当前的位置
+					var oZoomDivOffset = oZoomDiv.offset();//文档偏移量
+					var x = e.pageX - oZoomDivOffset.left - $(".mask").width()/2; //$(".mask").width()/2减去了这个就是保持鼠标一直在div中间x点的位置
+					var y = e.pageY - oZoomDivOffset.top - $(".mask").height()/2; //和上面一样保持Y轴的位置
+					console.log(x,+'......'+y)
+					if (x<=0) {
+						x=0
+					}else if(x>= oZoomDiv.width()- $(".mask").width()){
+						x= oZoomDiv.width()- $(".mask").width();
+					}
+					if(y<=0){
+						y=0
+					}else if(y>=oZoomDiv.height()- $(".mask").height())
+					{
+						y = oZoomDiv.height() - $(".mask").height()
+					}
+					//定义比例尺 0-1
+					var oScale_X = x/(oZoomDiv.width() - $(".mask").width());
+					var oScale_y = y/(oZoomDiv.height() - $(".mask").height());
+					console.log(oScale_X+'........'+oScale_y)
+					
+					//改变放大镜区域的坐标
+					$(".zoomLarge img").css({
+						  left:-oScale_X*(600-$('.zoomLarge').width()), //这里的600是放大镜里面图片的宽度 ,
+						  top :-oScale_y*(600-$('.zoomLarge').height())
+					})
+					//实时改变遮罩层的x,y坐标
+					$(".mask").css({
+						'left':x+'px',
+						"top":y+'px'
+					})
+					
+				})
+				//鼠标移出的时候
+				oZoomDiv.mouseout(function(){
+					$(".mask").hide();
+					$(".zoomLarge").hide();
+				})
+				//鼠标移出最大div的时候隐藏放大区域层
+			});
+			
+	  	 	</pre>
+	  	 	</div>
+	  	 	<h4>Jquery手搓轮播全集  <code>demo请点击下方的按钮</code> </h4>
+	  	 	<div class="pre">
+	  	 		<ul>
+	  	 			<li><a href="lunbo/demo1.html">淡入淡出带按钮的轮播</a></li>
+	  	 			<li><a href="lunbo/demo2.html">left运动带按钮的轮播</a></li>
+	  	 			<li><a href="lunbo/demo3.html">全屏left带按钮的轮播</a></li>
+	  	 		</ul>
+	  	 	</div>
+	  	 	<h4>图片拖动，兼容移动版  <code>demo请点击下方的按钮</code> </h4>
+	  	 	<div class="pre">
+	  	 		<ul>
+	  	 			<li><a href="zhaopian/tdDemo1.html">图片单纯的拖动,中间漏空</a></li>
+	  	 			<li><a href="zhaopian/tdDemo2.html">单纯的拖动,div意外的地方镂空，一般用户html5用户图像剪裁</a></li>
+	  	 		</ul>
+	  	 	</div>
+	  	 	<h4>移动端相册（请手机预览效果） <code>demo请点击下方的按钮</code> </h4>
+	  	 	<div class="pre">
+	  	 		<ul>
+	  	 			<li><a href="yidongxiangce/demo01.html">移动端相册固定尺寸</a></li>
+	  	 			<li><a href="yidongxiangce/demo02.html">移动端相册宽高可变</a></li>
+	  	 			<li><a href="yidongxiangce/js/demo.html">原生js相册预览，宽高可变</a></li>
+	  	 		</ul>
+	  	 	</div>
+	  	 	<h4>滚动条，滚到相对应的地方<code><a href="isorr/jiameifilter.html">仿京东首页滚动条跳转</a></code></h4>
+	  	 	<div class="img_right">	
+			<img src="../../img/36.jpg"/>
+	  	 		
+	  	 	<pre class="brush: js;">
+	  	 		$(function() {
+				var dom = $(".con li ");
+				//var oTop = $(document).scrollTop();
+			
+				//var offset = $(".con").offset();// 获取ul在窗口中的位置	
+				//var alertString = offset.top;
+				var alertString = $('.con li').outerHeight();
+				dom.click(function() {
+					var f_index = dom.index(this);
+					$(".store").eq(f_index).show()
+						.siblings('.store').hide();
+					$(this).addClass('actives').siblings().removeClass();
+			
+					//滚动条
+					//$(".con").scrollTop(alertString * f_index)
+					$(".con").animate({
+						'scrollTop': alertString * f_index
+					}, 300)
+				})
+			})
+
+	  	 	</pre>
+	  	 	</div>
+	  	 	<h4>左右无缝滚动 <code><a href="wufenggundong/index.html">无缝滚动demo:</a></code> </h4>
+	  	 	<pre class="brush: js;">
+	  	 	$(function() {
+			var oul = $('.wrap ul');
+			var oulHtml = oul.html(); //获取li的数量
+			//oul.append(oulHtml);//在ul插入四个li
+			oul.html(oulHtml + oulHtml) //复制li里面的内容
+			var timeId = null; //定时器
+			var speed = 2; //速度
+			function slider() {//这里是判断左右按钮走向的函数<0向左,>0像右
+			if (speed < 0) { //向左移
+				if (oul.css('left') == '-800px') {
+					oul.css('left', 0)
+				}
+				oul.css('left', '+=-2px');
+			} //向左边滚动的代码
+
+			if (speed > 0) {
+				if (oul.css('left') == '0px') {
+					oul.css('left', '-800px');
+				}
+				oul.css('left', '+=' + speed + 'px');
+			}//向右边滚动的代码 
+		}
+
+		timeId = setInterval(slider, 30);
+	
+		//当鼠标移动到.wrap这个div的时候
+		$(".wrap").mouseover(function() {
+			clearInterval(timeId); //关闭定时器
+		});
+		$(".wrap").mouseout(function() { //当鼠标移除的时候，让他继续执行setInterval里面的代码
+			timeId = setInterval(slider, 30);
+		});
+	
+		$(".goleft").click(function() { //按钮向左走
+			speed = -2; //因为left为负数的时候是向左边移
+		
+		});
+		$(".goright").click(function() { //按钮向右走
+			speed = 2; //因为right为正数的时候是向右边移
+			})
+		});
+		<img src="../../img/35.jpg"/>
+	  	 	</pre>
+	  	 	<h4>canvas 圆环进度条（带渐变边框）  <code><a href="../test/time.html">圆环进度条</a></code> </h4>
+	  	 	<div class="img_right">	
+			<img src="../../img/34.jpg"/>
+	  	 		
+	  	 	<pre class="brush: js;">
+	  	 	  //初始化画布
+			var oCanvas = document.getElementById("canvas");
+			oCanvas.width = 600;//设置画布宽高
+			oCanvas.height = 600;			
+			var context = oCanvas.getContext("2d");//获得画布上下文环境
+			//context绘制	
+			//r,半径
+			deaws(100,0,40);
+			setTimeout(function(){
+			  update(context);				 
+			},1500)
+			function deaws (r,num,lineWidth){
+				draw(context,r,'#fff',100,'#eee',lineWidth);				
+				context.closePath(); 				
+				context.beginPath()//开始一段路径	
+				//画第二个圆
+				var lineearGrad = context.createLinearGradient(0,0,600,600);
+				
+				lineearGrad.addColorStop(0.0,'#ddd');//这里的0是开始的位置
+				lineearGrad.addColorStop(0.4,'#000');
+				lineearGrad.addColorStop(1,'red');//1是结束的时候
+				
+				draw(context,r,'#fff',num,lineearGrad,lineWidth);
+				context.closePath();
+			}
+
+			function draw(ext,r,bg,mun,color,nums){//环境，半径,背景色,百分比数字,边框颜色
+			  context.beginPath()//开始一段路径		
+			  ext.arc(oCanvas.width/2,oCanvas.height/2,r,0,(Math.PI*0.02)*mun);
+			  ext.fillStyle = bg;//背景
+			  ext.strokeStyle =color;//边框颜色
+			  ext.lineWidth=nums;
+			  ext.stroke();
+			}
+			function update(ext){
+			  ext.clearRect(0,0,600,600);	
+			  deaws(100,80,40);	
+			}	
+
+	  	 	</pre>
+	  	 	</div>
+	  	 	<h4>跟随鼠标移动的nav<code><a href="nav/nav.html">查看demo:</a></code> </h4>
+	  	 	<div class="img_right">		
+			<img src="../../img/33.jpg"/>
+	  	 		
+	       	<pre class="brush: js;">
+	       		$(function(){
+				var oW = $("nav ul p").width();				
+				$("nav ul li").mouseover(function(ev){
+					ev.stopPropagation();
+					$("nav ul p").stop(false,false);
+				    var oIndex = $(this).index();
+				    $("nav ul p").animate({
+				    	'left':oIndex*oW
+
+				    },300)
+				})
+				$("nav").mouseout(function(ev){
+					ev.stopPropagation();
+					$("nav ul p").stop(false,false);
+				    $("nav ul p").animate({
+				    	'left':0
+				    },300)
+				})				
+			})
+
+	       	</pre>
+	       	</div>
+			<h4>仿百度等高响应式布局 <code><a href="denggao/demo.html">仿百度等高响应式布局</a></code></h4>
+			<pre>
+				<a href="denggao/demo.html">仿百度等高响应式布局</a>
+			</pre>			
+	  	 	<h4>webAPP时间插件 （兼容ios 安卓）   <code><a href="../control/webappTimer/webAPPtimer.html">查看demo:</a></code> </h4>
+	  	 	<div class="img_right">		
+			<img src="../../img/30.jpg"/>	  	 	
+	  	 	<pre class="brush: js;">
+	  	 	var currYear = (new Date()).getFullYear();	
+			var opt={};
+			opt.date = {preset : 'date'};
+			opt.datetime = {preset : 'datetime'};
+			opt.time = {preset : 'time'};
+			opt.default = {
+				theme: 'android-ics light', //皮肤样式
+		        display: 'modal', //显示方式 
+		        mode: 'scroller', //日期选择模式
+				dateFormat: 'yyyy-mm-dd',
+				lang: 'zh',
+				showNow: true,
+				nowText: "今天",
+		        startYear: currYear - 10, //开始年份
+		        endYear: currYear + 10 //结束年份
+			};
+
+		  	$("#appDate").mobiscroll($.extend(opt['date'], opt['default']));
+		  	var optDateTime = $.extend(opt['datetime'], opt['default']);
+		  	var optTime = $.extend(opt['time'], opt['default']);
+		    $("#appDateTime").mobiscroll(optDateTime).datetime(optDateTime);
+		    $("#appTime").mobiscroll(optTime).time(optTime);
+
+	  	 	</pre>
+	  	 	</div>
+	  	 	<h4>判断时间在不在2个时间之间（兼容写法）<code><a href="../control/time01/jsTimerdemo.html">查看demo:</a></code></h4>
+	  	 	<pre class="brush: js;">
+	  	 		var now = new Date().getTime();//现在的时间 
+				var start = new Date(Date.parse("2015-11-24 00:00:00".replace(/-/g,"/"))).getTime();//时间都是可以指定的这里是开始的时间
+				var end = new Date(Date.parse("2016-11-27 23:59:59".replace(/-/g,"/"))).getTime();//时间都是可以指定的这里是结束的时间
+//				alert(now+'....'+start+'----'+end)
+			    if (now>start &&now < end) {
+			    	alert("在这个时间之中");
+			    } else{
+			    	alert("已经超过了时间");
+			    }
+	  	 	</pre>
+			<h4>带农历多少的时间插件（原生js）<code><a href="../control/timer02/timer02.html">查看demo:</a></code></h4>
+	  	 	<div class="pre">
+	  	 		<img src="../../img/31.jpg"/>
+				
+	  	 	</div>
+	  	 	<h4>字体闪光   <code><a href="cssDemo/phoneAnim2.html">苹果滑动字体闪光</a></code> <code>利用背景定位和背景渐变</code> </h4>
+	  	 	<pre>
+	  	 		<a href="cssDemo/phoneAnim2.html">苹果滑动字体闪光</a>
+	  	 		<img src="../../img/css06.jpg"/>
+	  	 	</pre>
+			<h4>五星评价</h4>
+			<pre>				
+				<a href="jsDemo/wuxing.html">五星评价</a>
+				<img src="../../img/css07.jpg"/>
+			</pre>
+			<h4>纯css流程图</h4>
+			<pre>				
+				<a href="cssDemo/herf.html">纯css流程图</a>
+				<img src="../../img/css20.png"/>
+			</pre>
+			<h4>css3手写时钟  <code><a href="../javascript/jsDome/cssTimer.html">css3手写时钟</a></code> </h4>
+			<div class="img_right">
+				<img src="../../img/css08.jpg"/>
+			
+			<pre class="brush: js;">
+				<a href="../javascript/jsDome/cssTimer.html">css3手写时钟</a>
+				function toTime(){
+					var oDate = new Date();
+					var iSec = oDate.getSeconds();//秒
+					var iMin = oDate.getMinutes()+iSec/60;//分
+					var iHour = oDate.getHours()+iMin/60;//小时
+					oSec.style.webkitTransform = 'rotate('+6*iSec+'deg)';
+					oMin.style.webkitTransform = 'rotate('+6*iMin+'deg)';
+					oHour.style.webkitTransform = 'rotate('+30*iHour+'deg)';
+				}			
+			</pre>
+			</div>
+			<h4>利用三角函数 实现中心扩撒的导航  <code><a href="360Nav/index.html">直角导航(匀速)</a></code> <code><a href="360Nav/index2.html">直角导航(缓冲)</a></code></h4>
+			<div class="img_right">
+				<img src="../../img/css09.jpg"/>								
+				<pre class="brush: js;">
+					<a href="360Nav/index.html">直角导航(匀速)</a>
+					<a href="360Nav/index2.html">直角导航(缓冲)</a>
+					//已知半径和角度，求sin和cos
+					function toLT(iR,iDeg)
+					{
+						return {l:Math.round(Math.sin(iDeg/180*Math.PI)*iR),t:Math.round(Math.cos(iDeg/180*Math.PI)*iR)}
+					}
+				</pre>
+			</div>
+			 <h4>纯css3做无缝滚动 <code>跑马灯，鼠标移入暂停动画</code> <code><a href="../CSS/css3Demo/wufenggundong.html">无缝滚动（跑马灯）</a></code> </h4>
+		  	     <div class="img_right">
+		  	   	  <img src="../../img/css08.png"/>    		  	     	
+		  	     <pre class="brush: js;">
+		  	   	    <a href="../CSS/css3Demo/wufenggundong.html">无缝滚动（跑马灯）</a>
+		  	   	    *{margin: 0;padding: 0;}
+					#drap{width: 500px;height: 100px;position: relative;margin: 100px auto;overflow: hidden;}
+					#drap ul{position: absolute;left: 0;top:0;animation: 5s toLi infinite linear;width: 200%;}
+					#drap ul li{list-style: none;width: 100px;height: 100px;background: #000000;float: left;
+						font-size: 50px;color: #fff;line-height: 100px;text-align: center;}
+					
+					@-webkit-keyframes toLi{
+						0%{left: 0;}
+						100%{left: -500px;}
+					}
+					/*停止css3动画*/
+					#drap ul:hover{animation-play-state: paused;}
+
+		  	     </pre>
+		  	     </div>
+		  	      <h4>3D长方体上下翻页 <code><a href="3Dlunbo/lunbo3.html">3D长方体上下翻页</a></code>  </h4>
+		  	      <pre>
+		  	         	<a href="3Dlunbo/lunbo3.html">3D长方体上下翻页</a>
+		  	      </pre>
+		  	     <h4>3D翻页上下翻页  <code><a href="3Dlunbo/lunbotu.html">3D上下翻页</a></code><code><a href="3Dlunbo/lunbotu2.html">3D带抖动翻页</a></code> </h4>
+		  	     <pre>
+		  	     	<a href="3Dlunbo/lunbotu.html">3D上下翻页</a>
+		  	     	<a href="3Dlunbo/lunbotu2.html">3D带抖动翻页</a>
+		  	     	@-webkit-keyframes show{
+						0%{
+							transform: rotateX(180deg);
+							opacity: 0;
+						 }
+						 100%{
+						 	transform: rotateX(0);
+						 	opacity: 1;
+						 }
+					}
+					@-webkit-keyframes hide{
+						0%{
+							transform: rotateX(0deg);
+							opacity: 1;
+						 }
+						 100%{
+						 	transform: rotateX(180deg);
+						 	opacity: 0;
+						 }
+					}
+					.show{animation: 2s show;opacity: 1;transform: rotateX(0);}
+					.hide{animation: 2s hide;opacity: 0;transform: rotateX(180edg);}
+		  	     	<img src="../../img/css09.png"/>
+		  	     </pre>
+		  	     <h4>css3折纸标题效果 <code><a href="../CSS/css3Demo/zhezhi.html">css3折纸标题效果</a></code>  </h4>
+		  	     <pre>
+		  	     	<a href="../CSS/css3Demo/zhezhi.html">css3折纸标题效果</a>
+		  	     	@-webkit-keyframes show{
+				0%{
+					transform: rotateX(180deg);
+					opacity: 0;
+				 }
+				50%{
+					transform: rotateX(-10deg);
+					opacity: 1;
+				 }
+				
+				70%{
+					transform: rotateX(10deg);
+					opacity: 1;
+				 }
+				 100%{
+				 	transform: rotateX(0);
+				 	opacity: 1;
+				 }
+			}
+			@-webkit-keyframes hide{
+				0%{
+					transform: rotateX(0deg);
+					opacity: 1;
+				 }
+				 100%{
+				 	transform: rotateX(180deg);
+				 	opacity: 0;
+				 }
+			}
+			.wrap span:hover{background: red;transform: rotateY(-5deg);}
+		  	     	<img src="../../img/css10.png"/>
+		  	     </pre>
+		  	     
+		  	<h4>利用H5实现拖动删除 <code><a href="../HTML5/h5Demo/Drap-delete.html">拖动删除</a></code> </h4>
+		  	<pre class="brush: js;">
+		  		window.onload = function(){
+					var oUL = document.getElementsByTagName("ul")[0];
+					var aLi = oUL.getElementsByTagName('li');
+					var oDiv = document.getElementById('div1');
+					var i = 0;
+					
+					for(var i=0;i< aLi.length;i++){
+						aLi[i].index = i; 
+						aLi[i].ondragstart = function(ev){
+							var ev = ev || window.event;
+							//这里指定setDate的index=i
+							ev.dataTransfer.setData('name',this.index);
+							this.style.background = 'green';
+						};
+					}
+					oDiv.ondragover = function(ev){
+						//enter和leave之间连续触发
+						//要想触发drop事件，就 必须在dragover当中阻止默认事件
+						//document.title = i++;		
+						ev.preventDefault();	
+					};
+				
+					oDiv.ondrop = function(ev){
+				//	   alert( ev.dataTransfer.getData('name') );
+				//		oUl.removeChild(aLi[ev.dataTransfer.getData('name')]);
+				
+						oUL.removeChild( aLi[ev.dataTransfer.getData('name')] );
+				
+						for(var i=0;i< aLi.length;i++){
+							//删除之后，重新修改i的指针
+							aLi[i].index = i;			
+						}
+						
+					};					
+				};
+				<img src="../../img/icon-home-h5-06.png" />
+		  	</pre>
+		  	<h4>利用H5实现图片拖动上传加预览  <a href="../HTML5/h5Demo/fileReader.html">利用H5实现图片拖动上传加预览</a> </h4>
+		  	<pre>
+		  		<a href="../HTML5/h5Demo/fileReader.html">利用H5实现图片拖动上传加预览</a> 
+		  	</pre>
+		  	<h4>css3布局瀑布流 <code><a href="css3Pubuliu/index.html">ajax-->css3布局瀑布流 </a></code> </h4>
+		  	<pre>
+		  		<a href="css3Pubuliu/index.html">css3布局瀑布流 </a>
+		  	</pre>
+		  	<h4>js版本布局瀑布流 <code><a href="pcpubuliu/index4.html">ajax-->js请求布局瀑布流 </a></code> </h4>
+		  	<pre>
+		  		<a href="pcpubuliu/index3.html">js布局瀑布流手写版本,屏蔽变化的时候列数无变化</a>
+		  		<a href="pcpubuliu/index4.html">js布局瀑布流手写版本,屏蔽变化的时候列数有变化</a>
+		  	</pre>
+		  	<h4>js原生轮播全集 </h4>
+		  	<pre>
+		  		<a href="lunbo/jsyuanshenglunbo/index1.html">普通tab切换</a>
+		  		<a href="lunbo/jsyuanshenglunbo/index2.html">淡入淡出</a>
+		  		<a href="lunbo/jsyuanshenglunbo/index3.html">双向淡入淡出</a>
+		  		<a href="lunbo/jsyuanshenglunbo/index4.html">上下轮播翻页</a>
+		  		<a href="lunbo/jsyuanshenglunbo/index5.html">自动轮播翻页</a>
+		  		<a href="lunbo/jsyuanshenglunbo/index6.html">无缝切换翻页</a>
+		  		<a href="lunbo/jsyuanshenglunbo/index7.html">手风琴</a>
+		  		<a href="lunbo/jsyuanshenglunbo/index8.html">鼠标移动中间像两边滑动</a>
+		  	</pre>
+			<h4>写过的H5Demo <code><a href="../DEMOH5/fanshuv05/index.html">卓越翻书效果</a></code> <code><a href="../DEMOH5/qinghuaXm/index.html">清华大学博物馆</a></code><code><a href="../DEMOH5/doucang/index.html">雅昌兜藏APP宣传页</a></code> <code><a href="../DEMOH5/dazongH5-Six/index.html">大众six</a></code> <code><a href="../DEMOH5/zhuoyueV03/index.html">卓越资质</a></code> <code><a href="../DEMOH5/tablev01/index.html">移动表单验证</a></code><code><a href="../DEMOH5/dazong-Cut/index.html">大众安全座椅</a></code></h4>
+			<pre>
+				<a href="../control/ajaxDemo/ajaxCut.html">ajax选择车型Demo</a>
+			</pre>
+			<h4>jquery手写插件demo <code><a href="jqueryTab/tab.html">jquery手写插件demo</a></code></h4>
+			<pre>
+				<a href="jqueryTab/tab.html">jquery手写插件demo</a>
+			</pre>
+			<h4>jquery鼠标滚轮缩放的插件 <code><a href="ImgSacle/index.html">jquery鼠标滚轮缩放的插件</a></code></h4>
+			<pre>
+				<a href="ImgSacle/index.html">jquery鼠标滚轮缩放的插件</a>
+			</pre>
+			<h4>国家灾难日整站变灰 <code><a href="filter/index.html">国家灾难日整站变灰</a></code></h4>
+			<pre>
+				<a href="filter/index.html">国家灾难日整站变灰</a>
+			</pre>
+			<h4>微信安卓ios在微信里面音乐和video自动播放解决方案<code><a href="../DEMOH5/qinghuaXm/mp3_video.html">微信安卓ios在微信里面音乐和video自动播放解决方案</a></code></h4>
+	  	   	<pre>
+	  	   		<a href="../DEMOH5/qinghuaXm/mp3_video.html">微信安卓ios在微信里面音乐和video自动播放解决方案</a>
+	  	   		
+	  	   		
+	  	   	</pre>
+	  	   	<h4>jquery-validate表单验证插件<code><a href="Jquery_validate/test.html">查看自己注释的demo</a></code></h4>	
+	  	 	<pre class="brush: js;">
+	  	 		//1. 用data-tip：""设置第一次人家出发焦点时候的提示
+				//2：data-valid：验证规则，若有组合验证，以||符号分割。
+				//3：data-error：验证错误提示，对应data-valid，以||符号分割。
+				
+				//4.下面的 
+				//data-valid="isNonEmpty||between:6-16" data-error="密码不能为空||密码长度6-16位"
+				//要对应，比如前面data-valid 跟着2个校验的语句启用用||间隔开， 后面data-error的提示语句也需要提示2句用||间隔开
+				
+				//5.这个data-valid里面的验证语句可以自由组合，具体看代码
+				//如果还不够 请扩展jquery 插件源码 具体在jquery-validate.js的代码15行的
+				   /*************************策略对象*****************************/
+				//RULES中，
+				//6.测试兼容ie7,ie6不支持
+				//7.如果想改变提示语句的样式，请修改css，审查元素即可
+	  	 		<script type="text/javascript">
+				  //本插件支持1.7jquery版本以上的
+				  //这里的form指的是本页面的表单，自己替换这个选择器
+					$('form').validate({ //validate是插件调用的1个方法，是以对象形式调用
+					    onFocus: function() {//当点击的对象，得到焦点的时候，给当前的对象加上atcive，对应页面上后面的提示语句
+					      this.parent().addClass('active');
+					      return false;
+					    },
+					    onBlur: function() { //失去焦点的时候
+					      var $parent = this.parent();//得到上面的div节点
+					      console.log(this.attr("data-status"));
+					      var _status = parseInt(this.attr('data-status'));//data-status是差距内部判定他是不是验证通过的标志1=成功，0=失败
+					      $parent.removeClass('active');//失去焦点的时候，删除所有的class，对应后面的提示语句
+					      if (!_status) {//如果出错了就是!=1
+					        $parent.addClass('error');//就给后面的提示语句添加上错误信息的class，让其变红
+					      }
+					      return false;
+					    }
+					});					
+					//这是另外一个事件
+					$('form').on('submit', function(event) {//此表单提交的时候触发，如果是ajax就是提交按钮点击事件触发的时候触发
+					    event.preventDefault();//取消默认事件
+					    $(this).validate('submitValidate'); //return boolean;
+					});
+				  </script>
+	  	 	</pre>
+	  	   </div>	 
+	  	  
+	  </div>
+	  <!--返回顶部-->
+	  <div id="div-Top">
+		  	<dl>
+		  		<dd>
+		  			<img src="../../img/weixin-icon02.png"/></li>
+		  		</dd>
+		  		<dt class="weixin">
+		  			<div></div>
+		  		</dt>
+		  		<dt class="to_top">
+		  			<div></div>
+		  		</dt>
+		  		
+		  	</dl>
+	  </div>
+	</body>
+</html>

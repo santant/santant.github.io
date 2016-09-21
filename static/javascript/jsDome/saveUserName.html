@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<script type="text/javascript">
+			window.onload = function(){
+				var oUserName = document.getElementById("username");
+				var oLogo = document.getElementById("login");
+				var oDel = document.getElementById("del");
+				//首先获得目录下否有username这个字段存在
+				if (getCookie('username')) {
+					 //如果有就让input的value = username的值；
+					oUserName.value = getCookie('username');
+				} 
+				//点击按钮的时候，就获得他的username字段放入cookie里面
+				oLogo.onclick = function(){
+					alert("登陆用户名");
+					setCookie("username",oUserName.value,10);
+				}
+				//删除cookie
+				oDel.onclick = function(){
+					removeCookie("username")
+					oUserName.value = '';
+				}				
+				//设置cookie key值  val 存在的时间，默认为天
+				function setCookie(key, value, t) {
+					var oDate = new Date();
+					oDate.setDate( oDate.getDate() + t );
+					document.cookie = key + '=' + value + ';expires=' + oDate.toGMTString();
+				}
+				//得到cookie的key
+				function getCookie(key) {
+					var arr1 = document.cookie.split('; ');
+					for (var i=0; i<arr1.length; i++) {
+						var arr2 = arr1[i].split('=');
+						if ( arr2[0] == key ) {
+							return decodeURI(arr2[1]);
+						}
+					}
+				}
+				//删除cookie
+				function removeCookie(key) {
+					setCookie(key, '', -1);
+				}
+				
+			}
+		</script>
+	</head>
+	<body>
+		<input type="text" id="username" />
+	    <input type="button" value="登陆" id="login" />
+	    <input type="button" value="删除" id="del" />
+	</body>
+</html>

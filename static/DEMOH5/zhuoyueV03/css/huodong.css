@@ -1,0 +1,44 @@
+body,html{background: #dbcfbb;width: 100%;height: 100%;}
+.margin-h4{margin-top: 5.125rem;}
+.title-h4 {font-size: 1.5rem;color: #65625e;line-height: 2rem;height: 2rem;font-family: arial;text-align: center;animation: 1s right1; }
+.title-h5 {color:#65625e;line-height: 1.4375rem;font-size: 0.9375rem;font-family: arial;text-align: center;animation: 1s left1;}
+.title-line{width: 6.25rem;height: 1px;display: block;background: #65625e;margin: 0 auto;text-align: center;}
+
+
+
+/*.friend-list li p:active{background: #ccc;}*/
+
+
+.swiper-pagination .swiper-pagination-bullet-active{background: #edebea;}
+ .a_MORE{display: block;width: 3.375rem;height: 1.34375rem;border: 1px solid #958f85;line-height: 1.34375rem;text-align: center;color: #99938b;font-size: 0.91rem;font-family: arial;margin: 0 auto;margin-top: 1.5625rem;margin-bottom: 3.5rem;}
+/*.swiper-pagination3{margin-top: 1.3rem;}*/
+
+.a_MORE{position: relative;}
+.a_MORE:active{background: #958f85;color:#fff !important;top: 1px;}
+
+/*学友说详情*/
+
+.dl-friend,.ol-hod{width: 18.75rem;margin: 0 auto;margin-bottom: 3.5rem;}
+.ol-hod li{height: 2.4375rem;line-height: 2.4375rem;font-size: 0.75rem;color: #5f5a51;font-family: "微软雅黑";border-bottom: 1px solid #7f786c;}
+.ol-hod li a{color: #5f5a51;}
+.dl-friend dt{height: 2.4375rem;line-height: 2.4375rem;font-size: 1.125rem;color: #5f5a51;font-family: "微软雅黑";border-bottom: 1px solid #7f786c;}
+.dl-friend dt:nth-of-type(2){font-size: 1.125rem;line-height: 1.99375rem;}
+.dl-friend dd{padding:0.4375rem 0;}
+.dl-friend dd p{font-size: 0.5625rem;line-height: 0.84375rem;margin-bottom: 0.84375rem;animation: 1s top2;color: #5f5a51;}
+.dl-friend dd img{height: 9rem;width: 100%;}
+
+.to_top{height: 5.34375rem;width: 100%;background: #dbcfbb;overflow: hidden;}
+.to_top a{display: block;width: 3.4375rem;height: 2.09375rem;margin: 0 auto;margin-top: 1.625rem;background: url(../img/icon05.png) no-repeat;background-size: 100% 100%;}
+
+@-webkit-keyframes right1{
+	0%{transform:translateX(10rem) ;}
+	100%{transform:translateX(0rem) ;}
+}
+@-webkit-keyframes left1{
+	0%{transform:translateX(-10rem) ;}
+	100%{transform:translateX(0rem) ;}
+}
+@-webkit-keyframes top2{
+	0%{transform:translateY(10rem) ;}
+	100%{transform:translateX(0rem) ;}
+}

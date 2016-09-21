@@ -1,0 +1,152 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<title>测试图表插件</title>
+    <meta charset="utf-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+	<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+	<meta name="Keywords" content="测试图表插件" />
+	<meta name="Description" content="测试图表插件" />
+	<meta name="format-detection" content="telephone=no">
+	<link rel="stylesheet" type="text/css" href="css/public.css"/>	
+	<link rel="stylesheet" type="text/css" href="css/swiper.min.css"/>
+	<link rel="stylesheet" type="text/css" href="css/index.css"/>
+	<script src="js/rem.js" type="text/javascript" charset="utf-8"></script>
+	<script src="js/swiper.min.js" type="text/javascript" charset="utf-8"></script>
+	<script src="js/jquery.js" type="text/javascript" charset="utf-8"></script>
+	<script src="js/pj.tu.min.js" type="text/javascript" charset="utf-8"></script>
+	<!--<script type="text/javascript">
+		window.onload = function(){
+		  	var swiper = new Swiper('.swiper-container', {
+				 pagination: '.swiper-pagination',
+				 paginationClickable: true,
+				    direction: 'vertical'
+//				    onSlideChangeEnd: function(swipers){
+//					   	if (swipers.activeIndex == 1) {
+//					    	console.log(document.querySelector("#swipes1").classList.add("obj"));
+//					    	console.log(document.querySelector("#swipes1").classList)
+//					    	}
+//					 }
+				});
+		 }
+	</script>-->
+	<script type="text/javascript">
+		$(function(){
+			//折线图
+			$(".PolyLine").H5PolyLine();
+			//饼图
+			$(".pie").H5Pie();
+			//饼图
+			$(".Bar").H5Bar();
+			//雷达图
+			$(".Radar").H5Radar();
+			//散点图
+			$(".Point").H5Point();
+		})
+	</script>
+</head>
+<body>
+<div class="swiper-container">
+        <div class="swiper-wrapper">
+            <div class="swiper-slide page1">
+            	<img src="img/face_logo.png"/>
+          	    <img src="img/face_slogan.png"/>
+            	<img src="img/face_img_left.png"/>
+            	<img src="img/face_img_right.png"/> 
+            	<img src="img/footer.png" class="footer-pu"/>
+            </div>
+			<!--第二页-->
+            <div class="swiper-slide page2">
+            	<div class="title">
+            		<h4>彭进图表Demo</h4>
+            	</div>
+            	<h3>测试图表插件</h3>
+            	<div class="miaoshu">
+            		<p>测试图表插件测试图表插件测试图表插件测试图表插件测试图表插件测试图表插件测试图表插件测试图表插件测试图表插件测试图表插件测试图表插件测试图表插件测试图表插件测试图表插件测试图表插件测试图表插件测试图表插件。</p>
+            	</div>
+            	<img src="img/p1_people.png"/>
+            	
+            	<img src="img/footer.png" class="footer-pu"/>
+            </div>
+            <!--page3-->
+            <div class="swiper-slide page3" >
+            	<div class="title">
+            		<h4>折线图DEMO</h4>
+            	</div>
+            	<h3>课程分布前端开发占到40%</h3>
+            	<!--折线图-->
+            	<div class="PolyLine"></div>
+            	<img src="img/footer.png" class="footer-pu"/>
+            </div>
+            <!--page4-->
+            <div class="swiper-slide page4">
+            	<div class="title">
+            		<h4>饼图DEMO</h4>
+            	</div>
+            	<!--饼图-->
+            	<div class="pie">
+            		
+            	</div>
+            	<!--描述-->
+            	<p>移动开发课程中 Android 比例最大</p>
+            	<img src="img/footer.png" class="footer-pu"/>
+            	
+            </div>
+            <!--page5-->
+            <div class="swiper-slide page5">
+            	<div class="title">
+            		<h4>柱状图DEMO</h4>
+            	</div>
+            	<div class="Bar">
+            		
+            	</div>
+            	
+            	
+            	<img src="img/footer.png" class="footer-pu"/>
+            </div>
+            <div class="swiper-slide page6">
+            	<div class="title">
+            		<h4>雷达图DEMO</h4>
+            	</div>
+            	<!--雷达图-->
+            	<div class="Radar">
+            		
+            	</div>
+            	<p>前端开发课程中 Java 课程占比最大</p>
+            	<img src="img/footer.png" class="footer-pu"/>
+            </div>
+            <!--page8-->
+            <div class="swiper-slide page8">
+            	<div class="title">
+            		<h4>散点图DEMO</h4>
+            	</div>
+            	<!--散点图-->
+            	<div class="Point">
+            		
+            	</div>
+            	<!--<p>课程难度分布，中级课程占到 45%</p>-->
+            	
+            	<img src="img/footer.png" class="footer-pu"/>
+            </div>
+            <div class="swiper-slide">
+            	未完待续....
+            </div>
+         
+        </div>
+        <!-- Add Pagination -->
+        <!--<div class="swiper-pagination"></div>-->
+    </div>
+</body>
+  <script>
+    var swiper = new Swiper('.swiper-container', {
+        pagination: '.swiper-pagination',
+        direction: 'vertical',
+        slidesPerView: 1,
+        paginationClickable: true,
+        spaceBetween: 30,
+        mousewheelControl: true
+    });
+    </script>
+	
+		

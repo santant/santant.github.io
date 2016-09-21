@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title></title>
+		<meta name="format-detection" content="telephone=no" />
+		<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+		<meta name="viewport" content="width=device-width,initial-scale=1,minimum-scale=1,maximum-scale=1,user-scalable=no" />
+		<link rel="stylesheet" type="text/css" href="css/public.css" />
+		<link rel="stylesheet" type="text/css" href="css/index.css"/>
+		<script src="js/rem.js" type="text/javascript" charset="utf-8"></script>
+		<script src="js/jquery-1.8.2.min.js" type="text/javascript" charset="utf-8"></script>
+		
+		<body>	
+		<!--loading-->	
+		<div class="page  page1 page-cut">
+	 		<!--小车-->
+	 		<b style="display: block;width: 100%;height:11.78125rem;"></b>
+	 		<div class="cut"></div>
+	 		<!--进度条-->
+	 		<div class="progress">
+	 			<i></i>
+	 		</div>
+	 		<span>loading...</span>
+	    </div>
+	  	<!--第二屏幕-->
+	  	<div class="page page2">
+	  		<div class="bubble1 animate-bub-play2"></div>
+	  		<div class="bubble2 animate-bub-play"></div>
+	  		<!--遮罩层-->
+	  		<div class="mask">
+	  			<span>擦一擦</span>
+	  			<p>帮座椅先生秒变型男</p>
+	  			<!--小手-->
+	  			<img src="img/page02-icon03.png" alt="小手"/>
+	  		</div>
+	  	</div>
+	   <!--第三屏-->
+	   <div class="page page3" >
+	   		<!--中间的白色背景-->
+	   		<div class="color-box">
+	   			<div class="bottle"></div>
+	   			<div class="cutX"></div>
+	   		</div>
+	   		<!--连接-->
+	   		<a href="#" class="a_herf"></a>
+	   </div>    
+  	 <script type="text/javascript">
+			window.onload = function(){
+				document.body.addEventListener('touchstart', function () {});						    
+			}
+			$(function(){				
+				//隐藏进度条
+				setTimeout(function(){
+					$(".page-cut").hide();	
+				},5000)
+				//复位气泡1
+				setTimeout(function(){
+				$(".bubble2").css("opacity","1");
+				},8000)
+				//复位气泡2
+				setTimeout(function(){
+				$(".bubble1").css("opacity","1");
+				},10500)
+				//遮罩层出现
+				setTimeout(function(){
+					$(".mask").show().css("top",'0');
+				},12000)
+				//点击小手的层次，隐藏动画
+				$(".mask").bind("touchstart",function(){										
+					$(this).addClass("sacle_0");
+					$(".page2").addClass("active");
+					setTimeout(function(){
+						$(".bubble1").css("opacity","0");
+						$(".bubble2").css("opacity","0");
+					},2000)
+					setTimeout(function(){
+						$(".page2").hide();
+						$(".page3").show();
+						$(".page3").addClass("page3Show");
+						$(".page3 .cutX").addClass("page3-MoveX");
+						
+					},3000)
+				})
+				
+				
+				
+			})
+		</script>
+	</body>
+</html>

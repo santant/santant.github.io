@@ -1,0 +1,661 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+	<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+	<meta name="format-detection" content="telephone=no">
+	<link rel="stylesheet" type="text/css" href="css/public.css"/>
+	<link rel="stylesheet" type="text/css" href="css/index.css"/>
+	<!--进度条-->	
+	<style type="text/css">
+		.lading{width: 100%;height: 100%;position: fixed;top: 0;left: 0;background: url(img/index-bg05.jpg) no-repeat;background-size: 100% 100%;z-index: 999;}
+		.lading-div{border-radius:0.3rem;width: 10.9375rem;height: 0.6875rem;background: url(img/page3-icon20.png) repeat-x;position: absolute;bottom: 9rem;left: 5.15625rem;}
+		.lading-span{border-radius:0.3rem;height: 0.6875rem;background: rgba(99,62,44,0.6);position: absolute;top: 0;left: 0;box-shadow: 1px 1px 5px #c28430,-1px -1px 5px #c28430;}
+		.lading-div span{position: absolute;height: 1.875rem;line-height: 1.875rem;text-align: center;bottom: 0.6rem;left: 4.6875rem;font-size: 0.78125rem;color: #581e12;font-family: arial;}
+	</style>
+	<script src="js/rem.js" type="text/javascript" charset="utf-8"></script>
+	<script src="js/jquery-1.8.2.min.js" type="text/javascript" charset="utf-8"></script>
+	<script src="js/jquery.hammer.min.js" type="text/javascript" charset="utf-8"></script>
+	<script src="js/monoevent.js" type="text/javascript" charset="utf-8"></script>
+	<script type="text/javascript">
+		$(function(){
+			//网页进度条loading需要加载的图片
+			 var arr = [];//存放图片地址的数组
+			 function browserRedirect(id) {
+			            var sUserAgent = navigator.userAgent.toLowerCase();
+			            var bIsIpad = sUserAgent.match(/ipad/i) == "ipad";
+			            var bIsIphoneOs = sUserAgent.match(/iphone os/i) == "iphone os";
+			            var bIsMidp = sUserAgent.match(/midp/i) == "midp";
+			            var bIsUc7 = sUserAgent.match(/rv:1.2.3.4/i) == "rv:1.2.3.4";
+			            var bIsUc = sUserAgent.match(/ucweb/i) == "ucweb";
+			            var bIsAndroid = sUserAgent.match(/android/i) == "android";
+			            var bIsCE = sUserAgent.match(/windows ce/i) == "windows ce";
+			            var bIsWM = sUserAgent.match(/windows mobile/i) == "windows mobile";           
+			            if (bIsIpad || bIsIphoneOs || bIsMidp || bIsUc7 || bIsUc || bIsAndroid || bIsCE || bIsWM) {
+			              //移动端需要执行的
+			               //pc端
+			              id.each(function(){
+								//解析得到的图片地址
+								if ($(this).css("backgroundImage") !="none") {//这个属性是背景的图 !="none"是排除img的属性为none不是空
+									var lastLength = $(this).css("backgroundImage").length - 1;						
+									var oSrc = $(this).css("backgroundImage").substring(4,lastLength);
+			//						alert(oSrc);
+									console.log($(this).css("backgroundImage"));
+									arr.push(oSrc);
+								}
+								if ($(this).attr("src")) {//这个属性是图片的src
+									arr.push($(this).context.src);
+								}
+							})
+			            }else
+			            {
+			              //pc端
+			              id.each(function(){
+								//解析得到的图片地址
+								if ($(this).css("backgroundImage") !="none") {//这个属性是背景的图 !="none"是排除img的属性为none不是空
+									var lastLength = $(this).css("backgroundImage").length - 2;						
+									var oSrc = $(this).css("backgroundImage").substring(5,lastLength);
+			//						alert(oSrc);
+									console.log($(this).css("backgroundImage"));
+									arr.push(oSrc);
+								}
+								if ($(this).attr("src")) {//这个属性是图片的src
+									arr.push($(this).context.src);
+								}
+							})
+			            }
+		          }
+			browserRedirect($("[datLading='datLading']"));
+				var iLength = 0;				
+				for (var i = 0; i < arr.length; i++) {		
+					
+					var oImg =new Image();
+					oImg.src = arr[i];
+					oImg.onload=function()
+					{
+						iLength++;	
+						$(".lading-span").animate({//进度条运动的width -->100%
+							width : parseInt(iLength/arr.length*100)+'%'
+						},50);
+						
+						$(".lading-div span").text(parseInt(iLength/arr.length*100)+'%'); 
+													
+						if(iLength == arr.length)//这里就是已经加载完毕了
+						{							
+							$(".lading").hide();//进度条的div隐藏
+						}	
+					};
+					oImg.onerror=function()
+					{
+						setTimeout(function(){
+							iLength++;	
+							$(".lading-span").animate({//进度条运动的width -->100%
+								width : parseInt(iLength/arr.length*100)+'%'
+							},50);
+							
+							$(".lading-div span").text(parseInt(iLength/arr.length*100)+'%'); 
+														
+							if(iLength == arr.length)//这里就是已经加载完毕了
+							{							
+								$(".lading").hide();//进度条的div隐藏
+							}
+						},1500)
+					};					
+				}
+			//屏蔽ios下上下弹性
+			$(window).on('scroll.elasticity', function (e) {
+				 e.preventDefault();
+			}).on('touchmove.elasticity', function (e) {
+				 e.preventDefault();
+			});				
+			//动态设置翻页的图层
+			$(".ul_book li").css("z-index",'99');
+			$(".ul_book li").each(function(index){
+				$(this).css('z-index',$(this).css('z-index')-index);
+			})		
+			$(".hand").bind("click",function(){
+				//纸张抽出
+				$(".conatiner i").addClass(" An-tops ");
+				//隐藏纸
+				setTimeout(function(){
+					$(".conatiner i").hide();
+				},2000)
+				$(".div-eye").addClass(" An-eye ");
+				
+				$("#book").addClass("An-scaleSHU");
+				setTimeout(function(){
+					$(".ul li").eq(0).addClass("active");
+					$(".img2").show();
+					$("#book ul >.first-Li:after").show();
+					$(".div-pan").addClass(" pan-top ");
+				},3000)				
+			})
+			  $(".ul >li").css("z-index",'99');
+				   $(".ul >li").each(function(index){
+					$(this).css('z-index',$(this).css('z-index')-index);
+				})
+			   var ne = MonoEvent;
+				 box = ne( $(".ul >li"));
+				 box.on('swipeLeft swipeRight', function(e){
+				 	e.stopPropagation();
+						if(e.type == 'swipeLeft')
+						{
+							var oIndex = $(this).index();							
+							if (oIndex ==1) {//两个标签淡入	
+								$(this).addClass("active");
+								$(".li3 .a_person").addClass("toBotton");
+								$(".li3 .per-d").addClass("toBotton");
+							}							
+						}
+			　　   })
+				//点击下载之后的操作
+				$(".a_person").bind("touchstart",function(){
+					$(this).addClass("An-todowTop");
+					$(".per-d").fadeOut(400);
+					$(".span-prev").show();
+					
+					setTimeout(function(){
+						$(".li3-table").addClass("off An-tableShow");
+					},1000)
+				})
+				//添加的返回按钮
+				$(".span-prev").bind("touchstart",function(){
+					$(this).hide();
+					$(".li3-table").removeClass("off An-tableShow");
+					$(".a_person").removeClass("An-todowTop");
+					$(".per-d").fadeIn(400);
+				})
+				
+				$(".a_submit a").bind("touchstart",function(){
+					//弹出框出现
+					$(".herf").addClass("off");
+					$(".herf-alert").addClass("An-tableShow");
+				})
+				
+				//我要测试按钮
+				$(".per-d").bind("touchstart",function(){
+					$(this).parents(".li3").addClass("active");
+				})
+				//测试题的选择标签
+				$(".li4 ol li").bind("touchstart",function(){
+					//清空状态
+//					$(this).removeClass("An-coloer An-coloer1");
+//					$(this).find("i").removeClass("correct colse  off");
+					
+					//选择状态后台程序 自己给if判断加class
+					
+					$(this).addClass("An-coloer");
+					$(this).find("i").addClass("correct off");
+					
+					//等1s翻页
+					$(this).parents(".li4").addClass("active");	
+					
+					//根据last-AN-LI这个标记 判断是否是答题的最后1个
+					if ($(this).parents(".li4").hasClass("last-AN-LI")) {
+						$(".halo").hide();
+						$(".conatiner i").hide();
+						$("#book").fadeOut(400);
+						//纸张从上往下滑落
+						$(".mark").addClass("off An-markShow");	
+					}					  
+				})				
+				//查看答案
+				$(".answer").bind("touchstart",function(){
+					//小调查显示				
+					$(".mark").removeClass("off").hide();
+					$(".examine").fadeIn();
+					$(".flrst-a").addClass("An-ToRight");
+					$(".table-qx").addClass("An-bottom-top");
+					$(".div-pan").hide();
+					setTimeout(function(){
+						$(".examine .last-a").addClass("An-leftToRight");
+					},1000)
+				})				
+				//小调查里面的表单点击
+				$(".table-qx ul li").bind("touchstart",function(){
+					//小调查显示	
+					$(".table-qx ul li b").removeClass("b_bg");
+					$(this).find("b").addClass("b_bg");
+					
+				})
+				$(".examine .last-a").bind("touchstart",function(){
+					//小调查显示	
+					//弹出框表单出现
+					$(".alert-bm").addClass("off");
+					$(".alert-bm .ul-alert").addClass("An-tableShow");
+				})	
+				
+				//弹出框的关闭按钮
+				var oclose =  $(".alert-bm .ul-alert li:nth-of-type(1) b");
+				var oclose2 =  $(".herf .herf-alert li:nth-of-type(1) b");
+				
+				oclose.bind("touchstart",function(){
+					$(".alert-bm .ul-alert").removeClass("An-tableShow");
+					$(".alert-bm").removeClass("off").fadeOut(2000);	
+				})
+				
+				oclose2.bind("touchstart",function(){
+					$(".herf .herf-alert").removeClass("An-tableShow");
+					$(".herf").removeClass("off").fadeOut(2000);	
+				})				
+				//分享朋友圈
+				$(".share").bind("touchstart",function(){
+					$(".div-pan").show();
+//					$(".mark").removeClass("off");
+					$(".friend").addClass("off");
+					$(".friend img").addClass("An-top-right");
+				})
+				//点击朋友圈隐藏浮层
+				$(".friend ").bind("touchstart",function(){
+					$(".friend").removeClass("off").fadeOut(2000);
+					$(".friend img").removeClass("An-top-right");
+				})
+				//给最后一道题添加1个标记---->触发成绩单   last-AN-LI
+				$(".li4:last-child").addClass("last-AN-LI");
+				
+				//我要领奖的随机弹出框
+				$("#btn").bind("touchstart",function(){
+					$(".prize").fadeIn(400);
+					
+					//获得0-2的随机生成数
+					var  oRandomNum = Math.floor(Math.random()*3)					
+					$(".prize-alert").eq(oRandomNum).addClass("off An-tableShow");
+				})
+				
+				$(".prize-alert b").bind("touchstart",function(){
+					$(".prize").fadeOut(400);
+					$(".prize-alert").removeClass("off An-tableShow");
+				})
+				
+				
+		})
+	</script>
+</head>
+<body>
+	<!--进度条-->
+	<div class="lading">
+		<div class="lading-div">
+			<div class="lading-span">
+			</div>
+			<span>12%</span>
+		</div>
+		
+	</div>
+	
+	<!--页面主体-->
+	<div class="conatiner" datLading= "datLading">
+		<!--光环-->
+		<div class="halo An-lines" datLading= "datLading" ></div>
+		<!--纸张-->
+		<i class="" datLading= "datLading"></i>
+		<!--眼睛-->
+		<div class="div-eye" datLading= "datLading"></div>
+		<!--笔-->
+		<div class="div-pan" datLading= "datLading"></div>
+		<!--书-->
+		<div id="book" datLading= "datLading">
+			<ul class="ul">
+				<li class="first-Li" datLading= "datLading">
+					<div class="hand An-hands" datLading= "datLading">					
+					</div>
+				</li>
+				<li class="li-page2">
+					<div class="page-text">
+						<img src="img/page2-icon09.png"  datLading= "datLading"/>
+						<div class="btn-hand" datLading= "datLading">
+							<img src="img/page2-icon08.png" class="img2 An-handTop" datLading= "datLading"/>
+						</div>
+					</div>
+				</li>
+				<li class="li3">
+					
+					<div class="page-text">
+						<a href="javascript:void(0);" class="a_person per-p" datLading= "datLading"></a>
+						<a href="javascript:void(0);" class="a-data per-d" datLading= "datLading"></a>
+						<span class="span-prev"></span>
+					</div>					
+					<!--隐藏的表单-->
+					<div class="li3-table">
+						<div class="li-input">
+							<input type="text" name="" id="" value=""  placeholder="姓名"/>
+						</div>
+						<div class="li-input">
+							<input type="text" name="" id="" value=""  placeholder="姓名"/>
+						</div>
+						<div class="li-input">
+							<input type="text" name="" id="" value=""  placeholder="姓名"/>
+						</div>
+						<div class="text-li">
+							*请填写您的真实信息
+						</div>
+						<div class="a_submit">
+							<a href="javascript:void(0);">提 &nbsp;交</a>
+						</div>						
+					</div>					
+				</li>				
+				<li class="li4">
+					<div class="page-text">
+						<h4>第1题</h4>
+						<p>一个香港银行选择一个美国软件开发商为他们新系统的承包商，但是当美国公司提交产品的时候，所提交的产品被银行否决，最有可能的原因是什么？</p>
+						
+						<ol>
+							<li class="">
+								A． 美国和香港的文化差异
+								<i class=""></i>
+							</li>
+							<li>
+								B． 美国和香港的文化差异
+								<i></i>
+							</li>
+							<li>
+								C． 美国和香港的文化差异
+								<i></i>
+							</li>
+							<li>
+								D． 美国和香港的文化差异
+								<i></i>
+							</li>							
+						</ol>
+				    </div>
+				</li>
+				<li class="li4">
+					<div class="page-text">
+						<h4>第二题</h4>
+						<p>一个香港银行选择一个美国软件开发商为他们新系统的承包商，但是当美国公司提交产品的时候，所提交的产品被银行否决，最有可能的原因是什么？</p>
+						
+						<ol>
+							<li class="">
+								A． 美国和香港的文化差异
+								<i class=""></i>
+							</li>
+							<li>
+								B． 美国和香港的文化差异
+								<i></i>
+							</li>
+							<li>
+								C． 美国和香港的文化差异
+								<i></i>
+							</li>
+							<li>
+								D． 美国和香港的文化差异
+								<i></i>
+							</li>							
+						</ol>
+				    </div>
+				</li>
+				<li class="li4">
+					<div class="page-text">
+						<h4>第3题</h4>
+						<p>一个香港银行选择一个美国软件开发商为他们新系统的承包商，但是当美国公司提交产品的时候，所提交的产品被银行否决，最有可能的原因是什么？</p>
+						
+						<ol>
+							<li class="An-coloer1 ">
+								A． 美国和香港的文化差异
+								<i class="close off"></i>
+							</li>
+							<li>
+								B． 美国和香港的文化差异
+								<i></i>
+							</li>
+							<li>
+								C． 美国和香港的文化差异
+								<i></i>
+							</li>
+							<li>
+								D． 美国和香港的文化差异
+								<i></i>
+							</li>							
+						</ol>
+				    </div>
+				</li>
+				<li class="li4">
+					<div class="page-text">
+						<h4>第4题</h4>
+						<p>一个香港银行选择一个美国软件开发商为他们新系统的承包商，但是当美国公司提交产品的时候，所提交的产品被银行否决，最有可能的原因是什么？</p>
+						
+						<ol>
+							<li class="">
+								A． 美国和香港的文化差异
+								<i class=""></i>
+							</li>
+							<li>
+								B． 美国和香港的文化差异
+								<i></i>
+							</li>
+							<li>
+								C． 美国和香港的文化差异
+								<i></i>
+							</li>
+							<li>
+								D． 美国和香港的文化差异
+								<i></i>
+							</li>							
+						</ol>
+				    </div>
+				</li>
+				<li class="li4">
+					<div class="page-text">
+						<h4>第5题</h4>
+						<p>一个香港银行选择一个美国软件开发商为他们新系统的承包商，但是当美国公司提交产品的时候，所提交的产品被银行否决，最有可能的原因是什么？</p>
+						
+						<ol>
+							<li class="">
+								A． 美国和香港的文化差异
+								<i class=""></i>
+							</li>
+							<li>
+								B． 美国和香港的文化差异
+								<i></i>
+							</li>
+							<li>
+								C． 美国和香港的文化差异
+								<i></i>
+							</li>
+							<li>
+								D． 美国和香港的文化差异
+								<i></i>
+							</li>							
+						</ol>
+				    </div>
+				</li>
+				<li class="li4">
+					<div class="page-text">
+						<h4>第6题</h4>
+						<p>一个香港银行选择一个美国软件开发商为他们新系统的承包商，但是当美国公司提交产品的时候，所提交的产品被银行否决，最有可能的原因是什么？</p>
+						
+						<ol>
+							<li class="">
+								A． 美国和香港的文化差异
+								<i class=""></i>
+							</li>
+							<li>
+								B． 美国和香港的文化差异
+								<i></i>
+							</li>
+							<li>
+								C． 美国和香港的文化差异
+								<i></i>
+							</li>
+							<li>
+								D． 美国和香港的文化差异
+								<i></i>
+							</li>							
+						</ol>
+				    </div>
+				</li>
+				<li class="li4">
+					<div class="page-text">
+						<h4>第7题</h4>
+						<p>一个香港银行选择一个美国软件开发商为他们新系统的承包商，但是当美国公司提交产品的时候，所提交的产品被银行否决，最有可能的原因是什么？</p>
+						
+						<ol>
+							<li class="">
+								A． 美国和香港的文化差异
+								<i class=""></i>
+							</li>
+							<li>
+								B． 美国和香港的文化差异
+								<i></i>
+							</li>
+							<li>
+								C． 美国和香港的文化差异
+								<i></i>
+							</li>
+							<li>
+								D． 美国和香港的文化差异
+								<i></i>
+							</li>							
+						</ol>
+				    </div>
+				</li>				
+				<li class="li4">
+					<div class="page-text">
+						<h4>第8题</h4>
+						<p>一个香港银行选择一个美国软件开发商为他们新系统的承包商，但是当美国公司提交产品的时候，所提交的产品被银行否决，最有可能的原因是什么？</p>
+						
+						<ol>
+							<li class="An-coloer1 ">
+								A． 美国和香港的文化差异
+								<i class="close off"></i>
+							</li>
+							<li>
+								B． 美国和香港的文化差异
+								<i></i>
+							</li>
+							<li>
+								C． 美国和香港的文化差异
+								<i></i>
+							</li>
+							<li>
+								D． 美国和香港的文化差异
+								<i></i>
+							</li>							
+						</ol>
+				    </div>
+				</li>
+			</ul>
+		</div>
+		<!--查看成绩-->
+		<div class="mark" datLading= "datLading">
+			<h3>用户姓名</h3>
+			<h4>恭喜您用时 <b>5分钟</b>评分：<b>80分</b></h4>
+			<h5>是非常优秀的PMP哦~</h5>
+			<div class="a-h">
+				<a href="javascript:void(0);" class="answer">查看正确答案</a>
+				<a href="javascript:void(0);" class="share">分享朋友圈</a>
+			</div>
+		</div>
+		<!--小调查-->
+		<div class="examine" datLading= "datLading">
+			<a href="javascript:void(0);" class="flrst-a" datLading= "datLading"></a>
+			<div class="table-qx" datLading= "datLading">
+				<ul>
+					<li><span>您对pmp:</span> <b></b>完全不知</li>
+					<li><span></span> <b></b>基本了解</li>
+					<li><span></span> <b class="b_bg"></b>我是高手</li>
+				</ul>
+			</div>
+			<button id="btn">我要领奖js逻辑</button>
+			<a href="javascript:void(0);" class="last-a" datLading= "datLading"></a>
+		</div>
+	</div>
+	
+	<!--弹出框我要报名-->
+	<div class="alert-bm">
+		<ul class="ul-alert">
+			<li>温馨提示<b datLading= "datLading"></b> </li>
+			<li class="li-input">
+				<input type="text" name="" id="" value=""  placeholder="姓名"/>
+			</li>
+			<li class="li-input">
+				<input type="text" name="" id="" value="" placeholder="电话"/>
+			</li>
+			<li class="li-input">
+				<input type="text" name="" id="" value="" placeholder="邮箱" />
+			</li>
+			<li class="text-li">
+				*请填写您的真实信息
+			</li>
+			<li class="a_submit2">
+				<a href="javascript:void(0);">提 &nbsp;交</a>
+			</li>
+		</ul>	
+	</div>
+	
+	<!--分享朋友圈-->
+	<div class="friend">
+		<img src="img/page3-icon15.png" datLading= "datLading"/>
+	</div>
+	
+	<!--弹出框网址-->
+	<div class="herf">
+		<ul class="herf-alert">
+			<li>温馨提示 <b></b> </li>
+			<li><a href="javascript:void(0);">请点击连接下载</a></li>
+			<li><a href="javascript:void(0);">http://www.baidu.com</a></li>
+		</ul>		
+	</div>
+	
+	<!--奖品的3个弹窗-->
+	<div class="prize">
+		<div class="prize-alert">
+			<li>温馨提示 <b></b> </li>
+			<li class="li-prize">
+				<!--代金卷-->
+				<div class="box-prize">
+					<section>
+						<span>代金券</span>
+					</section>
+					<section>
+						<span>100</span>
+						<i>元</i>
+					</section>
+				</div>
+			</li>
+			<li class="sure">
+				<a href="javascript:void(0);">确 &nbsp;定</a>
+			</li>
+		</div>
+		<div class="prize-alert">
+			<li>温馨提示 <b></b> </li>
+			<li class="li-prize">
+				<!--门票-->
+				<div class="box-prize">
+					<section>
+						<span style="text-indent: 0.7rem;">门票</span>
+					</section>
+					<section>
+						<span style="font-size: 1.15rem;text-indent: 0.15rem;">PMP沙龙</span>
+						<i>门票</i>
+					</section>
+				</div>				
+			</li>
+			<li class="sure">
+				<a href="javascript:void(0);">确 &nbsp;定</a>
+			</li>
+		</div>
+		<div class="prize-alert">
+			<li>温馨提示 <b></b> </li>
+			<li class="li-prize">
+				<!--PMP积分-->
+				<div class="box-prize">
+					<section>
+						<b>PMP</b>
+						<p>积分</p>
+					</section>
+					<section>
+						<span>200</span>
+						<i>积分</i>
+					</section>
+				</div>				
+			</li>
+			<li class="sure">
+				<a href="javascript:void(0);">确 &nbsp;定</a>
+			</li>
+		</div>
+	</div>
+	
+</body>
+</html>

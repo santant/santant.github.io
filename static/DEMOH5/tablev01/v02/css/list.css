@@ -1,0 +1,14 @@
+/*html{height: 100%;}*/
+body{width: 100%;min-height:32.15625rem;background: url(../img/index3-bg.png) no-repeat;background-size: 100% 100%;text-align: center;}
+
+.dl-list{width: 18.4375rem;margin: 0 auto;margin-top: 0.8125rem;border-radius: 5px;background: rgba(255,255,255,0.8);box-shadow: 2px 2px 5px #ccc;}
+.dl-list dt{height:2.0625rem;line-height:2.0625rem;;text-align: center;font-size: 0.9375rem;color: #85c37d;border-bottom: 1px solid #4aac3c;}
+.dl-list dd{padding: 0.46875rem 0 0.46875rem 0;}
+.dl-list dd ol{width: 100%;overflow: hidden;transition: 2s;}
+.dl-list dd ol li{float: left;height: 1.40625rem;line-height: 1.40625rem;font-size: 0.9375rem;width:25%;text-align: center;color: #4aac3c;}
+.dl-list dd ol li:nth-child(2){width: 20%;}
+.dl-list dd ol li:nth-child(3){width: 30%;}
+.dl-list .last-dt{border: none;border-top: 1px solid #4aac3c;position: relative;}
+.dl-list .last-dt i{display: block;width: 0.84375rem;height: 0.84375rem;background: url(../img/icon01.png) no-repeat;background-size: 100% 100%;display: inline-block;margin-left: 0.5625rem;vertical-align: top;margin-top: 0.625rem;}
+.dl-list .last-dt .active{background: url(../img/icon02.png) no-repeat;background-size: 100% 100%;}
+.scroll{overflow: hidden !important;overflow-y: auto !important;}

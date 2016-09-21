@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title></title>
+		<meta name="format-detection" content="telephone=no" />
+		<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+		<meta name="viewport" content="width=device-width,initial-scale=1,minimum-scale=1,maximum-scale=1,user-scalable=no" />
+		<link rel="stylesheet" type="text/css" href="css/public.css" />
+		<link rel="stylesheet" type="text/css" href="css/mall.css"/>
+		<script src="js/rem.js" type="text/javascript" charset="utf-8"></script>
+		<script src="js/jquery-1.8.2.min.js" type="text/javascript" charset="utf-8"></script>
+		<script type="text/javascript">
+			window.onload = function(){
+				document.body.addEventListener('touchstart', function () {});						    
+			}
+			$(function(){				
+				//滑动划出动画
+				$(".list").click(function(){
+					$("#list-alert").addClass("activeTrans");
+				})
+				$(".alert-left").click(function(){
+				   $("#list-alert").removeClass("activeTrans");
+				})
+				$(".a-close").click(function(){
+					$("#list-alert").removeClass("activeTrans");
+				})
+				//获得select的val
+				$(".select-ul li").find("select").change(function(){
+					var oSpan =  $(this).find("option:selected").text();					
+					$(this).siblings(".select-div").find("span").text(oSpan);
+			    })
+				
+			})
+		</script>
+	<body>	
+	 
+	<div class="top-logo">
+	    <a href="tel:18688888888" class="phone">免费预约</a>   	    		
+	    <a href="#"><img src="img/logo.png"/></a>
+		<a href="javascript:void(0);" class="list" id="list"></a>
+	</div>
+	<i style="height: 5rem;width: 100%;"></i>
+	<h4 class="title-h4">MALL</h4>
+	<b class="title-line" style="width: 4rem;"></b>
+	<h5 class="title-h5">卓越商城</h5>  
+	
+	<!--商品列表-->
+	<ul class="mall">
+		<li>
+			<a href="javascript:void(0);">
+				<img src="img/book01.png"/>
+				<p>《项目管理知识体系指南》</p>
+			</a>
+		</li>
+		<li>
+			<a href="javascript:void(0);">
+			<img src="img/book02.png"/>
+			<p>现代卓越串讲讲义</p>	
+			</a>
+			
+		</li>
+		<li>
+			<a href="javascript:void(0);"><img src="img/book03.png"/>
+			<p>《现代卓越研发模拟试题》</p></a>
+			
+		</li>
+		<li>
+			<a href="javascript:void(0);">
+				<img src="img/book04.png"/>
+			<p>《项目管理知识体系指南》</p>
+			</a>
+			
+		</li>
+		<li>
+			<a href="javascript:void(0);">
+				<img src="img/book05.png"/>
+			<p>《项目管理知识体系指南》</p>
+			</a>
+			
+		</li>
+	</ul>
+	
+   
+    <!--alert弹窗-->
+    <div id="list-alert">
+    	<div class="alert-left">   		
+    	</div>
+    	<div class="alert-right">
+    		<a href="javascript:void(0);" class="a-close"></a>
+    		<ul>
+    			<li><a href="javascript:void(0);">越卓于关<i>01</i></a></li>
+    			<li><a href="javascript:void(0);" class="font-color">PMP<i>02</i></a></li>
+    			<li><a href="javascript:void(0);">越卓于关<i>03</i></a></li>
+    			<li><a href="javascript:void(0);">越卓于关<i>04</i></a></li>
+    			<li><a href="javascript:void(0);">越卓于关<i>05</i></a></li>
+    			<li><a href="javascript:void(0);">越卓于关<i>06</i></a></li>
+    			<li><a href="javascript:void(0);">越卓于关<i>07</i></a></li>
+    			<li><a href="javascript:void(0);">越卓于关<i>08</i></a></li>
+    			<li><a href="javascript:void(0);">越卓于关<i>09</i></a></li>  			
+    		</ul>
+    	</div>  		
+	</body>
+</html>

@@ -1,0 +1,232 @@
+<!DOCTYPE html>
+<html>
+	<head>
+				<link rel="shortcut icon" href="../../imges/ico.ico" type="images/x-icon" />
+		<meta charset="UTF-8">
+		<title></title>
+	</head>
+	<script type="text/javascript">
+	//三维数组点阵数字0-9 和冒号  ,每个数字的大小是10*7px 的长宽 :是10*4px长宽的数组
+
+		digit =
+     [
+        [
+            [0,0,1,1,1,0,0],
+            [0,1,1,0,1,1,0],
+            [1,1,0,0,0,1,1],
+            [1,1,0,0,0,1,1],
+            [1,1,0,0,0,1,1],
+            [1,1,0,0,0,1,1],
+            [1,1,0,0,0,1,1],
+            [1,1,0,0,0,1,1],
+            [0,1,1,0,1,1,0],
+            [0,0,1,1,1,0,0]
+        ],//0
+        [
+            [0,0,0,1,1,0,0],
+            [0,1,1,1,1,0,0],
+            [0,0,0,1,1,0,0],
+            [0,0,0,1,1,0,0],
+            [0,0,0,1,1,0,0],
+            [0,0,0,1,1,0,0],
+            [0,0,0,1,1,0,0],
+            [0,0,0,1,1,0,0],
+            [0,0,0,1,1,0,0],
+            [1,1,1,1,1,1,1]
+        ],//1
+        [
+            [0,1,1,1,1,1,0],
+            [1,1,0,0,0,1,1],
+            [0,0,0,0,0,1,1],
+            [0,0,0,0,1,1,0],
+            [0,0,0,1,1,0,0],
+            [0,0,1,1,0,0,0],
+            [0,1,1,0,0,0,0],
+            [1,1,0,0,0,0,0],
+            [1,1,0,0,0,1,1],
+            [1,1,1,1,1,1,1]
+        ],//2
+        [
+            [1,1,1,1,1,1,1],
+            [0,0,0,0,0,1,1],
+            [0,0,0,0,1,1,0],
+            [0,0,0,1,1,0,0],
+            [0,0,1,1,1,0,0],
+            [0,0,0,0,1,1,0],
+            [0,0,0,0,0,1,1],
+            [0,0,0,0,0,1,1],
+            [1,1,0,0,0,1,1],
+            [0,1,1,1,1,1,0]
+        ],//3
+        [
+            [0,0,0,0,1,1,0],
+            [0,0,0,1,1,1,0],
+            [0,0,1,1,1,1,0],
+            [0,1,1,0,1,1,0],
+            [1,1,0,0,1,1,0],
+            [1,1,1,1,1,1,1],
+            [0,0,0,0,1,1,0],
+            [0,0,0,0,1,1,0],
+            [0,0,0,0,1,1,0],
+            [0,0,0,1,1,1,1]
+        ],//4
+        [
+            [1,1,1,1,1,1,1],
+            [1,1,0,0,0,0,0],
+            [1,1,0,0,0,0,0],
+            [1,1,1,1,1,1,0],
+            [0,0,0,0,0,1,1],
+            [0,0,0,0,0,1,1],
+            [0,0,0,0,0,1,1],
+            [0,0,0,0,0,1,1],
+            [1,1,0,0,0,1,1],
+            [0,1,1,1,1,1,0]
+        ],//5
+        [
+            [0,0,0,0,1,1,0],
+            [0,0,1,1,0,0,0],
+            [0,1,1,0,0,0,0],
+            [1,1,0,0,0,0,0],
+            [1,1,0,1,1,1,0],
+            [1,1,0,0,0,1,1],
+            [1,1,0,0,0,1,1],
+            [1,1,0,0,0,1,1],
+            [1,1,0,0,0,1,1],
+            [0,1,1,1,1,1,0]
+        ],//6
+        [
+            [1,1,1,1,1,1,1],
+            [1,1,0,0,0,1,1],
+            [0,0,0,0,1,1,0],
+            [0,0,0,0,1,1,0],
+            [0,0,0,1,1,0,0],
+            [0,0,0,1,1,0,0],
+            [0,0,1,1,0,0,0],
+            [0,0,1,1,0,0,0],
+            [0,0,1,1,0,0,0],
+            [0,0,1,1,0,0,0]
+        ],//7
+        [
+            [0,1,1,1,1,1,0],
+            [1,1,0,0,0,1,1],
+            [1,1,0,0,0,1,1],
+            [1,1,0,0,0,1,1],
+            [0,1,1,1,1,1,0],
+            [1,1,0,0,0,1,1],
+            [1,1,0,0,0,1,1],
+            [1,1,0,0,0,1,1],
+            [1,1,0,0,0,1,1],
+            [0,1,1,1,1,1,0]
+        ],//8
+        [
+            [0,1,1,1,1,1,0],
+            [1,1,0,0,0,1,1],
+            [1,1,0,0,0,1,1],
+            [1,1,0,0,0,1,1],
+            [0,1,1,1,0,1,1],
+            [0,0,0,0,0,1,1],
+            [0,0,0,0,0,1,1],
+            [0,0,0,0,1,1,0],
+            [0,0,0,1,1,0,0],
+            [0,1,1,0,0,0,0]
+        ],//9
+        [
+            [0,0,0,0],
+            [0,0,0,0],
+            [0,1,1,0],
+            [0,1,1,0],
+            [0,0,0,0],
+            [0,0,0,0],
+            [0,1,1,0],
+            [0,1,1,0],
+            [0,0,0,0],
+            [0,0,0,0]
+        ]//:
+    ];
+    	var MARGIN_TOP = 60;//距离画布上边拒
+    	var MARGIN_LEFT = 30;//画布左边拒
+    	var RADIUS = 8;//半径位置	
+    	var WIDOW_WINDTH = 1024;//初始化宽高
+    	var WIDOW_HEIGHT = 768;
+    	var EndTimer = new Date(2016,1,18,16,28,41);//结束时间
+    	var curShowTime = 0;//剩余的毫秒数
+    	
+		window.onload = function(){
+			//初始化画布
+			var oCanvas = document.getElementById("canvas");
+			oCanvas.width = WIDOW_WINDTH;//设置画布宽高
+			oCanvas.height = WIDOW_HEIGHT;			
+			var context = oCanvas.getContext("2d");//获得画布上下文环境
+			curShowTime = getCurShowTime();
+//			rander(context);
+			//动画
+			setInterval(function(){
+				rander(context);
+				update();
+			},50)
+			
+			function update(){
+				var nextShowTime =getCurShowTime();
+				
+				var Nexthours = parseInt( nextShowTime / 3600);
+			    var Nextminutes = parseInt( (nextShowTime - Nexthours * 3600)/60 )
+			    var Nextseconds = nextShowTime % 60
+			    
+				var cuhours = parseInt( curShowTime / 3600);
+			    var cuminutes = parseInt( (curShowTime - cuhours * 3600)/60 )
+			    var cuseconds = curShowTime % 60
+			    //判断2个时间付值
+			    if (Nextseconds!=cuseconds) {
+			    	curShowTime = nextShowTime
+			    } 
+			}
+			
+			
+			
+			
+			//结束时间-开始时间相差毫秒函数			
+			function getCurShowTime() {
+			    var curTime = new Date();
+			    var ret = EndTimer.getTime() - curTime.getTime();
+			    ret = Math.round( ret/1000 )			
+			    return ret >= 0 ? ret : 0;
+			}
+			//渲染时钟的函数
+			function rander(cxt){
+				cxt.clearRect(0,0,WIDOW_WINDTH,WIDOW_HEIGHT);//对1个矩形空间内的进行刷新
+
+				var hours = parseInt( curShowTime / 3600);
+			    var minutes = parseInt( (curShowTime - hours * 3600)/60 )
+			    var seconds = curShowTime % 60
+			    randerDigit( MARGIN_LEFT , MARGIN_TOP , parseInt(hours/10) , cxt )
+			    randerDigit( MARGIN_LEFT + 15*(RADIUS+1) , MARGIN_TOP , parseInt(hours%10) , cxt )
+			    randerDigit( MARGIN_LEFT + 30*(RADIUS + 1) , MARGIN_TOP , 10 , cxt )
+			    randerDigit( MARGIN_LEFT + 39*(RADIUS+1) , MARGIN_TOP , parseInt(minutes/10) , cxt);
+			    randerDigit( MARGIN_LEFT + 54*(RADIUS+1) , MARGIN_TOP , parseInt(minutes%10) , cxt);
+			    randerDigit( MARGIN_LEFT + 69*(RADIUS+1) , MARGIN_TOP , 10 , cxt);
+			    randerDigit( MARGIN_LEFT + 78*(RADIUS+1) , MARGIN_TOP , parseInt(seconds/10) , cxt);
+			    randerDigit( MARGIN_LEFT + 93*(RADIUS+1) , MARGIN_TOP , parseInt(seconds%10) , cxt);
+			}
+			function randerDigit(x,y,num,cxt){
+				cxt.fillStyle = 'rgb(0,102,153)';//小圆的背景
+				for (var i = 0; i < digit[num].length; i++) {
+					for (var j = 0; j < digit[num][i].length; j++) {						
+						if (digit[num][i][j]==1) {//判断=1的画实心园
+							cxt.beginPath();
+							//渲染小圆点
+							cxt.arc(
+								x+j*2*(RADIUS+1)+(RADIUS+1),y+i*2*(RADIUS+1)+(RADIUS+1),RADIUS,0,2*Math.PI								
+							);
+							cxt.closePath();
+							cxt.fill();
+						}
+					}
+				}
+			}
+		}
+	</script>
+	<body>
+		<canvas id="canvas" width="" height="" style="border: 1px solid red;"></canvas>
+	</body>
+	
+</html>

@@ -1,0 +1,89 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+	<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+	<meta name="format-detection" content="telephone=no">
+	<link rel="stylesheet" type="text/css" href="css/public.css"/>
+	<link rel="stylesheet" type="text/css" href="css/index.css"/>
+	<script src="js/rem.js" type="text/javascript" charset="utf-8"></script>
+	<script type="text/javascript">
+		window.onload = function(){
+			document.body.addEventListener("touchstart",function(){});
+			var oA = document.querySelector(".A-hraf");
+			oA.ontouchstart = function(){
+				this.children[0].setAttribute("src",'img/botton-active.png');
+			}
+			oA.ontouchend = function(){
+				this.children[0].setAttribute("src",'img/botton.png');				
+			}
+		}
+	</script>			
+</head>
+<body>
+	<i style="width: 100%;height: 12.8125rem;"></i>
+    <ul class="yf-box">
+    	<li>
+    		<a href="#"><i><b class="active1"></b></i>
+    		<span>清新</span></a>
+    	</li>
+    	<li>
+    		<a href="#">
+    		   <i><b class="active2"></b></i>
+    		   <span>蕾丝</span>  			
+    		</a>   		
+    	</li>
+    	<li>
+    		<a href="#">
+    			<i><b class="active3"></b></i>
+    			<span>牛仔</span>
+    		</a>    		
+    	</li>
+    	<li>
+    		<a href="#">
+    			<i><b class="active4"></b></i>
+    		<span>松糕鞋</span>
+    		</a>
+    	</li>
+    	<li>
+    		<a href="#">
+    			<i><b class="active5"></b></i>
+    			<span>性感</span>
+    		</a>
+    	</li>
+    	<li>
+    		<a href="#">
+    			<i><b class="active6"></b></i>
+    			<span>包包</span>   			
+    		</a>
+    	</li>
+    	<li>
+    		<a href="#">
+    			<i><b class="active7"></b></i>
+    			<span>清新</span>
+    		</a>
+    	</li>
+    	<li>
+    		<a href="#">
+    			<i><b class="active8"></b></i>
+    			<span>清新</span>
+    		</a>
+    	</li>
+    	<li>
+    		<a href="#">
+    			<i><b class="active9"></b></i>
+    			<span>清新</span>
+    		</a>
+    	</li>
+    </ul>
+    <!--按钮-->
+    <a href="javascript:void(0)" class="A-hraf activeColor activeColor2">
+    	<img src="img/botton.png"/>
+    </a>
+    <!---->
+    
+    
+</body>
+</html>

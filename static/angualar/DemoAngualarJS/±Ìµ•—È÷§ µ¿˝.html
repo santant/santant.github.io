@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html  ng-app="myApp">
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<script src="angular.min.js" type="text/javascript" charset="utf-8"></script>
+		<style type="text/css">
+			input.ng-valid{border: 1px solid #008000;}
+			input.ng-invalid{border: 1px solid red;}
+				
+		</style>
+		<script type="text/javascript">
+			var m1 = angular.module('myApp',[]);
+			m1.controller('Aaa',['$scope',function($scope){
+				$scope.regText = {
+					regVal : 'default',
+					regList : [
+						{ name : 'default' , tips : '请输入用户名'},
+						{ name : 'required' , tips : '用户名不能为空'},
+						{ name : 'pattern' , tips : '用户名必须是字母'},
+						{ name : 'pass' , tips : '√'}
+					],				
+				//执行的函数
+				change : function(err){
+					for (attr in err) {
+						if (err[attr] == true) {
+							this.regVal = attr;
+							return;
+						}
+					}
+					//不走for的时候 就是通过了
+					this.regVal = 'pass';
+				 }
+				};	
+				$scope.regPassword = {
+				regVal : 'default',
+				regList : [
+					{ name : 'default' , tips : '请输入密码'},
+					{ name : 'required' , tips : '密码不能为空'},
+					{ name : 'minlength' , tips : '密码至少6位'},
+					{ name : 'pass' , tips : '√'}
+				],
+				change :function(eer){
+					for (attr in eer) {
+						if (eer[attr] == true) {
+							this.regVal = attr;
+							return
+						}
+						this.regVal = 'pass';
+					}
+				}
+			   };
+				
+			}])
+		</script>
+
+	</head>
+	<body>
+		<div ng-controller="Aaa">	
+			<form novalidate name="myFrom">
+				<div>
+					<label>用户名</label>
+					<input type="text" name="nText" id="" value="" ng-model="regText.name" required  ng-pattern="/^[a-zA-Z]+$/"  ng-blur="regText.change(myFrom.nText.$error)"/>
+					
+					<span ng-repeat=" re in regText.regList | filter : regText.regVal ">{{ re.tips }}</span>
+				</div>
+				<div>
+					<label>密码</label>
+					<!--ng-model="regPassword.name"数据绑定都是用的regPassword是$scope的属性的name-->
+					<!--ng-blur="regPassword.change(myFrom.PassWord.$error)"这里regPassword是$scope的属性.change是函数方法(参数是表单的name.这个input的name.$error这个综合验证对象)-->
+					<input type="password" name="PassWord" id="" value="" ng-model="regPassword.name" required  ng-minlength="6" ng-blur="regPassword.change(myFrom.PassWord.$error)"/>
+					<!--repas in regPassword.regList |filter :regPassword.regVal 遍历regPassword.regList 返回repas 在这个基础上过滤出来 regPassword.regVal显示 -->
+					<span ng-repeat="repas in regPassword.regList |filter :regPassword.regVal">{{repas.tips}}</span>
+				</div>		
+			</form>
+		</div>
+
+		
+	</body>
+</html>

@@ -1,0 +1,125 @@
+.shade {
+	position: fixed;
+	left: 0;
+	top: 0;
+	right: 0;
+	bottom: 0;
+	background: rgba(0, 0, 0, 0.6);
+	z-index: 99;
+}
+.popUpWindowBottom {
+	width: 17.125rem;
+	height: 13.375rem;
+	background: #fff;
+	position: absolute;
+	left: 0;
+	bottom: 0;
+	padding: 0 1.4375rem;
+}
+.popUpWindowBottom .info {
+	display: inline-block;
+	width: 100%;
+	height: 10.125rem;
+	vertical-align: middle;
+	text-align: center;
+}
+.popUpWindowBottom .info:before {
+	content: '';
+	display: inline-block;
+	width: 0;
+	height: 100%;
+	vertical-align: middle;
+}
+.popUpWindowBottom .info p {
+	display: inline-block;
+	font-size: 0.8125rem;
+}
+.popUpWindowBottom .button_box {
+	width: 100%;
+	height: 2.25rem;
+}
+.popUpWindowBottom .button_box a {
+	display: block;
+	width: 8.25rem;
+	height: 2.1875rem;
+	line-height: 2.1875rem;
+	text-align: center;
+	border: 1px solid #E6E9ED;
+	font-size: 0.75rem;
+}
+.popUpWindowBottom .button_box.sole a {
+	width: 100%;
+}
+.popUpWindowBottom .button_box a.negative {
+	float: left;
+	border-color: #E6E9ED;
+	background: #fff;
+	color: #3A9AFF;
+}
+.popUpWindowBottom .button_box a.positive {
+	float: right;
+	border-color: #3A9AFF;
+	background: #3A9AFF;
+	color: #fff;
+}
+.popUpWindowTop {
+	width: 19.5rem;
+	height: 1.875rem;
+	line-height: 1.875rem;
+	text-align: center;
+	padding: 0.25rem;
+	position: absolute;
+	left: 0;
+	top: 2.8125rem;
+	z-index: 99;
+}
+.popUpWindowTop .info {
+	width: 100%;
+	height: 100%;
+	background: #F8A300;
+	font-size: 0.75rem;
+	color: #fff;
+}
+.popUpWindowTop .info:before {
+	content: '';
+	display: inline-block;
+	width: 0;
+	height: 100%;
+	vertical-align: middle;
+}
+.popUpWindowTop .info .con {
+	display: inline-block;
+}
+.popUpWindowTop .info .loading i {
+	display: block;
+	float: left;
+	width: 1rem;
+	height: 1rem;
+	margin: 0.4375rem 0.5rem 0 0;
+}
+.popUpWindowTop .info .loading i img {
+	display: block;
+	width: 100%;
+	height: 100%;
+	animation: duRotate 1s linear infinite;
+	-webkit-animation: duRotate 1s linear infinite;
+}
+.popUpWindowTop .info .loading p {
+	float: left;
+}
+@keyframes duRotate {
+	0% {
+		transform: rotate(0deg);
+	}
+	100% {
+		transform: rotate(360deg);
+	}
+}
+@-webkit-keyframes duRotate {
+	0% {
+		-webkit-transform: rotate(0deg);
+	}
+	100% {
+		-webkit-transform: rotate(360deg);
+	}
+}

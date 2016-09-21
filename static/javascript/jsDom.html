@@ -1,0 +1,244 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta name="viewport" content="width=device-width,initial-scale=1,minimum-scale=1,maximum-scale=1,user-scalable=no" />
+		<link rel="stylesheet" type="text/css" href="../../css/public.css"/>
+		<link rel="stylesheet" type="text/css" href="../../css/index.css"/>
+		<link rel="shortcut icon" href="../../imges/ico.ico" type="images/x-icon" />
+		<meta charset="UTF-8">
+		<script type="text/javascript" src="../../js/pre/scripts/shCore.js"></script>
+		<script type="text/javascript" src="../../js/pre/scripts/shBrushBash.js"></script>
+		<script type="text/javascript" src="../../js/pre/scripts/shBrushCss.js"></script>
+		<script type="text/javascript" src="../../js/pre/scripts/shBrushCSharp.js"></script>
+		<script type="text/javascript" src="../../js/pre/scripts/shBrushJScript.js"></script>
+		<script type="text/javascript" src="../../js/pre/scripts/shBrushPhp.js"></script>
+		<script type="text/javascript" src="../../js/pre/scripts/shBrushPlain.js"></script>
+		<script type="text/javascript" src="../../js/pre/scripts/shBrushPython.js"></script>
+		<script type="text/javascript" src="../../js/pre/scripts/shBrushJava.js"></script>
+		<script type="text/javascript" src="../../js/pre/scripts/shBrushScala.js"></script>
+		<script type="text/javascript" src="../../js/pre/scripts/shBrushSql.js"></script>
+		<script type="text/javascript" src="../../js/pre/scripts/shBrushXml.js"></script>
+		<script type="text/javascript" src="../../js/pre/scripts/shBrushPerl.js"></script>
+		<link type="text/css" rel="stylesheet" href="../../js/pre/styles/shCore.css" />
+		<link type="text/css" rel="stylesheet" href="../../js/pre/styles/shThemeDefault.css" />
+		<script type="text/javascript">
+			SyntaxHighlighter.defaults['toolbar'] = false;  //去掉右上角问号图标
+			SyntaxHighlighter.config.tagName = 'pre';       //可以更改解析的默认Tag。
+			SyntaxHighlighter.config.bloggerMode = true; 
+			SyntaxHighlighter.config.stripBrs = true;  
+			SyntaxHighlighter.all();
+	   </script>
+		<script src="../../js/index.js" type="text/javascript" charset="utf-8"></script>
+		<title>javascript</title>
+	</head>
+	<body>
+	  <div class="hander"> 
+	  	<ul>
+	  		<li class="" nav-title="all"><a href="../../index.html">首页</a></li>
+			<li nav-title="css" class=""> <a href="../canvas/demo1.html">Html5画布入门篇</a></li>
+			<li nav-title="css" ><a href="../canvas/demo3.html">Html5画布提升篇</a></li>
+			<li><a href="../CSS/css3.html">CSS3</a></li>			
+			<li><a href="../../static/control/control.html">自己写的demo</a></li>			
+			<li nav-title="rem工具换算"><a href="../../static/rem1/rem.html">rem</a></li>			
+	  		<li><a href="../title/demo2.html">收藏的网站</a></li>
+	  		<li ><a href="../tool/tool.html">工具箱</a></li>
+	  		<li class=""><a href="../javascript/Event.html">javascriptEvent</a></li>
+	  		<li class="active"><a href="../javascript/jsDom.html">javascriptDOM</a></li>
+	  		<li class=""><a href="../javascript/object.html">javascriptObj</a></li>	  		
+	  		<li  ><a href="../zhengze/zhengze.html">js正则表达式</a></li>
+	  		<li><a href="../javascript/JSFcnction.html">javascript函数</a></li>
+	  		<li><a href="../HTML5/H5_1.html">HTML5</a></li>
+	  		<li><a href="../angualar/angualar.html">angualarJS</a></li>
+	  		<li class=""><a href="../jquery-css3/jq-css3.html">Jquery操作css3的拼接方式</a></li>
+	  	</ul>
+	  </div>
+	  
+	  <!--画布笔记主体-->
+	  <div class="main">
+	  	 <h3>Javascript</h3>	  	 
+	  	 <div class="div_daima">
+	  	 	<h4>Dom   <code>DOM:Document object Model</code> <code>childNodes只包含一级子节点，不包含孙级以下节点</code> <code>nodeType(12种节点类型)获取当前元素类型,常量1:元素节点，2：属性节点,3:文本节点</code> </h4>
+	  	 	<pre class="brush: js;">
+	  	 	window.onload = function(){
+			  var oUl = document.getElementById("ul1");
+			   for (var i = 0; i < oUl.childNodes.length; i++) {
+			   	if (oUl.childNodes[i].nodeType == 1){//判断他的nodetype在设置颜色,平时不推荐使用
+			   		oUl.childNodes[i].style.background = 'red';
+			   	}
+			   }
+			}
+			<!--<img  src="../../img/1.png"/>-->
+	  	 	</pre>
+	  	 	<h4>兼容的子节点写法 <code>children:可以不判断nodetype但是还有和上面一样存在ie7不支持非法嵌套的问题</code> </h4>
+	  	 	<pre class="brush: js;">
+		  	 	window.onload = function(){
+				  var oUl = document.getElementById("ul1");
+				   for (var i = 0; i < oUl.children.length; i++) {
+				   		oUl.children[i].style.background = 'red';			   	
+				   }
+				}
+	  	 	</pre>
+	  	 	<h4>获取第一个子节点  <code>children取的是元素节点，不取文本节点</code> <code>firstChild:非标准</code><code>firstElementChild:ie9+ FF  谷歌</code></h4>
+	  	 	<pre class="brush: js;">
+	  	 	window.onload = function(){
+			  var oUl = document.getElementById("ul1");
+//			  var oFirst =  oUl.firstElementChild ||oUl.firstChild;//要注意firstElementChild要在前面
+//			    if (oFirst) {//如果当前元素存在子节点，有兼容,没有节点时候会报错
+//			    	oFirst.style.background = 'red';
+//			    }
+				//取第一个元素可以利用children[0]取，避免兼容
+			   oUl.children[0].style.background ='red'; 			   	
+			}
+	  	 	</pre>
+	  	 	<h4>获取最后一个子节点  <code>lastChild:非标准</code><code>lastElementChild:ie9+ FF  谷歌</code></h4>
+	  	 	<pre class="brush: js;">
+	  	 	window.onload = function(){
+			  var oUl = document.getElementById("ul1");
+			  var oLast =  oUl.lastElementChild ||oUl.lastChild;
+			    if (oLast) {//如果当前元素存在子节点，有兼容,没有节点时候会报错
+			    	oLast.style.background = 'red';
+			    }		   	
+			}
+	  	 	</pre>
+	  	 	<h4>获取节点的下一个兄弟节点 <code>元素.nextSibling || 元素.nextElementSibling 下一个兄弟节点</code></h4>
+	  	 	<pre class="brush: js;">
+	  	 	window.onload = function(){
+			  var oUl = document.getElementById("ul1");
+			  var oFirst =  oUl.firstElementChild ||oUl.firstChild;//要注意firstElementChild要在前面
+			  var oNext = oFirst.nextElementSibling || oFirst.nextSibling;
+	          oNext.style.background = 'blue';		   	
+			}
+	  	 	</pre>
+	  	 	<h4>获取元素的上一个兄弟节点  <code>元素.previousSibling || 元素.previousElementSibling 上一个兄弟节点</code> </h4>
+	  	 	<pre class="brush: js;">
+		  	 	window.onload = function(){
+				  var oUl = document.getElementById("ul1");
+				  var olast = 	oUl.lastElementChild||oUl.lastChild;
+				  var oPrev = olast.previousElementSibling ||olast.previousSibling;
+				  oPrev.style.background = 'blue';		   	
+				}
+	  	 	</pre>
+	  	    <h4>当前父节点（只包含一层）  <code>元素.parentNode  无兼容</code></h4>
+	  	    <pre class="brush: js;">
+		  	    window.onload = function(){
+	//			  var oUl = document.getElementById("ul1");
+				  var aA = document.getElementsByTagName('a'); 
+				  for (var i = 0; i < aA.length; i++) {
+				  	aA[i].onclick = function(){
+				  		this.parentNode.style.display = 'none';
+				  	}			  	
+				  }
+				}
+				<img  src="img/js-icon01.png"/>
+	  	    </pre>
+	  	    <h4>离当前元素最近的有定位的父节点  <code>offsetParent</code> </h4>
+	  	    <pre class="brush: js;">
+	  	    	
+	  	    </pre>
+	  	    
+	  	 </div>
+	  	  <h3>DOM距离</h3>	  	 
+	  	 <div class="div_daima">
+	  	 	<h4>元素.offsetLeft,元素.offsetTop <code>注意如果当前元素的父级没有被定位，他默认会一直到html的距离,定位就是到定位父级的位置</code> </h4>
+	  	 	<pre class="brush: js;">
+	  	 		<p>元素.offsetLeft[Top] : 只读 属性 当前元素到定位父级的距离（偏移值）
+			到当前元素的offsetParent的距离
+			
+			如果没有定位父级
+				offsetParent -> body
+				offsetLeft -> html
+			
+			如果有定位父级
+				ie7以下：如果自己没有定位，那么offsetLeft[Top]是到body的距离
+						如果自己有定位，那么就是到定位父级的距离
+				其他：到定位父级的距离</p>
+	  	 	</pre>
+	  	 	<h4>元素宽高  <code>	style.width : 样式宽      clientWidth : 可视区宽   offsetWidth	: 占位宽</code>  </h4>
+	  	 	<pre class="brush: js;">
+	  	 	  <p>div id="div1" style="width: 100px;height: 100px;border: 1px solid red;padding: 10px;"</p>
+	  	 	  window.onload = function(){
+				var oDiv = document.getElementById("div1");
+//				alert(oDiv.style.width); //100px带px的 不带边框
+				alert(oDiv.clientWidth);//切记没style.————》 结果是120,不带px单位的 样式宽+padding
+				alert(oDiv.offsetWidth);//切记没style.————》 结果是122,不带px单位的 样式宽+padding+border
+			}
+	  	 	</pre>
+	  	 </div>	
+	  	 <h3>操作元素的多种方式</h3>
+	  	 <div class="div_daima">
+	  	 	<h4>.和value的方法无法操作元素的自定义属性 <code>getAttribute(可操作自定义属性)</code> <code>setAttribute(可操作自定义属性)</code> <code>removeAttribute</code> </h4>
+	  	 	<pre class="brush: js;">
+	  	 		<p>input type="text" name="text1" id="text1" value=""</p>
+	  	 		window.onload = function(){
+				var oText = document.getElementById("text1");
+//				oText.value = '222'; //赋值
+//				oText['value'] = '221';//中括号赋值
+				//元素.getAttribute
+//				alert( oText.getAttribute('name'));//获取元素的属性
+//				oText.setAttribute("value",'ww')//设置指定元素的属性值
+				//元素.removeAttribute(属性名称)
+//				oText.removeAttribute("name");//移除指定元素的属性
+//             alert(document.getElementById("img1").src);//获得资源的绝对路径
+//				var oo =  document.getElementById("img1").getAttribute("src"); 
+                //获得图片路径(ie7下有兼容还是会获得绝对路径)
+			}
+	  	 	</pre>
+	  	 	<h4>元素的创建和操作 <code>document.getElementById创建</code> <code>添加元素 -> 父级.appendChild(子级)</code> <code>父级.removeChild(要删除的元素);</code> <code> 父级.insertBefore(新的元素，被插入的元素)</code> </h4>
+	  	 	<pre class="brush: js;">
+	  	 		<p>  /*父级.insertBefore(新的元素，被插入的元素) 方法 在指定元素前面插入一个新元素
+			在ie下如果第二个参数的节点不存在，会报错
+			在其他标准浏览器下如果第二个参数的节点不存在，则会以appendChild的形式进行添加
+		*/
+		//oUl.insertBefore( oLi, oUl.children[0] );
+		
+		if ( oUl.children[0] ) {
+			oUl.insertBefore( oLi, oUl.children[0] );
+		} else {
+			oUl.appendChild( oLi );
+		}</p>
+	  	 	window.onload = function(){
+			     var obtn = 	document.getElementById("btn");
+			     var oTEXT = 	document.getElementById("text1");
+			     var oUl = 	document.getElementById("ul1");
+				 obtn.onclick = function(){
+				 	 //创建节点document.createElement
+				 	  var oLi = document.createElement('li');	
+				 	  oLi.innerHTML = oTEXT.value+"<a href=\"#\">删除</a>";
+					  //父级.	appendChild(子级)
+				 	  oUl.appendChild(oLi);//插入的一定的节点
+					  oTEXT.value = '';
+				 	  for (var i = 0; i < document.getElementsByTagName("a").length; i++) {
+				 	  	document.getElementsByTagName("a")[i].onclick = function(){
+				 	  		/*
+									父级.removeChild(要删除的元素); 删除元素
+							*/
+							oUl.removeChild(this.parentNode);
+
+				 	  	}
+				 	  }
+
+				 }
+			}
+			<img src="img/js-icon02.png"/>
+	  	 	</pre>
+	  	 	<h4>替换子节点<code>父级.replaceChild(新节点，被替换节点) 替换子节点</code> </h4>
+	  		<pre class="brush: js;">
+	  		window.onload = function() {	
+			var oDiv = document.getElementById('div1');
+			var oBtn = document.getElementById('btn');
+			var oP = document.getElementById('p1');	
+			oBtn.onclick = function() {
+				
+				/*
+					父级.replaceChild(新节点，被替换节点) 替换子节点
+				*/
+				//document.body.replaceChild( oDiv, oP );
+				appendChild,insertBefore,replaceChild //都可以操作动态创建出来的节点，也可以操作已有节点
+			    oP.appendChild( oDiv );		
+			}			
+		    }
+	  		</pre>
+	  	 </div>
+	  </div>	
+	</body>
+</html>

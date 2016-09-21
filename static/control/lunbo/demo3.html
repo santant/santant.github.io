@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<link rel="stylesheet" type="text/css" href="css/public.css"/>
+		<script src="js/jquery-1.8.2.min.js" type="text/javascript" charset="utf-8"></script>
+						<link rel="shortcut icon" href="../../../imges/ico.ico" type="images/x-icon" />
+		<meta charset="utf-8">
+		<title></title>
+		<style type="text/css">
+			#banner{width: 100%;height: 400px;margin: 0 auto;position: relative;overflow: hidden;}
+			#banner ol{position: absolute;left: 0;top: 0;}
+			#banner ol li{height: 400px;float: left;}
+			#banner ol li img{width: 100%;height: 100%;}
+			#banner_id {position: absolute;width: 100px;height: 22px;top: 340px;left: 40%;}
+			#banner_id ul{width: 100%;height: 100%;}
+			#banner_id ul li{width: 100%;height: 100%;width: 23px;height: 22px;float: left;line-height: 22px;text-align: center;background: #ccc;color: #fff;border: 1px solid #003399;}
+			#banner_id ul .nuw{background: red;}
+		</style>
+		<script type="text/javascript">
+			$(function(){
+				var mun = 0;//设置1个空的计数器
+				var oOl = $("#banner ol");
+				$("#banner ol li").css("width",$(document).width());
+				var oLi_width = $("#banner ol li").width();//获得图片宽度
+				oOl.css("width",oLi_width*$("#banner ol li").size()+'px');
+
+				$("#banner_id ul li").click(function(){
+					oOl.stop(true,true);//让图片在运动完以后再执行其他操作
+					 var oIndex = $(this).index();//获得当前的index
+				     oOl.animate({"left": -oIndex*oLi_width},500)//让他每次运动的距离=index(数量)*每一个li的宽度
+				     $(this).addClass("nuw").siblings("li").removeClass("nuw");	//当前红色状态点的位置
+				     mun = oIndex; //让li的计算器保持为1个避免选择上的index乱跳
+				})
+				//定时器
+				var timer = null;//定义1个定时器				
+				timer = setInterval(function(){	
+				  oOl.stop(true,true);//让图片在运动完以后再执行其他操作
+				  if (mun>=0 && mun < $("#banner ol li").size()-1) {//如果计算器的数量(其实这里就是index存的1个变量)>=0 并且 小于li的个数-1(这里-1是因为index是坐标是从0开始的)
+				  	 mun++;
+				  	 oOl.animate({"left": -mun*oLi_width},500)//让他每次运动的距离=index(数量)*每一个li的宽度
+				    $("#banner_id ul li").eq(mun).addClass("nuw").siblings("li").removeClass("nuw");
+				  } else{
+				  	mun=0;//mun++,他肯定会一直加,但是他>$("#banner ol li").size()的时候你就让他回到0,他就会一直循环
+				  	oOl.animate({"left": -mun*oLi_width},500);
+				  	$("#banner_id ul li").eq(mun).addClass("nuw").siblings("li").removeClass("nuw");
+				  }
+				},5000)
+				//移入关闭定时器
+				$("#banner").mouseover(function(){
+					clearInterval(timer);
+				})
+				//移出开启定时器
+				$("#banner").mouseout(function(){
+					oOl.stop(true,true);
+	                timer = setInterval(function(){//移除的时候重新执行上面的定时器				  
+					  if (mun>=0 && mun < $("#banner ol li").size()-1) {
+					  	 mun++;
+					  	 oOl.animate({"left": -mun*oLi_width},500)
+					    $("#banner_id ul li").eq(mun).addClass("nuw").siblings("li").removeClass("nuw");
+					  } else{
+					  	mun=0;
+					  	oOl.animate({"left": -mun*oLi_width},500);
+					  	$("#banner_id ul li").eq(mun).addClass("nuw").siblings("li").removeClass("nuw");
+					  }
+					},5000)
+				})
+				//下一页
+				$("#btn_right").click(function(){
+					oOl.stop(true,true);
+					if (mun>=0 && mun < $("#banner ol li").size()-1) {
+					  	 mun++;
+					  	 oOl.animate({"left": -mun*oLi_width},500)
+					    $("#banner_id ul li").eq(mun).addClass("nuw").siblings("li").removeClass("nuw");
+					  } else{
+					  	mun=0;
+					  	oOl.animate({"left": -mun*oLi_width},500);
+					  	$("#banner_id ul li").eq(mun).addClass("nuw").siblings("li").removeClass("nuw");
+					  }
+				})
+				//上一页
+				$("#btn_left").click(function(){
+					oOl.stop(true,true);
+					if (mun>0 && mun < $("#banner ol li").size()) {//这里就是因为mun最少>0他才能--,并且他需要<li的数量这里没有=
+					  	 mun--;
+					  	 oOl.animate({"left": -mun*oLi_width},500)
+					    $("#banner_id ul li").eq(mun).addClass("nuw").siblings("li").removeClass("nuw");
+					  } else{
+					  	mun = $("#banner ol li").size()-1;//因为上面--的时候,最小的时候他会=0,也就是else的情况,他=0的时候就让他回到$("#banner ol li").size()-1;他会一直轮播
+					  	oOl.animate({"left": -mun*oLi_width},500);
+					  	$("#banner_id ul li").eq(mun).addClass("nuw").siblings("li").removeClass("nuw");
+					  }
+				})
+			})
+		</script>
+	</head>
+	<body>
+		<button id="btn_left">上一页</button>
+		<button id="btn_right">下一页</button>
+		<div class="banner" id="banner">
+	    	<ol>
+	    		<li><img src="img/banner01.png"/></li>
+	    		<li><img src="img/banner02.png"/></li>
+	    		<li><img src="img/banner03.png"/></li>    		
+	    	</ol>
+    	<div class="d2" id="banner_id">
+    		<ul>
+    			<li class="nuw">1</li>
+    			<li class="">2</li>
+    			<li class="">3</li>
+    		</ul>
+    	</div>
+	</body>
+</html>

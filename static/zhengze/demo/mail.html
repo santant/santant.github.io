@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<script type="text/javascript">
+			window.onload = function(){
+				var oTEXT1 = document.getElementById("text1");
+				var btn = document.getElementById("btn");
+				
+				btn.onclick = function(){
+				
+				//dsddffvv_bb@126.com 邮箱的样式	 
+//				dsddffvv_bb       @           126             .      com
+		//一串字母,数字，下划线   \w+      @	      一串英文，数字 [0-9a-z]+   点需要转义 \.  一串英文(长度2-4) [a-z]{2,4}     
+					
+					var re = /^\w+@[0-9a-z]+\.[a-z]{2,4}$/;
+					
+					if (re.test(oTEXT1.value)){
+						alert("邮箱")
+					}else
+					{
+						alert("你写错了")
+					}
+					
+					
+				}
+			}			
+		</script>
+	</head>
+	<body>
+		<input type="text" name="text1" id="text1" value="" />
+		<button id="btn">检测QQ号</button>
+	</body>
+</html>

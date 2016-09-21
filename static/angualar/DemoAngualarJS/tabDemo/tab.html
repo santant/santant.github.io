@@ -1,0 +1,62 @@
+
+<!DOCTYPE HTML>
+<html ng-app="myApp">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<title>无标题文档</title>
+<style>
+#div1 div,#div2 div{ width:200px; height:200px; border:1px red solid; display:none;}
+#div1 input.active , #div2 input.active{ background:red;}
+</style>
+<script src="jquery-1.11.1.js"></script>
+<script src="angular.min.js"></script>
+<script>
+
+var m1 = angular.module('myApp',[]);
+m1.directive('myTab',function(){
+	return {
+		restrict : 'E',   
+		replace : true,
+		scope:{ //不是公共的数据可以申明在这里
+						myId :'@',//指的就是绑定普通字符串	
+						myData :'='
+		},
+		controller : ['$scope',function($scope){
+			$scope.name = 'miaov';
+		}],
+		templateUrl : 'temp3.html',//引入1个外部链接的形式
+		link : function(scope,element,attr){//要想进行dom操作，我们要用到link这个配置
+//			console.log(scope)  //作用域
+//			console.log(element)//最上层的节点
+//			console.log(attr) //数据
+			element.delegate('input','click',function(){
+				$(this).attr('class','active').siblings('input').attr('class','');
+				$(this).siblings('div').eq( $(this).index() ).css('display','block').siblings('div').css('display','none');
+			});
+		}
+	};
+});
+
+m1.controller('Aaa',['$scope',function($scope){
+	
+	$scope.data1 = [
+		{title:'数学',content:'111111111'},
+		{title:'语文',content:'222222222'},
+		{title:'英语',content:'333333333'}
+	];
+	$scope.data2 = [
+		{title:'物理',content:'444444444'},
+		{title:'化学',content:'555555555'}
+	];
+	
+}]);
+
+
+</script>
+</head>
+
+<body ng-controller="Aaa">
+	<my-tab my-id="div1" my-data="data1"></my-tab>
+	<my-tab my-id="div2" my-data="data2"></my-tab>
+</body>
+</html>

@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html ng-app="myApp">
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<script src="angular.min.js" type="text/javascript" charset="utf-8"></script>
+		<script type="text/javascript">
+			var m1 = angular.module('myApp',[]);
+			m1.controller('Aaa',['$scope','$filter',function($scope,$filter){
+				
+				//因为直接操作$scope.dateList会出现第二次收索的时候是在第一次收索之上的，所以要给原有的数据存1份儿
+				var ArrDate = 
+				[
+					{'name':'red',age : '30'},
+					{'name':'blue',age : '45'},
+					{'name':'yellow',age : '26'},
+					{'name':'green',age : '8'}
+				];
+				$scope.dateList = ArrDate;
+				
+				//点击姓名的时候
+				$scope.clickName = function(arg){
+					//通过arguments.callee生成ture，false的布尔值
+					arguments.callee['clickName'+arg] = !arguments.callee['clickName'+arg];
+//					$filter('orderBy')($scope.dateList,arg )通过$filter过滤的方法 过滤的对象是$scope.dateList，通过arg参数过滤
+					$scope.dateList = $filter('orderBy')($scope.dateList,arg,arguments.callee['clickName'+arg]);
+				}
+				//收索的功能
+				$scope.fnVal = function(){
+					$scope.dateList = $filter('filter')(ArrDate,$scope.filterValue);//这里操作的是原有的数据，但是赋值的缺是$scope.dateList,而上面也是居于$scope.dateList写的方法
+				}
+			}])
+		</script>
+	</head>
+	<body>
+		<div ng-controller="Aaa">
+			<input type="text" name="" id="" value="" ng-model="filterValue" /><input type="button" name="" id="" value="收索" ng-click="fnVal()"/>
+			<table border="1" cellspacing="" cellpadding="">
+				<tr>
+					<th ng-click = "clickName('name')">姓名</th>
+					<th ng-click="clickName('age')">年龄</th>
+				</tr>
+				<tr ng-repeat="date in dateList">
+					<td>{{date.name}}</td>
+					<td>{{date.age}}</td>
+				</tr>
+			</table>
+		</div>
+	</body>
+</html>
+

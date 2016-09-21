@@ -1,0 +1,47 @@
+.box {
+	padding: 60px;
+}
+
+	.box ul {
+		margin: 0;
+		padding: 0;
+		list-style: none;
+	}
+
+		.box ul:after { /*清除浮動*/
+			content: '\200B';
+			display: block;
+			height: 0;
+			visibility: hidden;
+			clear: both;
+		}
+
+		.box li {
+			float: left;
+		}
+
+			.box a {
+				position: relative;
+				display: block;
+				transition: 300ms;
+			}
+
+				.box a:hover {
+					opacity: .6;
+				}
+
+				.box a:before { /*用 box-shadow inset 做間距*/
+					content: '\200B';
+					display: block;
+					position: absolute;
+					top: 0;
+					right: 0;
+					bottom: 0;
+					left: 0;
+					box-shadow: 0 0 0 2px #fff inset;
+				}
+
+				.box img {
+					display: block;
+					width: 100%;
+				}

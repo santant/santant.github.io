@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<style type="text/css">
+			#div{display: none;width: 100px;height: 200px;border: 1px solid red;position: absolute;top: 0;left: 0;}
+		</style>
+		<script type="text/javascript">
+			window.onload = function(){
+				//右键菜单事件
+				var oDiv = 	document.getElementById("div");
+				document.oncontextmenu = function(ev){
+					//阻止菜单显示					
+					var ev = ev || event;
+			     	//滚动条的距离
+			     	var oScrollTop = document.documentElement.scrollTop || document.body.scrollTop;
+					oDiv.style.left = ev.clientX+'px';	
+				    oDiv.style.top = ev.clientY+oScrollTop+'px';	
+				    oDiv.style.display = 'block';
+				    return false;
+				}
+				document.onclick = function(){
+					oDiv.style.display = 'none';
+				}
+			}
+		</script>
+	</head>
+	<body style="height: 2000px;">
+		<div id="div">
+			
+		</div>
+	</body>
+</html>

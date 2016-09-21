@@ -1,0 +1,278 @@
+
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title></title>
+		<meta name="format-detection" content="telephone=no" />
+		<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+		<meta name="viewport" content="width=device-width,initial-scale=1,minimum-scale=1,maximum-scale=1,user-scalable=no" />
+		<link rel="stylesheet" type="text/css" href="css/public.css"/>
+		<link rel="stylesheet" type="text/css" href="css/index.css"/>
+		<link rel="stylesheet" type="text/css" href="css/swiper.min.css"/>
+		<script src="js/rem.js" type="text/javascript" charset="utf-8"></script>
+		<script src="js/swiper.min.js" type="text/javascript" charset="utf-8"></script>
+		<script src="js/jquery-1.8.2.min.js" type="text/javascript" charset="utf-8"></script>
+		<script src="js/move.js" type="text/javascript" charset="utf-8"></script>
+		<style type="text/css">
+			/*.animationSorrp{animation: 1s;}*/
+		</style>
+		<script type="text/javascript">
+			window.onload = function(){
+				document.body.addEventListener('touchstart', function () {});
+				var swiper = new Swiper('.swiper-container', {
+			        pagination: '.swiper-pagination',
+			        paginationClickable: true,
+			 		autoplay:8000,
+			 		prevButton:'.a_left1',
+					nextButton:'.a_right1'
+			    });
+				var swiper = new Swiper('.swiper-container2', {
+			        paginationClickable: true,
+			 		autoplay:6000,
+			 		prevButton:'.a_left',
+					nextButton:'.a_right'
+			    });
+				var swiper = new Swiper('.swiper-container3', {
+					pagination: '.swiper-pagination3',
+			        paginationClickable: true,
+			 		autoplay:7000
+			    });			    
+			}
+			$(function(){				
+				//滑动划出动画
+				$(".list").click(function(){
+					$("#list-alert").addClass("activeTrans");
+				})
+				$(".alert-left").click(function(){
+				   $("#list-alert").removeClass("activeTrans");
+				})
+				$(".a-close").click(function(){
+					$("#list-alert").removeClass("activeTrans");
+				})
+				setTimeout(function(){
+					$("#floot").hide();
+				},3800)
+				setTimeout(function(){
+				    $(".div-smg").addClass("translateY20");	
+				},200)
+				//点击展开
+				$(".my-list dt:gt(2)").hide();
+				$(".my-list dd:gt(2)").hide();
+				var num = 0;				
+				$(".a_next").click(function(){
+					num++;
+					if (num%2==1) {
+						$(".my-list dt:gt(2)").show();
+				        $(".my-list dd:gt(2)").show();
+					}else
+					{
+						$(".my-list dt:gt(2)").hide();
+						$(".my-list dd:gt(2)").hide();
+					}					
+				})
+				$('.animationSorrp').smoove({offset:'10%'});
+			})
+		</script>
+	<body>	
+	 <!--最开始的浮动层-->
+    <div id="floot" >    	
+    </div>
+    <div class="index-hide">	    
+		<!--第一个banner-->	
+	    <div class="swiper-container">
+	    	<div class="top-logo">
+	    		<a href="tel:18688888888" class="phone">免费预约</a>   	    		
+	    		<a href="#"><img src="img/logo.png"/></a>
+				<a href="javascript:void(0);" class="list" id="list"></a>
+	    	</div>
+	        <div class="swiper-wrapper">
+	            <div class="swiper-slide">
+	            	<a href="javascript:void(0);">
+
+	            		 <h3></h3>
+	            		 <h4></h4>
+	            		 <h5></h5>
+	            		<img src="img/banner02.png">	            		
+	            	</a>
+	            </div>
+	            <div class="swiper-slide"><a href="javascript:void(0);"><img src="img/banner01.png"></a></div>
+	            <div class="swiper-slide"><a href="javascript:void(0);"><img src="img/banner01.png"></a></div>
+	            <div class="swiper-slide"><a href="javascript:void(0);"><img src="img/banner01.png"></a></div>             
+	        </div>
+	        <!-- Add Pagination -->
+	        <div class="swiper-pagination"></div>
+	        <a href="javascript:void(0);" class="a_left1">	        	
+	        </a>
+	        <a href="javascript:void(0);" class="a_right1">
+	        </a>
+	    </div>	
+	   
+	    <!--公司介绍-->
+	    <div class="div-smg">
+	    		<h4>ABOUT</h4>
+		    	<i style="display: block;width: 3.2375rem;height: 1px;margin: 0 auto;background: javascript:void(0);99938b;"></i>
+		    	<b class="line-b" style="width: 3.25rem;background: #b6b1ab;"></b>
+		    	<h3>关于我们</h3>
+		    	<p>现代卓越(BMMTEC)，城里于1999年，是中国首家美国项目管理协会授权认可的国际项目管理培训、咨询机构；被誉为项目管理圣经的PMIP《PMNOK®指南》中文翻译、出版唯一授权机构PMI国际。卓越再领行业之先，在国内同行中第一个通过了ISO:2000认证，为国内项目管理培训和咨询业向国际化和规范发展…</p>
+		    	<a href="02PMP.html" class="a_MORE">MORE</a>
+	    </div>
+	    <!--师资力量-->
+	    <div class="teacher-list animationSorrp" data-move-x="-200px" data-rotate="90deg">
+	    	<h4>TEACHERS STRENGTH</h4>
+	    	<b></b>
+	    	<h5>师资力量</h5>
+	    	<ul>
+	    		<li class="animationSorrp"  data-move-x="-200px">
+	    			<div class="img-left">
+	    				<img src="img/pseron01.png"/>
+	    			</div>
+	    			<div class="img-right">
+	    				<span>汪小金</span>
+	    				<p>澳大利亚维多利亚大学哲学博士（项目管理方向），项目管理全球标准《PMBOK指南》第4版和第5版中文翻译版审校委员会主任。</p>
+	    			</div>
+	    		</li>
+	    		<li class="animationSorrp"  data-move-x="300px">
+	    			<div class="img-left">
+	    				<img src="img/pseron01.png"/>
+	    			</div>
+	    			<div class="img-right">
+	    				<span>汪小金</span>
+	    				<p>澳大利亚维多利亚大学哲学博士（项目管理方向），项目管理全球标准《PMBOK指南》第4版和第5版中文翻译版审校委员会主任。</p>
+	    			</div>
+	    		</li>
+
+	    	</ul>
+	    	<a href="shizi.html" class="a_MORE">MORE</a>
+	    </div>
+	    <!--课程-->
+	    <div class="curriculum-list">
+	    	<h4 class="animationSorrp"  data-move-x="-200px">TEACHERS STRENGTH</h4>
+	    	<b></b>
+	    	<h5 class="animationSorrp"  data-move-x="500px">近期课程</h5>
+	    	<div class="swiper-container2">    	
+		        <div class="swiper-wrapper">
+					<div class="swiper-slide">						
+							<img src="img/icon12.png">
+							<h3>PMP精品班</h3>
+							<p>2016年4月国际项目管理认证专业人士PMP认证招生简章！（精品班名额有限）</p>
+							<a href="mall.html" class="a_first">MELL</a>
+							<a href="mfzil.html" class="a_last">免费资料</a>						
+					</div>
+					<div class="swiper-slide">
+						
+							<img src="img/icon12.png">
+							<h3>PMP精品班</h3>
+							<p>2016年4月国际项目管理认证专业人士PMP认证招生简章！（精品班名额有限）</p>
+							<a href="mall.html" class="a_first">MELL</a>
+							<a href="mfzil.html" class="a_last">免费资料</a>
+						
+					</div>
+					<div class="swiper-slide">
+						
+							<img src="img/icon12.png">
+							<h3>PMP精品班</h3>
+							<p>2016年4月国际项目管理认证专业人士PMP认证招生简章！（精品班名额有限）</p>
+							<a href="mall.html" class="a_first">MELL</a>
+							<a href="mfzil.html" class="a_last">免费资料</a>
+						
+					</div>    
+		        </div>
+	    	</div>
+	    	 <!-- Add Pagination -->
+	        <!--<div class="swiper-pagination2"></div>-->
+	    	 <a href="javascript:void(0);" class="a_left">
+	        	<i></i>
+	        </a>
+	        <a href="javascript:void(0);" class="a_right">
+	        	<i></i>
+	        </a>
+	    </div>
+	    
+	   
+	    
+	    <!--活动-->
+	   <div class="swiper-container3 animationSorrp">    	
+	        <div class="swiper-wrapper">
+	        	<div class="swiper-slide">
+	        		<a href="xueyoushuo.html">
+	        		<h4 class="animationSorrp"  data-move-x="-200px">WORDS OF WISDOM</h4>
+	        		<b class="line-b"></b>
+	        		<h3 class="animationSorrp"  data-move-x="500px">学友说</h3>
+	        		<h2>现代卓越学员经验分享</h2>
+	        		<h1 >北京班 段智锋会画</h1>
+	        		<p class="animationSorrp"  data-move-y="200px">课程揭示了准备成功的商务演示图表所必备的技能与技巧，这些技能和技巧都经过长期的实验检验，操作简便，行之有效将教你如何在当今高新技术的条件下，灵活运用这些技巧，制作出效果显著的演示图表。例如：怎样使用不同的图表形式一一饼形图表、条形图表、柱形图表、线性图表、圆点图表；如何选择字体、色彩、合适的图表；如何用动画、图像、录像、链接有关网站，制作戏剧化的电子教具等。</p>
+	        		   <a href="xueyoushuo.html" class="a_MORE">MORE</a>
+	        		</a>
+	        	</div> 
+	        	<div class="swiper-slide">
+	        		<a href="javascript:void(0);">
+	        		<h4>RENCENT ACTIVITY</h4>	
+	        		<h3>近期活动</h3>
+	        		<h2>俱乐部公告</h2>
+	        		<h1>讲座《能说会花-项目经理演讲与呈现技巧》</h1>
+	        		<p>课程揭示了准备成功的商务演示图表所必备的技能与技巧，这些技能和技巧都经过长期的实验检验，操作简便，行之有效将教你如何在当今高新技术的条件下，灵活运用这些技巧，制作出效果显著的演示图表。例如：怎样使用不同的图表形式一一饼形图表、条形图表、柱形图表、线性图表、圆点图表；如何选择字体、色彩、合适的图表；如何用动画、图像、录像、链接有关网站，制作戏剧化的电子教具等。</p>
+	        		   <a href="xueyoushuo.html" class="a_MORE">MORE</a>
+	        		</a>
+	        	</div> 
+	        	<div class="swiper-slide">
+	        		<a href="javascript:void(0);">
+	        		<h4>RENCENT ACTIVITY</h4>	
+	        		<b class="line-b"></b>
+	        		<h3>近期活动</h3>
+	        		<h2>俱乐部公告</h2>
+	        		<h1>讲座《能说会花-项目经理演讲与呈现技巧》</h1>
+	        		<p>课程揭示了准备成功的商务演示图表所必备的技能与技巧，这些技能和技巧都经过长期的实验检验，操作简便，行之有效将教你如何在当今高新技术的条件下，灵活运用这些技巧，制作出效果显著的演示图表。例如：怎样使用不同的图表形式一一饼形图表、条形图表、柱形图表、线性图表、圆点图表；如何选择字体、色彩、合适的图表；如何用动画、图像、录像、链接有关网站，制作戏剧化的电子教具等。</p>
+	        		   <a href="xueyoushuo.html" class="a_MORE">MORE</a>
+	        		</a>
+	        	</div>                
+	        </div>
+	        <!-- Add Pagination -->
+	        <div class="swiper-pagination3"></div>      
+	    </div>
+	    <!--table-->
+	    <div class="div-table">
+	    	<h4 class="animationSorrp"  data-move-x="-200px">CONTACT US</h4>
+	    	<b class="line-b"></b>
+	    	<h3 class="animationSorrp"  data-move-x="500px">联系我们</h3>
+	    	<dl>
+	    		<dt>
+	    			<input type="text" name="" id="" value=""  placeholder="姓名"/>
+	    		</dt>
+	    		<dt>
+	    			<input type="text" name="" id="" value=""  placeholder="电话"/>
+	    		</dt>
+	    		<dd>
+	    			<textarea name="" rows=""  cols="" placeholder="主体"></textarea>
+	    		</dd>
+	    		
+	    	</dl>
+	    	<a href="lixmy.html" class="a_submit">提交 </a>
+	    	
+	    </div>
+	    <!--返回首页-->
+	    <div class="to_top">
+	    	 <a href="#"></a>
+	    </div>    	
+    </div>
+    <!--alert弹窗-->
+    <div id="list-alert">
+    	<div class="alert-left">   		
+    	</div>
+    	<div class="alert-right">
+    		<a href="javascript:void(0);" class="a-close"></a>
+    		<ul>
+    			<li><a href="javascript:void(0);">越卓于关<i>01</i></a></li>
+    			<li><a href="javascript:void(0);" class="font-color">PMP<i>02</i></a></li>
+    			<li><a href="javascript:void(0);">越卓于关<i>03</i></a></li>
+    			<li><a href="javascript:void(0);">越卓于关<i>04</i></a></li>
+    			<li><a href="javascript:void(0);">越卓于关<i>05</i></a></li>
+    			<li><a href="javascript:void(0);">越卓于关<i>06</i></a></li>
+    			<li><a href="javascript:void(0);">越卓于关<i>07</i></a></li>
+    			<li><a href="javascript:void(0);">越卓于关<i>08</i></a></li>
+    			<li><a href="javascript:void(0);">越卓于关<i>09</i></a></li>  			
+    		</ul>
+    	</div>
+    </div>
+	</body>
+</html>

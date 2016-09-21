@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html>
+	<head>
+						<link rel="shortcut icon" href="../../../imges/ico.ico" type="images/x-icon" />
+		<meta charset="utf-8">
+		<meta name="viewport" content="width=device-width,initial-scale=1,minimum-scale=1,maximum-scale=1,user-scalable=no" />
+		<link rel="stylesheet" type="text/css" href="../css/public.css"/>
+		<script src="jquery-1.8.2.min.js" type="text/javascript" charset="utf-8"></script>
+		<script src="jquery.hammer.min.js" type="text/javascript" charset="utf-8"></script>
+		<title>拖动图片</title>
+		<style type="text/css">			
+		    body{width: 100%;height: 100%;}
+			#box_img{width: 320px;height: 420px;position: relative;overflow: hidden;margin:  0 auto;}
+			#img_opacity{width: 320px;height: 420px;position: absolute;left: 0;top: 0;background: rgba(0,0,0,0.6);z-index: 9;}
+			#box_img .img1{display: block;width: 320px;height: 420px;overflow: hidden;position: absolute;left: 0;top: 0;}
+			#box_img .img2{display: block;width: 320px;height: 420px;overflow: hidden;position: absolute;left: 0;top: 0;clip: rect(70px,260px,350px,60px);z-index: 10;}		
+			#drop{position: absolute;width: 200px;height: 280px;overflow: hidden;z-index: 11;}
+		</style>
+		<script type="text/javascript">
+			$(function(){
+				var oTop = ($("#box_img").outerHeight()-$("#drop").outerHeight())/2;
+				var oLeft = ($("#box_img").outerWidth()-$("#drop").outerWidth())/2;				
+				$("#drop").css({
+					"left":oLeft+'px',
+					"top": oTop+'px'
+				})				
+		        var lastPosX = oLeft; //结束的X坐标
+		        var  lastPosY = oTop; //结束的Y坐标		         
+				var posX = oLeft;//开始的X坐标
+		        var posY = oLeft; //开始的Y坐标
+			    var hammertime = new Hammer($("#drop"));
+			    var hammertime1 = new Hammer($("#box_img"));
+			    //取消拖动的默认事件
+				$("#box_img").bind('touchmove', function(ev) {
+				    ev.preventDefault();				    
+				});
+				//为表层的框指定触屏移动事件
+				hammertime.on("drag dragend ",function(ev){
+					ev.preventDefault();//组织默认事件					
+					manageMultitouch(ev);					
+				})					
+				function manageMultitouch(ev){
+					switch (ev.type){						
+							case "drag": //拖动							
+							posX = ev.gesture.deltaX + lastPosX;
+                            posY = ev.gesture.deltaY + lastPosY;
+							break;							
+							case "dragend": //拖动结束							
+								var oX =  ($("#box_img img").outerWidth()-$("#drop").outerWidth())/2; //x坐标差值
+								var oY =  ($("#box_img img").outerHeight()-$("#drop").outerHeight())/2; //y坐标差值
+	                           
+	                           if (posX<=0) {
+	                            	posX=0
+	                            }else if(posX>= $("#box_img").outerWidth()-$("#drop").outerWidth())
+	                            {
+	                            	posX= $("#box_img").outerWidth()-$("#drop").outerWidth();
+	                            }
+	                            if (posY <=0) {
+	                            	posY=0
+	                            }else if(posY>= $("#box_img").outerHeight()-$("#drop").outerHeight())
+	                            {
+	                            	posY = $("#box_img").outerHeight()-$("#drop").outerHeight();
+	                            } 	                     
+                            console.log(parseInt(posX)+"........"+parseInt(posY));
+							break;				
+					}
+					
+						$("#drop").css({
+							"left":posX,
+							"top":posY
+						})
+						setChoice();										
+				}			
+				//设置可选区域高亮可见
+				function setChoice(){
+					var mainDiv = document.getElementById("drop");
+					//获取clip属性 拆切的几个点
+					var top = mainDiv.offsetTop;
+					var left = mainDiv.offsetLeft;
+					var right = mainDiv.offsetLeft+mainDiv.offsetWidth;
+					var bottom = mainDiv.offsetTop+mainDiv.offsetHeight;
+					console.log(top,left,right,bottom)
+					var oImgs2 = document.getElementById("img2");
+					oImgs2.style.clip = "rect("+top+"px,"+right+"px,"+bottom+"px,"+left+"px)";					
+				}				
+			})
+		</script>
+	</head>
+	<body style="">
+		<i style="height: 20px;"></i>
+		<div id="box_img">
+			<!--黑色遮罩-->
+			<div id="img_opacity"></div>
+			<!--最底层-->
+			<img src="01.jpg" class="img1" />
+			<!--第一层-->
+			<img src="01.jpg" class="img2" id="img2"/>			
+			<div id="drop"></div>
+		</div>
+		
+	</body>
+</html>

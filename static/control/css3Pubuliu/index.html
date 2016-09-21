@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta name="viewport" content="width=device-width,initial-scale=1,minimum-scale=1,maximum-scale=1,user-scalable=no" />
+		<meta charset="UTF-8">
+		<title></title>
+		<script src="js/rem.js" type="text/javascript" charset="utf-8"></script>
+		<script src="js/jquery-1.9.1.min.js" type="text/javascript" charset="utf-8"></script>
+		<script type="text/javascript">
+			
+		</script>
+		<style type="text/css">
+			  .container{
+					column-width:9.22rem;
+			        -webkit-column-width:9.22rem;
+			        -moz-column-width:9.22rem;
+			        -o-colum-width:9.22rem;
+			        -webkit-column-gap:0.4rem;
+			        -moz-column-gap:0.4rem;
+			        -o-column-gap:0.4rem;
+		  	   }
+		  	 	.container div{ border:#CCC 1px solid; display:inline-block;width:9.1rem;position:relative; margin-top: 2px;}
+			    .container img{width: 9.1rem; min-height: 1rem;border: 0px solid #fff;}
+			    .title{
+			         line-height:1.5rem; font-size:0.69rem; color:#666;
+			         text-align:center;
+			         font-family:"Microsoft YaHei";
+			    }
+		</style>
+		<script type="text/javascript">
+			window.onload = function(){	
+				var sUrl = 'http://www.wookmark.com/api/json/popular?callback=?';	
+				$.getJSON(sUrl,function(data){
+							//用jquery、自带的each便利这个data数据
+							//便利的对象data集合,回调函数的参数第一个是角标，第二个表示data的每个对象
+							var oImg ='';
+							$.each(data, function(index,obj) {
+								console.log(obj)
+								oImg+= "<div class='title'><img src ="+obj.preview+"></div>";
+							});
+							$(".container").append(oImg);
+							
+				});
+	       }
+			
+		</script>
+	</head>
+	<body>
+		
+
+  <div class="container">
+    
+	
+   
+  </div>
+	</body>
+</html>

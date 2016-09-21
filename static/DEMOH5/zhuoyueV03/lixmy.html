@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title></title>
+		<meta name="format-detection" content="telephone=no" />
+		<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+		<meta name="viewport" content="width=device-width,initial-scale=1,minimum-scale=1,maximum-scale=1,user-scalable=no" />
+		<link rel="stylesheet" type="text/css" href="css/public.css" />
+		<link rel="stylesheet" type="text/css" href="css/contact.css"/>
+		<script src="js/rem.js" type="text/javascript" charset="utf-8"></script>
+
+		<script src="js/jquery-1.8.2.min.js" type="text/javascript" charset="utf-8"></script>
+		<script type="text/javascript">
+			window.onload = function(){
+				document.body.addEventListener('touchstart', function () {});						    
+			}
+			$(function(){				
+				//滑动划出动画
+				$(".list").click(function(){
+					$("#list-alert").addClass("activeTrans");
+				})
+				$(".alert-left").click(function(){
+				   $("#list-alert").removeClass("activeTrans");
+				})
+				$(".a-close").click(function(){
+					$("#list-alert").removeClass("activeTrans");
+				})
+				//获得select的val
+				$(".select-ul li").find("select").change(function(){
+					var oSpan =  $(this).find("option:selected").text();					
+					$(this).siblings(".select-div").find("span").text(oSpan);
+			    })
+				
+			})
+		</script>
+	<body>	
+	 
+	<div class="top-logo">
+	    <a href="tel:18688888888" class="phone">免费预约</a>   	    		
+	    <a href="#"><img src="img/logo.png"/></a>
+		<a href="javascript:void(0);" class="list" id="list"></a>
+	</div>
+	<i style="height: 5rem;width: 100%;"></i>
+	<h4 class="title-h4">CONTACT US</h4>
+	<b class="title-line"></b>
+	<h5 class="title-h5">联系我们</h5>  
+	
+	<ul class="select-ul">
+		<li>
+			<input type="text" name="" id="" value=""  placeholder="姓名"/>
+		</li>
+		<li>
+			<input type="text" name="" id="" value=""  placeholder="电话"/>
+		</li>
+		<li>
+			<input type="text" name="" id="" value=""  placeholder="邮箱"/>
+		</li>
+		<li>
+			<select name="" style="" >
+					<option value="">大专及以下</option>
+					<option value="">本科</option>
+					<option value="">研究生</option>
+			</select>
+			<div class="select-div">
+				<strong>学历</strong><span class="span_cut">大专及以下</span><i><b></b></i>
+			</div>	
+		</li>
+		<li>
+			<select name="" style="" >
+					<option value="">工作年限？</option>
+					<option value="">1年</option>
+					<option value="">3-5年</option>
+					<option value="">5-10年</option>
+			</select>
+			<div class="select-div">
+				<strong>工作年限</strong><span class="span_cut">3-5年</span><i><b></b></i>
+			</div>	
+		</li>
+
+	</ul>
+	  <a href="#" class="a_submit">提交</a>
+   
+    <!--alert弹窗-->
+    <div id="list-alert">
+    	<div class="alert-left">
+    		
+    	</div>
+    	<div class="alert-right">
+    		<a href="javascript:void(0);" class="a-close"></a>
+    		<ul>
+    			<li><a href="javascript:void(0);">越卓于关<i>01</i></a></li>
+    			<li><a href="javascript:void(0);" class="font-color">PMP<i>02</i></a></li>
+    			<li><a href="javascript:void(0);">越卓于关<i>03</i></a></li>
+    			<li><a href="javascript:void(0);">越卓于关<i>04</i></a></li>
+    			<li><a href="javascript:void(0);">越卓于关<i>05</i></a></li>
+    			<li><a href="javascript:void(0);">越卓于关<i>06</i></a></li>
+    			<li><a href="javascript:void(0);">越卓于关<i>07</i></a></li>
+    			<li><a href="javascript:void(0);">越卓于关<i>08</i></a></li>
+    			<li><a href="javascript:void(0);">越卓于关<i>09</i></a></li>  			
+    		</ul>
+    	</div>  		
+	</body>
+</html>

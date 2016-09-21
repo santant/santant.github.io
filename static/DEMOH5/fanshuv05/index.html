@@ -1,0 +1,382 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+	<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+	<meta name="format-detection" content="telephone=no">
+	<link rel="stylesheet" type="text/css" href="css/public.css"/>
+	<link rel="stylesheet" type="text/css" href="css/index.css"/>
+	<!--进度条-->	
+	<style type="text/css">
+		.lading{width: 100%;height: 100%;position: fixed;top: 0;left: 0;background: url(img/index-bg05.jpg) no-repeat;background-size: 100% 100%;z-index: 999;}
+		.lading-div{border-radius:0.3rem;width: 10.9375rem;height: 0.6875rem;background: url(img/page3-icon20.png) repeat-x;position: absolute;bottom: 9rem;left: 5.15625rem;}
+		.lading-span{border-radius:0.3rem;height: 0.6875rem;background: rgba(99,62,44,0.6);position: absolute;top: 0;left: 0;box-shadow: 1px 1px 5px #c28430,-1px -1px 5px #c28430;}
+		.lading-div span{position: absolute;height: 1.875rem;line-height: 1.875rem;text-align: center;bottom: 0.6rem;left: 4.6875rem;font-size: 0.78125rem;color: #581e12;font-family: arial;}
+	</style>
+	<script src="js/rem.js" type="text/javascript" charset="utf-8"></script>
+	<script src="js/jquery-1.8.2.min.js" type="text/javascript" charset="utf-8"></script>
+	<script src="js/jquery.hammer.min.js" type="text/javascript" charset="utf-8"></script>
+	<script src="js/monoevent.js" type="text/javascript" charset="utf-8"></script>
+	
+</head>
+<body>
+	<!--进度条-->
+	<div class="lading">
+		<div class="lading-div">
+			<div class="lading-span An-loadings">
+			</div>
+			<span></span>
+		</div>
+		
+	</div>
+	
+	<!--页面主体-->
+	<div class="conatiner" datLading= "datLading">
+		<!--光环-->
+		<div class="halo An-lines" datLading= "datLading" ></div>
+		<!--纸张-->
+		<i class="" datLading= "datLading"></i>
+		<!--眼睛-->
+		<div class="div-eye" datLading= "datLading"></div>
+		<!--笔-->
+		<div class="div-pan" datLading= "datLading"></div>
+		<!--书-->
+		<div id="book" datLading= "datLading">
+			<ul class="ul">
+				<li class="first-Li" datLading= "datLading">
+					<div class="hand An-hands" datLading= "datLading">					
+					</div>
+				</li>
+				<li class="li-page2">
+					<div class="page-text">
+						<img src="img/page2-icon09.png"  datLading= "datLading"/>
+						<div class="btn-hand" datLading= "datLading">
+							<img src="img/page2-icon08.png" class="img2 An-handTop" datLading= "datLading"/>
+						</div>
+					</div>
+				</li>
+				<!--<li class="li3">
+					
+					<div class="page-text">
+						<a href="javascript:void(0);" class="a_person per-p" datLading= "datLading"></a>
+						<a href="javascript:void(0);" class="a-data per-d" datLading= "datLading"></a>
+						<span class="span-prev"></span>
+					</div>					
+					
+					<div class="li3-table">
+						<div class="li-input">
+							<input type="text" name="" id="" value=""  placeholder="姓名"/>
+						</div>
+						<div class="li-input">
+							<input type="text" name="" id="" value=""  placeholder="姓名"/>
+						</div>
+						<div class="li-input">
+							<input type="text" name="" id="" value=""  placeholder="姓名"/>
+						</div>
+						<div class="text-li">
+							*请填写您的真实信息
+						</div>
+						<div class="a_submit">
+							<a href="javascript:void(0);">提 &nbsp;交</a>
+						</div>						
+					</div>					
+				</li>				-->
+				<li class="li4">
+					<div class="page-text">
+						<h4>第1题</h4>
+						<p>一个香港银行选择一个美国软件开发商为他们新系统的承包商，但是当美国公司提交产品的时候，所提交的产品被银行否决，最有可能的原因是什么？</p>
+						
+						<ol>
+							<li class="">
+								A． 美国和香港的文化差异
+								<i class=""></i>
+							</li>
+							<li>
+								B． 美国和香港的文化差异
+								<i></i>
+							</li>
+							<li>
+								C． 美国和香港的文化差异
+								<i></i>
+							</li>
+							<li>
+								D． 美国和香港的文化差异
+								<i></i>
+							</li>							
+						</ol>
+				    </div>
+				</li>
+				<li class="li4">
+					<div class="page-text">
+						<h4>第二题</h4>
+						<p>一个香港银行选择一个美国软件开发商为他们新系统的承包商，但是当美国公司提交产品的时候，所提交的产品被银行否决，最有可能的原因是什么？</p>
+						
+						<ol>
+							<li class="">
+								A． 美国和香港的文化差异
+								<i class=""></i>
+							</li>
+							<li>
+								B． 美国和香港的文化差异
+								<i></i>
+							</li>
+							<li>
+								C． 美国和香港的文化差异
+								<i></i>
+							</li>
+							<li>
+								D． 美国和香港的文化差异
+								<i></i>
+							</li>							
+						</ol>
+				    </div>
+				</li>
+				<li class="li4">
+					<div class="page-text">
+						<h4>第3题</h4>
+						<p>一个香港银行选择一个美国软件开发商为他们新系统的承包商，但是当美国公司提交产品的时候，所提交的产品被银行否决，最有可能的原因是什么？</p>
+						
+						<ol>
+							<li class="An-coloer1 ">
+								A． 美国和香港的文化差异
+								<i class="close off"></i>
+							</li>
+							<li>
+								B． 美国和香港的文化差异
+								<i></i>
+							</li>
+							<li>
+								C． 美国和香港的文化差异
+								<i></i>
+							</li>
+							<li>
+								D． 美国和香港的文化差异
+								<i></i>
+							</li>							
+						</ol>
+				    </div>
+				</li>
+				<li class="li4">
+					<div class="page-text">
+						<h4>第4题</h4>
+						<p>一个香港银行选择一个美国软件开发商为他们新系统的承包商，但是当美国公司提交产品的时候，所提交的产品被银行否决，最有可能的原因是什么？</p>
+						
+						<ol>
+							<li class="">
+								A． 美国和香港的文化差异
+								<i class=""></i>
+							</li>
+							<li>
+								B． 美国和香港的文化差异
+								<i></i>
+							</li>
+							<li>
+								C． 美国和香港的文化差异
+								<i></i>
+							</li>
+							<li>
+								D． 美国和香港的文化差异
+								<i></i>
+							</li>							
+						</ol>
+				    </div>
+				</li>
+				<li class="li4">
+					<div class="page-text">
+						<h4>第5题</h4>
+						<p>一个香港银行选择一个美国软件开发商为他们新系统的承包商，但是当美国公司提交产品的时候，所提交的产品被银行否决，最有可能的原因是什么？</p>
+						
+						<ol>
+							<li class="">
+								A． 美国和香港的文化差异
+								<i class=""></i>
+							</li>
+							<li>
+								B． 美国和香港的文化差异
+								<i></i>
+							</li>
+							<li>
+								C． 美国和香港的文化差异
+								<i></i>
+							</li>
+							<li>
+								D． 美国和香港的文化差异
+								<i></i>
+							</li>							
+						</ol>
+				    </div>
+				</li>
+				<li class="li4">
+					<div class="page-text">
+						<h4>第6题</h4>
+						<p>一个香港银行选择一个美国软件开发商为他们新系统的承包商，但是当美国公司提交产品的时候，所提交的产品被银行否决，最有可能的原因是什么？</p>
+						
+						<ol>
+							<li class="">
+								A． 美国和香港的文化差异
+								<i class=""></i>
+							</li>
+							<li>
+								B． 美国和香港的文化差异
+								<i></i>
+							</li>
+							<li>
+								C． 美国和香港的文化差异
+								<i></i>
+							</li>
+							<li>
+								D． 美国和香港的文化差异
+								<i></i>
+							</li>							
+						</ol>
+				    </div>
+				</li>
+				<li class="li4">
+					<div class="page-text">
+						<h4>第7题</h4>
+						<p>一个香港银行选择一个美国软件开发商为他们新系统的承包商，但是当美国公司提交产品的时候，所提交的产品被银行否决，最有可能的原因是什么？</p>
+						
+						<ol>
+							<li class="">
+								A． 美国和香港的文化差异
+								<i class=""></i>
+							</li>
+							<li>
+								B． 美国和香港的文化差异
+								<i></i>
+							</li>
+							<li>
+								C． 美国和香港的文化差异
+								<i></i>
+							</li>
+							<li>
+								D． 美国和香港的文化差异
+								<i></i>
+							</li>							
+						</ol>
+				    </div>
+				</li>				
+				<li class="li4">
+					<div class="page-text">
+						<h4>第8题</h4>
+						<p>一个香港银行选择一个美国软件开发商为他们新系统的承包商，但是当美国公司提交产品的时候，所提交的产品被银行否决，最有可能的原因是什么？</p>
+						
+						<ol>
+							<li class="An-coloer1 ">
+								A． 美国和香港的文化差异
+								<i class="close off"></i>
+							</li>
+							<li>
+								B． 美国和香港的文化差异
+								<i></i>
+							</li>
+							<li>
+								C． 美国和香港的文化差异
+								<i></i>
+							</li>
+							<li>
+								D． 美国和香港的文化差异
+								<i></i>
+							</li>							
+						</ol>
+				    </div>
+				</li>
+			</ul>
+		</div>
+		<!--查看成绩-->
+		<div class="mark" datLading= "datLading">
+			<h3>用户姓名</h3>
+			<h4>恭喜您用时 <b>5分钟</b>评分：<b>80分</b></h4>
+			<h5>是非常优秀的PMP哦~</h5>
+			<div class="a-h">
+				<a href="javascript:void(0);" class="answer">查看正确答案</a>
+				<a href="javascript:void(0);" class="share">分享朋友圈</a>
+			</div>
+		</div>
+		<!--小调查-->
+		<div class="examine" datLading= "datLading">
+			<a href="javascript:void(0);" class="flrst-a" datLading= "datLading"></a>
+			<div class="table-qx" datLading= "datLading">
+				<ul>
+					<li><span>您对pmp:</span> <b></b>完全不知</li>
+					<li><span></span> <b></b>基本了解</li>
+					<li><span></span> <b class="b_bg"></b>我是高手</li>
+				</ul>
+			</div>
+			<!--<button id="btn">我要领奖js逻辑</button>-->
+			<a href="javascript:void(0);" class="last-btn An-leftToRight" datLading= "datLading"></a>
+			<a href="javascript:void(0);" class="last-a" datLading= "datLading"></a>
+		</div>
+	</div>
+	
+	<!--弹出框我要报名-->
+	<div class="alert-bm">
+		<ul class="ul-alert">
+			<li>温馨提示<b datLading= "datLading"></b> </li>
+			<li class="li-input">
+				<input type="text" name="" id="" value=""  placeholder="姓名"/>
+			</li>
+			<li class="li-input">
+				<input type="text" name="" id="" value="" placeholder="电话"/>
+			</li>
+			<li class="li-input">
+				<input type="text" name="" id="" value="" placeholder="邮箱" />
+			</li>
+			<li class="text-li">
+				*请填写您的真实信息
+			</li>
+			<li class="a_submit2">
+				<a href="javascript:void(0);">提 &nbsp;交</a>
+			</li>
+		</ul>	
+	</div>
+	
+	<!--分享朋友圈-->
+	<div class="friend">
+		<img src="img/page3-icon15.png" datLading= "datLading"/>
+	</div>
+	
+	<!--弹出框网址-->
+	<div class="herf">
+		<ul class="herf-alert">
+			<li>温馨提示 <b></b> </li>
+			<li><a href="javascript:void(0);">请点击连接下载</a></li>
+			<li><a href="http://www.baidu.com">http://www.baidu.com</a></li>
+		</ul>		
+	</div>
+	
+	<!--奖品的3个弹窗-->
+	<div class="prize">
+		<div class="prize-alert" datLading= "datLading">
+			<li>
+				<span>恭喜您获得</span>
+				<span>卓越小礼品一份</span>				
+			</li>
+			<li class="sure">
+				<a href="javascript:void(0);">确 &nbsp;定</a>
+			</li>
+		</div>
+		<div class="prize-alert">
+			<li>
+				<span>恭喜您获得</span>
+				<span>线下沙龙门票</span>				
+			</li>
+			<li class="sure">
+				<a href="javascript:void(0);">确 &nbsp;定</a>
+			</li>
+		</div>
+		<div class="prize-alert">
+			<li>
+				<span>恭喜您获得</span>
+				<span>代金券<i>600</i>元</span>				
+			</li>
+			<li class="sure">
+				<a href="javascript:void(0);">确 &nbsp;定</a>
+			</li>
+		</div>		
+	</div>
+	<script src="js/index.js"></script>
+</body>
+</html>

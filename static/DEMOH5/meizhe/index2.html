@@ -1,0 +1,144 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+	<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+	<meta name="format-detection" content="telephone=no">
+	<link rel="stylesheet" type="text/css" href="css/public.css"/>
+	<script src="js/jquery-1.8.2.min.js" type="text/javascript" charset="utf-8"></script>
+	<style type="text/css">
+		.body-img{width: 100%;position: absolute;top: 0;left: 0;}
+		#footer{width: 100%;height: 2.75rem;background: #fff;position: fixed;bottom: 0;right: 0;}
+		#footer ul{width: 12.25rem;margin: 0 auto;height: 3.3125rem;margin-top: -1.05rem;}
+		#footer ul li{width: 2.75rem;height: 100%;margin-right: 2.0rem;float: left;}
+		#footer ul li >a{display: block;width: 2.75rem;height: 100%;}
+		#footer ul li:nth-of-type(1) >a{background: url(img/icon01.png) no-repeat;background-size: 100% 100%;}
+		#footer ul li:nth-of-type(2) >a{background: url(img/icon02.png) no-repeat;background-size: 100% 100%;}
+		#footer ul li:nth-of-type(3) >a{background: url(img/icon03.png) no-repeat;background-size: 100% 100%;}
+		
+		#footer ul li >a:active{position: relative;top: 2px;opacity: 0.7;}
+		
+		#footer ul li:nth-of-type(3){margin-right: 0;}
+		.title{width: 100%;height: 2.75rem;background: rgba(0,0,0,0.3);z-index: 9;position: fixed;bottom: 4.25rem;left: 0;overflow-x: auto;}
+		.title >ol{height: 2.75rem;}
+		.title >ol >li{font-size: 0.75rem;color: #fff;float: left;width:3.8125rem;height: 2.75rem;line-height: 1.25rem;text-align: center;height: 1.25rem;margin-top: 0.71875rem;margin-left: 0.65625rem;background: rgba(0,0,0,0.51);border-radius: 0.625rem;}		
+		.title >ol .activeColorLi{color: #333;background: #fff;box-shadow: 1px 1px 3px #C0C0C0;}
+		 body .title >ol .activeColorLi1{color: #fff;background: #2cccc0;}
+		.logo-Img{width: 3.34375rem;height: 2.625rem;position: absolute;bottom: 8.125rem;left: 8.1875rem;}
+		
+		/*横图渐变class*/
+		body .bg-jb{background: -webkit-linear-gradient(60deg ,#f6f6f6 0 ,#ccc 30%,#fff 60%,#dddede 90%);}
+		/*横图按钮class*/
+		/*.title >ol .libg{background: #2cccc0;color: #333333;}*/
+		.title >ol .libg{background: #fff;color: #333333;box-shadow: 1px 1px 3px #C0C0C0;}
+	</style>
+	<script src="js/rem.js" type="text/javascript" charset="utf-8"></script>	
+</head>
+<body>
+	<img src="img/index-bg3.jpg" class="body-img"/>
+	
+	<!--活着标签-->
+	<img src="img/icon04.png" class="logo-Img"/>
+		
+	<!--滑动标签-->
+	<div class="title bg-jb">
+		<ol>
+			<li class="">手包</li>
+			<li>红色</li>
+			<li>凉鞋</li>
+			<li>拖鞋</li>
+			<li>皮带</li>
+			<li>手包</li>
+			<li>红色</li>
+			<li>凉鞋</li>
+			<li>拖鞋</li>
+			<li>皮带</li>
+			<li>红色</li>
+			<li>凉鞋</li>
+			<li>拖鞋</li>
+			<li>皮带</li>
+			<li>手包</li>
+			<li>红色</li>
+			<li>凉鞋</li>
+			<li>拖鞋</li>
+			<li>皮带</li>
+		</ol>
+	</div>
+	
+	<!--页脚-->
+	<div id="footer">
+		<ul>
+			<li><a href="#"></a></li>
+			<li><a href="#"></a></li>
+			<li><a href="#"></a></li>
+		</ul>
+	</div>
+</body>
+
+</html>
+<script type="text/javascript">
+	 $(function(){
+		document.body.addEventListener("touchstart",function(){});
+		var oulWidth = $(".title >ol >li").outerWidth(true)*$(".title >ol >li").size();
+		$(".title >ol").css("width",oulWidth+20+'px');		
+	 	//判断这个图是横图		
+			var ow = 0;
+			var oH = 0;
+	 		var theImage = new Image();
+			theImage.src = $(".body-img").attr("src");
+			theImage.onload = function(){
+				setTimeout(function(){
+					ow = theImage.width;
+					oH = theImage.height;
+					if(ow / oH<1.2){
+					$(".body-img").css("top",0);	
+					$(".title").removeClass("bg-jb");
+					$(".title >ol >li").removeClass("libg");
+					$(".title >ol >li").eq(0).removeClass("activeColorLi1");
+					$(".title >ol >li").eq(0).addClass("activeColorLi");
+			 	}
+				if (ow / oH >1.2){
+			 		 $(".body-img").css("top",($(".title")[0].offsetTop-$(".body-img").height())/2+'px');
+			 		 $(".title").addClass("bg-jb")
+			 		 $(".title >ol >li").addClass("libg");
+			 		 $(".title >ol >li").eq(0).removeClass("activeColorLi");
+			 		 $(".title >ol >li").eq(0).addClass("activeColorLi1");
+			 	 }
+				},90)				
+			}
+	 	$(".title >ol >li").bind("touchstart",function(){
+	 		var This = $(this);
+	 		//判断这个图是横图
+	 		$(".body-img").attr("src","img/index-bg4.jpg");
+			var ow = 0;
+			var oH = 0;
+	 		var theImage = new Image();
+			theImage.src = $(".body-img").attr("src");
+			theImage.onload = function(){
+				setTimeout(function(){
+					ow = theImage.width;
+					oH = theImage.height;
+					if(ow / oH<1.2){
+					$(".body-img").css("top",0);	
+					$(".title").removeClass("bg-jb");
+					$(".title >ol >li").removeClass("libg");
+					$(".title >ol >li").eq(0).removeClass("activeColorLi1");
+					$(".title >ol >li").eq(0).addClass("activeColorLi");					
+			 		This.addClass("activeColorLi").siblings("li").removeClass("activeColorLi");
+			 	}else{
+			 		 $(".body-img").css("top",($(".title")[0].offsetTop-$(".body-img").height())/2+'px');
+			 		 $(".title").addClass("bg-jb")
+			 		 $(".title >ol >li").addClass("libg");
+			 		 $(".title >ol >li").eq(0).removeClass("activeColorLi");
+			 		 $(".title >ol >li").eq(0).addClass("activeColorLi1");
+
+			 		 This.addClass("activeColorLi1").siblings("li").removeClass("activeColorLi1");					
+			 	 }
+				},90)				
+			}
+	 	})	
+	 	
+	 })		
+	</script>

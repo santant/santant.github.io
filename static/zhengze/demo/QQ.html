@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<script type="text/javascript">
+			window.onload = function(){
+				var oTEXT1 = document.getElementById("text1");
+				var btn = document.getElementById("btn");
+				
+				btn.onclick = function(){
+					//QQ号1-9是数字,位数是5-11位 注意行首和行尾
+					var re = /^[1-9]\d{4,10}$/g;
+					if(oTEXT1.value.match(re) !=null){
+						alert("QQ")
+					};
+				}
+				
+			}
+		</script>
+	</head>
+	<body>
+		<input type="text" name="text1" id="text1" value="" />
+		<button id="btn">检测QQ号</button>
+	</body>
+</html>

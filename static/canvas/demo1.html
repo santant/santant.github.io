@@ -1,0 +1,624 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta name="viewport" content="width=device-width,initial-scale=1,minimum-scale=1,maximum-scale=1,user-scalable=no" />
+		<link rel="stylesheet" type="text/css" href="../../css/public.css"/>
+		<link rel="stylesheet" type="text/css" href="../../css/index.css"/>
+		<script src="../../js/jquery-1.8.2.min.js" type="text/javascript" charset="utf-8"></script>
+		<script src="../../js/index.js" type="text/javascript" charset="utf-8"></script>
+		<link rel="shortcut icon" href="../../imges/ico.ico" type="images/x-icon" />
+		<meta charset="UTF-8">
+		<title>画布笔记</title>		
+	</head>
+	<body>
+	  <div class="hander"> 
+	  	<ul>
+	  		<li class="" nav-title="all"><a href="../../index.html">首页</a></li>
+			<li nav-title="css" class="active"> <a href="../canvas/demo1.html">Html5画布入门篇</a></li>
+			<li nav-title="css" ><a href="../canvas/demo3.html">Html5画布提升篇</a></li>
+			<li><a href="../CSS/css3.html">CSS3</a></li>			
+			<li><a href="../../static/control/control.html">自己写的demo</a></li>			
+			<li nav-title="rem工具换算"><a href="../../static/rem1/rem.html">rem</a></li>			
+	  		<li><a href="../title/demo2.html">收藏的网站</a></li>
+	  		<li ><a href="../tool/tool.html">工具箱</a></li>
+	  		<li class=""><a href="../javascript/Event.html">javascriptEvent</a></li>
+	  		<li class=""><a href="../javascript/jsDom.html">javascriptDOM</a></li>
+	  		<li class=""><a href="../javascript/object.html">javascriptObj</a></li>	  		
+	  		<li  ><a href="../zhengze/zhengze.html">js正则表达式</a></li>
+	  		<li class=""><a href="../javascript/JSFcnction.html">javascript函数</a></li>
+	  		<li class=""><a href="../HTML5/H5_1.html">HTML5</a></li>
+	  		<li><a href="../angualar/angualar.html">angualarJS</a></li>
+	  		<li class=""><a href="../jquery-css3/jq-css3.html">Jquery操作css3的拼接方式</a></li>	 
+	  		<li class=""><a href="../less/less.html">less</a></li>
+	  		
+	  	</ul>
+	  </div>	
+	  <!--画布笔记主体-->
+	  <div class="main">
+	  	 <h3>画布入门</h3>
+	  	 
+	  	 <div class="div_daima">
+	  	 	<h4>获得环境</h4>
+	  	 	<pre>
+	  	 	//初始化画布
+			var oCanvas = document.getElementById("canvas");
+			oCanvas.width = 600;//设置画布宽高
+			oCanvas.height = 400;			
+			var context = oCanvas.getContext("2d");//获得画布上下文环境
+			//context绘制
+			context.moveTo(100,10);//
+			context.lineTo(400,200);
+			context.lineWidth=5;//设置线条宽度
+			context.strokeStyle = 'red';//设置线条颜色
+			context.stroke();//绘制结束
+			<img  src="../../img/1.png"/>
+	  	 	</pre>
+	  	 	<h4>填充1个画布</h4>
+	  	 	<pre>
+			//初始化画布
+			var oCanvas = document.getElementById("canvas");
+			oCanvas.width = 600;//设置画布宽高
+			oCanvas.height = 400;			
+			var context = oCanvas.getContext("2d");//获得画布上下文环境
+			//context绘制
+			context.moveTo(100,10);//
+			context.lineTo(400,200);
+			context.lineTo(100,200);
+			context.lineTo(100,10);			
+			context.fillStyle = '#000000';//填充背景
+			context.fill();//填充之后必须跟上这方法		
+			context.lineWidth=5;//设置线条宽度
+			context.strokeStyle = 'red';//设置线条颜色
+			context.stroke();//绘制结束
+			<img  src="../../img/2.png"/>
+	  	 	</pre>
+	  	 	<h4>画多个画布对象的用<code>beginPath开始closePath结束</code></h4>
+	  	 	<pre>
+			//初始化画布
+			var oCanvas = document.getElementById("canvas");
+			oCanvas.width = 600;//设置画布宽高
+			oCanvas.height = 400;			
+			var context = oCanvas.getContext("2d");//获得画布上下文环境
+			//context绘制
+			context.beginPath()//开始一段路径
+			context.moveTo(100,10);//
+			context.lineTo(400,200);
+			context.lineTo(100,200);
+			context.lineTo(100,10);	
+			context.closePath();//结束一段路径
+			context.fillStyle = '#000000';//填充背景
+			context.fill();//填充之后必须跟上这方法			
+			//绘制第二个图像也需要用beginPath和closePath隔开
+			context.beginPath()//开始一段路径
+			context.moveTo(60,10);//
+			context.lineTo(200,200);
+			context.closePath();//结束一段路径
+		
+			context.lineWidth=5;//设置线条宽度
+			context.strokeStyle = 'red';//设置线条颜色
+			context.stroke();//绘制结束
+			<img  src="../../img/3.jpg"/>
+	  	 	</pre>
+	  	 	<h4>练习画1个七巧板,<code>注意开始位置从0开始，后面循环是从第二的个点开始</code></h4>
+	  	 	<pre>
+	  	 	var tangram = [
+			{p:[{x:0,y:0},{x:800,y:0},{x:400,y:400}],color:'#caff67'},
+			{p:[{x:0,y:0},{x:400,y:400},{x:0,y:800}],color:'#67becf'},
+			{p:[{x:800,y:0},{x:800,y:400},{x:600,y:600},{x:600,y:200}],color:'#ef3d61'},
+			{p:[{x:600,y:200},{x:600,y:600},{x:400,y:400}],color:'#f9f51a'},
+			{p:[{x:400,y:400},{x:600,y:600},{x:400,y:800},{x:200,y:600}],color:'#a594c0'},
+			{p:[{x:200,y:600},{x:400,y:800},{x:0,y:800}],color:'#fa8ecc'},
+			{p:[{x:800,y:400},{x:800,y:800},{x:400,y:800}],color:'#fa8ecc'}
+			];//七巧板需要的数组点
+			window.onload = function(){
+				//初始化画布
+				var oCanvas = document.getElementById("canvas");
+				oCanvas.width = 800;//设置画布宽高
+				oCanvas.height = 800;			
+				var context = oCanvas.getContext("2d");//获得画布上下文环境
+				for (var i = 0; i <  tangram.length; i++) {
+					draw(tangram[i],context);//执行这个方法，传入数据中的点，和环境				
+				}
+				function draw(piece,cxt){ //此方法传入2个参数，1个是数组里面的点，另外1个是画2d的上下文环境
+					cxt.beginPath();
+					cxt.moveTo(piece.p[0].x,piece.p[0].y);
+					for (var i = 1; i < piece.p.length; i++) 
+						cxt.lineTo(piece.p[i].x,piece.p[i].y);
+						cxt.closePath();
+						cxt.fillStyle = piece.color;//背景色
+						cxt.fill(); //填充背景
+						cxt.strokeStyle ='#000000';//线条的颜色
+						cxt.lineWidth = 3;//线的粗细
+						cxt.stroke();//结束渲染
+				}
+				<img  src="../../img/4.jpg"/>
+	  	 	</pre>
+	  	 	<h4>画布画弧线  <code>arc函数:context.arc(300,300,200,0,2*Math.PI);//已300,300为圆心，200为半径,从0开始到2*Math.PI画1个圆,第六个参数为是否顺时针</code></h4>
+	  	 	<pre>
+	  	 	window.onload = function(){
+			//初始化画布	
+	  	 	var oCanvas = document.getElementById("canvas");
+			oCanvas.width = 800;//设置画布宽高
+			oCanvas.height = 800;			
+			var context = oCanvas.getContext("2d");//获得画布上下文环境
+			context.strokeStyle = '#000000';
+			context.lineWidth = 3;			
+			context.arc(300,300,200,0,2*Math.PI);//已300,300为圆心，200为半径,从0开始到2*Math.PI画1个圆
+			context.stroke();
+			}
+			<img src="../../img/5.jpg"/>
+	  	 	</pre>
+	  	 	<h4><code>closePath可以2段没有闭合的路径</code></h4>
+	  	 	<pre>
+	  	 	//初始化画布
+			var oCanvas = document.getElementById("canvas");
+			oCanvas.width = 800;//设置画布宽高
+			oCanvas.height = 800;			
+			var context = oCanvas.getContext("2d");//获得画布上下文环境
+			context.strokeStyle = '#000000';
+			context.lineWidth = 3;
+			context.beginPath();
+			context.arc(300,300,200,0,0.8*Math.PI);//已300,300为圆心，200为半径,从0开始到2*Math.PI画1个圆
+			context.closePath();//如果有这句话那么可以封闭2条没得封闭的路径用直线连接如图
+			context.stroke();
+			<img src="../../img/6.jpg"/>
+	  	 	</pre>
+	  	 	<h4>圆弧练习，电子时钟 <code>cxt.clearRect(0,0,WIDOW_WINDTH,WIDOW_HEIGHT);//对1个矩形空间内的进行刷新，后两个参数也是坐标</code> </h4>
+	  	 	<pre>
+	  	 		<a href="../test/timer.html">点击查看demo</a>
+	  	 	</pre>
+	  	 	<h4>练习箭头</h4>
+	  	 	<pre>
+	  	 	//初始化画布
+			var oCanvas = document.getElementById("canvas");
+			oCanvas.width = 800;//设置画布宽高
+			oCanvas.height = 800;			
+			var context = oCanvas.getContext("2d");//获得画布上下文环境
+			//context绘制
+			context.beginPath()//开始一段路径
+			context.moveTo(100,350);//
+			context.lineTo(500,350);
+			context.lineTo(500,200);
+			context.lineTo(700,400);
+			context.lineTo(500,600);
+			context.lineTo(500,450);
+			context.lineTo(100,450);
+			context.closePath();  			
+			context.lineWidth = 5;//线条粗细
+			context.fillStyle ='#00B7EE';//图像背景		
+			context.strokeStyle ="#003399";//边框颜色
+			context.fill();
+			context.stroke();
+			<img src="../../img/7.jpg"/>
+	  	 	</pre>
+	  	 	<h4>矩形<code>context.rect(100,100,300,200);//100,100开始的坐标,300,200是矩形的宽高</code></h4>
+	  	 	<pre>
+	  	 	//初始化画布
+			var oCanvas = document.getElementById("canvas");
+			oCanvas.width = 600;//设置画布宽高
+			oCanvas.height = 400;			
+			var context = oCanvas.getContext("2d");//获得画布上下文环境
+			//context绘制
+			context.beginPath()//开始一段路径
+			context.rect(100,100,300,200);//100,100开始的坐标,300,200是矩形的宽高
+			context.strokeStyle ='#000000';
+			context.fillStyle ='red';
+			context.fill();			
+			context.closePath()
+			context.stroke();
+			<img src="../../img/8.jpg"/>
+	  	 	</pre>
+	  	 	<h4>画布图像的覆盖以及透明 <code>ext.rect(),和ext.fillRect()以及ext.strokeRect(),后面2个函数都可以画矩形是rect函数的加强和补充</code><code> 画布的遮挡关系是默认是代码的先后顺序</code></h4>
+	  	 	<pre>
+	  	 	//初始化画布
+			var oCanvas = document.getElementById("canvas");
+			oCanvas.width = 600;//设置画布宽高
+			oCanvas.height = 400;			
+			var context = oCanvas.getContext("2d");//获得画布上下文环境
+			//context绘制
+			//开始一段路径			
+			rects(context,100,100,300,200,5,'#eee','red');
+			rects(context,200,200,300,200,5,'#eee','rgba(255,0,0,0.5)');
+								
+			context.stroke();
+			//画矩形的函数
+			function rects(ext,x,y,w,h,Style,num,style2){
+				context.beginPath()
+				ext.rect(x,y,w,h);
+				context.closePath()
+				ext.strokeStyle = Style;
+				ext.lineWidth = num;
+				ext.fillStyle =style2;
+				context.fill();	
+			}
+			<img src="../../img/9.jpg"/>
+	  	 	</pre>
+	  	 	<h4>线条属性原形帽子和方形帽子lineCap<code>context.lineCap ='round';//圆角属性（帽子）context.lineCap='square';//方形帽子</code> </h4>
+	  	 	<pre>
+	  	 	//初始化画布
+			var oCanvas = document.getElementById("canvas");
+			oCanvas.width = 800;//设置画布宽高
+			oCanvas.height = 800;			
+			var context = oCanvas.getContext("2d");//获得画布上下文环境
+			//context绘制
+			context.beginPath()//开始一段路径
+			context.moveTo(100,350);//
+			context.lineTo(500,350);
+			context.lineTo(500,200);
+			context.lineTo(700,400);
+			context.lineTo(500,600);
+			context.lineTo(500,450);
+			context.lineTo(100,450);		  			
+			context.lineWidth = 22;//线条粗细
+			context.strokeStyle ="#003399";//边框颜色
+			context.lineCap ='round';//圆角属性（帽子）
+			//context.lineCap='square';//方形帽子
+			context.stroke();
+			<img src="../../img/10.jpg"/>
+	  	 	</pre>
+	  	 	<h4>练习：五角星 <code>下面的注释的部分是五角星的原理,drawStar是通过它封装的函数</code> </h4>
+	 		<pre>
+	 		window.onload = function(){
+			//初始化画布
+			var oCanvas = document.getElementById("canvas");
+			oCanvas.width = 800;//设置画布宽高
+			oCanvas.height = 800;			
+			var context = oCanvas.getContext("2d");//获得画布上下文环境
+			//context绘制
+//			context.beginPath()//开始一段路径
+//			for (var i = 0; i < 5; i++) { //下面的*300哪里是渲染的半径，+400是位移的x,y的距离
+//				context.lineTo(Math.cos((18+i*72)/180*Math.PI)*300+400,
+//				               -Math.sin((18+i*72)/180*Math.PI)*300+400);
+//				context.lineTo(Math.cos((54+i*72)/180*Math.PI)*150+400,
+//				               -Math.sin((54+i*72)/180*Math.PI)*150+400);
+//			}
+//			context.closePath(); 
+			drawStar(context,150,300,400,400);//调用下面的复用函数
+			context.lineJoin ="miter";//必须在context.lineJoin ="miter"的情况下
+			context.miterLimit='20';//如果要生成尖锐的角的时候，修改这个属性即可
+			context.lineWidth = 5;//线条粗细
+			context.fillStyle ='#00B7EE';//图像背景		
+			context.strokeStyle ="#003399";//边框颜色
+			context.fill();			
+			context.stroke();
+		}
+		//画五角星的函数
+		function drawStar(cxt,r,R,x,y){//ext环境，r：小园半径，R：大圆半径,x:便宜的x坐标,y:便宜的y坐标
+			cxt.beginPath()//开始一段路径
+			for (var i = 0; i < 5; i++) { //下面的*300哪里是渲染的半径，+400是位移的x,y的距离
+				cxt.lineTo(Math.cos((18+i*72)/180*Math.PI)*R+x,
+				               -Math.sin((18+i*72)/180*Math.PI)*R+y);
+				cxt.lineTo(Math.cos((54+i*72)/180*Math.PI)*r+x,
+				               -Math.sin((54+i*72)/180*Math.PI)*r+y);
+			}
+			cxt.closePath();
+		}
+		<img src="../../img/11.jpg" />
+	 	</pre>
+	 	 <h4> <code>cxt.lineJoin</code> 相交的效果默认:miter 尖角、 bevel 斜接、 round 圆角.</h4>
+	 	 <pre>
+	 	 	window.onload = function(){
+			//初始化画布
+	 	 	context.lineJoin ="miter";//必须在context.lineJoin ="miter"的情况下
+			context.miterLimit='20';//如果要生成尖锐的角的时候，修改这个属性即可
+			context.fill();			
+			context.stroke();
+			}
+			<img src="../../img/12.jpg"/>
+	 	 </pre>
+	 	 <h4>画一片星空：查看demo<code>图像变换函数如图：translate,scale,rotate可以被transform函数取代，具体看图 </code> </h4>
+	 	 <pre>
+	  	 		<a href="../test/xingxing2.html" style="display: block;padding-bottom: 230px;">点击查看demo</a>
+	  	 		<img src="../../img/13.jpg"/>
+	  	 </pre>
+	  	 <h4>context.save()开始图像状态context.restore()结束图像状态，<code> 他们之间的代码可以清空画布的状态</code> </h4>
+	  	 <pre>
+	  	 	window.onload = function(){
+			//初始化画布
+			var oCanvas = document.getElementById("canvas");
+			oCanvas.width = 1000;//设置画布宽高
+			oCanvas.height = 1000;			
+			var context = oCanvas.getContext("2d");//获得画布上下文环境
+			context.save();//开始图像状态
+			context.translate(100,100);//这个便宜要在fillRect图形构建之前才有效果	
+			context.fillStyle ='#003399';//背景
+			context.fillRect(0,0,400,400);
+			context.restore();//保存图像状态
+			
+			context.save();//在绘制另外1个图像的时候，重置画布的状态
+			context.translate(300,300);//这个便宜要在fillRect图形构建之前才有效果	
+			context.fillStyle ='red';//背景
+			context.fillRect(0,0,400,400);			
+			context.restore();//保存图像状态			
+		    }
+		    <img src="../../img/3.png"/>
+	  	 </pre>
+	  	 <h4>线性渐变 :<code>context.createLinearGradient</code> </h4>
+	  	 <pre>
+	  	 	window.onload = function(){
+			//初始化画布
+			var oCanvas = document.getElementById("canvas");
+			oCanvas.width = 800;//设置画布宽高
+			oCanvas.height = 800;			
+			var context = oCanvas.getContext("2d");//获得画布上下文环境
+			//context绘制
+			context.beginPath()//开始一段路径
+			var lineearGrad = context.createLinearGradient(0,0,800,800);
+			//线性渐变的变量 这里后面的坐标是控制渐变形成的区域,这里的坐标可以是负数
+			//如果createLinearGradient里面的值是(0,0,800,0);那么这个渐变方向就是横向渐变的
+			//如果createLinearGradient里面的值是(0,0,0,800);那么这个渐变方向就是竖着渐变的
+			lineearGrad.addColorStop(0.0,'#fff');//这里的0是开始的位置
+			lineearGrad.addColorStop(0.4,'#000');
+			lineearGrad.addColorStop(1,'red');//1是结束的时候
+			context.fillStyle = lineearGrad;//把渐变变量绘制出来
+			
+			context.fillRect(110,110,800,800)
+			context.closePath();  			
+			
+			context.fill();
+			
+			context.stroke();
+		}
+			<img src="../../img/14.jpg"/>
+	  	 </pre>
+	  	 <h4>渐行渐变 <code>放射状的渐变:context.createRadialGradient</code> </h4>
+	  	 <pre>
+	  	 	window.onload = function(){
+			//初始化画布
+			var oCanvas = document.getElementById("canvas");
+			oCanvas.width = 800;//设置画布宽高
+			oCanvas.height = 800;			
+			var context = oCanvas.getContext("2d");//获得画布上下文环境
+			//context绘制
+			context.beginPath()//开始一段路径
+			var lineearGrad = context.createRadialGradient(400,400,20,400,400,200);
+			//这里的参数是从400,400这个坐标开始已半径为20的圆像400,400为圆心，200为半径这个大圆渐变
+			lineearGrad.addColorStop(0.0,'#fff');//这里的0是开始的位置
+			lineearGrad.addColorStop(0.4,'#000');
+			lineearGrad.addColorStop(0.7,'#ccc');
+			lineearGrad.addColorStop(1,'red');//1是结束的时候 
+			//注意1结束的时候 如果没充满整个渲染的画布，那么画布背景会选最后个颜色作为背景
+			context.fillStyle = lineearGrad;//把渐变变量绘制出来
+			
+			context.fillRect(110,110,800,800)
+			context.closePath();  			
+			
+			context.fill();
+			
+			context.stroke();
+			<img src="../../img/15.jpg"/>
+		}
+	  	 </pre>
+	  	 <h4>图片背景填充 <code>context.createPattern这个方法第一个参数不仅可以跟图片，还可以传画布对象和视频对象</code> </h4>
+	  	 <pre>
+	  	 	window.onload = function(){
+			//初始化画布
+			var oCanvas = document.getElementById("canvas");
+			oCanvas.width = 800;//设置画布宽高
+			oCanvas.height = 800;			
+			var context = oCanvas.getContext("2d");//获得画布上下文环境
+			//context绘制
+			context.beginPath()//开始一段路径
+			var bgImage = new Image();//先new1个Image
+			bgImage.src ='img/16.jpg';//设置引用图片的路径
+			bgImage.onload = function(){//一定要在onload方法之后调用				
+			var pattern = context.createPattern(bgImage,"repeat");
+			//createPattern这个方法 有两个参数 第一个是上文创建的图片对象，第二个参数和css一样，重复，不重复，x,y重复等
+			//createPattern这个方法第一个参数不仅可以跟图片，还可以传画布对象和视频对象
+			context.fillStyle = pattern;//把渐变变量绘制出来
+			context.fillRect(0,0,800,800)
+			<img src="../../img/16.jpg"/>
+	  	 </pre>
+	  	 <h4>文字渲染</h4>
+	  	 <pre>
+	  	 	window.onload = function(){
+			//初始化画布
+			var oCanvas = document.getElementById("canvas");
+			oCanvas.width = 800;//设置画布宽高
+			oCanvas.height = 800;			
+			var context = oCanvas.getContext("2d");//获得画布上下文环境
+			//context绘制
+			context.beginPath()//开始一段路径
+			context.font ='bold 40px Arial';
+			context.fillStyle ='#003399';
+			context.fillText("境而过",100,100);//实体 ，参数第一个是文字，第二 三个是展示的坐标
+			context.strokeText("境而过",100,200);//外边框描边
+			context.strokeText("境而过",100,300,50);
+			//外边框描边，如有第三的个参数是规定文字的横向像素不能超过50px
+			
+			//绘制1个渐变文字
+			var lineearGrad = context.createLinearGradient(0,0,800,0);
+			lineearGrad.addColorStop(0,'red');
+			lineearGrad.addColorStop(0.25,'orange');
+			lineearGrad.addColorStop(0.5,'yellow');
+			lineearGrad.addColorStop(0.75,'green');
+			lineearGrad.addColorStop(1,'purple');
+			context.fillStyle =lineearGrad
+			context.fillText("境而过境而过境而过境而过",100,400);
+//			context.strokeText("境而过境而过境而过境而过",100,400);//如果有这句那么彩色字体将会被描边
+		}
+		 <img src="../../img/17.jpg"/>
+	  	 </pre>
+	  	 <h4>阴影  <code>ext.shadowColor:定义阴影颜色 ,ext.shadowOffsetX:定义阴影x轴的距离，ext.shadowOffsetY:定义阴影y轴的距离，ext.shadowBlur:阴影的像素</code> </h4>
+	  	 <pre>
+	  	 	window.onload = function(){
+			//初始化画布
+			var oCanvas = document.getElementById("canvas");
+			oCanvas.width = 800;//设置画布宽高
+			oCanvas.height = 800;			
+			var context = oCanvas.getContext("2d");//获得画布上下文环境
+			//context绘制
+			context.beginPath()//开始一段路径			
+			context.fillStyle = '#00468C';//把渐变变量绘制出来
+			context.shadowColor ='#008000'; //定义阴影颜色
+			context.shadowOffsetX =20;//阴影偏移的x坐标，可以是负数
+			context.shadowOffsetY =20;//阴影偏移的y坐标，可以是负数
+			context.shadowBlur =4;//阴影的像素			
+			context.closePath();  						
+			context.fill();		
+			context.stroke();
+		  }
+		  <img src="../../img/18.jpg"/>
+	  	 </pre>
+	  	 <h4>透明度和图片展示的顺序  <code>context.globalAlpha =0.9;//设置全局的透明度 context.globalCompositeOperation ='';图片展示顺序</code></h4>
+	  	 <pre style="padding-bottom: 50px;">
+	  	 	window.onload = function(){
+			//初始化画布
+			var oCanvas = document.getElementById("canvas");
+			oCanvas.width = 1200;//设置画布宽高
+			oCanvas.height = 800;			
+			var context = oCanvas.getContext("2d");//获得画布上下文环境
+			context.globalAlpha =0.9;//设置全局的透明度
+//			context.globalCompositeOperation ='';
+			//context绘制
+			for (var i = 0; i < 100; i++) {
+			  //定义随机生成100个园的颜色
+			  var R = Math.floor(Math.random()*255);
+			  var G = Math.floor(Math.random()*255);
+			  var B = Math.floor(Math.random()*255);
+			  context.fillStyle = "rgb("+R+","+G+","+B+")";
+			  context.beginPath()//开始一段路径
+			  context.arc(Math.random()*oCanvas.width,Math.random()*oCanvas.height,Math.random()*100,0,Math.PI*2);	
+				
+			  context.fill();		
+			}
+			context.stroke();
+		}
+		<img src="../../img/19.png" style="position: relative;left: -90px;"width="1160" />
+		<img src="../../img/20.jpg" style="position: relative;left: -90px;"width="1160" />
+	  	 </pre>
+	  	 <h4>demo:创建多个圆碰撞检测</h4>
+	  	 <pre style="padding-bottom: 100px;">
+	  	 	<a href="../canvas/demo2.html">查看demo</a>
+	  	 	<img src="../../img/21.jpg"/>
+	  	 </pre>
+	  	 <h4>裁剪clip <code>context.clip();//剪辑</code></h4>
+	  	 <pre>
+	  	 	window.onload = function(){
+			//初始化画布
+			var oCanvas = document.getElementById("canvas");
+			oCanvas.width = 800;//设置画布宽高
+			oCanvas.height = 800;			
+			var context = oCanvas.getContext("2d");//获得画布上下文环境
+			//context绘制
+			context.beginPath()//开始一段路径画1个矩形四点
+			context.fillStyle ='rosybrown';
+			context.fillRect(0,0,800,800);
+			
+			context.beginPath();//又开始一段路径，画1个圆形
+			context.arc(oCanvas.width/2,oCanvas.height/2,150,0,Math.PI*2);
+			context.fillStyle ='#FFFFFF';	
+			context.fill();
+			context.clip();//填充颜色之后剪辑他
+			
+			
+			context.font ='bold 140px Arial';
+			context.textAlign ='center';
+			context.textBaseline ='middle';
+			context.fillStyle ="#CC1C1C";
+			context.fillText("境而过",oCanvas.width/2,oCanvas.height/2);//在剪辑中心圆绘制几个字
+		}
+		<img src="../../img/22.jpg"/>
+	  	 </pre>
+	  	 <h4>context.isPointInPath(x,y) <code>//把在画布里面的x,y坐标放入里面判断是不是在画布中</code>   <code>点击画布中的原形图，变红</code></h4>
+	  	 <pre>
+	  	 	var balls = [];//定义1个空数组	
+			//初始化画布			
+			window.onload = function(){
+			var oCanvas = document.getElementById("canvas");
+			var context = oCanvas.getContext("2d");//获得画布上下文环境	
+			oCanvas.width = 800;//设置画布宽高
+			oCanvas.height = 800;						
+			for (var i = 0; i < 10; i++) {
+				var aBall  ={
+					x:Math.random()*oCanvas.width,
+					y:Math.random()*oCanvas.height,
+					r:Math.random()*50+20};
+					balls[i] = aBall;
+				}
+				draw();
+				oCanvas.addEventListener("click",detect);//绑定事件				
+			function draw(){				
+				for (var i = 0; i < balls.length; i++) {
+					context.beginPath();
+					context.arc(balls[i].x,balls[i].y,balls[i].r,0,Math.PI*2);
+					context.fillStyle = "#058";
+					context.fill();
+				}
+			}
+			function detect(event){
+				//获取 x.y的坐标，鼠标和触摸
+				var x = event.clientX - oCanvas.getBoundingClientRect().left;
+				var y = event.clientY - oCanvas.getBoundingClientRect().top;
+				for (var i = 0; i < balls.length; i++) {
+					context.beginPath();
+					context.arc(balls[i].x,balls[i].y,balls[i].r,0,Math.PI*2);
+					
+					if (context.isPointInPath(x,y)) {//把在画布里面的x,y坐标放入里面判断是不是在绘制的圆中
+						context.fillStyle ='red';
+						context.fill();
+					} 
+				}
+			}			
+			}
+		 <img src="../../img/23.jpg" />
+	  	 </pre>	
+	  	 <h4>demo:交互移入移除事件move <code>上续程序的后续</code></h4>
+	  	 <pre>
+	  	 	var balls = [];//定义1个空数组	
+			//初始化画布			
+			window.onload = function(){
+			var oCanvas = document.getElementById("canvas");
+			var context = oCanvas.getContext("2d");//获得画布上下文环境	
+			oCanvas.width = 800;//设置画布宽高
+			oCanvas.height = 800;						
+			for (var i = 0; i < 10; i++) {
+				var aBall  ={
+					x:Math.random()*oCanvas.width,
+					y:Math.random()*oCanvas.height,
+					r:Math.random()*50+20};
+					balls[i] = aBall;
+				}
+				draw();
+				oCanvas.addEventListener("mousemove",detect);				
+			function draw(x,y){				
+				for (var i = 0; i < balls.length; i++) {
+					context.beginPath();
+					context.arc(balls[i].x,balls[i].y,balls[i].r,0,Math.PI*2);
+					if (context.isPointInPath(x,y)) {
+						context.fillStyle ='red';
+					} else{
+						context.fillStyle ='#058';
+					}					
+					context.fill();
+				}
+			}
+			function detect(event){
+				//获取 x.y的坐标，鼠标和触摸
+				var x = event.clientX - oCanvas.getBoundingClientRect().left;
+				var y = event.clientY - oCanvas.getBoundingClientRect().top;				
+				draw(x,y);
+			}			
+			}
+			<img src="../../img/23.jpg" />
+	  	 </pre>
+	  	 </div>
+	  </div>	
+	  <!--返回顶部-->
+	  <div id="div-Top">
+		  	<dl>
+		  		<dd>
+		  			<img src="../../img/weixin-icon02.png"/></li>
+		  		</dd>
+		  		<dt class="weixin">
+		  			<div></div>
+		  		</dt>
+		  		<dt class="to_top">
+		  			<div></div>
+		  		</dt>
+		  		
+		  	</dl>
+	  </div>
+	  	  			
+	</body>
+</html>
