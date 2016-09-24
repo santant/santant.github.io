@@ -659,6 +659,12 @@ with(document)0[(getElementsByTagName('head')[0]||body).appendChild(createElemen
 				  } 
 				})(jQuery,window,document);
 		  	 </pre>
+		  	 <h4>文件上传表单中enctype的格式</h4>
+		  	 <pre class="brush: js;">
+		  	 	//表单中enctype="multipart/form-data"的意思，是设置表单的MIME编码。
+		  	 	//默认情况，这个编码格式是application/x-www-form-urlencoded，不能用于文件上传；
+		  	 	//只有使用了multipart/form-data，才能完整的传递文件数据，进行下面的操作.
+		  	 </pre>
 	  	 </div>	   	 
 	 </div>		  
 	   <!--返回顶部-->
