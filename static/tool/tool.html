@@ -674,7 +674,7 @@ with(document)0[(getElementsByTagName('head')[0]||body).appendChild(createElemen
 						var oIndex = $(this).index();
 						$(".pj-Carousel-box").animate({
 							"left":-oPjItem*oIndex+'px'
-						},400)					
+						},400)//这里拿jquery函数举例				
 						$(".pj-Carousel-color").eq(oIndex).addClass("active").siblings(".pj-Carousel-color").removeClass("active");					
 						mun2 = oIndex;
 						console.log(mun2)
@@ -682,7 +682,7 @@ with(document)0[(getElementsByTagName('head')[0]||body).appendChild(createElemen
 						console.log(fa)
 						setTimeout(function(){
 							fa =true;
-						},400)
+						},400)//变成true的时间也要在定时器里面相对应
 					}					
 				})
 		  	 </pre>
