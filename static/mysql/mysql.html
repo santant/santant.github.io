@@ -1,0 +1,322 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<link rel="shortcut icon" href="../../imges/ico.ico" type="images/x-icon" />
+		<meta name="viewport" content="width=device-width,initial-scale=1,minimum-scale=1,maximum-scale=1,user-scalable=no" />
+		<link rel="stylesheet" type="text/css" href="../../css/public.css"/>
+		<link rel="stylesheet" type="text/css" href="../../css/index.css"/>
+		<script src="../../js/jquery-1.8.2.min.js" type="text/javascript" charset="utf-8"></script>
+		<script src="../../js/index.js" type="text/javascript" charset="utf-8"></script>
+		<meta charset="UTF-8">
+		<title>mysql</title>
+		<script type="text/javascript" src="../../js/pre/scripts/shCore.js"></script>
+		<script type="text/javascript" src="../../js/pre/scripts/shBrushBash.js"></script>
+		<script type="text/javascript" src="../../js/pre/scripts/shBrushCss.js"></script>
+		<script type="text/javascript" src="../../js/pre/scripts/shBrushCSharp.js"></script>
+		<script type="text/javascript" src="../../js/pre/scripts/shBrushJScript.js"></script>
+		<script type="text/javascript" src="../../js/pre/scripts/shBrushPhp.js"></script>
+		<script type="text/javascript" src="../../js/pre/scripts/shBrushPlain.js"></script>
+		<script type="text/javascript" src="../../js/pre/scripts/shBrushPython.js"></script>
+		<script type="text/javascript" src="../../js/pre/scripts/shBrushJava.js"></script>
+		<script type="text/javascript" src="../../js/pre/scripts/shBrushScala.js"></script>
+		<script type="text/javascript" src="../../js/pre/scripts/shBrushSql.js"></script>
+		<script type="text/javascript" src="../../js/pre/scripts/shBrushXml.js"></script>
+		<script type="text/javascript" src="../../js/pre/scripts/shBrushPerl.js"></script>
+		<link type="text/css" rel="stylesheet" href="../../js/pre/styles/shCore.css" />
+		<link type="text/css" rel="stylesheet" href="../../js/pre/styles/shThemeDefault.css" />
+		<script type="text/javascript">
+			SyntaxHighlighter.defaults['toolbar'] = false;  //去掉右上角问号图标
+			SyntaxHighlighter.config.tagName = 'pre';       //可以更改解析的默认Tag。
+			SyntaxHighlighter.config.bloggerMode = true; 
+			SyntaxHighlighter.config.stripBrs = true;  
+			SyntaxHighlighter.all();
+	   </script>
+		<style type="text/css">
+			
+		</style>
+	</head>
+	<body>
+	  <div class="hander"> 
+	  	<ul>
+	  		<li class="" nav-title="all"><a href="../../index.html">首页</a></li>
+			<li nav-title="css" class=""> <a href="../canvas/demo1.html">Html5画布入门篇</a></li>
+			<li nav-title="css" class=""><a href="../canvas/demo3.html">Html5画布提升篇</a></li>
+			<li><a href="../CSS/css3.html">CSS3</a></li>			
+			<li><a href="../../static/control/control.html">自己写的demo</a></li>			
+			<li nav-title="rem工具换算"><a href="../../static/rem1/rem.html">rem</a></li>			
+	  		<li><a href="../title/demo2.html">收藏的网站</a></li>
+	  		<li ><a href="../tool/tool.html">工具箱</a></li>
+	  		<li class=""><a href="../javascript/Event.html">javascriptEvent</a></li>
+	  		<li class=""><a href="../javascript/jsDom.html">javascriptDOM</a></li>
+	  		<li class=""><a href="../javascript/object.html">javascriptObj</a></li>	  		
+	  		<li  ><a href="../zhengze/zhengze.html">js正则表达式</a></li>
+	  		<li class=""><a href="../javascript/JSFcnction.html">javascript函数</a></li>
+	  		<li class=""><a href="../HTML5/H5_1.html">HTML5</a></li>
+	  		<li><a href="../angualar/angualar.html">angualarJS</a></li>
+	  		<li class=""><a href="../jquery-css3/jq-css3.html">Jquery操作css3的拼接方式</a></li>	 
+	  		<li class=""><a href="../less/less.html">less</a></li>
+	  		<li class=""><a href="../git/git.html">git</a></li>
+	  		<li class="active"><a href="../mysql/mysql.html">mysql</a></li>
+	  	</ul>
+	  </div>	
+	  <!--git-->
+	  <div class="main">
+	  	 <h3>mysql常用语句</h3>	  	 
+	  	 <div class="div_daima">
+	  	 	<h4>mysql常用关键字和命令</h4>
+	  	 	<pre class="brush: js;">		
+  	 		//数据库引擎:
+			InnoDB: 支持事务、行级锁定、性能低
+			MyIsAM: 不支持事务、表锁定、性能高
+			//常用cmd命令
+			//查看所有表
+			show databases;
+			//删除数据库: 
+			DROP DATABASE `2016-9-23`;
+			//创建数据库: 
+			CREATE DATABASE `2016-9-23`;
+			//建表: 
+			CREATE TABLE `2016-9-25`.`user_table` ( `username` VARCHAR(32) NOT NULL , `age` INT NOT NULL ) ENGINE = InnoDB;	不规范
+			//删除表:
+			DROP TABLE user_table
+			//给数据库表加字段 alter table 表名 add COLUMN 添加的字段名 int(32)  －>int（32）int数据类型(他的数据32位)
+			alter table item_table add COLUMN real_ID int(32)
+	  	 	</pre>
+			<h4>mysql 最简单的crud <code>推荐最简单的图形界面工具: phpmyadmin</code></h4>
+			<pre class="brush:js">
+			//增:
+			INSERT INTO `2016-9-25`.`user_table`(`ID`,`name`) VALUES(NULL,'zs');
+			//删:    	
+			DELETE FROM `user_table` 条件
+			//改:	
+			UPDATE `user_table` SET name='abc' WHERE
+			//查:	
+			select * from use_table	相当不规范
+			</pre>
+			<h4>mysql 主键:——数据里唯一，索引 <code>索引：即是主键，本张表的唯一</code></h4>
+			<pre class="brush:js">
+				ID
+				特点:
+					//自增、A_I
+					//删除了，不会重新排列
+			
+				好处: 提高性能、预编译
+				缺点: 不太安全、容易猜测
+			
+				GUID——通过程序生成出来，随机，安全性极高
+			
+				ID	name
+			
+				//以后，建表，一定要有主键   ID
+			</pre>
+			<h4>mysql外键<<code>外键就是另外一张表的主键（一般是另外一张表的id），当前表的id相对于本张表的主键，但是对于另外一张表来说就是外键来</code><code>外键的作用：关联多个表</code></h4>
+	  		<pre class="brush:js">
+	  		//关联多个表
+			user_talbe:（用户表）
+				ID	name
+				1	zs
+				2	ls
+				3	abc
+			item_table:（商品表）
+				ID	name
+				1	裤子
+				2	袜子
+				3	皮鞋
+			trade_table:（交易表）
+				ID	user_id		item_id		count
+				1	2		1		5
+				2	3		2		1
+			//这里trade_table里面的id是本表的主键，它的外键就是user_table里面的id，和item_table里面的id			
+				trade_table:
+					ID	主键
+					user_id	外键
+					item_id	外键	
+	  		</pre>
+	  		<h4>sql语句标准规范:</h4>
+	  		<pre class="brush:js">
+	  		//1. 关键字 大写
+			//2. 库名、表名、字段名，要用反单引 括住
+			//3. 指定具体隶属关系
+	  		</pre>
+	  		<h4>mysql里面最重要的内容，查询<code>起别名:关键字AS</code><code>IN条件:（包含）</code></h4>
+	  		<pre class="brush:js">
+	  		//查
+	  		SELECT * FROM 表;
+			SELECT * FROM 表 条件
+			//*	通配符，所有字段			
+			SELECT * FROM user_table;
+			//但是会查询指定条件的语句，select后面跟上查询条件，多个条件
+			SELECT ID,name FROM user_table;
+			SELECT name,ID FROM user_table;
+			//-->精确查找可以预防 表结构变化     以后，一定要精确到选择字段
+			
+			//起别名:——起个外号 适用的地方：字段、表、库
+				 //关键字：AS
+			SELECT name,ID FROM user_table;
+			//给name取个别名n，查询出来的结果就是n代表namele
+			SELECT name AS n, ID AS i FROM user_table;
+			//IN条件:（包含）
+			SELECT * FROM user_table WHERE ID IN(1,2,3,4)//id包含1234的才会被选出来
+
+			SELECT * FROM user_table WHERE name IN('abc','zs','lis')
+			//子查询(迭代查询): 不好，一般不要用，性能非常低
+				//另一个表的查询结果，作为此表条件，配合IN
+				SELECT * FROM 表 WHERE ID IN(语句)
+			
+			//联合查询（所有的关键字都可以在1起使用）
+				//－>关键字：AND: 并且 可以用 &&代替
+				SELECT * FROM user_table WHERE ID=1 AND name='zs'; //查id＝1并且name＝zs的结果
+				SELECT * FROM user_table WHERE ID=1 && name='zs';//查id＝1并且name＝zs的结果
+				//－>关键字：OR:  或者 可以用 ||代替
+				SELECT * FROM user_table WHERE ID=1 OR name='zs'; //查id＝1或者name＝zs的结果
+				SELECT * FROM user_table WHERE ID=1 || name='zs'; //查id＝1或者name＝zs的结果
+				//－>关键字：排序 ORDER BY 字段 排序方式；
+					正序(从小到大): ASC
+					倒序: DESC
+					ORDER BY ID DESC
+				SELECT * FROM item_table ORDER BY price ASC;	//按照价格正序排列	
+			
+			//聚合://重复的
+			GROUP BY name	
+			
+			//LIMIT:  限制条数 (分页)
+			a).LIMIT 数量//后面跟1个数字就是查询几条
+				SELECT * FROM user_table LIMIT 2
+			b).LIMIT 起始,数量;	起始从0开始//后面跟2个数字就是从那一条开始，第二个参数是取多少条数
+		
+			分页:
+				page?get=1
+				
+				一页有2条	page_count=2
+		
+				1 ->   SELECT * FROM news LIMIT 0,2;
+				2 ->   SELECT * FROM news LIMIT 2,2;
+				3 ->   SELECT * FROM news LIMIT 4,2;  
+				4 ->   SELECT * FROM news LIMIT 6,2;  
+				n ->   SELECT * FROM news LIMIT page_count*(n-1),page_count;  //page_count*(n-1),page_count分页的语句
+				
+	  		</pre>
+	  		<h4>mysql常用的函数: <code>总共条数 COUNT(*)分页求数据的总数，以及分多少页</code></h4>
+	  		<pre class="brush:js">
+	  		//系统时间
+  			NOW()
+  			//最后添加的数据ID
+			LAST_INSERT_ID()	
+			//总共条数
+			COUNT(*)	
+			
+			eg: SELECT COUNT(*) AS count FROM user_table; //查询user_table有多少条数据
+		
+			ROUND()	//四舍五入
+			CEIL()	//向上取整
+			FLOOR()	//向下取整
+		
+			http://moodlove.blog.hexun.com/85072514_d.html
+			//查询user_table里面id<100,按照id倒叙排序,取2条数据
+			SELECT * FROM user_table WHERE ID<100  ORDER BY ID DESC LIMIT 2;
+	  		</pre>	
+	  		<h4>查询语句，或者其他语句,关键字的顺序 <code>mysql关键字顺序</code></h4>
+	  		<pre  class="brush:js">
+  			查询完整格式：
+			SELECT * 表;
+			WHERE 条件
+			GROUP BY
+			ORDER BY
+			LIMIT
+	  		</pre>
+	  		<h4>模糊查询 :LIKE  <code>模糊查询：一般用于做搜索</code> </h4>
+	  		<pre class="brush:js">
+  			//where是精确查询用＝匹配
+  			SELECT * FROM user_table WHERE name='zs';
+			aazs	bbzs 	ddzs	zs
+		
+			SELECT * FROM user_table WHERE name='%zs';
+		
+			SELECT * FROM user_table WHERE name='zs%';
+				zsaa	zsbb	zscc	zs
+			SELECT * FROM user_table WHERE name='%zs%';
+			//like一般用于做搜索的模糊查询
+				aazsaa	bbzsbb	zs
+			----------------------------------------------
+			SELECT * FROM user_table WHERE name LIKE '%zs'; //查询出前面由zs开头的
+				aazs	bbzs 	ddzs	zs
+		
+			SELECT * FROM user_table WHERE name LIKE '%word%';//查询出所有包含word的所以内容
+		
+			SELECT * FROM news WHERE title LIKE '%w%' OR content LIKE '%z%';//查询出title里面包含w的，并且content里面包含z的所以数据
+	  		</pre>
+	  		<h4>联合(接)查询: <code>多个表的数据合并到一个表上</code> <code>关键字：左连:  LEFT JOIN   ON	√ 右连:  RIGHT JOIN  ON，一般人常用左链接</code></h4>
+	  		<pre class="brush:js">
+	  		多个表的数据合并到一个表上
+			
+			左连:  LEFT JOIN   ON	√
+			右连:  RIGHT JOIN  ON
+			//LEFT JOIN: 即使右表中没有匹配，也从左表返回所有的行
+			//RIGHT JOIN: 即使左表中没有匹配，也从右表返回所有的行
+			
+			SELECT * FROM trade_table; //查询table_table所有数据
+		
+			//查询table_table和user_table两张表的所有数据，错误的，没用主键外键关联会报错
+			SELECT * FROM trade_table LEFT JOIN user_table;
+			
+			//查询table_table和user_table两张表的所有数据,用trade_table.user_id和user_table.ID关联－>可以取出这2张表的所以数据
+			SELECT * FROM trade_table LEFT JOIN user_table 
+			ON trade_table.user_id=user_table.ID;
+			
+			//查询table_table和user_table以及item_table三张表的所有数据,用trade_table.user_id和
+			//user_table.ID关联在用LEFT JOIN 链接item_table这个表用用trade_table.user_id和item_table.ID关联取出3个表的数据
+			
+			SELECT * FROM trade_table LEFT JOIN user_table 
+			ON trade_table.user_id=user_table.ID LEFT JOIN item_table
+			ON trade_table.item_id=item_table.ID;
+		
+			//查询三个表的数据，查询出user_table.name,item_table.name,trade_table.count的数据
+			SELECT user_table.name,item_table.name,trade_table.count
+			FROM trade_table LEFT JOIN user_table 
+			ON trade_table.user_id=user_table.ID LEFT JOIN item_table
+			ON trade_table.item_id=item_table.ID;
+			
+			//查询三个表的数据，查询出user_table.name,item_table.name,trade_table.count的数据 每个数据都有别名
+			SELECT trade_table.ID AS id,
+			user_table.name AS username,item_table.name AS item_name,
+			trade_table.count AS count
+			FROM trade_table LEFT JOIN user_table 
+			ON trade_table.user_id=user_table.ID LEFT JOIN item_table
+			ON trade_table.item_id=item_table.ID;
+		
+			//查询三个表的数据，查询出user_table.name,item_table.name,trade_table.count的数据,每个表都有别名，然后根据3个表生成新表中的id字段排倒叙
+			SELECT trade_table.ID AS id,
+			user_table.name AS username,item_table.name AS item_name,
+			trade_table.count AS count
+			FROM trade_table LEFT JOIN user_table 
+			ON trade_table.user_id=user_table.ID LEFT JOIN item_table
+			ON trade_table.item_id=item_table.ID ORDER BY id DESC;
+			
+			//和上面类似，只是有了别名，前面的查询条件都是根据别名匹配的
+			SELECT t.ID AS id,
+			u.name AS username,i.name AS item_name,
+			t.count AS count
+			FROM trade_table AS t LEFT JOIN user_table AS u 
+			ON t.user_id=u.ID LEFT JOIN item_table AS i
+			ON t.item_id=i.ID ORDER BY id DESC;	
+	  		</pre>
+	  	 </div>	 	
+	  </div>
+	  
+	   <!--返回顶部-->
+	  <div id="div-Top">
+		  	<dl>
+		  		<dd>
+		  			<img src="../../img/weixin-icon02.png"/></li>
+		  		</dd>
+		  		<dt class="weixin">
+		  			<div></div>
+		  		</dt>
+		  		<dt class="to_top">
+		  			<div></div>
+		  		</dt>
+		  		
+		  	</dl>
+	  </div>
+	</body>
+</html>
