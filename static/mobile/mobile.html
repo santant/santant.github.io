@@ -1,0 +1,198 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<link rel="shortcut icon" href="../../imges/ico.ico" type="images/x-icon" />
+		<meta name="viewport" content="width=device-width,initial-scale=1,minimum-scale=1,maximum-scale=1,user-scalable=no" />
+		<link rel="stylesheet" type="text/css" href="../../css/public.css"/>
+		<link rel="stylesheet" type="text/css" href="../../css/index.css"/>
+		<script src="../../js/jquery-1.8.2.min.js" type="text/javascript" charset="utf-8"></script>
+		<script src="../../js/index.js" type="text/javascript" charset="utf-8"></script>
+		<meta charset="UTF-8">
+		<title>git</title>
+		<script type="text/javascript" src="../../js/pre/scripts/shCore.js"></script>
+		<script type="text/javascript" src="../../js/pre/scripts/shBrushBash.js"></script>
+		<script type="text/javascript" src="../../js/pre/scripts/shBrushCss.js"></script>
+		<script type="text/javascript" src="../../js/pre/scripts/shBrushCSharp.js"></script>
+		<script type="text/javascript" src="../../js/pre/scripts/shBrushJScript.js"></script>
+		<script type="text/javascript" src="../../js/pre/scripts/shBrushPhp.js"></script>
+		<script type="text/javascript" src="../../js/pre/scripts/shBrushPlain.js"></script>
+		<script type="text/javascript" src="../../js/pre/scripts/shBrushPython.js"></script>
+		<script type="text/javascript" src="../../js/pre/scripts/shBrushJava.js"></script>
+		<script type="text/javascript" src="../../js/pre/scripts/shBrushScala.js"></script>
+		<script type="text/javascript" src="../../js/pre/scripts/shBrushSql.js"></script>
+		<script type="text/javascript" src="../../js/pre/scripts/shBrushXml.js"></script>
+		<script type="text/javascript" src="../../js/pre/scripts/shBrushPerl.js"></script>
+		<link type="text/css" rel="stylesheet" href="../../js/pre/styles/shCore.css" />
+		<link type="text/css" rel="stylesheet" href="../../js/pre/styles/shThemeDefault.css" />
+		<script type="text/javascript">
+			SyntaxHighlighter.defaults['toolbar'] = false;  //去掉右上角问号图标
+			SyntaxHighlighter.config.tagName = 'pre';       //可以更改解析的默认Tag。
+			SyntaxHighlighter.config.bloggerMode = true; 
+			SyntaxHighlighter.config.stripBrs = true;  
+			SyntaxHighlighter.all();
+	   </script>
+		<style type="text/css">
+			
+		</style>
+	</head>
+	<body>
+	  <div class="hander"> 
+	  	<ul>
+	  		<li class="" nav-title="all"><a href="../../index.html">首页</a></li>
+			<li nav-title="css" class=""> <a href="../canvas/demo1.html">Html5画布入门篇</a></li>
+			<li nav-title="css" class=""><a href="../canvas/demo3.html">Html5画布提升篇</a></li>
+			<li><a href="../CSS/css3.html">CSS3</a></li>			
+			<li><a href="../../static/control/control.html">自己写的demo</a></li>			
+			<li nav-title="rem工具换算"><a href="../../static/rem1/rem.html">rem</a></li>			
+	  		<li><a href="../title/demo2.html">收藏的网站</a></li>
+	  		<li ><a href="../tool/tool.html">工具箱</a></li>
+	  		<li class=""><a href="../javascript/Event.html">javascriptEvent</a></li>
+	  		<li class=""><a href="../javascript/jsDom.html">javascriptDOM</a></li>
+	  		<li class=""><a href="../javascript/object.html">javascriptObj</a></li>	  		
+	  		<li  ><a href="../zhengze/zhengze.html">js正则表达式</a></li>
+	  		<li class=""><a href="../javascript/JSFcnction.html">javascript函数</a></li>
+	  		<li class=""><a href="../HTML5/H5_1.html">HTML5</a></li>
+	  		<li><a href="../angualar/angualar.html">angualarJS</a></li>
+	  		<li class=""><a href="../jquery-css3/jq-css3.html">Jquery操作css3的拼接方式</a></li>	 
+	  		<li class=""><a href="../less/less.html">less</a></li>
+	  		<li class=""><a href="git.html">git</a></li>
+	  		<li class=""><a href="git.html">移动事件</a></li>
+	  	</ul>
+	  </div>	
+	  <!--git-->
+	  <div class="main">
+	  	 <h3>mobile </h3>	  	 
+	  	 <div class="div_daima">
+	  	 	<h4>移动事件 </h4>
+	  	 	<pre class="brush: js;">		
+	  	 	/* 
+				touchstart 手指触摸 == mousedown 
+				touchend 手指抬起 == mouseup
+				touchmove 手指抬起 == mousmove				
+				touch事件  在 chrome的模拟器下，部分版本 通过on的方式来添加事件无效
+				
+				touchstart 手指触摸 == mousedown 
+				touchend 手指抬起 == mouseup
+				touchmove 手指抬起 == mousmove
+				
+				touch事件  在 chrome的模拟器下，部分版本 通过on的方式来添加事件无效
+				
+				addEventListener("事件名",函数,冒泡或捕获);
+				1. 不会存在前后覆盖问题
+				2. 在chrome的模拟器下可以一直识别
+			*/
+			冒泡 ：点击元素 他会把这个事件一直向上传递 从下向上传递
+			捕获 ：从上向下传递
+			
+			//阻止事件
+			e.preventDefault(); 阻止默认事件
+	
+			阻止掉：document touchstart的默认事件，可以解决一下问题：
+				1. 阻止页面上的文字被选中    -- 可以通过阻止冒泡使某个元素上的文字被选中
+				2. 阻止页面上的系统菜单
+				
+			隐患:
+				页面上的所有滚动条失效	
+			
+			阻止 document的 	touchstart 或者 touchmove，可以清除系统默认的回弹
+			//事件点透
+			PC端鼠标事件 在移动端也可以正常使用，但是注意 事件的执行 会有300ms的延迟	
+			事件点透：
+				1. 在移动端 PC事件 有 300ms的延迟
+				2. 我们点击了页面之后，浏览器会记录点击下去的坐标
+				3. 300ms后，在该坐标找到现在在这的元素 执行事件
+			解决办法：
+				1. 阻止默认事件	(部分安卓机型不支持)
+				2. 不在移动端使用鼠标事件，不用a标签做页面跳转
+			//防止误碰
+			document.addEventListener(
+			    "touchstart",
+			    function(e) {
+			        e.preventDefault();
+			    }
+			);
+			window.onload = function () {
+			    var a = document.querySelectorAll("a");
+			    for(var i = 0; i < a.length; i++) {
+			        a[i].addEventListener(
+			            "touchmove",
+			            function() {
+			                this.isMove = true;
+			            }
+			        );
+			        a[i].addEventListener(
+			            "touchend",
+			            function() {
+			                if(!this.isMove) {
+			                    window.location.href = this.href;
+			                }
+			                this.isMove = false;
+			            }
+			        );
+			    }
+			};
+	  	 	</pre>	
+	  	 	<h4>touch事件，以及简易的滑屏原理 <code>ev.touches.length//手指的个数</code> <code><a href="mobileDemo/huaping.html">简单的手机滑屏</a></code></h4>
+	  	 	<pre class="brush: js;">
+	  	 	/*
+				touches 当前屏幕上的手指列表
+				targetTouches 当前元素上的手指列表
+				changedTouches 触发当前事件的手指列表，这个一般最常用
+			*/
+			//1.手指按下的时候，记录下手指的坐标，移动的时候，同样记录手指坐标
+			//2.然后用移动后的坐标－移动前的坐标 ＝ 手指移动的距离
+			//3.手指按下去之后，记录下元素的位置
+			//4.移动之后，用手指移动的记录＋元素的初始化的位置 ＝ 元素现在的位置
+window.onload = function(){
+		var oWrap = document.getElementById("wrap");
+		var oScroll = document.getElementById("scroll");
+		var startPoint = 0;//手指初始的位置
+		var startEl = 0;//滚动区域距顶部的位置
+		//手指移动的最大高度 ＝ 大盒子的内容高度 － 小盒子的实际高度
+		var MaxTop = oWrap.clientHeight - oScroll.offsetHeight; 
+		console.log(MaxTop);
+		oWrap.addEventListener("touchstart",function(ev){
+			var touchs = ev.changedTouches[0];
+			startPoint = touchs.pageY;//开始触摸的位置
+			startEl = oScroll.offsetTop;//滚动区域距顶部的位置
+			console.log(startPoint);
+		})
+		oWrap.addEventListener("touchmove",function(ev){
+			var touchs = ev.changedTouches[0];
+			var nowPoint = touchs.pageY;//手指移动的距离
+			//1.手指按下的时候，记录下手指的坐标，移动的时候，同样记录手指坐标
+			//2.然后用移动后的坐标－移动前的坐标 ＝ 手指移动的距离
+			//3.手指按下去之后，记录下元素的位置
+			//4.移动之后，用手指移动的记录＋元素的初始化的位置 ＝ 元素现在的位置
+			var dis = nowPoint - startPoint;//手指移动的距离
+			var top = startEl+dis;
+			if (top>0) {//限制滑动的距离
+				top = 0;
+			}
+			if(top < MaxTop){
+				top = MaxTop;
+			}
+			oScroll.style.top = top+'px';
+		})			
+	}
+	  	 	</pre>
+	  	 </div>	 	
+	  </div>
+	  
+	   <!--返回顶部-->
+	  <div id="div-Top">
+		  	<dl>
+		  		<dd>
+		  			<img src="../../img/weixin-icon02.png"/></li>
+		  		</dd>
+		  		<dt class="weixin">
+		  			<div></div>
+		  		</dt>
+		  		<dt class="to_top">
+		  			<div></div>
+		  		</dt>
+		  		
+		  	</dl>
+	  </div>
+	</body>
+</html>

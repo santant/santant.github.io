@@ -1,0 +1,162 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<meta name="viewport" content="width=device-width,initial-scale=1,minimum-scale=1,maximum-scale=1,user-scalable=no" />
+		<title></title>
+		<style type="text/css">
+			html{
+				height: 100%;
+			}
+			*{
+				margin: 0;
+				padding: 0;
+				height: 100%;
+				position: relative;
+				
+			}
+			#wrap{
+				position: absolute;
+				left: 0;
+				top: 0;
+				width: 100%;
+				height: 100%;
+				overflow: hidden;
+			}
+			#scroll{
+				position: absolute;
+				left: 0;
+				top: 0;
+				width: 100%;
+				background: #ccc;
+				height: auto;
+			}
+		</style>
+	</head>
+	<body>
+		<div id="wrap">
+			<div id="scroll">
+				<p>
+				2015年6月2日 - 我搜到的介绍是: touches是当前屏幕上所有触摸点的列表; targetTouches是当前对象上所有触摸点的列表; changedTouches是涉及当前事件的触摸点的列表。 但实际输出这...
+				https://segmentfault.com/q/101... 
+				TouchEvent里的targetTouches、touches、changedTouches的区别的...
+				2015年6月25日 -  touches是当前屏幕上所有触摸点的列表; targetTouches是当前对象上所有触摸点的列表; changedTouches是涉及当前事件的触摸点的列表。 但实际输出这三...
+				www.thinksaas.cn/ask/q...  - 百度快照 - 73%好评
+				利用targettouches和changedtouches
+				touches:当前位于屏幕上的所有手指动作的列表。 targetTouches:位于当前 DOM 元素上的手指动作的列表。 changedTouches:涉及当前事件的手指动作的列表。例如,在一个 ...
+				caibaojian.com/6...html  - 百度快照 - 94%好评
+				Mobile Web前端开发系列: 事件处理(二)_芬芬_新浪博客
+				2012年8月7日 -  changedTouches、targetTouches和touches分别包含稍微不同的触摸列表。targetTouches和touches分别包含当前位于屏幕上的手指列表,但changedTouches仅...
+				blog.sina.com.cn/s/blo...  - 百度快照 - 4034条评价
+				手持设备点击响应速度,鼠标事件与touch事件的那些事 - 叶小钗 - ...
+				
+				2013年10月19日 - PS:一般changedTouches的length都是1touchend时,touches与targetTouches信息会被删除,changedTouches保存的...
+				www.cnblogs.com/yexiao...  - 百度快照 - 854条评价
+				touchend事件为什么无法获得clientY ?_百度知道
+				1个回答 - 提问时间: 2015年06月16日
+				Touch end (" + event.changedTouches[0].clientX + "," + event.changedTouches[0].clientY + ")"; break; case "touchmove": event.preventDefault();...
+				更多关于changedTouches的问题>>
+				zhidao.baidu.com/link?...  - 百度快照 - 评价
+				触摸与手势事件 – 学习笔记
+				2012年12月10日 - (" + event.changedTouches[0].clientX + "," + event.changeTouches[0].clientY + ")";                 ...
+				www.w3cmm.com/javascri...  - 百度快照 - 评价
+
+				2015年6月2日 - 我搜到的介绍是: touches是当前屏幕上所有触摸点的列表; targetTouches是当前对象上所有触摸点的列表; changedTouches是涉及当前事件的触摸点的列表。 但实际输出这...
+				https://segmentfault.com/q/101... 
+				TouchEvent里的targetTouches、touches、changedTouches的区别的...
+				2015年6月25日 -  touches是当前屏幕上所有触摸点的列表; targetTouches是当前对象上所有触摸点的列表; changedTouches是涉及当前事件的触摸点的列表。 但实际输出这三...
+				www.thinksaas.cn/ask/q...  - 百度快照 - 73%好评
+				利用targettouches和changedtouches
+				touches:当前位于屏幕上的所有手指动作的列表。 targetTouches:位于当前 DOM 元素上的手指动作的列表。 changedTouches:涉及当前事件的手指动作的列表。例如,在一个 ...
+				caibaojian.com/6...html  - 百度快照 - 94%好评
+				Mobile Web前端开发系列: 事件处理(二)_芬芬_新浪博客
+				2012年8月7日 -  changedTouches、targetTouches和touches分别包含稍微不同的触摸列表。targetTouches和touches分别包含当前位于屏幕上的手指列表,但changedTouches仅...
+				blog.sina.com.cn/s/blo...  - 百度快照 - 4034条评价
+				手持设备点击响应速度,鼠标事件与touch事件的那些事 - 叶小钗 - ...
+				
+				2013年10月19日 - PS:一般changedTouches的length都是1touchend时,touches与targetTouches信息会被删除,changedTouches保存的...
+				www.cnblogs.com/yexiao...  - 百度快照 - 854条评价
+				touchend事件为什么无法获得clientY ?_百度知道
+				1个回答 - 提问时间: 2015年06月16日
+				Touch end (" + event.changedTouches[0].clientX + "," + event.changedTouches[0].clientY + ")"; break; case "touchmove": event.preventDefault();...
+				更多关于changedTouches的问题>>
+				zhidao.baidu.com/link?...  - 百度快照 - 评价
+				触摸与手势事件 – 学习笔记
+				2012年12月10日 - (" + event.changedTouches[0].clientX + "," + event.changeTouches[0].clientY + ")";                 ...
+				www.w3cmm.com/javascri...  - 百度快照 - 评价
+				手持设备点击响应速度,鼠标事件与touch事件的那些事 - 叶小钗 - ...
+				
+				2013年10月19日 - PS:一般changedTouches的length都是1touchend时,touches与targetTouches信息会被删除,changedTouches保存的...
+				www.cnblogs.com/yexiao...  - 百度快照 - 854条评价
+				touchend事件为什么无法获得clientY ?_百度知道
+				1个回答 - 提问时间: 2015年06月16日
+				Touch end (" + event.changedTouches[0].clientX + "," + event.changedTouches[0].clientY + ")"; break; case "touchmove": event.preventDefault();...
+				更多关于changedTouches的问题>>
+				zhidao.baidu.com/link?...  - 百度快照 - 评价
+				触摸与手势事件 – 学习笔记
+				2012年12月10日 - (" + event.changedTouches[0].clientX + "," + event.changeTouches[0].clientY + ")";                 ...
+				www.w3cmm.com/javascri...  - 百度快照 - 评价
+
+				2015年6月2日 - 我搜到的介绍是: touches是当前屏幕上所有触摸点的列表; targetTouches是当前对象上所有触摸点的列表; changedTouches是涉及当前事件的触摸点的列表。 但实际输出这...
+				https://segmentfault.com/q/101... 
+				TouchEvent里的targetTouches、touches、changedTouches的区别的...
+				2015年6月25日 -  touches是当前屏幕上所有触摸点的列表; targetTouches是当前对象上所有触摸点的列表; changedTouches是涉及当前事件的触摸点的列表。 但实际输出这三...
+				www.thinksaas.cn/ask/q...  - 百度快照 - 73%好评
+				利用targettouches和changedtouches
+				touches:当前位于屏幕上的所有手指动作的列表。 targetTouches:位于当前 DOM 元素上的手指动作的列表。 changedTouches:涉及当前事件的手指动作的列表。例如,在一个 ...
+				caibaojian.com/6...html  - 百度快照 - 94%好评
+				Mobile Web前端开发系列: 事件处理(二)_芬芬_新浪博客
+				2012年8月7日 -  changedTouches、targetTouches和touches分别包含稍微不同的触摸列表。targetTouches和touches分别包含当前位于屏幕上的手指列表,但changedTouches仅...
+				blog.sina.com.cn/s/blo...  - 百度快照 - 4034条评价
+				手持设备点击响应速度,鼠标事件与touch事件的那些事 - 叶小钗 - ...
+				
+				2013年10月19日 - PS:一般changedTouches的length都是1touchend时,touches与targetTouches信息会被删除,changedTouches保存的...
+				www.cnblogs.com/yexiao...  - 百度快照 - 854条评价
+				touchend事件为什么无法获得clientY ?_百度知道
+				1个回答 - 提问时间: 2015年06月16日
+				Touch end (" + event.changedTouches[0].clientX + "," + event.changedTouches[0].clientY + ")"; break; case "touchmove": event.preventDefault();...
+				更多关于changedTouches的问题>>
+				zhidao.baidu.com/link?...  - 百度快照 - 评价
+				触摸与手势事件 – 学习笔记
+				2012年12月10日 - (" + event.changedTouches[0].clientX + "," + event.changeTouches[0].clientY + ")";                 ...
+				www.w3cmm.com/javascri...  - 百度快照 - 评价
+
+				</p>
+			</div>
+		</div>
+	</body>
+</html>
+<script type="text/javascript">
+	window.onload = function(){
+		var oWrap = document.getElementById("wrap");
+		var oScroll = document.getElementById("scroll");
+		var startPoint = 0;//手指初始的位置
+		var startEl = 0;//滚动区域距顶部的位置
+		//手指移动的最大高度 ＝ 大盒子的内容高度 － 小盒子的实际高度
+		var MaxTop = oWrap.clientHeight - oScroll.offsetHeight; 
+		console.log(MaxTop);
+		oWrap.addEventListener("touchstart",function(ev){
+			var touchs = ev.changedTouches[0];
+			startPoint = touchs.pageY;//开始触摸的位置
+			startEl = oScroll.offsetTop;//滚动区域距顶部的位置
+			console.log(startPoint);
+		})
+		oWrap.addEventListener("touchmove",function(ev){
+			var touchs = ev.changedTouches[0];
+			var nowPoint = touchs.pageY;//手指移动的距离
+			//1.手指按下的时候，记录下手指的坐标，移动的时候，同样记录手指坐标
+			//2.然后用移动后的坐标－移动前的坐标 ＝ 手指移动的距离
+			//3.手指按下去之后，记录下元素的位置
+			//4.移动之后，用手指移动的记录＋元素的初始化的位置 ＝ 元素现在的位置
+			var dis = nowPoint - startPoint;//手指移动的距离
+			var top = startEl+dis;
+			if (top>0) {//限制滑动的距离
+				top = 0;
+			}
+			if(top < MaxTop){
+				top = MaxTop;
+			}
+			oScroll.style.top = top+'px';
+		})			
+	}
+</script>
