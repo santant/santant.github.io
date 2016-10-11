@@ -63,6 +63,22 @@
 	  <div class="main">
 	  	 <h3>mobile </h3>	  	 
 	  	 <div class="div_daima">
+	  	 	<h4>移动端布局注意哪点事儿<code>解决横竖屏切换字体比例的问题</code><code>默认字体Helvetica</code> <code>点击黑块儿黑屏</code> <code>ios下的圆角</code></h4>
+	  	 	<pre class="brush: css;">
+	  	 		 .xx{-webkit-text-size-adjust: 100%; //解决横竖屏切换字体比例的问题
+	  	 		
+	  	 		 body{
+	  	 		 	 font-family: Helvetica; //所有手机都有的默认字体Helvetica	  	 		 	 
+	  	 		 }
+	  	 		 
+	  	 		 a,input,button {
+				  -webkit-tap-highlight-color: rgba(0, 0, 0, 0);//解决点击黑块儿的问题
+				  -webkit-appearance: none; //清除input，button，等在ios下的圆角
+				  outline: none;//清除虚线
+				}
+				
+				
+	  	 	</pre>
 	  	 	<h4>移动事件 </h4>
 	  	 	<pre class="brush: js;">		
 	  	 	/* 
@@ -222,6 +238,151 @@ window.onload = function(){
 				console.log(cssTransform(div,"rotate"));//获取
 				// 如果要获取 transform的值，必须是通过这个函数设置 才能通过这个函数获取到
 			};
+	  	 	</pre>
+	  	 	<h4>无缝滚动轮播<code><a href="mobileDemo/mobile_lunbo.html">无缝滚动轮播</a></code></h4>
+	  	 	<pre  class="brush: js;">
+	  	 		document.addEventListener(
+					"touchstart",
+					function (e){
+						e.preventDefault();
+					}
+				);
+				window.onload = function (){
+					var wrap = document.querySelector("#wrap");//外边框盒子
+					var list = document.querySelector("#list");//运动的dom
+					list.innerHTML+=list.innerHTML;//复制一组
+					var lis = document.querySelectorAll("#list li");//li图片
+					var css = document.querySelector("#css");
+					var nav = document.querySelectorAll("#nav span");//底部状态栏
+					wrap.style.height = lis[0].offsetHeight+'px';//算出高度
+					list.style.width = lis.length+'00%';//算出宽度
+					for (var i = 0; i < lis.length; i++) {//小li的宽度
+						lis[i].style.width = 100/lis.length+'%';
+					}
+					var startPoint = 0;//手指初始坐标
+					var startX = 0;//元素初始位置
+					var timer = null;//定时器
+					var now2 = 0;//now自动播放索引
+					
+					//cssTransform设置下需要移动的translateX
+					cssTransform(list,"translateX",0);	
+					auto();//要在设置了这个变量之后才能调用自动播放函数
+				   	wrap.addEventListener("touchstart",function(ev){ 
+				   			clearInterval(timer);
+				   			list.style.transition = "none";//先清除动画
+							var translateX = cssTransform(list,"translateX");
+							var now = Math.round(-translateX / wrap.offsetWidth);
+							if(now == 0) {//等于0的时候，跳到下一组
+								now = nav.length;
+							}
+							if(now == lis.length-1) {//最后一组的时候，跳到最后一组
+								now = nav.length-1;
+							}
+							cssTransform(list,"translateX",-now * wrap.offsetWidth);
+							startPoint = ev.changedTouches[0].pageX;//手指点入初始化坐标
+							startX = cssTransform(list,"translateX");//拖动dom元素初始位置
+							
+				   	})
+				   	wrap.addEventListener("touchmove",function(ev){
+				// 		list.style.transition = 'none';
+				   		var touchs = ev.changedTouches[0];//手指对象
+				   		nowPoint = touchs.pageX;//手指移动时候的坐标
+				   		var dis =  nowPoint - startPoint;//手指移动的距离(判定向上向下，全看这个)
+				   		cssTransform(list,"translateX",startX + dis);//物体该位移的值
+				   	})
+				   	wrap.addEventListener('touchend',function(ev){
+				   		
+				   		//获取translateX
+				   		var translateX = cssTransform(list,"translateX");//离开屏幕的时候获取到运动dom位移的translateX值		
+				   		//now = (-离开屏幕的时候获取到运动dom运动的left值-运动dom本来的宽度)
+				   		var now = Math.round(-translateX/wrap.offsetWidth); //到底到几个来了
+						list.style.transition = '0.5s';//动画时间
+						cssTransform(list,"translateX",-now*wrap.offsetWidth);	
+						now2 = now;	//统一索引
+						auto();//再次调用自动播放
+						//和状态栏关联
+						for (var i = 0; i < nav.length; i++) {
+							nav[i].className = "";
+						}
+						nav[now%nav.length].className = "active";
+				   	})
+				   	function auto(){//自动播放
+				   		timer = setInterval(function(){  			
+				   			if (now2 == lis.length-1) {
+				   				now2 = nav.length-1;
+				   				list.style.transition = '0s';
+				   				cssTransform(list,"translateX",-now2*wrap.offsetWidth);
+				   			}
+				   			setTimeout(function(){//让js加载有个缓冲时间	
+				   				now2++;
+				   				list.style.transition = '0.5s';
+					   			cssTransform(list,"translateX",-now2*wrap.offsetWidth);
+					   			//和状态栏关联
+								for (var i = 0; i < nav.length; i++) {
+									nav[i].className = "";
+								}
+								nav[now2%nav.length].className = "active";
+				   			},30)
+				   		},3000)
+				   	}  	
+				};
+	  	 	</pre>
+	  	 	<h4>js实现跟随手指横向滑动，<code><a href="mobileDemo/hengxianghuadong.html">两边回弹</a></code> <code>只要有3d属性就可以用硬件加速</code></h4>
+	  	 	<pre  class="brush: js;">
+	  	 		window.onload = function(){
+					document.addEventListener("touchmove",function(ev){
+						ev.preventDefault();
+					})
+					//手写横向的滑动
+					var oUL = document.getElementById("navs");
+					//cssTransform设置下需要移动的translateX
+					cssTransform(oUL,"translateZ",0);
+					cssTransform(oUL,"translateX",0);
+					var startPoint = 0;//手指开始的位置
+					var startEl = 0;//物体运动的位置	
+					var minX = 0;//超出的最小值
+					var maxX = 0;//超出的最大值
+					var minsX = oUL.offsetWidth - document.body.offsetWidth;//最小值－>向右运动的最大差值
+					oUL.addEventListener("touchstart",function(ev){
+				
+						oUL.style.transition = 'none';
+						var touchs = ev.changedTouches[0];//手指对象
+				   		startPoint = touchs.pageX;//手指移动时候的坐标
+				   		//在拖动的时候获取到当前运动到的位置
+				   		startEl = cssTransform(oUL,"translateX"); 		
+					})
+					oUL.addEventListener("touchmove",function(ev){
+						oUL.style.transition = 'none';
+						var touchs = ev.changedTouches[0];//手指对象
+				   		nowPoint = touchs.pageX;//手指移动时候的坐标   		
+				   		console.log(startEl);
+				   		//手指移动的坐标
+				   		var dis = nowPoint - startPoint; 
+				   		var left = dis+startEl;
+				   		if (left>0) {
+				   			//>0的时候让它缓慢拖动，现在只需要修改left的倍数就ok
+				   			left=parseInt(left*0.4);  		
+				   		}
+				   		if (left < -minsX) {
+				   			var over = -minsX -left//右边超出值
+				     		left =-minsX-over*0.4;
+				   		}
+				   		cssTransform(oUL,"translateZ",0);
+				   		cssTransform(oUL,"translateX",left);   		
+					})
+					oUL.addEventListener("touchend",function(ev){
+						oUL.style.transition = '0.5s';
+						var translateX = cssTransform(oUL,"translateX"); 		
+						if (translateX>0) {
+							cssTransform(oUL,"translateZ",0);
+							cssTransform(oUL,"translateX",0);
+						}
+						if (translateX < -minsX) {
+							cssTransform(oUL,"translateZ",0);
+							cssTransform(oUL,"translateX",-minsX);
+						}
+					})
+				}
 	  	 	</pre>
 	  	 </div>	 	
 	  </div>

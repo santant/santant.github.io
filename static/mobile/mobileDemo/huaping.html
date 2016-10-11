@@ -128,6 +128,13 @@
 </html>
 <script type="text/javascript">
 	window.onload = function(){
+		//隐藏ios的回弹
+		document.addEventListener(
+			"touchmove",
+			function(e) {
+				e.preventDefault();
+			}
+		);				
 		var oWrap = document.getElementById("wrap");
 		var oScroll = document.getElementById("scroll");
 		var startPoint = 0;//手指初始的位置
@@ -153,7 +160,7 @@
 			if (top>0) {//限制滑动的距离
 				top = 0;
 			}
-			if(top < MaxTop){
+			if(top < MaxTop){//限制滑动的距离
 				top = MaxTop;
 			}
 			oScroll.style.top = top+'px';
