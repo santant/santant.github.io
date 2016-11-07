@@ -1,0 +1,247 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<link rel="shortcut icon" href="../../imges/ico.ico" type="images/x-icon" />
+		<meta name="viewport" content="width=device-width,initial-scale=1,minimum-scale=1,maximum-scale=1,user-scalable=no" />
+		<link rel="stylesheet" type="text/css" href="../../css/public.css"/>
+		<link rel="stylesheet" type="text/css" href="../../css/index.css"/>
+		<script src="../../js/jquery-1.8.2.min.js" type="text/javascript" charset="utf-8"></script>
+		<script src="../../js/index.js" type="text/javascript" charset="utf-8"></script>
+		<meta charset="UTF-8">
+		<title>git</title>
+		<script type="text/javascript" src="../../js/pre/scripts/shCore.js"></script>
+		<script type="text/javascript" src="../../js/pre/scripts/shBrushBash.js"></script>
+		<script type="text/javascript" src="../../js/pre/scripts/shBrushCss.js"></script>
+		<script type="text/javascript" src="../../js/pre/scripts/shBrushCSharp.js"></script>
+		<script type="text/javascript" src="../../js/pre/scripts/shBrushJScript.js"></script>
+		<script type="text/javascript" src="../../js/pre/scripts/shBrushPhp.js"></script>
+		<script type="text/javascript" src="../../js/pre/scripts/shBrushPlain.js"></script>
+		<script type="text/javascript" src="../../js/pre/scripts/shBrushPython.js"></script>
+		<script type="text/javascript" src="../../js/pre/scripts/shBrushJava.js"></script>
+		<script type="text/javascript" src="../../js/pre/scripts/shBrushScala.js"></script>
+		<script type="text/javascript" src="../../js/pre/scripts/shBrushSql.js"></script>
+		<script type="text/javascript" src="../../js/pre/scripts/shBrushXml.js"></script>
+		<script type="text/javascript" src="../../js/pre/scripts/shBrushPerl.js"></script>
+		<link type="text/css" rel="stylesheet" href="../../js/pre/styles/shCore.css" />
+		<link type="text/css" rel="stylesheet" href="../../js/pre/styles/shThemeDefault.css" />
+		<script type="text/javascript">
+			SyntaxHighlighter.defaults['toolbar'] = false;  //去掉右上角问号图标
+			SyntaxHighlighter.config.tagName = 'pre';       //可以更改解析的默认Tag。
+			SyntaxHighlighter.config.bloggerMode = true; 
+			SyntaxHighlighter.config.stripBrs = true;  
+			SyntaxHighlighter.all();
+	   </script>
+		<style type="text/css">
+			
+		</style>
+	</head>
+	<body>
+	  <div class="hander"> 
+	  	<ul>
+	  		<li class="" nav-title="all"><a href="../../index.html">首页</a></li>
+			<li nav-title="css" class=""> <a href="../canvas/demo1.html">Html5画布入门篇</a></li>
+			<li nav-title="css" class=""><a href="../canvas/demo3.html">Html5画布提升篇</a></li>
+			<li><a href="../CSS/css3.html">CSS3</a></li>			
+			<li><a href="../../static/control/control.html">自己写的demo</a></li>			
+			<li nav-title="rem工具换算"><a href="../../static/rem1/rem.html">rem</a></li>			
+	  		<li><a href="../title/demo2.html">收藏的网站</a></li>
+	  		<li ><a href="../tool/tool.html">工具箱</a></li>
+	  		<li class=""><a href="../javascript/Event.html">javascriptEvent</a></li>
+	  		<li class=""><a href="../javascript/jsDom.html">javascriptDOM</a></li>
+	  		<li class=""><a href="../javascript/object.html">javascriptObj</a></li>	  		
+	  		<li  ><a href="../zhengze/zhengze.html">js正则表达式</a></li>
+	  		<li class=""><a href="../javascript/JSFcnction.html">javascript函数</a></li>
+	  		<li class=""><a href="../HTML5/H5_1.html">HTML5</a></li>
+	  		<li><a href="../angualar/angualar.html">angualarJS</a></li>
+	  		<li class=""><a href="../jquery-css3/jq-css3.html">Jquery操作css3的拼接方式</a></li>	 
+	  		<li class=""><a href="../less/less.html">less</a></li>
+	  		<li class=""><a href="../git/git.html">git</a></li>
+	  		<li class="active"><a href="object.html">面向对象</a></li>
+	  	</ul>
+	  </div>	
+	  <!--git-->
+	  <div class="main">
+	  	 <h3>面向对象</h3>	  	 
+	  	 <div class="div_daima">
+	  	 	<h4>面向对象注意的问题</h4>	  	 	
+			<pre class="brush:js">
+				1:解析变量的时候，要从局部变量到全局变量
+				//2:函数是什么？
+				 1) ： 封装性
+				 2) ：是个工具
+				//3.json和自变量   json是一种协议，手机pc等都支撑这种协议
+				xml也行一种协议
+				//4:defineProperty 过滤器
+				//5:私有和共有属性,以及面向对象init的调用
+				//6.数据类型判断 普通的typeof，但是他不能判断arry和对象他们都返回对象,用toString.call('')可以解决 ,instanceof和constructor了解
+			</pre>
+			<h4>方法<code>instanceof:判定某个实例是否根据某个构造函数创建的</code><code>defineProperty 包装器 writable:false的时候值不可修改</code></h4>
+			<pre class="brush:js">
+				//判定某个iphone是否根据Product这个构造函数创建的，返回布尔值
+				console.log(iphone instanceof Product);
+				
+				//值的过滤器和限制 defineProperty 放在初始化值的函数里面
+				Object.defineProperty(this,'price',{
+					get:function(){return price*0.9}, //获取的值
+					set:function(value){ //获取的值
+						//大概普通产品的价格都在0-1万之间
+						if(value >10000){
+							alert('产品价格必须在0-1万之间')
+						}else{
+							price = value;
+						}
+					}
+				})
+				
+				//权限 不可修改 ，定义这个的时候value就是永远固定住了
+				Object.defineProperty(this,'price',{
+					value:40000,
+					writable:false//不可修改
+				})
+				
+				//时间对象
+				new Date().toLocaleDateString() //2016/11/2
+				new Date().toLocaleString() //2016/11/2 下午2:59:03
+			</pre>
+	  	 	<h4>面向对象几种模式</h4>
+	  	 	<pre class="brush:js">
+	  	 	//混合模式
+			function Product(name,price){
+				this.name = '';
+				this.price = 0;
+				this.version = 1.0;
+				this.add =function(){
+					console.log("add方法");
+				}
+				//值的过滤器和限制 defineProperty
+				Object.defineProperty(this,'price',{
+					get:function(){return price*0.9},
+					set:function(value){
+						//大概普通产品的价格都在0-1万之间
+						if(value >10000){
+							alert('产品价格必须在0-1万之间')
+						}else{
+							price = value;
+						}
+					}
+				})
+//				//权限 不可修改 ，定义这个的时候value就是永远固定住了
+//				Object.defineProperty(this,'price',{
+//					value:40000,
+//					writable:false//不可修改
+//				})
+			}
+			Product.prototype = {};
+			
+			var iphone = new Product();
+			//在添加自己特有的-->现在的东西就是函数里面的加上自己特有的
+			iphone.description = 'xxxxx';
+			iphone.Image = [];
+			console.log(iphone);
+			//判定某个iphone是否根据Product这个构造函数创建的
+			console.log(iphone instanceof Product);		
+			iphone.price = 10000;
+			//包装值
+			console.log(iphone.price);//在获得的时候这就是打9折的数据
+	  	 </pre>
+	  	 <h4>内存检测<code>数据类型判定 1.typeof 2.toString.call</code> <code>数据和对象typeof都返回object</code><code><a href="demo/shujuleixing.html">判断数据类型</a></code><code>instanceof判断是不是数据那个对象</code><code>constructor</code><code><a href="demo/jq_data.html">jquery判断数据类型方法</a></code></h4>
+	  	 <pre class="brush:js">
+	  	 	//typeof(数据和对象typeof都返回object)
+	  	 	    console.log('数据类型判断 - typeof')
+			    console.log(typeof undefined)//'undefined'
+			    console.log(typeof null) // well-known bug
+			    console.log(typeof true) //'boolean'
+			    console.log(typeof 123)  //'number'
+			    console.log(typeof "abc")  //'string'
+			    console.log(typeof function() {}) //'function'
+			    var arr=[];
+			    console.log(typeof {}) //'object'
+			    console.log(typeof arr)//'object'
+			    console.log(typeof unknownVariable) //'undefined'
+			    //    在使用 typeof 运算符时采用引用类型存储值会出现一个问题，
+			    //    无论引用的是什么类型的对象，它都返回 "object"。
+			    
+	  	 	//toString.call
+	  	 	/******************************************************************************
+		     数据类型判断 - toString.call
+		     通用但很繁琐的方法： prototype
+		     *******************************************************************************/
+		    console.log('数据类型判断 - toString.call')
+		    console.log(toString.call(123))          //[object Number]
+		    console.log(toString.call('123'))        //[object String]
+		    console.log(toString.call(undefined))    //[object Undefined]
+		    console.log(toString.call(true))         //[object Boolean]
+		    console.log(toString.call({}))           //[object Object]
+		    console.log(toString.call([]))           //[object Array]
+		    console.log(toString.call(function(){})) //[object Function]
+		    
+		    
+		    
+	  	 </pre>
+	  	 <h4>公有和私有属性以及方法<code>其实就看有没this和var</code> <code>私有成员的引用，不用加this</code></h4>
+	  	 <pre class="brush:js">
+	  	 	function Person(name){
+	  	 		var nameclass = 'ddd';//私有属性
+	  	 		this.name = name;//公有属性
+	  	 		var private = function(){//私有方法
+	  	 			alert('xx')
+	  	 		}
+	  	 		this.public = function(){//公有方法
+	  	 			alert("公共的")
+	  	 		}	  	 		
+	  	 	}
+	  	 	
+	  	 	//在实际开发中匿名函数中的写法,弄1个this.init方法让外界访问
+	  	 	function Person(name){
+	  	 		//对于哪种常用的类似于选择器选中的dom，想要重复利用，在面向对象中一般定义1个对象保存
+	  	 		/*避免重复，减少内存*/
+		        /*统一管理*/
+		       var that = this;
+		        this.config = {
+		            btnConfirm: document.getElementById('btn'),
+		            btnBuy: document.getElementById('btn'),
+		            btnAddCart: document.getElementById('btn'),
+		            domProductName :  document.getElementById('pname'),
+		            domProductPrice :  document.getElementById('pprice'),
+		            sum :  1000		            
+		        }
+	  	 		var private = function(){//私有方法
+	  	 			alert('xx')
+	  	 			//这里想用到变量的时候只需要：that.config.btn就可以访问了
+	  	 			that.config.btn.innerHTML='xxx';
+	  	 		}
+	  	 		var public = function(){//私有方法
+	  	 			alert("公共的")
+	  	 		}	
+	  	 		//弄1个this.init方法让外界访问
+	  	 		this.init = function(){
+	  	 			private();//执行上面私有的方法
+	  	 			public();//执行上面私有方法
+	  	 		}	  	 		
+	  	 	}
+	  	 </pre>
+	  	 <h4>实例化本质-内存</h4>
+	  	 <pre class="brush:js">
+	  	 	
+	  	 </pre>
+	  	 </div>	 
+	  	 
+	  </div>
+	  
+	   <!--返回顶部-->
+	  <div id="div-Top">
+		  	<dl>
+		  		<dd>
+		  			<img src="../../img/weixin-icon02.png"/></li>
+		  		</dd>
+		  		<dt class="weixin">
+		  			<div></div>
+		  		</dt>
+		  		<dt class="to_top">
+		  			<div></div>
+		  		</dt>
+		  		
+		  	</dl>
+	  </div>
+	</body>
+</html>
