@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<style type="text/css">
+			#div{width: 200px;height: 100px;background: #0088CC;color: #fff;line-height: 100px;text-indent: 30px;}
+			@-webkit-keyframes move{
+				from{top: 0;}
+				to{top: 10px;}
+			}
+			.move{
+				animation: .2s move 1s infinite alternate;
+			}
+			div span{position: relative;}
+		</style>
+		<script type="text/javascript">
+			window.onload = function(){
+				var oSpan = document.querySelectorAll("#div span");
+				for (var i = 0; i < oSpan.length; i++) {
+					oSpan[i].style.WebkitAnimation = oSpan[i].style.animation =".2s move "+(i*70)+"ms infinite alternate linear";
+					oSpan[i].style.color='#000000'
+				}
+			}
+		</script>
+	</head>
+	<body>
+		<div id="div">
+			<span>l</span>
+			<span>o</span>
+			<span>a</span>
+			<span>d</span>
+			<span>i</span>
+			<span>n</span>
+			<span>g</span>
+		</div>
+	</body>
+</html>

@@ -8,7 +8,7 @@
 		<script src="../../js/jquery-1.8.2.min.js" type="text/javascript" charset="utf-8"></script>
 		<script src="../../js/index.js" type="text/javascript" charset="utf-8"></script>
 		<meta charset="UTF-8">
-		<title>git</title>
+		<title>面向对象</title>
 		<script type="text/javascript" src="../../js/pre/scripts/shCore.js"></script>
 		<script type="text/javascript" src="../../js/pre/scripts/shBrushBash.js"></script>
 		<script type="text/javascript" src="../../js/pre/scripts/shBrushCss.js"></script>
@@ -65,15 +65,40 @@
 	  	 <div class="div_daima">
 	  	 	<h4>面向对象注意的问题</h4>	  	 	
 			<pre class="brush:js">
+				
+				一个完整的 JavaScript 实现是由以下 3 个不同部分组成的：
+				//1.核心（ECMAScript）、2.文档对象模型（Document Object Model，简称DOM）、3.浏览器对象模型（Browser Object Model，简称BOM）。
+				
+				js从面向对象来分的话(一切都是面向对象，分为3类)
+				//1:内置对象 比如Math Data cookie session null object等等 2:BOM对象 window document等 3:自定义对象
+				
+				
 				1:解析变量的时候，要从局部变量到全局变量
 				//2:函数是什么？
 				 1) ： 封装性
 				 2) ：是个工具
+				 
 				//3.json和自变量   json是一种协议，手机pc等都支撑这种协议
 				xml也行一种协议
+				
 				//4:defineProperty 过滤器
+				
 				//5:私有和共有属性,以及面向对象init的调用
+				
 				//6.数据类型判断 普通的typeof，但是他不能判断arry和对象他们都返回对象,用toString.call('')可以解决 ,instanceof和constructor了解
+				
+				//7.什么是原型链条
+				 答：其实对象就是由2个独立的对象组成1个是原型对象，1个是构造函数对象，他们是通过_proto_联系在1起的（ie老版本不是通过这个实现的)
+				 
+				 //8.属性访问搜索法则（也就是原型链）
+				 首先遍历自己的属性（从构造函数拷贝过来的属性），如果找到就返回
+				 如果没找到，就根据铁链寻找到原型对象，依次遍历原型对象中的属性，如果找到同名的属性就返回，就这么简单。
+				
+				//9.hasOwnProperty : 看是不是对象自身下面的属性
+				
+				//10.想访问原型对象里面的方法  1.delete 删除构造函数的方法 2.直接 对象.protptype.属性和方法 
+				
+				
 			</pre>
 			<h4>方法<code>instanceof:判定某个实例是否根据某个构造函数创建的</code><code>defineProperty 包装器 writable:false的时候值不可修改</code></h4>
 			<pre class="brush:js">
@@ -222,12 +247,103 @@
 	  	 </pre>
 	  	 <h4>实例化本质-内存</h4>
 	  	 <pre class="brush:js">
-	  	 	
+			//一切数据都是保存在内存中.
+			
+			//内存分配会自动拷贝构造对象的所有属性，并赋以实例的值
+			
+			//当你实例化一个对象,那么内存中会开辟两个内存区域：
+			
+			1.一个保存实例名称变量：其保存的只是地址
+			2.一个保存对象的真正的数据
 	  	 </pre>
-	  	 </div>	 
 	  	 
-	  </div>
-	  
+	  	 <h4><code>原型对象</code><code>构造函数创建对象所存在的缺点</code></h4>
+	  	 <pre class="brush:js">
+			//构造函数缺点
+			
+			1.每次实例化都需要分配内存存储这些数据		
+			2.如果实例很多，那就要分配很多内存存储
+			
+			//------------为了避免内存浪费我们就需要原型对象
+			
+			
+			//原型对象
+			
+			1.原型对象中的工具被所有实例所共享  //原型对象本质： 原型对象的属性和方法可以被所有实例共享 这样，如果我们需要修改所有实例中的属性或者方法，就只需要修改一处，就能够影响到所有实例了
+
+			2.原型对象，不管你实例化多少次，都只生成1次
+			
+			//总结：
+			
+			一般将大家都公有的东西放在原型对象中
+			每个实例独特的不一样的属性放在构造函数中
+	  	 </pre>
+	  	 <h4>对象 <code>构造函数对象和原型对象是通过_proto_联系在1起的（ie老版本不是通过这个实现的）</code></h4>
+	  	 <pre class="brush:js">
+	  	 	//通过原型创建对象，其实创建的是两个对象(双对象法则)
+			
+			1.构造函数对象
+			2.原型对象
+	  	 </pre>
+		  	 <h4>引用类型和值类型<code>在正常的情况下分配内存之后，修改同一个内存地址的值会影响其他只想这个地址的值</code><code>引用类型(数组,函数,对象,json,和内置对象)是存1个key和值,值类型是直接存值</code></h4>
+		  	 <pre class="brush:js">
+		  	 	var num1; //这个时候不进行内存分配
+			    var num3=9;//分配内存
+			    var num4=num3;//会不会分配
+		  	 	 //    数组 ： 当定义一个新数组，
+			    // 内存会产生两篇区域，一个存储变量，一个存储数组 变量中保存的只是数组所在的地址
+			    var arr1=['传智播客','黑马'];//分配内存
+			    //引用类型其实是指向同一个地址,也就是操纵的其实是同一个位置
+			    var arr2=arr1;   //问题：这里arr2会不会分配内存
+			    console.log(arr1[0]);
+			    console.log(arr2[0]); //一样
+			    
+			    //修改数组1
+			    arr2[0]='水浒传 西游记 三国演义 红楼梦';
+			    console.log(arr1[0]);
+			    console.log(arr2[0]);//一样 说明这里不分配内存，其实arr2变量中存的是地址，指向arr1内存		
+			    
+			    function show(x) {
+			        console.log(typeof(x));    // undefined 值类型
+			        console.log(typeof(10));   // number 值类型
+			        console.log(typeof('abc')); // string 值类型
+			        console.log(typeof(true));  // Boolean 值类型
+			        console.log(typeof(function () { }));  //函数 引用类型
+			        console.log(typeof([1, 'a', true]));  //数组  引用类型
+			        console.log(typeof ({ a: 10, b: 20 }));  //object 或者json  引用类型
+			        console.log(typeof (null));  //null  引用类型
+			        console.log(typeof (new Number(10)));  //内置对象 引用类型
+			    }
+			    show();
+			//    其中上面的四种（undefined, number, string, boolean）属于值类型，不是对象。
+		  	 </pre>
+		  	 <h4>堆和栈<code>内存分为两种堆内存和栈内存</code> <code>内存的生命周期</code></h4>
+		  	 <pre class="brush:js">
+		  	 	//栈 : 值类型保存在栈里面 类似1个数组
+		  	 	//如何获取：通过下标和数组类似
+		  	 	//堆 :引用类型
+		  	 	demo：
+		  	 	//var arr = [1,23,4] //arr栈 1，23，4堆
+		  	 	
+		  	 	//var p = new pserson();
+		  	 	//p变量就是栈，（临时存储，函数执行完就被回收）
+		  	 	//对象的属性和其他生成的全是:堆(会在内存中存在) 回收:引用计数 函数实例化1次+1，当引用计数为0时，系统自动回收
+		  	 	
+		  	 	内存的生命周期
+		  	 	/**内存分配：
+				当我们申明变量、函数、对象的时候，系统会自动为他们分配内存
+				内存使用 var name=null：
+				即读写内存，也就是使用变量、函数等
+				内存回收：
+				使用完毕，由垃圾回收自动回收不再使用的内存**/
+				
+				总之：
+				一切数据通过变量来管理和存储的
+				定义变量的过程其实就是内存分配的过程
+				所以本质上一切数据都是存放在内存中的
+		  	 </pre>
+	  	</div>	 
+	  </div>	  
 	   <!--返回顶部-->
 	  <div id="div-Top">
 		  	<dl>

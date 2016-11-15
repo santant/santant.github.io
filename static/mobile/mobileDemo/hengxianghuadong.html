@@ -180,12 +180,14 @@ body {
   box-sizing: border-box;
   padding: 0.45925926rem 0 0.20740741rem;
   overflow: hidden;
+   -webkit-transform-style: preserve-3d; transform-style: preserve-3d;	
 }
 #navs {
   height: 1.91111111rem;
   white-space: nowrap;
   font-size: 0;
   float: left;
+  -webkit-backface-visibility: hidden; backface-visibility: hidden;
 }
 #navs li {
   display: inline-block;
@@ -400,7 +402,7 @@ window.onload = function(){
 	//手写横向的滑动
 	var oUL = document.getElementById("navs");
 	//cssTransform设置下需要移动的translateX
-	cssTransform(oUL,"translateZ",0);
+	cssTransform(oUL,"translateZ",0.01);
 	cssTransform(oUL,"translateX",0);
 	var startPoint = 0;//手指开始的位置
 	var startEl = 0;//物体运动的位置	
@@ -408,7 +410,6 @@ window.onload = function(){
 	var maxX = 0;//超出的最大值
 	var minsX = oUL.offsetWidth - document.body.offsetWidth;//最小值－>向右运动的最大差值
 	oUL.addEventListener("touchstart",function(ev){
-
 		oUL.style.transition = 'none';
 		var touchs = ev.changedTouches[0];//手指对象
    		startPoint = touchs.pageX;//手指移动时候的坐标
@@ -431,18 +432,18 @@ window.onload = function(){
    			var over = -minsX -left//右边超出值
      		left =-minsX-over*0.4;
    		}
-   		cssTransform(oUL,"translateZ",0);
+   		cssTransform(oUL,"translateZ",0.01)
    		cssTransform(oUL,"translateX",left);   		
 	})
 	oUL.addEventListener("touchend",function(ev){
 		oUL.style.transition = '0.5s';
 		var translateX = cssTransform(oUL,"translateX"); 		
 		if (translateX>0) {
-			cssTransform(oUL,"translateZ",0);
+			cssTransform(oUL,"translateZ",0.01)
 			cssTransform(oUL,"translateX",0);
 		}
 		if (translateX < -minsX) {
-			cssTransform(oUL,"translateZ",0);
+			cssTransform(oUL,"translateZ",0.01)
 			cssTransform(oUL,"translateX",-minsX);
 		}
 	})

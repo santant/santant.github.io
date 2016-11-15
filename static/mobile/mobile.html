@@ -384,6 +384,120 @@ window.onload = function(){
 					})
 				}
 	  	 	</pre>
+	  	 	<h4>滑动的tab标签 <code><a href="mobileDemo/swipeTab.html">滑动的tab标签</a></code> <code>以及通过判定2次移动的pageX或者Y值来规定滑动的手势</code></h4>
+	  	 	<pre  class="brush: js;">
+				window.onload = function(){
+					document.addEventListener("touchmove",function(ev){
+						ev.preventDefault();
+					})	
+					tab();
+					//滑动tab
+					function tab(){
+						var tabList = document.querySelectorAll(".tabList");//内容
+						var tabUl = document.querySelectorAll(".tabList ul");
+						var tabNav = document.querySelectorAll(".tabNav");//导航
+						var width = tabNav[0].offsetWidth;
+						var ospan = document.querySelector(".tabNav >span");
+						for (var i = 0; i < tabNav.length; i++) {			
+							swipe(ospan,tabList[i]);
+						}
+						console.log(ospan);
+						function swipe(nav,list){//导航条，内容
+						    var startPoint = 0;//手指初始的位置
+							var nowPoint = 0;//手指移动时候坐标
+							var num = 1;//初始化的索引
+							cssTransform(nav,"translateX",ospan.offsetWidth*num);
+							cssTransform(list,"translateX",-width*num);//显示在中间
+							list.addEventListener('touchstart',function(ev){
+								startPoint = ev.changedTouches[0].pageX;			
+							})
+							list.addEventListener('touchmove',function(ev){
+								nowPoint = ev.changedTouches[0].pageX;//手指移动时候坐标
+				//				console.log(startPoint);
+				//				console.log(nowPoint);
+								cssTransform(list,"translateX",nowPoint-startPoint-width*num);
+								//在拖动的时候获取到当前运动到的位置
+				       		    //startEl = cssTransform(list,"translateX"); 				
+							});
+							list.addEventListener('touchend',function(ev){
+								//console.log(nowPoint-startPoint)
+								var left = nowPoint-startPoint;//两边的差值
+								if (left >100) {//向右边
+									if (num < 2) {
+										num =1
+									}
+									num--;
+									cssTransform(nav,"translateZ",0);
+									cssTransform(list,"translateX",-width*num);	
+									cssTransform(nav,"translateX",ospan.offsetWidth*num);
+								}else{//还原
+									 list.style.transition = '0.5s';
+									 cssTransform(nav,"translateZ",0);
+									 cssTransform(list,"translateX",-width*num);	
+								}
+								if (left < -100) {//向左边	
+									if (num > tabUl.length-2) {
+										num = tabUl.length-2
+									}
+									console.log(num+'左边')
+									 num++;
+									 cssTransform(nav,"translateZ",0);
+									 cssTransform(nav,"translateX",ospan.offsetWidth*num);
+									 cssTransform(list,"translateX",-width*num);
+								}else{//还原
+								   list.style.transition = '0.5s';
+								   cssTransform(nav,"translateZ",0);
+								   cssTransform(list,"translateX",-width*num);	
+								}				
+							})
+						}
+						
+					}
+				}
+	  	 	</pre>
+	  	 	<h4>css3+js生成3d多棱柱<code>生成多边形函数</code><code><a href="mobileDemo/linzhu.html">生成多边形函数demo</a></code><code><a href="mobileDemo/loading.html">灵活的loading字体</a></code></h4>
+	  	 	<pre  class="brush: js;">
+	  	 	window.onload = function(){
+					var div = document.getElementById("div");
+					var html = '';
+					var width = 100;
+					var n =3;//几边形
+					var deg = 360/n;//外角
+					//(180-deg)/2,就是夹脚-->夹脚转弧度			
+					var center = -Math.tan((180-deg)/2*Math.PI/180)*(width/2);//基点的z轴
+					
+					for (var i = 0; i < 10; i++) {
+						html+="<span style='transform-origin: center center "+center.toFixed(2)+'px;transform: rotateY('+deg*i+'deg);'+"'>"+i+"</span>";
+					}
+					div.innerHTML = html;
+		//			div.style.webkitTransformOrigin = "center center "+center+"+'px'";
+					div.style.webkitTransformOrigin = "center center "+center.toFixed(2)+"px";
+					console.log(div.style.webkitTransformOrigin)
+				}
+	  	 	</pre>
+			<h4>注意问题集合</h4>
+	  	 	<pre  class="brush: js;">
+	  	 	//1.移动对象事件ev对象公用问题，解决方式：用对象存1下
+		  	list.addEventListener(
+				"touchstart",
+				function(ev) {
+					startPoint = {pageX:ev.changedTouches[0].pageX,pageY:ev.changedTouches[0].pageY};					
+				}
+			);
+	  	 	//本来这里直接e.changedTouches[0].pageX就可以获得，但是他们会公用1个对象，用对象存1下可解决
+	  	 	startPoint = {pageX:e.changedTouches[0].pageX,pageY:e.changedTouches[0].pageY};
+	  	 	
+	  	 	
+	  	 	//2.如果在webkit内核下的浏览器 出现transition的闪烁问题：
+	  	 	
+	  	 	 //1)－>开启3d加速 解决方式：Z轴要有值，哪怕是0.1也可以  cssTransform(oUL,"translateZ",0.01);
+	  	 	 
+	  	 	 //2)给元素本身加上 隐藏背面  -webkit-backface-visibility: hidden; backface-visibility: hidden;
+	  	 	 
+	  	 	 //3)给运动元素父级加上 -webkit-transform-style: preserve-3d; transform-style: preserve-3d;	
+	  	 	 
+	  	 	
+	  	 	</pre>	
 	  	 </div>	 	
 	  </div>
 	  

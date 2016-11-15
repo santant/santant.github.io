@@ -1,0 +1,168 @@
+<!doctype html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,user-scalable=no" />
+<title>无标题文档</title>
+<style type="text/css">
+	{
+		transform: translateX(-300px);
+	}
+</style>
+<script>
+setRem();
+window.addEventListener("orientationchange", setRem);
+window.addEventListener("resize", setRem);
+function setRem() {
+	var html = document.querySelector("html");
+	var width = html.getBoundingClientRect().width;
+	html.style.fontSize = width / 16 + "px";
+}
+</script>
+<link href="index.css" rel="stylesheet" />
+</head>
+<body>
+<section class="wrap">
+	
+		<section class="tab">
+			<header class="tabHeader">
+				<h2>MV首播</h2>
+				<a href="#">更多</a>
+			</header>
+			<nav class="tabNav">
+				<div class="box">
+					<a href="javascript:;" class="J_area " data-area="all">全部</a>
+					<a href="javascript:;" class="J_area" data-area="ml">内地</a>
+					<a href="javascript:;" class="J_area" data-area="ht">港台</a>
+					<a href="javascript:;" class="J_area" data-area="us">欧美</a>
+					<a href="javascript:;" class="J_area" data-area="kr">韩国</a>
+					<a href="javascript:;" class="J_area" data-area="jp">日本</a>
+				</div>
+				<span></span>
+			</nav>
+			<section class="tabList">
+				<ul class="tabNext">
+					loading
+				</ul>
+				<ul class="tabShow">
+					<li>
+						<a href="#">
+							<img src="img.jpg"/>
+							<span>当我们混在一起 夏日泳池版</span>
+						</a>
+					</li>
+					<li>
+						<a href="#">
+							<img src="img.jpg"/>
+							<span>当我们混在一起 夏日泳池版</span>
+						</a>
+					</li>
+					<li>
+						<a href="#">
+							<img src="img.jpg"/>
+							<span>当我们混在一起 夏日泳池版</span>
+						</a>
+					</li>
+					<li>
+						<a href="#">
+							<img src="img.jpg"/>
+							<span>当我们混在一起 夏日泳池版</span>
+						</a>
+					</li>
+					<li>
+						<a href="#">
+							<img src="img.jpg"/>
+							<span>当我们混在一起 夏日泳池版</span>
+						</a>
+					</li>
+					<li>
+						<a href="#">
+							<img src="img.jpg"/>
+							<span>当我们混在一起 夏日泳池版</span>
+						</a>
+					</li>
+				</ul>
+				<ul class="tabNext">
+					loading
+				</ul>
+			</section>
+		</section>
+	</div>
+</section>
+
+<script src="transform.js"></script>
+<script>
+window.onload = function(){
+	document.addEventListener("touchmove",function(ev){
+		ev.preventDefault();
+	})	
+	tab();
+	//滑动tab
+	function tab(){
+		var tabList = document.querySelectorAll(".tabList");//内容
+		var tabUl = document.querySelectorAll(".tabList ul");
+		var tabNav = document.querySelectorAll(".tabNav");//导航
+		var width = tabNav[0].offsetWidth;
+		var ospan = document.querySelector(".tabNav >span");
+		for (var i = 0; i < tabNav.length; i++) {			
+			swipe(ospan,tabList[i]);
+		}
+		console.log(ospan);
+		function swipe(nav,list){//导航条，内容
+		    var startPoint = 0;//手指初始的位置
+			var nowPoint = 0;//手指移动时候坐标
+			var num = 1;//初始化的索引
+			cssTransform(nav,"translateX",ospan.offsetWidth*num);
+			cssTransform(list,"translateX",-width*num);//显示在中间
+			list.addEventListener('touchstart',function(ev){
+				startPoint = ev.changedTouches[0].pageX;			
+			})
+			list.addEventListener('touchmove',function(ev){
+				nowPoint = ev.changedTouches[0].pageX;//手指移动时候坐标
+//				console.log(startPoint);
+//				console.log(nowPoint);
+				cssTransform(list,"translateX",nowPoint-startPoint-width*num);
+				//在拖动的时候获取到当前运动到的位置
+       		    //startEl = cssTransform(list,"translateX"); 				
+			});
+			list.addEventListener('touchend',function(ev){
+				//console.log(nowPoint-startPoint)
+				var left = nowPoint-startPoint;//两边的差值
+				if (left >100) {//向右边
+					if (num < 2) {
+						num =1
+					}
+					num--;
+					cssTransform(nav,"translateZ",0);
+					cssTransform(list,"translateX",-width*num);	
+					cssTransform(nav,"translateX",ospan.offsetWidth*num);
+				}else{//还原
+					 list.style.transition = '0.5s';
+					 cssTransform(nav,"translateZ",0);
+					 cssTransform(list,"translateX",-width*num);	
+				}
+				if (left < -100) {//向左边	
+					if (num > tabUl.length-2) {
+						num = tabUl.length-2
+					}
+					console.log(num+'左边')
+					 num++;
+					 cssTransform(nav,"translateZ",0);
+					 cssTransform(nav,"translateX",ospan.offsetWidth*num);
+					 cssTransform(list,"translateX",-width*num);
+				}else{//还原
+				   list.style.transition = '0.5s';
+				   cssTransform(nav,"translateZ",0);
+				   cssTransform(list,"translateX",-width*num);	
+				}				
+			})
+		}
+		
+	}
+}
+
+
+
+</script>
+</body>
+</html>		

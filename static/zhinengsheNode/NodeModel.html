@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<link rel="shortcut icon" href="../../imges/ico.ico" type="images/x-icon" />
+		<meta name="viewport" content="width=device-width,initial-scale=1,minimum-scale=1,maximum-scale=1,user-scalable=no" />
+		<link rel="stylesheet" type="text/css" href="../../css/public.css"/>
+		<link rel="stylesheet" type="text/css" href="../../css/index.css"/>
+		<script src="../../js/jquery-1.8.2.min.js" type="text/javascript" charset="utf-8"></script>
+		<script src="../../js/index.js" type="text/javascript" charset="utf-8"></script>
+		<meta charset="UTF-8">
+		<title>node常见模块</title>
+		<script type="text/javascript" src="../../js/pre/scripts/shCore.js"></script>
+		<script type="text/javascript" src="../../js/pre/scripts/shBrushBash.js"></script>
+		<script type="text/javascript" src="../../js/pre/scripts/shBrushCss.js"></script>
+		<script type="text/javascript" src="../../js/pre/scripts/shBrushCSharp.js"></script>
+		<script type="text/javascript" src="../../js/pre/scripts/shBrushJScript.js"></script>
+		<script type="text/javascript" src="../../js/pre/scripts/shBrushPhp.js"></script>
+		<script type="text/javascript" src="../../js/pre/scripts/shBrushPlain.js"></script>
+		<script type="text/javascript" src="../../js/pre/scripts/shBrushPython.js"></script>
+		<script type="text/javascript" src="../../js/pre/scripts/shBrushJava.js"></script>
+		<script type="text/javascript" src="../../js/pre/scripts/shBrushScala.js"></script>
+		<script type="text/javascript" src="../../js/pre/scripts/shBrushSql.js"></script>
+		<script type="text/javascript" src="../../js/pre/scripts/shBrushXml.js"></script>
+		<script type="text/javascript" src="../../js/pre/scripts/shBrushPerl.js"></script>
+		<link type="text/css" rel="stylesheet" href="../../js/pre/styles/shCore.css" />
+		<link type="text/css" rel="stylesheet" href="../../js/pre/styles/shThemeDefault.css" />
+		<script type="text/javascript">
+			SyntaxHighlighter.defaults['toolbar'] = false;  //去掉右上角问号图标
+			SyntaxHighlighter.config.tagName = 'pre';       //可以更改解析的默认Tag。
+			SyntaxHighlighter.config.bloggerMode = true; 
+			SyntaxHighlighter.config.stripBrs = true;  
+			SyntaxHighlighter.all();
+	   </script>
+		<style type="text/css">
+			h3 a{color: #CC573D;}
+		</style>
+	</head>
+	<body>
+	  <div class="hander"> 
+	  	<ul>
+	  		<li class="" nav-title="all"><a href="../../index.html">首页</a></li>
+			<li nav-title="css" class=""> <a href="../canvas/demo1.html">Html5画布入门篇</a></li>
+			<li nav-title="css" class=""><a href="../canvas/demo3.html">Html5画布提升篇</a></li>
+			<li><a href="../CSS/css3.html">CSS3</a></li>			
+			<li><a href="../../static/control/control.html">自己写的demo</a></li>			
+			<li nav-title="rem工具换算"><a href="../../static/rem1/rem.html">rem</a></li>			
+	  		<li><a href="../title/demo2.html">收藏的网站</a></li>
+	  		<li ><a href="../tool/tool.html">工具箱</a></li>
+	  		<li class=""><a href="../javascript/Event.html">javascriptEvent</a></li>
+	  		<li class=""><a href="../javascript/jsDom.html">javascriptDOM</a></li>
+	  		<li class=""><a href="../javascript/object.html">javascriptObj</a></li>	  		
+	  		<li  ><a href="../zhengze/zhengze.html">js正则表达式</a></li>
+	  		<li class=""><a href="../javascript/JSFcnction.html">javascript函数</a></li>
+	  		<li class=""><a href="../HTML5/H5_1.html">HTML5</a></li>
+	  		<li><a href="../angualar/angualar.html">angualarJS</a></li>
+	  		<li class=""><a href="../jquery-css3/jq-css3.html">Jquery操作css3的拼接方式</a></li>	 
+	  		<li class="active"><a href="../less/less.html">less</a></li>
+	  		<li class="active"><a href="../git/git.html">git</a></li>
+	  	</ul>
+	  </div>	
+	  <!--git-->
+	  <div class="main">
+		<h3>node常见的模块儿</h3>
+	  	 <div class="div_daima">
+	  	 	<h4>consolidate模块</h4>	 	
+			<pre class="brush: js;" >	
+			//const consolidate=require('consolidate');//consolidate 此模版可以控制,ejs的后缀名,一般可让html不用改后缀名就可以完成ejs模版的解析
+			//eg:
+			//配置模板
+			app.set('views','views');
+			app.set('view engine','html');
+			app.engine('html',consolidate.ejs);//此句用了此模版
+			</pre>
+	  	 </div>	 	
+	  </div>
+	  
+	   <!--返回顶部-->
+	  <div id="div-Top">
+		  	<dl>
+		  		<dd>
+		  			<img src="../../img/weixin-icon02.png"/></li>
+		  		</dd>
+		  		<dt class="weixin">
+		  			<div></div>
+		  		</dt>
+		  		<dt class="to_top">
+		  			<div></div>
+		  		</dt>
+		  		
+		  	</dl>
+	  </div>
+	</body>
+</html>
