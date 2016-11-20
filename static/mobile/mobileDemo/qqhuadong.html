@@ -1,0 +1,173 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta name="viewport" content="width=device-width,initial-scale=1,minimum-scale=1,maximum-scale=1,user-scalable=no" />
+		<meta charset="UTF-8">
+		<title></title>
+		<style type="text/css">
+			*{margin: 0;padding: 0;}
+			.div{width: 100%;height: auto;}
+			.div >ul{width: 100%;}
+			.div >ul >li{margin-top: 10px;height: 70px;line-height: 70px;width: 100%;background: #CCCCCC;position: relative;overflow: hidden;}
+			.div  .box_li{width: 100%;height: 70px;width: 100%;position: absolute;left: 0;top: 0;background: red;left: 0%;z-index: 5;transition: .2s;-webkit-transition: .2s;}
+			.div .span_menu{width: 100%;height: 70px;background: #fff;float: right;overflow: hidden;}
+			.div .span_menu >a{color: #000;float: right;position: relative;display: block;}
+		</style>
+	</head>
+	<body>
+		<div class="div">
+			<ul>				
+				<li>
+					<!--运动的div-->
+					<div class="box_li">					
+					</div>
+					<div class="span_menu">			
+						<a href="#">按钮1</a>
+					</div>
+				</li>
+				<li>
+					<!--运动的div-->
+					<div class="box_li">					
+					</div>
+					<div class="span_menu">			
+						<a href="#">按钮1</a>
+					</div>
+				</li>
+				<li>
+					<!--运动的div-->
+					<div class="box_li">					
+					</div>
+					<div class="span_menu">			
+						<a href="#">按钮1</a>
+					</div>
+				</li>
+				
+			</ul>
+		</div>
+	</body>
+</html>
+<script src="transform.js" type="text/javascript" charset="utf-8"></script>
+<script type="text/javascript">
+	window.onload = function(){
+		document.body.addEventListener('touchmove',function(ev){
+			ev.preventDefault();
+		})		
+		var oli = document.querySelectorAll('.box_li');
+		var startX =0;//开始的位置
+		var ifX = 0;//css3移动位置
+		var nowPoint=0;
+		var endPoint = 0;
+		for (var i = 0; i < oli.length; i++) {
+			oli[i].addEventListener('touchstart',function(ev){
+				var ev = ev || event;
+				cssTransform(this,"translateZ",0.01);
+				var touchs = ev.changedTouches[0];
+				startX = touchs.pageX;
+				ifX =cssTransform(this,"translateX");
+				
+			})
+			//滑动时候
+			oli[i].addEventListener('touchmove',function(ev){
+				var touchs = ev.changedTouches[0];
+				nowPoint = touchs.pageX;//手指移动的距离
+				var dis =nowPoint-startX;
+				ifX =cssTransform(this,"translateX");
+				//当有标记的时候，就是在左边
+				if (this.getAttribute('flag')=='true') {
+					ifX =cssTransform(this,"translateX");
+					console.log(dis)
+					if (dis>50 ) {
+						cssTransform(this,"translateX",0)
+						cssTransform(this,"translateZ",0.01);
+						this.setAttribute('flag',false);
+					}					
+					return false;
+				}
+				if (ifX>0) {
+					ifX=0
+				 	return false
+				 }else if(ifX <-document.body.offsetWidth*0.5){
+				 		console.log(dis)
+				 		this.setAttribute('flag',true);//标记
+//						cssTransform(this,"translateX",document.body.offsetWidth*0.5);
+				 		return false
+				 }				
+				else{
+					if (dis<-50) {
+						cssTransform(this,"translateX",dis);
+					}					
+				}									
+			})
+			oli[i].addEventListener('touchend',function(ev){
+				var touchs = ev.changedTouches[0];
+				endPoint = touchs.pageX;//手指移动的距离
+				startX= endPoint;
+				ifX =cssTransform(this,"translateX");
+				if (ifX>0 || ifX >-document.body.offsetWidth*0.5) {
+					fX=0
+					cssTransform(this,"translateX",0);
+					cssTransform(this,"translateZ",0.01);
+					this.setAttribute('flag',false);
+					return false;
+				}	
+				if(ifX <-document.body.offsetWidth*0.5){
+					this.setAttribute('flag',true);
+					cssTransform(this,"translateX",-document.body.offsetWidth*0.5);
+				}
+			})
+			//点击的时候回去因为客户端有延迟，所以这里用click
+			oli[i].addEventListener('click',function(){
+				ifX =cssTransform(this,"translateX");
+				if (this.getAttribute('flag')=='true') {
+					cssTransform(this,"translateX",0);
+					this.setAttribute('flag',false);
+					return false;
+				}
+			})	
+		}
+		}
+	
+	
+	function cssTransform(el,attr,val) {
+	if(!el.transform){
+		el.transform = {};
+	}
+	if(arguments.length>2) {
+		el.transform[attr] = val;
+		var sVal = "";
+		for(var s in el.transform){
+			switch(s) {
+				case "rotate":
+				case "skewX":
+				case "skewY":
+					sVal +=s+"("+el.transform[s]+"deg) ";
+					break;
+				case "translateX":
+				case "translateY":
+				case "translateZ":
+					sVal +=s+"("+el.transform[s]+"px) ";
+					break;
+				case "scaleX":
+				case "scaleY":
+				case "scale":
+					sVal +=s+"("+el.transform[s]+") ";
+					break;	
+			}
+			el.style.WebkitTransform = el.style.transform = sVal;
+		}
+	} else {
+		val  = el.transform[attr];
+		if(typeof val == "undefined" ) {
+			if(attr == "scale" || attr == "scaleX" || attr == "scaleY"  ) {
+				val = 1;
+			} else {
+				val = 0;
+			}
+		}
+		return val;
+	}
+}
+
+
+
+</script>

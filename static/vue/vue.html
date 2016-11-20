@@ -62,16 +62,521 @@
 	  </div>	
 	  <!--git-->
 	  <div class="main">
-	  	 <h3>vue</h3>	  	 
+	  	 <h3>vue 1.0</h3>	  	 
 	  	 <div class="div_daima">
-	  	 	<h4>vue <code>$index 角标</code> <code>双向数据绑定 v-model</code><code>循环:v-for</code></h4>	  	 	
+	  	 	<h4>vue <code>$index 角标</code> <code>双向数据绑定 v-model</code><code>循环:v-for</code><code><a href="demo/http_baidu.html">vue完整版百度下啦搜索</a></code></h4>	  	 	
 			<pre class="brush:js">
 				//双向数据绑定
 				v-model	一般表单元素(input)	
+				
+				
 				//循环:   
 				//$index 角标
 				v-for="name in arr" 
 				
+				//在循环的时候允许循环 结合v-for使用
+				track-by='$index' 允许重复 //提高循环性能
+				
+				//限制数据使用 结合v-for使用
+				<li v-for='item in arr | orderBy -1'>{{item}}</li>
+						limitBy	限制几个
+						limitBy 参数(取几个)
+						limitBy 取几个  从哪开始
+				
+						filterBy	过滤数据
+						filterBy ‘谁’
+				
+						orderBy	排序
+						orderBy 谁 1/-1  1正序 -1倒序
+				
+				//事件 v-on:click  简写@click
+				
+				//事件对象 @click='ev_click($event)'  //传入进去
+				
+			//阻止冒泡:  
+					a). ev.cancelBubble=true;
+					b). @click.stop	推荐
+			//默认行为(默认事件):
+				阻止默认行为:
+					a). ev.preventDefault();
+					b). @contextmenu.prevent	推荐
+			//键盘:
+				@keydown	$event	ev.keyCode
+				@keyup
+		
+				//常用键:
+					回车
+						a). @keyup.13
+						b). @keyup.enter
+					上、下、左、右
+						@keyup/keydown.left
+						@keyup/keydown.right
+						@keyup/keydown.up
+						@keyup/keydown.down
+					.....
+			//html 转义输出(忽略标签)
+				{{{html转义输出}}}  //不防止闪烁 2.0已经挂掉
+				<span v-html="xx"></span> //防止闪烁  v-html
+				
+			//防止标签闪烁 (就是先加载出来花括号 语法啥的 )	->会用在比较大的段落
+				v-cloak  //->会用在比较大的段落 需要在style样式里面定义
+				
+				<span v-text="xx"></span> //防止闪烁  v-text用在行间			
+			//指令 vue对所有对直接dom操作都建议写在指令中 
+			//自定义指令directive
+			属性:
+			Vue.directive(指令名称,function(参数){
+				this.el	-> 原生DOM元素
+			});
+			
+			<div v-red="参数"></div>
+		
+			指令名称: 	v-red  ->  red
+		
+			* 注意: 必须以 v-开头
+			
+			//元素(标签)elementDirective
+			Vue.elementDirective('zns-red',{
+			    bind:function(){
+			        this.el.style.background='red';
+			    }
+			});
+			
+			//自定义键盘事件
+			Vue.directive('on').keyCodes.ctrl=17;
+			
+			//过滤器延迟执行 debounce xxx
+			@click="show |debounce 2000"
+			
+			//监听数据变化:
+			var vm = new Vue();		
+			vm.$watch(name,fnCb);  //浅度
+			vm.$watch(name,fnCb,{deep:true});  //深度监视 
+			
+			//定义组件（常用）
+			Vue.component('my-aaa',{
+				template:'<strong>好</strong>'
+			});
+			
+			var vm=new Vue({
+				el:'#box',
+				components:{
+					'my-aaa':{
+						template:'<h2>标题2</h2>'
+					}
+				}
+			});
+			
+			//组件数据(模版2种方式) 1.script 2.template
+			a). <script type="x-template" id="aaa">
+			<h2 @click="change">标题2->{{msg}}</h2>
+			</script>
+			b). <template id="aaa">
+				<h1>标题1</h1>
+				<ul>
+					<li v-for="val in arr">
+						{{val}}
+					</li>
+				</ul>
+			</template>
+			</pre>
+			<h4>
+				事件 <code>事件绑定: v-on:click  简写@click</code> <code>事件冒泡:ev.cancelBubble = true;(原生) 2:在事件绑定后面加.stop --->    @click.stop</code><code>阻止默认行ev.preventDefault(); vue: @事件.prevent</code>
+			</h4>
+			<pre class="brush:js">
+			  window.onload = function(){
+			        var a = new Vue({
+			            el:"body",//绑定对作用选择器
+			            data:{//但凡是数据都需要在data里面有所体现
+			                msg:'welcome vue'
+			            },
+			            methods:{//事件绑定都对象
+			                ev_click:function(ev){//事件对象
+			                  //原生阻止冒泡
+			                  //ev.cancelBubble = true;
+			                 //原生阻止默认行为
+			                // ev.preventDefault();
+			                 //键盘code对象
+			                 //ev.keycode		                 
+			                  alert('1')
+			                },
+			                ev_click2:function(ev){//事件对象
+			                  alert('2')
+			                }
+			            }
+			
+			        })
+			    }			    
+				//html
+				<div  @click='ev_click2($event)'>
+					<!--<button id="btn"  @click='ev_click($event)'>按钮1</button>-->
+					//事件后面加1个事件.stop也可以阻止事件冒泡 @click.stop
+					<!--<button id="btn"  @click.stop='ev_click($event)'>按钮1</button>-->
+					//阻止默认行为  @事件.prevent
+					<button id="btn"  @contextmenu.prevent='ev_click($event)'>按钮1</button>
+				</div>
+			</pre>
+			<h4>属性<code>//属性绑定: v-bind:src 简写//:src=""	推荐</code> <code>class 和style 绑定模式 1:数组方式 2:json方式</code><code>左边vule，右边成立的条件（布尔值）</code></h4>
+			<pre class="brush:js">
+				//属性绑定: v-bind:src
+				简写:
+				//:src=""	推荐
+				
+				注意class不能用这个方式
+				window.onload = function(){
+					var a = new Vue({
+						el:"body",
+						data:{
+						   url1:'https://www.baidu.com/img/bd_logo1.png',
+						   t:'这是一个图片',
+						   w:'100px',
+						   red1:'red',
+						   a:false,
+						   b:true,
+						   json:{
+							   	blue:true,
+							   	red:true
+						   },
+						   color1:{
+						   		color: 'red'
+						   },
+						   color2:{
+						   		fontSize:'20px'
+						   },
+						   styleJosn:{
+						   		color: 'red',
+						   		fontSize:'20px'
+						   }
+						}
+					})
+				}	
+				
+				//dom
+				<div id="text">
+					<!--<img src="{{url1}}"/>-->
+					<!--v-bind:xx 和 ：方式-->
+					<img :width="w" :title='t' v-bind:src="url1"/>
+					//<!--class第一种用法,在data里面-->
+					<div :class="[red1]">
+						文字
+					</div>
+					//<!-- 前面是class 后面的是布尔值来控制-->
+					<div :class="{blue:true,red:true}">
+						文字2
+					</div>
+					//<!--用data的布尔值 控制 a,b在data里面是布尔值，可以灵活控制-->
+					<div :class="{blue:a,red:b}">
+						dddd
+					</div>
+					//<!--用json代替上面data里的布尔值-->
+					<div :class='json'>
+						json
+					</div>
+					
+					//<!--多个用数组,单个也是数组-->
+					<strong :style="[color1,color2]">style用法</strong>
+					
+					//<!--style json方式-->
+					<br />
+					<strong :style='styleJosn'>json</strong>		
+				</div>
+			</pre>
+			<h4>模版和过滤器和交互(http) <code>只渲染1次{{*msg}}</code><code>{{{html转义输出}}}</code><code>过滤器{{数据 |过滤器语法}}</code><code>http post提交数据的时候需要配置 ememulateJSON:true</code><code>jsonp跨域函数改变 jsonp:'x'</code></h4>	
+			<pre class="brush:js">
+				//模板:
+				
+				{{msg}}		数据更新模板变化
+			
+				{{*msg}}	数据只绑定一次
+				
+				{{{msg}}}	HTML转意输出
+				
+				
+				//过滤器  |后面是自带的过滤器名字，可以自定义
+				
+				{{'welcome'| uppercase}}
+		
+				//<!--货币符号 'rem是参数'-->
+				{{12 |currency 'rmb'}}
+				
+				//http交互
+				1.首先引入http模块儿	
+				2:在methods函数里面写交互
+				3:如果是post提交数据的方式的话需要配置 emulateJSON:true
+				this.$http.get('get.php',{
+					//数据
+							a:1,
+							b:2
+				}
+//					,{
+//						//如果是post的话需要配置这个json
+//						emulateJSON:true
+//					}
+				).then(//then
+					function(data){//成功的函数
+							console.log(data.data)//就是请求的数据
+						},function(){//失败的函数
+							alert('失败')	
+					}
+				)	
+				
+				//jsonp如果需要改变jsonp的回调自执行函数 需要配置jsonp:'xx'
+				this.$http.jsonp('https://sp0.baidu.com/5a1Fazu8AA54nxGko9WTAnF6hhy/su',{
+				    wd:'a'
+				},{
+				    jsonp:'cb'	//callback名字，默认名字就是"callback"
+				}).then(function(res){
+				    alert(res.data.s);
+				},function(res){
+				    alert(res.status);
+				});
+			</pre>
+			<h4><code>vue的生命周期 ready加载完成常用</code></h4>
+			<pre  class="brush:js">
+			//创建1个对象实例vm， vm.$destroy()销毁对象
+		        var vm=new Vue({
+		            el:'#box',
+		            data:{
+		                msg:'well'
+		            },
+		            created:function(){
+		                alert('实例已经创建');
+		            },
+		            beforeCompile:function(){
+		                alert('编译之前');
+		            },
+		            compiled:function(){
+		                alert('编译之后');
+		            },
+		            ready:function(){
+		                alert('插入到文档中');
+		            },
+		            beforeDestroy:function(){
+		                alert('销毁之前');
+		            },
+		            destroyed:function(){
+		                alert('销毁之后');
+		            }
+		        });
+		
+		        /*点击页面销毁vue对象*/
+		        document.onclick=function(){
+		            vm.$destroy();
+		        };
+			</pre>
+			<h4><code>vue的数据的监听</code> <code>computed计算属性的使用</code></h4>
+			<pre  class="brush:js">
+				var vm = new Vue({
+					el:'body',
+					data:{
+						a:1
+					},
+					methods:{
+						
+					},
+					computed:{ //方式1
+						b:function(){ //这里的b的值就是return的返回值
+							//这里可以写业务逻辑
+							return this.a+1;
+						}
+					 }
+					})
+					document.onclick = function(){
+						vm.a= 101
+					}
+					//方式2:
+					var vm = new Vue({
+						el:'body',
+						data:{
+							a:1
+						},
+						computed:{
+							b:{
+								get:function(){ //一定要记得return
+									return this.a+2
+								},
+								set:function(val){//改变b值的时候，他默认调用
+									 this.a = val
+								}
+							}
+						 }
+						})
+						document.onclick = function(){
+							vm.b= 10 //改变值的时候
+						}
+			</pre>
+			<h4><code>vue实例简单方法</code> <code>$watch数据监听 如果是json对象需要加{deep:true}深度监听才行</code></h4>
+			<pre class="brush:js">
+				vm.$el	->  就是元素
+				vm.$data  ->  就是data
+				vm.$mount ->  手动挂在vue程序
+				
+				vm.$options	->   获取自定义属性
+				vm.$destroy	->   销毁对象
+			
+				vm.$log();	->  查看现在数据的状态
+				
+				//数据监听 $watch
+				var vx = new Vue();
+				vm.$watch('a',function(){ //浅度监听
+					alert('发送变化了')
+				})
+				vm.$watch('b',function(){ //浅度监听 {deep:true}
+					alert('json发送变化了')
+				},{deep:true})
+				
+			</pre>
+			<h4><code>过滤器</code><code><a href="demo/filter_data.html">过滤器filterBy过滤</a></code></h4>
+			<pre class="brush:js">
+				capitalize	uppercase	currency....
+				
+				<input type="text" @keyup="show |debounce 4000" name="" id="" value="" />
+				//debounce	配合事件，延迟执行
+				
+				//限制数据的过滤器，配合v-for 使用
+				//|limitBy x取前面x条
+				<li v-for="item in arr | limitBy 2">{{item}}</li>
+				//limitBy 2 1取2条数据，从1条开始(从前)
+				<li v-for="item in arr | limitBy 2 1">{{item}}</li>			
+				//limitBy 2 1取2条数据，从最后2条开始(从后)	
+				<li v-for="item in arr | limitBy 2 arr.length-2">{{item}}</li>				
+				//filterBy xx 收索的条件	
+				<li v-for="item in arr | filterBy t1">{{item}}</li>
+				//orderBy x 排序 -1倒序 ，1正序 不是数字就按照字母排序
+				<li v-for='item in arr | orderBy -1'>{{item}}</li>
+				
+				//自定义过滤器
+				<span>{{item | toData}}</span> //toData是过滤器名称
+				Vue.filter('toData',function(input){ //input就是item数据
+					return input < 50 ? input+10 : input
+				})
+				//过滤器传参数 
+				<span>{{item | toData 1 2}}</span>
+				Vue.filter('toData',function(input a,b){} //这里input后面的参数，对应行内的参数
+			</pre>
+			<h4>自定义指令 <code>指令分为属性(v-xx)和标签的形式</code> <code>vue对所有对直接dom操作都建议写在指令中</code> <code>directive</code><code>自定义键盘事件</code></h4>
+			<pre  class="brush:js">
+				
+				//red是指令对名字
+				Vue.directive('red',function(color){//color参数,可以不带，对应指令的参数
+					this.el.style.background =color
+				})
+				//有参数指令调用
+				<span v-red="'red'">asddsd</span>
+				
+				//无参数指令调用(这是属性的形式)
+				<b v-red >dd</b>
+				
+				//自定义元素指令
+				Vue.elementDirective('zns-red',{
+					bind:function(){//bind是默认调用的
+						this.el.style.background='red';
+					}
+				})
+				<zns-red	></zns-red>
+				
+				//自定义键盘事件  @keydown.ctrl="show"  @keydown.17="show"
+				Vue.directive('on').keyCodes.ctrl=17;//17是键盘code值,其实就是给17取了个别名ctrl
+			</pre>
+			<h4><code>vue动画</code><code>css定义方式首先给元素定义动画名:xx-transition xx-enter xx-leave</code><code>js里面的有个transitions对象</code></h4>
+			<pre  class="brush:js">
+				//---->css方式定义
+				//首先在需要运动的元素上定义1个 transition='fade'-->名字可以随意，但是要和css对应
+				<div v-show="bSign" transition='fade' id="div1" :class="{div1:1}"></div>
+				//这些后缀名需要和名字对应 xx-transition xx-enter xx-leave
+				/*动画时间*/
+				.fade-transition{
+					transition: 1s all ease;
+				}
+				/*进入*/
+				.fade-enter{
+					opacity: 0;
+				}
+				/*离开*/					
+				.fade-leave{
+					opacity: 0;
+					transform: translateX(200px);
+				}
+				//可以用更加灵活的js方式配置--->如果用animate.css库需要首先引入animated这个class 2.transition里面的bounce需要和js里面的对应
+				<div v-show="bSign" class="animated" transition='bounce' id="div1" ></div>
+				new Vue({
+				el:'body',
+				data:{
+					bSign:true,
+				},
+				methods:{
+					 toggle(){//es6
+						this.bSign=!this.bSign;
+					}
+				},
+				transitions:{//定义所有动画名称
+					bounce:{ //定义在transition='xx'里面的对应
+						enterClass:'zoomInLeft', //进场动画class
+						leaveClass:'zoomOutRight' //出场class
+					}
+				}
+			})
+			</pre>
+			<h4>vue组件1.x <code>Vue.extend({})</code><code>全局调用Vue.component('aaa',Aaa)</code><code>局部组件调用:在主对象里面有个components对象,接受key，vue对应调用</code><code><a href="demo/datazujian01.html">第一种全局，局部</a></code><code><a href="demo/datazujian02.html">2种全局</a></code><code><a href="demo/datazujian03.html">2种局部</a></code></h4>
+			<pre class="brush:js">
+				//定义组件全局的方式1
+				var Aaa = Vue.extend({
+					data:function(){//组件里面的data必须是函数的形式
+						return{
+							msg:'我的组件的数据'
+						}
+					},
+					methods:{//组件事件还是一样methods里面
+	//				 	change:function(){}, //以前的写法
+					 	change(){//es6事件写法
+					 		alert('xx');
+					 	}
+					},
+					template:'<h3 @click="change()">{{msg}}</h3>'
+				})
+				//调用组件标签名,组件对象,全局调用(常用点)
+	//			Vue.component('aaa',Aaa)
+				new Vue({
+					el:'body',
+					data:{
+						bSign:true
+					},
+					components:{//局部组件，只能在el:选择器里面有用
+						'aaa':Aaa
+					}
+				})
+				//方式2,仅仅是书写方式简单点儿,事件和数据和上面一样
+				Vue.component('my-aaa',{
+					template:'<strong>好</strong>',
+					data:function(){//组件里面的data必须是函数的形式
+						return{
+							msg:'我的组件的数据'
+						}
+					}
+				});			
+				new Vue({
+					el:'#box',
+					components:{
+						'my-aaa':{
+							template:'<h2>标题2</h2>'
+						}
+					}
+				});
+			</pre>
+			<h4>组件模版<code>1.script 方式 2.template方式</code><code><a href="demo/template_Data.html">模版数据的方式,注意看html里面的2种模式</a></code></h4>
+			<pre class="brush:js">
+				//组件模板方式:
+					1). <script type="x-template" id="aaa">
+						<h2 @click="change">标题2->{{msg}}</h2>
+					</script>
+					2). <template id="aaa">
+						<h1>标题1</h1>
+						<ul>
+							<li v-for="val in arr">
+								{{val}}
+							</li>
+						</ul>
+					</template>
 			</pre>
 	  	</div>	 
 	  </div>	  

@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<script src="vue.min.js" type="text/javascript" charset="utf-8"></script>
+
+		<style type="text/css">
+			#div1{width: 100px;height: 100px;background: red;margin: 40px auto;}		
+		</style>			
+	</head>
+	<body>
+		<div id="div">
+			<!--组件-->
+			<aaa></aaa>
+		</div>
+		
+	</body>
+</html>
+<script type="text/javascript">
+		window.onload = function(){
+			//定义全局的方式1
+			Vue.component('aaa',{				
+				data:function(){//组件里面的data必须是函数的形式
+					return{
+						msg:'我的组件的数据'
+					}
+				},
+				methods:{//组件事件还是一样methods里面
+//				 	change:function(){}, //以前的写法
+				 	change(){//es6事件写法
+				 		alert('xx');
+				 	}
+				},
+				template:'<h3 @click="change()">{{msg}}</h3>'			
+			})
+			//调用组件标签名,组件对象,全局调用
+//			Vue.component('aaa',Aaa)
+			new Vue({
+				el:'body',
+				data:{
+					bSign:true
+				}
+			})
+			}
+</script>

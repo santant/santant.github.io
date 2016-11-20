@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+<script src="vue.min.js" type="text/javascript" charset="utf-8"></script>
+
+		<style type="text/css">
+			#div1{width: 100px;height: 100px;background: red;margin: 40px auto;}		
+		</style>			
+	</head>
+	<body>
+		<div id="div">
+			<!--组件-->
+			<aaa></aaa>
+		</div>
+		<!--script方式-->
+		<script type="text/template" id="aaa">
+			<h2 @click="change()">{{msg}}</h2>
+			<UL>
+				<li v-for="item in myData">
+					{{item}}
+				</li>
+			</UL>
+		</script>
+		<!--template方式-->
+		<template id="aaa1">
+			<h2 @click="change()">{{msg}}</h2>
+			<UL>
+				<li v-for="item in myData">
+					{{item}}
+				</li>
+			</UL>
+		</template>
+	</body>
+</html>
+<script type="text/javascript">
+		window.onload = function(){
+			//定义全局的方式1
+			var Aaa = Vue.extend({})
+			//调用组件标签名,组件对象,全局调用
+//			Vue.component('aaa',Aaa)
+			new Vue({
+				el:'body',
+				data:{
+					
+				},
+				components:{
+					'aaa':{						
+					data:function(){//组件里面的data必须是函数的形式
+						return{
+							msg:'我的组件的s数据',
+							myData:['332','33e','ds']
+						}
+					},
+					methods:{//组件事件还是一样methods里面
+	//				 	change:function(){}, //以前的写法
+					 	change(){//es6事件写法
+					 		this.msg='修改内容'
+					 	}
+					},
+					template:'#aaa1'							
+					}
+				}
+			})
+			}
+</script>

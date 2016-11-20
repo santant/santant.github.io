@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		
+		<script src="vue.min.js" type="text/javascript" charset="utf-8"></script>
+		<script type="text/javascript">
+			window.onload = function(){				
+			var vm = new Vue({
+				el:'body',
+				data:{
+					arr:['dssd','sdds','mk','yugy','tg'],
+					t1:''
+				},
+				methods:{
+					show	:function(){
+						alert('x')
+					}
+				}
+				})
+			}
+		</script>
+	</head>
+	<body>
+		<input type="text" v-model='t1' name="" id="" value="" />
+		<ul>
+			<!--|limitBy x取前面x条-->
+			<!--<li v-for="item in arr | limitBy 2">{{item}}</li>-->
+			<!--limitBy 2 1取2条数据，从1条开始(从前)-->
+			<!--<li v-for="item in arr | limitBy 2 1">{{item}}</li>-->			
+			<!--limitBy 2 1取2条数据，从最后2条开始(从后)-->	
+			<!--<li v-for="item in arr | limitBy 2 arr.length-2">{{item}}</li>-->
+			
+			<!--filterBy xx 收索的条件-->	
+			<li v-for="item in arr | filterBy t1">{{item}}</li>		
+		</ul>
+	</body>
+</html>

@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html>
+	<head>
+	<meta charset="UTF-8">
+		<title>模版</title>
+		<script src="vue.min.js" type="text/javascript" charset="utf-8"></script>
+		<script src="vue-resource.js" type="text/javascript" charset="utf-8"></script>
+		<style type="text/css">
+			.active{background: #CCCCCC;}
+		</style>
+	</head>
+	<script type="text/javascript">
+		window.onload = function(){
+			var a = new Vue({
+				el:"body",
+				data:{	
+					inputTxt:'',
+					arrData:'',
+					now:-1  //索引
+				},
+				methods:{
+					get:function(ev){
+						console.log(ev)
+						//上下键的时候不发请求
+						if (ev.keyCode==38 || ev.keyCode==40) {
+							return
+						}
+						//回车的时候跳转页面
+						if (ev.keyCode==13) {
+							window.open('https://www.baidu.com/s?wd='+this.inputTxt);
+							this.inputTxt ='';
+						}
+						
+						//360跨域
+						this.$http.jsonp('https://sp0.baidu.com/5a1Fazu8AA54nxGko9WTAnF6hhy/su',{
+							//数据
+							wd:this.inputTxt
+						},{
+							//修改jsonp的回调函数需要配置
+							jsonp:'cb'
+						}).then(//then
+							function(data){//成功的函数
+									console.log(data.data.s)//就是请求的数据
+									if (data.data.s) {
+										this.arrData = data.data.s;//把数据给定义好的arrData
+									}
+								},function(){//失败的函数
+									alert('失败')	
+								}
+						)
+					},
+					changeDown:function(){//向下
+						if (this.now<this.arrData.length-1) {
+							this.now++;
+							//改变数据
+							this.inputTxt = this.arrData[this.now];
+						}
+						
+					},
+					changeUp:function(){//向上
+						if (this.now>0) {
+							this.now--;
+							//改变数据
+							this.inputTxt = this.arrData[this.now];
+						}
+					}
+				}
+			})
+		}
+	</script>
+	<body>
+		
+		<button @click='get()'>按钮</button>
+		<input @keyup.up="changeUp($event)" @keydown.down.prevent="changeDown($event)" @keyup="get($event)" type="text" name="" id="" value="" v-model='inputTxt' />
+		<ul v-hide="arrData.length==0">
+			<!--active:$index==now active生效的条件就是索引=now这个定义的值-->
+			<li :class="{active:$index==now}" v-for="item in arrData">{{item}}</li>
+		</ul>
+		<p v-show="arrData.length==0">暂无数据...</p>
+	</body>
+</html>
