@@ -578,6 +578,20 @@
 						</ul>
 					</template>
 			</pre>
+			<h4>组件通讯<code><a href="demo/zidaofu.html">子组件访问父级的数据</a></code></h4>
+			<pre  class="brush:js">
+				//子组件访问父级的数据
+				在调用子组件：
+					<bbb :m="数据"></bbb>
+			
+				子组件之内:
+					props:['m','myMsg']
+			
+					props:{
+						'm':String,
+						'myMsg':Number
+					}
+			</pre>
 	  	</div>	 
 	  </div>	  
 	   <!--返回顶部-->

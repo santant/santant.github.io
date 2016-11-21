@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<script src="vue.min.js" type="text/javascript" charset="utf-8"></script>
+
+		<style type="text/css">
+			#div1{width: 100px;height: 100px;background: red;margin: 40px auto;}		
+		</style>			
+	</head>
+	<body>
+		<div id="div">
+			<!--组件-->
+			<aaa>
+				
+			</aaa>
+		</div>
+		<!--首先定义1个组件-->
+		<template id="aaa1">
+			<h1>{{msg}}</h1>
+			<!--绑定需要传递的数据 :mmm="msg"-->
+			<bbb :mmm="msg" :xxx='msg2'></bbb>
+		</template>
+	</body>
+</html>
+<script type="text/javascript">
+	window.onload = function(){
+	var vx = new Vue({
+		el:'body',
+		data:{},
+		methods:{},
+		components:{
+			'aaa':{
+				data:function(){
+					return{
+							msg:'我的组件的s数据',
+							msg2:'msg2sss'
+						}	
+				},
+				template:'#aaa1',
+				components:{
+					'bbb':{	//需要用:xxx绑定数据	
+//						props:['mmm','xxx'], //在props里面绑定数据
+						props:{//上面的也可以用这样展示,右侧是字符串
+							'mmm':String,
+							'xxx':String
+						},
+						template:'<h3>我是bbb组件->{{mmm}}->{{xxx}}</h3>'  //子组件用父组件的数据
+					}
+				}
+			}
+		}
+	})
+		
+	}
+</script>
