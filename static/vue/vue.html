@@ -62,7 +62,7 @@
 	  </div>	
 	  <!--git-->
 	  <div class="main">
-	  	 <h3>vue 1.0</h3>	  	 
+	  	 <h3>vue 1.x</h3>	  	 
 	  	 <div class="div_daima">
 	  	 	<h4>vue <code>$index 角标</code> <code>双向数据绑定 v-model</code><code>循环:v-for</code><code><a href="demo/http_baidu.html">vue完整版百度下啦搜索</a></code></h4>	  	 	
 			<pre class="brush:js">
@@ -179,6 +179,37 @@
 					</li>
 				</ul>
 			</template>
+			
+			
+			//组件通讯
+			//子组件访问父级的数据
+				在调用子组件：
+				<bbb :m="数据"></bbb>
+			
+				子组件之内:
+					props:['m','myMsg']
+			
+					props:{
+						'm':String,
+						'myMsg':Number
+					}
+					
+				//父组件访问子级的数据
+				是子组件把自己的数据，发送到父级
+
+				vm.$emit(事件名,数据); //子组件发送 :事件名->自定义事件
+			
+				v-on:	@     //父级接受 -->实现子组件自定义的事件
+			
+			//slot: //多个slot标签的时候，需要用name和slot属性对应
+			位置、槽口
+			作用: 占个位置
+			
+			//路由
+			v-link="{path:'/home'}" 跳转链接{{$route.params | json}}	-> 当前参数{{$route.path}}	-> 当前路径{{$route.query | json}}	-> 数据
+			
+			//webpack
+			
 			</pre>
 			<h4>
 				事件 <code>事件绑定: v-on:click  简写@click</code> <code>事件冒泡:ev.cancelBubble = true;(原生) 2:在事件绑定后面加.stop --->    @click.stop</code><code>阻止默认行ev.preventDefault(); vue: @事件.prevent</code>
@@ -578,11 +609,11 @@
 						</ul>
 					</template>
 			</pre>
-			<h4>组件通讯<code><a href="demo/zidaofu.html">子组件访问父级的数据</a></code></h4>
+			<h4>组件通讯<code><a href="demo/zidaofu.html">子组件访问父级的数据 :xx props </a></code><code><a href="demo/zidaofu.html">父访问子组件的数据  $emit @ </a></code></h4>
 			<pre  class="brush:js">
 				//子组件访问父级的数据
 				在调用子组件：
-					<bbb :m="数据"></bbb>
+				<bbb :m="数据"></bbb>
 			
 				子组件之内:
 					props:['m','myMsg']
@@ -591,6 +622,92 @@
 						'm':String,
 						'myMsg':Number
 					}
+					
+				//父组件访问子级的数据
+				是子组件把自己的数据，发送到父级
+
+				vm.$emit(事件名,数据); //子组件发送
+			
+				v-on:	@     //父级接受
+			</pre>
+			<h4>slot占位<code><a href="demo/slot_zhanwei.html">slot占位，多个slot标签的时候，需要用name和slot属性对应</a></code></h4>
+			<pre  class="brush:js">
+				//slot:
+				位置、槽口
+				作用: 占个位置
+				
+				多个slot标签的时候，需要用name和slot属性对应
+			</pre>
+			<h4>路由 vue-router  <code>v-link="{path:'/home'}" 跳转链接</code><code>{{$route.params | json}}	->  当前参数</code><code>{{$route.path}}->当前路径</code><code>$route.query | json	->数据</code><code><a href="demo/luyou.html">基本路由</a></code><code><a href="demo/duoluyou.html">多路由</a></code></h4>
+			<pre  class="brush:js">
+		html:
+		<a v-link="{path:'/home'}">主页</a>	跳转链接
+		
+		展示内容:
+		<router-view></router-view>
+		js:
+			//1. 准备一个根组件
+			var App=Vue.extend();
+		
+			//2. Home News组件都准备
+			var Home=Vue.extend({
+				template:'<h3>我是主页</h3>'
+			});
+		
+			var News=Vue.extend({
+				template:'<h3>我是新闻</h3>'
+			});
+		
+			//3. 准备路由
+			var router=new VueRouter();
+		
+			//4. 关联
+			router.map({
+				'home':{
+					component:Home //关联模块儿和路由
+				},
+				'news':{
+					component:News
+				}
+			});
+		
+			//5. 启动路由
+			router.start(App,'#box');//
+		
+			//跳转链接:
+			
+			router.redirect({
+				‘/’:'/home'
+			});
+
+			//路由嵌套(多层路由):	//subRoutes
+			主页	home
+				登录	home/login
+				注册	home/reg
+			新闻页	news
+		
+			subRoutes:{
+				'login':{
+					component:{
+						template:'<strong>我是登录信息</strong>'
+					}
+				},
+				'reg':{
+					component:{
+						template:'<strong>我是注册信息</strong>'
+					}
+				}
+			}
+			
+			//------路由其他信息:
+			
+			/detail/:id/age/:age
+		
+			{{$route.params | json}}	->  当前参数
+		
+			{{$route.path}}	->  当前路径
+			
+			{{$route.query | json}}	->  数据
 			</pre>
 	  	</div>	 
 	  </div>	  

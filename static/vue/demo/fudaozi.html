@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<script src="vue.min.js" type="text/javascript" charset="utf-8"></script>
+
+		<style type="text/css">
+			#div1{width: 100px;height: 100px;background: red;margin: 40px auto;}		
+		</style>			
+	</head>
+	<body>
+		<div id="div">
+			<!--组件-->
+			<aaa>
+				
+			</aaa>
+		</div>
+		<!--首先定义1个组件-->
+		<template id="aaa">
+			<h1>{{msg}}-->{{msg2}}</h1>
+			<!-- @childmsg接受子组件发送的数据 也可以用@v-on:childmsg-->
+			<bbb @childmsg="getData"></bbb> 
+			<!--<bbb @childMsg="getData"></bbb>-->
+		</template>
+		<template id="bbb">
+			<h3>{{childData}}</h3>
+			<!--子组件给自己的数据发送给父级-->
+			<button @click='send()'>子组件发送数据给父级数据</button>
+		</template>
+	</body>
+</html>
+<script type="text/javascript">
+	window.onload = function(){
+	var vx = new Vue({
+		el:'body',
+		data:{},
+		methods:{},
+		components:{
+			'aaa':{
+				data:function(){
+					return{
+							msg:'我的父组件的数据',
+							msg2:'111'
+						}	
+				},
+				template:'#aaa',//对应的模版id
+				methods:{//aaa组件里面的bbb组件里面的getData方法
+					getData:function(msgdata){
+						this.msg2 = msgdata;
+					}
+				},
+				components:{
+					'bbb':{	//需要用:xxx绑定数据	
+						data:function(){
+						  return{
+						  	childData :'我是子组件的数据'
+						  }
+						},					
+						template:'#bbb', //对应的模版id
+						methods:{
+							send:function(){
+								//子组件给自己的数据发送给父级
+								this.$emit('childmsg',this.childData);//数据名字，和数据值和当前data对应
+							}
+						}
+					}
+				}
+			}
+		}
+	})
+		
+	}
+</script>

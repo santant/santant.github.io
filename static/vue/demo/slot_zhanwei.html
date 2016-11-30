@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<script src="vue.min.js" type="text/javascript" charset="utf-8"></script>
+	</head>
+	<body>
+		<div id="div">
+			<aaa>
+				<ul slot="ul_slot">
+					<li>11</li>
+					<li>22</li>
+					<li>33</li>
+					<li>444</li>
+				</ul>
+				<ol slot="ol_slot">
+					<li>1d1</li>
+					<li>2d2</li>
+					<li>3s3</li>
+					<li>4d44</li>
+				</ol>
+			</aaa>
+		</div>	
+		<template id="aaa">
+			<h1>标题</h1>
+			<slot name="ol_slot">默认情况</slot>
+			<slot name="ul_slot">默认情况</slot>
+			<span>welcome vue</span>
+		</template>
+	</body>
+</html>
+<script type="text/javascript">
+		window.onload = function(){
+			new Vue({
+				el:'body',
+				data:{
+					msg:'ddss'
+
+				},
+				components:{
+					'aaa':{
+						template:"#aaa",						
+					}
+				},
+				methods:{
+					 
+				}
+			})
+			}
+</script>
