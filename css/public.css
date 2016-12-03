@@ -190,7 +190,7 @@ a {
 }
 
 /*...*/
-.span_cut {
+.span_cut{
 	overflow: hidden;
 	width: 98%;
 	white-space: nowrap;

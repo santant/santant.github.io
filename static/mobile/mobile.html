@@ -39,24 +39,30 @@
 	  <div class="hander"> 
 	  	<ul>
 	  		<li class="" nav-title="all"><a href="../../index.html">首页</a></li>
-			<li nav-title="css" class=""> <a href="../canvas/demo1.html">Html5画布入门篇</a></li>
-			<li nav-title="css" class=""><a href="../canvas/demo3.html">Html5画布提升篇</a></li>
-			<li><a href="../CSS/css3.html">CSS3</a></li>			
-			<li><a href="../../static/control/control.html">自己写的demo</a></li>			
-			<li nav-title="rem工具换算"><a href="../../static/rem1/rem.html">rem</a></li>			
-	  		<li><a href="../title/demo2.html">收藏的网站</a></li>
-	  		<li ><a href="../tool/tool.html">工具箱</a></li>
-	  		<li class=""><a href="../javascript/Event.html">javascriptEvent</a></li>
-	  		<li class=""><a href="../javascript/jsDom.html">javascriptDOM</a></li>
-	  		<li class=""><a href="../javascript/object.html">javascriptObj</a></li>	  		
-	  		<li  ><a href="../zhengze/zhengze.html">js正则表达式</a></li>
-	  		<li class=""><a href="../javascript/JSFcnction.html">javascript函数</a></li>
 	  		<li class=""><a href="../HTML5/H5_1.html">HTML5</a></li>
-	  		<li><a href="../angualar/angualar.html">angualarJS</a></li>
-	  		<li class=""><a href="../jquery-css3/jq-css3.html">Jquery操作css3的拼接方式</a></li>	 
-	  		<li class=""><a href="../less/less.html">less</a></li>
-	  		<li class=""><a href="git.html">git</a></li>
-	  		<li class=""><a href="git.html">移动事件</a></li>
+	  		<li class=""><a href="../angualar/angualar.html">angualarJS</a></li>
+	  		<li class=""><a href="../git/git.html">git</a></li>
+	  		<li class=""><a href="../mysql/mysql.html">mysql</a></li>
+	  		<li class=""><a href="../vue/vue.html">vue1.x</a></li>			
+			<li class=""><a href="../CSS/css3.html">CSS3</a></li>	
+	  		<li class="active"><a href="../mobile/mobile.html">移动端</a></li>			
+			<li><a href="../../static/control/control.html">自己Demo</a></li>			
+			<li nav-title="rem工具换算"><a href="../../static/rem1/rem.html">rem</a></li>			
+	  		<li class=""><a href="../javascript/Event.html">js事件</a></li>
+	  		<li class=""><a href="../javascript/jsDom.html">js节点</a></li>
+	  		<li class=""><a href="../javascript/object.html">js对象I</a></li>	  		
+	  		<li class=""><a href="../javascript/JSFcnction.html">js函数</a></li>
+	  		<li class=""><a href="../object/object.html">js面向对象II</a></li>	  		
+	  		
+	  		<li  class=""><a href="zhengze.html">js正则</a></li>
+	  		
+	  		<li class=""><a href="../zhinengsheNode/zhinengsheNode.html">nodeJs课件</a></li>
+	  		<li class=""><a href="../tool/tool.html">经验感悟</a></li>	  		
+	  		<li nav-title="css" class=""> <a href="../canvas/demo1.html">画布入门</a></li>
+			<li nav-title="css" class="" ><a href="../canvas/demo3.html">画布提升</a></li>
+			<li class=""><a href="../less/less.html">less</a></li>
+	  		<li class=""><a href="../jquery-css3/jq-css3.html">Jquery</a></li>
+	  		<li><a href="../title/demo2.html">收藏的网站</a></li>
 	  	</ul>
 	  </div>	
 	  <!--git-->
@@ -65,17 +71,62 @@
 	  	 <div class="div_daima">
 	  	 	<h4>移动端布局注意哪点事儿<code>解决横竖屏切换字体比例的问题</code><code>默认字体Helvetica</code> <code>点击黑块儿黑屏</code> <code>ios下的圆角</code></h4>
 	  	 	<pre class="brush: css;">
-	  	 		 .xx{-webkit-text-size-adjust: 100%; //解决横竖屏切换字体比例的问题
-	  	 		
-	  	 		 body{
-	  	 		 	 font-family: Helvetica; //所有手机都有的默认字体Helvetica	  	 		 	 
-	  	 		 }
+	  	 		 /*解决横竖屏切换字体比例的问题*/
+	  	 		 .xx{-webkit-text-size-adjust: 100%;} 
 	  	 		 
-	  	 		 a,input,button {
-				  -webkit-tap-highlight-color: rgba(0, 0, 0, 0);//解决点击黑块儿的问题
-				  -webkit-appearance: none; //清除input，button，等在ios下的圆角
+	  	 		/*所有手机都有的默认字体Helvetica*/	  	 
+	  	 		 body{
+	  	 		 	 font-family: Helvetica; 		 	 
+	  	 		 }	
+	  	 		 /*清除input，button，等在ios下的圆角*/
+	  	 		 a,input,button {			  
+				  -webkit-appearance: none; 
+				  border-radius: 0;
 				  outline: none;//清除虚线
 				}
+				/*解决点击黑块儿的问题*/
+				-webkit-tap-highlight-color: rgba(0, 0, 0, 0);
+				/*禁止文字缩放*/
+				-webkit-text-size-adjust: 100%;
+				/*禁止选中文字*/
+				-webkit-user-select: none; 
+				
+				/*前端ps的那些事儿*/
+				//ps切图技巧 ctrl+c ctrl+n 然后ctrl+v 就可以保存了 ==> 牛逼
+				
+				/*移动端精灵图制作技巧:*/			
+					1:每个图片都需要比原图，长宽都稍微多出1点
+					2:长宽都一样
+					3:在设置background-size: xx xx;都时候一定要是合成图片的长宽
+					4:然后修改 background-position: xx即可;
+				
+				
+				/*适口概念*/
+				
+				viewport 视口(可视区窗口)
+				默认不设置viewport一般可视区宽度在移动端是980
+				width 可视区的宽度 (number||device-width)
+				user-scalable 是否允许用户缩放 (yes||no) iOS10无效 (我们放在事件章节解决)
+				initial-scale 初始缩放比例
+				minimum-scale 最小缩放比例
+				maximum-scale 最大缩放比例
+				
+				/*常用mate标签声名:*/
+				
+				/*常用不解释*/
+				<meta name="viewport" content="width=device-width,initial-scale=1,minimum-scale=1,maximum-scale=1,user-scalable=no" />
+				/*X5内核禁止横屏*/
+				<meta name="x5-orientation" content="portrait" />
+				/*X5内核全屏显示*/
+				<meta name="x5-fullscreen" content="true" />
+				/*uc禁止横屏*/
+				<meta name="screen-orientation" content="portrait">
+				/*uc全屏显示*/				
+				<meta name="full-screen" content="yes">
+				/*忽略电话和邮件数字*/
+				<meta name="format-detection" content="telephone=no, email=no" />
+				/*优先采用谷歌内核，加载，ie内核采用最新版本的*/
+				<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
 				
 				
 	  	 	</pre>
