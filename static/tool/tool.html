@@ -715,6 +715,49 @@ with(document)0[(getElementsByTagName('head')[0]||body).appendChild(createElemen
 		  	 	// 利用iscroll5实现上啦下拉刷新加载
 				//http://www.cnblogs.com/leolai/articles/4204345.html  中文api比较好的网站
 		  	 </pre>
+		  	 <h4>js算法把一个图片换算到一个固定div当中，固定剧中</code></h4>
+		  	 <pre class="brush: js;">
+		  	 	function dragThumb(cs_src, cs_divdom) { //cs_src图片的节点,框型（固定div）的节点
+					 imgWidth = parseFloat(cs_src.width());//原图宽
+					 imgHeight = parseFloat(cs_src.height());//原图高
+					 boxWidth = parseFloat(cs_divdom.width());//框宽
+					 boxHeight = parseFloat(cs_divdom.height());//框高
+					
+					//原图和框的比例（宽）
+					var oProportionWidth = boxWidth/imgWidth;
+					//原图和框的比例（高）
+					var oProportionHeight =boxHeight/imgHeight;
+					
+					//得到换算的最终比例mul
+					var mul;
+					if (oProportionWidth>oProportionHeight) {
+						 mul= oProportionWidth;
+					}else{
+						 mul = oProportionHeight;
+					}
+					//得到原图变小的比例大小
+					imgWidth = imgWidth * mul;
+		        		imgHeight = imgHeight * mul;
+					//图片宽<盒子宽
+					if (imgWidth < boxWidth) {
+						imgWidth = boxWidth
+					}else if(imgHeight< boxHeight){//图片高 > 盒子高
+						imgHeight= boxHeight
+					}
+					//位移的距离盒子-图片缩小比例/2
+					var dx = (boxWidth-imgWidth)/2;
+		        		var dy = (boxHeight-imgHeight)/2;	
+		        		//渲染定位
+					cs_src.css({
+						width:imgWidth+'px',
+						height:imgHeight+'px',
+						left:dx+'px',
+						top:dy+'px'
+					})
+			}
+		  	 </pre>
+		  	 
+		  	 
 		  	 
 		  	 <h4>自己gulp总结</h4>
 		  	 <pre class="brush: js;">
