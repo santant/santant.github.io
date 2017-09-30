@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html>
+
+	<head>
+		<meta charset="UTF-8">
+		<meta name="viewport" content="width=device-width,initial-scale=1,minimum-scale=1,maximum-scale=1,user-scalable=no" />
+		<title>移动端图片放大缩小功能</title>
+		<link rel="stylesheet" href="static/css/photoswipe.css" />
+		<link rel="stylesheet" href="static/css/default-skin/default-skin.css" />
+		<link rel="stylesheet" type="text/css" href="static/css/main.css" />
+		<script type="text/javascript" src="static/js/jquery-2.1.4.min.js"></script>
+		<script type="text/javascript" src="static/js/photoswipe.min.js"></script>
+		<script type="text/javascript" src="static/js/photoswipe-ui-default.min.js"></script>
+		<script type="text/javascript" src="static/js/photoMain.js"></script>
+	</head>
+
+	<body>
+		<div id="main">
+			<div class="my-gallery" ref="mybox">
+				<figure>
+					<a href="http://www.artrondata.com/hml/view/29%E3%80%81%E9%BB%91%E7%99%BD%E9%87%89%E6%8C%82%E7%9B%98.JPG" data-size="827x761"><img src="http://www.artrondata.com/hml/view/29%E3%80%81%E9%BB%91%E7%99%BD%E9%87%89%E6%8C%82%E7%9B%98.JPG" alt="Image description" /></a>
+					<figcaption itemprop="caption description">岩画瓷盘</figcaption>
+				</figure>
+
+				<figure>
+					<a href="http://www.artrondata.com/hml/view/3%E3%80%81%E7%89%9B%E5%A4%B4-2.jpg" data-size="827x761"><img src="http://www.artrondata.com/hml/view/3%E3%80%81%E7%89%9B%E5%A4%B4-2.jpg" alt="Image description" /></a>
+					<figcaption itemprop="caption description">牛头</figcaption>
+				</figure>
+
+				<figure>
+					<a href="http://www.artrondata.com/hml/view/9%E3%80%81%E5%90%89%E7%A5%A5%E8%B1%A1-1.jpg" data-size="827x761"><img src="http://www.artrondata.com/hml/view/9%E3%80%81%E5%90%89%E7%A5%A5%E8%B1%A1-1.jpg" alt="Image description" /></a>
+					<figcaption itemprop="caption description">吉祥象</figcaption>
+				</figure>
+
+				<figure>
+					<a href="http://www.artrondata.com/hml/view/117%EF%BC%8C%E5%B1%B1%E6%B0%B4%E7%94%BB%E5%8E%85%20(4).jpg" data-size="827x761"><img src="http://www.artrondata.com/hml/view/117%EF%BC%8C%E5%B1%B1%E6%B0%B4%E7%94%BB%E5%8E%85%20(4).jpg" alt="Image description" /></a>
+					<figcaption itemprop="caption description">山水画厅</figcaption>
+				</figure>
+
+				<figure>
+					<a href="http://www.artrondata.com/hml/view/125%E3%80%81%E5%B8%83%E8%89%BA%E5%8E%85%20(1).jpg" data-size="827x761"><img src="http://www.artrondata.com/hml/view/125%E3%80%81%E5%B8%83%E8%89%BA%E5%8E%85%20(1).jpg" alt="Image description" /></a>
+					<figcaption itemprop="caption description">布艺厅1</figcaption>
+				</figure>
+
+				<figure>
+					<a href="http://www.artrondata.com/hml/view/125%E3%80%81%E5%B8%83%E8%89%BA%E5%8E%85%20(4).jpg" data-size="827x761"><img src="http://www.artrondata.com/hml/view/125%E3%80%81%E5%B8%83%E8%89%BA%E5%8E%85%20(4).jpg" alt="Image description" /></a>
+					<figcaption itemprop="caption description">布艺厅2</figcaption>
+				</figure>
+			</div>
+			<div class="pswp" tabindex="-1" role="dialog" aria-hidden="true">
+				<div class="pswp__bg"></div>
+				<div class="pswp__scroll-wrap">
+					<div class="pswp__container">
+						<div class="pswp__item"></div>
+						<div class="pswp__item"></div>
+						<div class="pswp__item"></div>
+					</div>
+					<div class="pswp__ui pswp__ui--hidden">
+
+						<div class="pswp__top-bar">
+							<div class="pswp__counter"></div>
+							<button class="pswp__button pswp__button--close" title="Close (Esc)"></button>
+							<button class="pswp__button pswp__button--share" title="Share"></button>
+							<button class="pswp__button pswp__button--fs" title="Toggle fullscreen"></button>
+							<button class="pswp__button pswp__button--zoom" title="Zoom in/out"></button>
+							<div class="pswp__preloader">
+								<div class="pswp__preloader__icn">
+									<div class="pswp__preloader__cut">
+										<div class="pswp__preloader__donut"></div>
+									</div>
+								</div>
+							</div>
+						</div>
+						<div class="pswp__share-modal pswp__share-modal--hidden pswp__single-tap">
+							<div class="pswp__share-tooltip"></div>
+						</div>
+						<button class="pswp__button pswp__button--arrow--left" title="Previous (arrow left)"></button>
+						<button class="pswp__button pswp__button--arrow--right" title="Next (arrow right)"></button>
+						<div class="pswp__caption">
+							<div class="pswp__caption__center"></div>
+						</div>
+					</div>
+				</div>
+			</div>
+
+		</div>
+	</body>
+	<script type="text/javascript">
+		window.onload = function() {
+			initPhotoSwipeFromDOM('.my-gallery');
+			var aHref = $('.my-gallery figure a');
+			console.log('sss',aHref);
+			if(aHref && aHref.length > 0) {
+
+				for(var i = 0; i < aHref.length; i++) {
+					var photoSize = getNaturalWidth(aHref[i]);
+					aHref[i].setAttribute('data-size', photoSize);
+				}
+
+			}
+		}
+	</script>
+
+</html>
